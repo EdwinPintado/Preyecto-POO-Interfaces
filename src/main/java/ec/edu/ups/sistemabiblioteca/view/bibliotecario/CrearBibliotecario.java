@@ -4,6 +4,10 @@
  */
 package ec.edu.ups.sistemabiblioteca.view.bibliotecario;
 
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Usuario
@@ -15,6 +19,90 @@ public class CrearBibliotecario extends javax.swing.JInternalFrame {
      */
     public CrearBibliotecario() {
         initComponents();
+    }
+
+    public JButton getjButtonCBCancelar() {
+        return jButtonCBCancelar;
+    }
+
+    public void setjButtonCBCancelar(JButton jButtonCBCancelar) {
+        this.jButtonCBCancelar = jButtonCBCancelar;
+    }
+
+    public JButton getjButtonCBCrear() {
+        return jButtonCBCrear;
+    }
+
+    public void setjButtonCBCrear(JButton jButtonCBCrear) {
+        this.jButtonCBCrear = jButtonCBCrear;
+    }
+
+    public JTextField getjTextFieldCBApellido() {
+        return jTextFieldCBApellido;
+    }
+
+    public void setjTextFieldCBApellido(JTextField jTextFieldCBApellido) {
+        this.jTextFieldCBApellido = jTextFieldCBApellido;
+    }
+
+    public JTextField getjTextFieldCBCargo() {
+        return jTextFieldCBCargo;
+    }
+
+    public void setjTextFieldCBCargo(JTextField jTextFieldCBCargo) {
+        this.jTextFieldCBCargo = jTextFieldCBCargo;
+    }
+
+    public JTextField getjTextFieldCBCedula() {
+        return jTextFieldCBCedula;
+    }
+
+    public void setjTextFieldCBCedula(JTextField jTextFieldCBCedula) {
+        this.jTextFieldCBCedula = jTextFieldCBCedula;
+    }
+
+    public JTextField getjTextFieldCBCodigo() {
+        return jTextFieldCBCodigo;
+    }
+
+    public void setjTextFieldCBCodigo(JTextField jTextFieldCBCodigo) {
+        this.jTextFieldCBCodigo = jTextFieldCBCodigo;
+    }
+
+    public JTextField getjTextFieldCBFecha() {
+        return jTextFieldCBFecha;
+    }
+
+    public void setjTextFieldCBFecha(JTextField jTextFieldCBFecha) {
+        this.jTextFieldCBFecha = jTextFieldCBFecha;
+    }
+
+    public JTextField getjTextFieldCBNombre() {
+        return jTextFieldCBNombre;
+    }
+
+    public void setjTextFieldCBNombre(JTextField jTextFieldCBNombre) {
+        this.jTextFieldCBNombre = jTextFieldCBNombre;
+    }
+
+    public JTextField getjTextFieldCBTelefono() {
+        return jTextFieldCBTelefono;
+    }
+
+    public void setjTextFieldCBTelefono(JTextField jTextFieldCBTelefono) {
+        this.jTextFieldCBTelefono = jTextFieldCBTelefono;
+    }
+
+    public JTextField getjTextFieldCBTurno() {
+        return jTextFieldCBTurno;
+    }
+
+    public void setjTextFieldCBTurno(JTextField jTextFieldCBTurno) {
+        this.jTextFieldCBTurno = jTextFieldCBTurno;
+    }
+    public void mostrarInformacion(String mensaje){
+        JOptionPane.showMessageDialog(this, mensaje);
+        
     }
 
     /**

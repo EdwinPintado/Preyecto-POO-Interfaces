@@ -4,17 +4,67 @@
  */
 package ec.edu.ups.sistemabiblioteca.view.bibliotecario;
 
+import ec.edu.ups.sistemabiblioteca.models.Bibliotecario;
+import java.util.List;
+import javax.swing.JButton;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Usuario
  */
 public class ListarBibliotecario extends javax.swing.JInternalFrame {
-
+    private DefaultTableModel modelo;
     /**
      * Creates new form ListarBibliotecario
      */
     public ListarBibliotecario() {
         initComponents();
+        construirTabla();
+    }
+
+    public JTextField getTxtContadordeBibliotecarios() {
+        return txtContadordeBibliotecarios;
+    }
+
+    public void setTxtContadordeBibliotecarios(JTextField txtContadordeBibliotecarios) {
+        this.txtContadordeBibliotecarios = txtContadordeBibliotecarios;
+    }
+    
+
+    public JButton getBtnMostrarListaBibliotecarios() {
+        return btnMostrarListaBibliotecarios;
+    }
+
+    public void setBtnMostrarListaBibliotecarios(JButton btnMostrarListaBibliotecarios) {
+        this.btnMostrarListaBibliotecarios = btnMostrarListaBibliotecarios;
+    }
+
+    public void construirTabla() {
+        modelo = new DefaultTableModel();
+        modelo.addColumn("Cedula");
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Apellido");
+        modelo.addColumn("Codigo");
+        tblListadoBibliotecarios.setModel(modelo);
+    }
+
+    public void cargarDatos(List<Bibliotecario> lista) {
+
+        modelo.setRowCount(0);
+
+        for (Bibliotecario b : lista) {
+
+            Object[] fila = {
+                b.getCedula(),
+                b.getNombre(),
+                b.getApellido(),
+                b.getCodigo()
+            };
+            modelo.addRow(fila);
+
+        }
     }
 
     /**

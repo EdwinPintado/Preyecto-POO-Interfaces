@@ -4,6 +4,10 @@
  */
 package ec.edu.ups.sistemabiblioteca.view.devolucion;
 
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Usuario
@@ -15,6 +19,83 @@ public class RealizarDevolucion extends javax.swing.JInternalFrame {
      */
     public RealizarDevolucion() {
         initComponents();
+    }
+
+    public JButton getjButtonBuscarPresamoD() {
+        return jButtonBuscarPresamoD;
+    }
+
+    public void setjButtonBuscarPresamoD(JButton jButtonBuscarPresamoD) {
+        this.jButtonBuscarPresamoD = jButtonBuscarPresamoD;
+    }
+
+    public JTextField getjTextFieldDBCodigo() {
+        return jTextFieldDBCodigo;
+    }
+
+    public void setjTextFieldDBCodigo(JTextField jTextFieldDBCodigo) {
+        this.jTextFieldDBCodigo = jTextFieldDBCodigo;
+    }
+
+    public JTextField getjTextFieldDCodigo() {
+        return jTextFieldDCodigo;
+    }
+
+    public void setjTextFieldDCodigo(JTextField jTextFieldDCodigo) {
+        this.jTextFieldDCodigo = jTextFieldDCodigo;
+    }
+
+    public JTextField getjTextFieldDFLimite() {
+        return jTextFieldDFLimite;
+    }
+
+    public void setjTextFieldDFLimite(JTextField jTextFieldDFLimite) {
+        this.jTextFieldDFLimite = jTextFieldDFLimite;
+    }
+
+    public JTextField getjTextFieldDFPrestamo() {
+        return jTextFieldDFPrestamo;
+    }
+
+    public void setjTextFieldDFPrestamo(JTextField jTextFieldDFPrestamo) {
+        this.jTextFieldDFPrestamo = jTextFieldDFPrestamo;
+    }
+
+    public JTextField getjTextFieldDISBNLibro() {
+        return jTextFieldDISBNLibro;
+    }
+
+    public void setjTextFieldDISBNLibro(JTextField jTextFieldDISBNLibro) {
+        this.jTextFieldDISBNLibro = jTextFieldDISBNLibro;
+    }
+
+    public JTextField getjTextFieldDTLibro() {
+        return jTextFieldDTLibro;
+    }
+
+    public void setjTextFieldDTLibro(JTextField jTextFieldDTLibro) {
+        this.jTextFieldDTLibro = jTextFieldDTLibro;
+    }
+
+    public JTextField getjTextFieldDUCedula() {
+        return jTextFieldDUCedula;
+    }
+
+    public void setjTextFieldDUCedula(JTextField jTextFieldDUCedula) {
+        this.jTextFieldDUCedula = jTextFieldDUCedula;
+    }
+
+    public JTextField getjTextFieldDUNombre() {
+        return jTextFieldDUNombre;
+    }
+
+    public void setjTextFieldDUNombre(JTextField jTextFieldDUNombre) {
+        this.jTextFieldDUNombre = jTextFieldDUNombre;
+    }
+
+    public void mostrarInformacion(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensaje);
+        dispose();
     }
 
     /**

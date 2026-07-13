@@ -4,6 +4,10 @@
  */
 package ec.edu.ups.sistemabiblioteca.view.prestamo;
 
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Usuario
@@ -15,6 +19,83 @@ public class BuscarPrestamo extends javax.swing.JInternalFrame {
      */
     public BuscarPrestamo() {
         initComponents();
+    }
+
+    public JButton getjButtonBuscarPresamo() {
+        return jButtonBuscarPresamo;
+    }
+
+    public void setjButtonBuscarPresamo(JButton jButtonBuscarPresamo) {
+        this.jButtonBuscarPresamo = jButtonBuscarPresamo;
+    }
+
+    public JTextField getjTextFieldBPBCodigo() {
+        return jTextFieldBPBCodigo;
+    }
+
+    public void setjTextFieldBPBCodigo(JTextField jTextFieldBPBCodigo) {
+        this.jTextFieldBPBCodigo = jTextFieldBPBCodigo;
+    }
+
+    public JTextField getjTextFieldBPCodigo() {
+        return jTextFieldBPCodigo;
+    }
+
+    public void setjTextFieldBPCodigo(JTextField jTextFieldBPCodigo) {
+        this.jTextFieldBPCodigo = jTextFieldBPCodigo;
+    }
+
+    public JTextField getjTextFieldBPFLimite() {
+        return jTextFieldBPFLimite;
+    }
+
+    public void setjTextFieldBPFLimite(JTextField jTextFieldBPFLimite) {
+        this.jTextFieldBPFLimite = jTextFieldBPFLimite;
+    }
+
+    public JTextField getjTextFieldBPFPrestamo() {
+        return jTextFieldBPFPrestamo;
+    }
+
+    public void setjTextFieldBPFPrestamo(JTextField jTextFieldBPFPrestamo) {
+        this.jTextFieldBPFPrestamo = jTextFieldBPFPrestamo;
+    }
+
+    public JTextField getjTextFieldBPISBNLibro() {
+        return jTextFieldBPISBNLibro;
+    }
+
+    public void setjTextFieldBPISBNLibro(JTextField jTextFieldBPISBNLibro) {
+        this.jTextFieldBPISBNLibro = jTextFieldBPISBNLibro;
+    }
+
+    public JTextField getjTextFieldBPTLibro() {
+        return jTextFieldBPTLibro;
+    }
+
+    public void setjTextFieldBPTLibro(JTextField jTextFieldBPTLibro) {
+        this.jTextFieldBPTLibro = jTextFieldBPTLibro;
+    }
+
+    public JTextField getjTextFieldBPUCedula() {
+        return jTextFieldBPUCedula;
+    }
+
+    public void setjTextFieldBPUCedula(JTextField jTextFieldBPUCedula) {
+        this.jTextFieldBPUCedula = jTextFieldBPUCedula;
+    }
+
+    public JTextField getjTextFieldBPUNombre() {
+        return jTextFieldBPUNombre;
+    }
+
+    public void setjTextFieldBPUNombre(JTextField jTextFieldBPUNombre) {
+        this.jTextFieldBPUNombre = jTextFieldBPUNombre;
+    }
+
+    public void mostrarInformacion(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensaje);
+
     }
 
     /**
