@@ -4,6 +4,10 @@
  */
 package ec.edu.ups.sistemabiblioteca.view.bibliotecario;
 
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Usuario
@@ -15,6 +19,99 @@ public class ActualizarBibliotecario extends javax.swing.JInternalFrame {
      */
     public ActualizarBibliotecario() {
         initComponents();
+    }
+
+    public JButton getjButtonActBBCedula() {
+        return jButtonActBBCedula;
+    }
+
+    public void setjButtonActBBCedula(JButton jButtonActBBCedula) {
+        this.jButtonActBBCedula = jButtonActBBCedula;
+    }
+
+    public JButton getjButtonActBCancelar() {
+        return jButtonActBCancelar;
+    }
+
+    public void setjButtonActBCancelar(JButton jButtonActBCancelar) {
+        this.jButtonActBCancelar = jButtonActBCancelar;
+    }
+
+    public JButton getjButtonActualizarB() {
+        return jButtonActualizarB;
+    }
+
+    public void setjButtonActualizarB(JButton jButtonActualizarB) {
+        this.jButtonActualizarB = jButtonActualizarB;
+    }
+
+    public JTextField getjTextFieldActBApellido() {
+        return jTextFieldActBApellido;
+    }
+
+    public void setjTextFieldActBApellido(JTextField jTextFieldActBApellido) {
+        this.jTextFieldActBApellido = jTextFieldActBApellido;
+    }
+
+    public JTextField getjTextFieldActBCargo() {
+        return jTextFieldActBCargo;
+    }
+
+    public void setjTextFieldActBCargo(JTextField jTextFieldActBCargo) {
+        this.jTextFieldActBCargo = jTextFieldActBCargo;
+    }
+
+    public JTextField getjTextFieldActBCedula() {
+        return jTextFieldActBCedula;
+    }
+
+    public void setjTextFieldActBCedula(JTextField jTextFieldActBCedula) {
+        this.jTextFieldActBCedula = jTextFieldActBCedula;
+    }
+
+    public JTextField getjTextFieldActBCodigo() {
+        return jTextFieldActBCodigo;
+    }
+
+    public void setjTextFieldActBCodigo(JTextField jTextFieldActBCodigo) {
+        this.jTextFieldActBCodigo = jTextFieldActBCodigo;
+    }
+
+    public JTextField getjTextFieldActBFecha() {
+        return jTextFieldActBFecha;
+    }
+
+    public void setjTextFieldActBFecha(JTextField jTextFieldActBFecha) {
+        this.jTextFieldActBFecha = jTextFieldActBFecha;
+    }
+
+    public JTextField getjTextFieldActBNombre() {
+        return jTextFieldActBNombre;
+    }
+
+    public void setjTextFieldActBNombre(JTextField jTextFieldActBNombre) {
+        this.jTextFieldActBNombre = jTextFieldActBNombre;
+    }
+
+    public JTextField getjTextFieldActBTelefono() {
+        return jTextFieldActBTelefono;
+    }
+
+    public void setjTextFieldActBTelefono(JTextField jTextFieldActBTelefono) {
+        this.jTextFieldActBTelefono = jTextFieldActBTelefono;
+    }
+
+    public JTextField getjTextFieldActBTurno() {
+        return jTextFieldActBTurno;
+    }
+
+    public void setjTextFieldActBTurno(JTextField jTextFieldActBTurno) {
+        this.jTextFieldActBTurno = jTextFieldActBTurno;
+    }
+    
+        public void mostrarInformacion(String mensaje){
+        JOptionPane.showMessageDialog(this, mensaje);
+        
     }
 
     /**
@@ -92,7 +189,7 @@ public class ActualizarBibliotecario extends javax.swing.JInternalFrame {
 
         jButtonActBBCedula.setBackground(new java.awt.Color(0, 102, 153));
         jButtonActBBCedula.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonActBBCedula.setText("Guardar");
+        jButtonActBBCedula.setText("Buscar");
         jButtonActBBCedula.addActionListener(this::jButtonActBBCedulaActionPerformed);
 
         jButtonActBCancelar.setText("CANCELAR");

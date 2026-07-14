@@ -4,17 +4,63 @@
  */
 package ec.edu.ups.sistemabiblioteca.view.devolucion;
 
+import ec.edu.ups.sistemabiblioteca.models.Devolucion;
+import java.util.List;
+import javax.swing.JButton;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Usuario
  */
 public class ListarDevolucion extends javax.swing.JInternalFrame {
-
+    private DefaultTableModel modelo;
     /**
      * Creates new form ListarDevolucion
      */
     public ListarDevolucion() {
         initComponents();
+        construirTabla();
+    }
+
+    public JButton getBtnMostrarListaDevoluciones() {
+        return btnMostrarListaDevoluciones;
+    }
+
+    public void setBtnMostrarListaDevoluciones(JButton btnMostrarListaDevoluciones) {
+        this.btnMostrarListaDevoluciones = btnMostrarListaDevoluciones;
+    }
+
+    public JTextField getTxtContadordeDevoluciones() {
+        return txtContadordeDevoluciones;
+    }
+
+    public void setTxtContadordeDevoluciones(JTextField txtContadordeDevoluciones) {
+        this.txtContadordeDevoluciones = txtContadordeDevoluciones;
+    }
+
+    public void construirTabla() {
+        modelo = new DefaultTableModel();
+        modelo.addColumn("Prestamo");
+        modelo.addColumn("Isbn");
+        modelo.addColumn("Fecha de Devolucion");
+        tblListadoDevoluciones.setModel(modelo);
+    }
+
+    public void cargarDatos(List<Devolucion> lista) {
+
+        modelo.setRowCount(0);
+
+        for (Devolucion b : lista) {
+
+            Object[] fila = {
+                b.getPrestamo(),
+                b.getPrestamo().getLibro().getIsbn(),
+                b.getFechaDevolucion(),};
+            modelo.addRow(fila);
+
+        }
     }
 
     /**

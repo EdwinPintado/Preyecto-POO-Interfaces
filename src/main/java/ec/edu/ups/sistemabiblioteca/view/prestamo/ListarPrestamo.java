@@ -4,17 +4,74 @@
  */
 package ec.edu.ups.sistemabiblioteca.view.prestamo;
 
+import ec.edu.ups.sistemabiblioteca.models.Prestamo;
+import java.util.List;
+import javax.swing.JButton;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Usuario
  */
 public class ListarPrestamo extends javax.swing.JInternalFrame {
 
+    private DefaultTableModel modelo;
+
     /**
      * Creates new form ListarPrestamo
      */
     public ListarPrestamo() {
         initComponents();
+        configurarTabla();
+    }
+
+    public JButton getBtnMostrarListaPrestamo() {
+        return btnMostrarListaPrestamo;
+    }
+
+    public void setBtnMostrarListaPrestamo(JButton btnMostrarListaPrestamo) {
+        this.btnMostrarListaPrestamo = btnMostrarListaPrestamo;
+    }
+
+    public JTextField getTxtContadordePrestamo() {
+        return txtContadordePrestamo;
+    }
+
+    public void setTxtContadordePrestamo(JTextField txtContadordePrestamo) {
+        this.txtContadordePrestamo = txtContadordePrestamo;
+    }
+    
+    public void configurarTabla() {
+        modelo = new DefaultTableModel();
+        modelo.addColumn("Codigo");
+        modelo.addColumn("Usuario");
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Isbn");
+        modelo.addColumn("Titulo");
+        modelo.addColumn("Bibliotecario");
+        modelo.addColumn("Fecha Prestamo");
+        modelo.addColumn("Fecha Limite");
+        tblListadoPrestamo.setModel(modelo);
+    }
+
+    public void cargarDatos(List<Prestamo> lista) {
+
+        modelo.setRowCount(0);
+
+        for (Prestamo b : lista) {
+
+            Object[] fila = {
+                b.getCodigoPrestamo(),
+                b.getUsuario(),
+                b.getLibro(),
+                b.getBibliotecario(),
+                b.getFechaPrestamo(),
+                b.getFechaPrestamo()
+            };
+            modelo.addRow(fila);
+
+        }
     }
 
     /**

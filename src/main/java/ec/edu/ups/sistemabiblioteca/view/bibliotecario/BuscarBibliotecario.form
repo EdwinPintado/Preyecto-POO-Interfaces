@@ -42,26 +42,24 @@
                           <EmptySpace min="-2" pref="181" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jLabelBBTurno" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelBBApellido" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelBBCedula" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelBBCargo" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextFieldBBApellido" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jLabelBBNombre" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jPanel4" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jTextFieldBBNombre" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jTextFieldBBCargo" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jTextFieldBBTelefono" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jTextFieldBBCodigo" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jTextFieldBBFecha" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jTextFieldBBTurno" alignment="0" max="32767" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="jTextFieldBBCedula" min="-2" pref="197" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jButtonBBBCedula" min="-2" pref="83" max="-2" attributes="0"/>
-                          </Group>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="jLabelBBTurno" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelBBApellido" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelBBCedula" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelBBCargo" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextFieldBBApellido" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jLabelBBNombre" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jPanel4" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jTextFieldBBNombre" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jTextFieldBBCargo" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jTextFieldBBTelefono" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jTextFieldBBCodigo" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jTextFieldBBFecha" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jTextFieldBBTurno" alignment="0" max="32767" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jTextFieldBBCedula" min="-2" pref="197" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="jButtonBBBCedula" min="-2" pref="83" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>

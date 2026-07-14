@@ -4,6 +4,10 @@
  */
 package ec.edu.ups.sistemabiblioteca.view.bibliotecario;
 
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Usuario
@@ -17,6 +21,83 @@ public class BuscarBibliotecario extends javax.swing.JInternalFrame {
         initComponents();
     }
 
+    public JButton getjButtonBBBCedula() {
+        return jButtonBBBCedula;
+    }
+
+    public void setjButtonBBBCedula(JButton jButtonBBBCedula) {
+        this.jButtonBBBCedula = jButtonBBBCedula;
+    }
+    
+
+    public JTextField getjTextFieldBBApellido() {
+        return jTextFieldBBApellido;
+    }
+
+    public void setjTextFieldBBApellido(JTextField jTextFieldBBApellido) {
+        this.jTextFieldBBApellido = jTextFieldBBApellido;
+    }
+
+    public JTextField getjTextFieldBBCargo() {
+        return jTextFieldBBCargo;
+    }
+
+    public void setjTextFieldBBCargo(JTextField jTextFieldBBCargo) {
+        this.jTextFieldBBCargo = jTextFieldBBCargo;
+    }
+
+    public JTextField getjTextFieldBBCedula() {
+        return jTextFieldBBCedula;
+    }
+
+    public void setjTextFieldBBCedula(JTextField jTextFieldBBCedula) {
+        this.jTextFieldBBCedula = jTextFieldBBCedula;
+    }
+
+    public JTextField getjTextFieldBBCodigo() {
+        return jTextFieldBBCodigo;
+    }
+
+    public void setjTextFieldBBCodigo(JTextField jTextFieldBBCodigo) {
+        this.jTextFieldBBCodigo = jTextFieldBBCodigo;
+    }
+
+    public JTextField getjTextFieldBBFecha() {
+        return jTextFieldBBFecha;
+    }
+
+    public void setjTextFieldBBFecha(JTextField jTextFieldBBFecha) {
+        this.jTextFieldBBFecha = jTextFieldBBFecha;
+    }
+
+    public JTextField getjTextFieldBBNombre() {
+        return jTextFieldBBNombre;
+    }
+
+    public void setjTextFieldBBNombre(JTextField jTextFieldBBNombre) {
+        this.jTextFieldBBNombre = jTextFieldBBNombre;
+    }
+
+    public JTextField getjTextFieldBBTelefono() {
+        return jTextFieldBBTelefono;
+    }
+
+    public void setjTextFieldBBTelefono(JTextField jTextFieldBBTelefono) {
+        this.jTextFieldBBTelefono = jTextFieldBBTelefono;
+    }
+
+    public JTextField getjTextFieldBBTurno() {
+        return jTextFieldBBTurno;
+    }
+
+    public void setjTextFieldBBTurno(JTextField jTextFieldBBTurno) {
+        this.jTextFieldBBTurno = jTextFieldBBTurno;
+    }
+        public void mostrarInformacion(String mensaje){
+        JOptionPane.showMessageDialog(this, mensaje);
+        
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

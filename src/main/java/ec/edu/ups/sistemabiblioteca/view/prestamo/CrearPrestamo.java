@@ -4,6 +4,10 @@
  */
 package ec.edu.ups.sistemabiblioteca.view.prestamo;
 
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Usuario
@@ -15,6 +19,106 @@ public class CrearPrestamo extends javax.swing.JInternalFrame {
      */
     public CrearPrestamo() {
         initComponents();
+    }
+
+    public JButton getjButtonCPCancelar() {
+        return jButtonCPCancelar;
+    }
+
+    public void setjButtonCPCancelar(JButton jButtonCPCancelar) {
+        this.jButtonCPCancelar = jButtonCPCancelar;
+    }
+
+    public JButton getjButtonCPCrear() {
+        return jButtonCPCrear;
+    }
+
+    public void setjButtonCPCrear(JButton jButtonCPCrear) {
+        this.jButtonCPCrear = jButtonCPCrear;
+    }
+
+    public JButton getjButtonCPLBuscar() {
+        return jButtonCPLBuscar;
+    }
+
+    public void setjButtonCPLBuscar(JButton jButtonCPLBuscar) {
+        this.jButtonCPLBuscar = jButtonCPLBuscar;
+    }
+
+    public JButton getjButtonCPUBuscar() {
+        return jButtonCPUBuscar;
+    }
+
+    public void setjButtonCPUBuscar(JButton jButtonCPUBuscar) {
+        this.jButtonCPUBuscar = jButtonCPUBuscar;
+    }
+
+    public JTextField getjTextFieldCPBCodigo() {
+        return jTextFieldCPBCodigo;
+    }
+
+    public void setjTextFieldCPBCodigo(JTextField jTextFieldCPBCodigo) {
+        this.jTextFieldCPBCodigo = jTextFieldCPBCodigo;
+    }
+
+    public JTextField getjTextFieldCPCodigo() {
+        return jTextFieldCPCodigo;
+    }
+
+    public void setjTextFieldCPCodigo(JTextField jTextFieldCPCodigo) {
+        this.jTextFieldCPCodigo = jTextFieldCPCodigo;
+    }
+
+    public JTextField getjTextFieldCPFLimite() {
+        return jTextFieldCPFLimite;
+    }
+
+    public void setjTextFieldCPFLimite(JTextField jTextFieldCPFLimite) {
+        this.jTextFieldCPFLimite = jTextFieldCPFLimite;
+    }
+
+    public JTextField getjTextFieldCPFPrestamo() {
+        return jTextFieldCPFPrestamo;
+    }
+
+    public void setjTextFieldCPFPrestamo(JTextField jTextFieldCPFPrestamo) {
+        this.jTextFieldCPFPrestamo = jTextFieldCPFPrestamo;
+    }
+
+    public JTextField getjTextFieldCPISBNLibro() {
+        return jTextFieldCPISBNLibro;
+    }
+
+    public void setjTextFieldCPISBNLibro(JTextField jTextFieldCPISBNLibro) {
+        this.jTextFieldCPISBNLibro = jTextFieldCPISBNLibro;
+    }
+
+    public JTextField getjTextFieldCPTLibro() {
+        return jTextFieldCPTLibro;
+    }
+
+    public void setjTextFieldCPTLibro(JTextField jTextFieldCPTLibro) {
+        this.jTextFieldCPTLibro = jTextFieldCPTLibro;
+    }
+
+    public JTextField getjTextFieldCPUCedula() {
+        return jTextFieldCPUCedula;
+    }
+
+    public void setjTextFieldCPUCedula(JTextField jTextFieldCPUCedula) {
+        this.jTextFieldCPUCedula = jTextFieldCPUCedula;
+    }
+
+    public JTextField getjTextFieldCPUNombre() {
+        return jTextFieldCPUNombre;
+    }
+
+    public void setjTextFieldCPUNombre(JTextField jTextFieldCPUNombre) {
+        this.jTextFieldCPUNombre = jTextFieldCPUNombre;
+    }
+    public void mostrarInformacion(String mensaje){
+        JOptionPane.showMessageDialog(this, mensaje);
+        
     }
 
     /**

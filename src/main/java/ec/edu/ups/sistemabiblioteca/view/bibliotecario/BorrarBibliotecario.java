@@ -4,6 +4,10 @@
  */
 package ec.edu.ups.sistemabiblioteca.view.bibliotecario;
 
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Usuario
@@ -15,6 +19,101 @@ public class BorrarBibliotecario extends javax.swing.JInternalFrame {
      */
     public BorrarBibliotecario() {
         initComponents();
+    }
+
+    public JButton getjButtonEBBCedula() {
+        return jButtonEBBCedula;
+    }
+
+    public void setjButtonEBBCedula(JButton jButtonEBBCedula) {
+        this.jButtonEBBCedula = jButtonEBBCedula;
+    }
+
+    public JButton getjButtonEBCancelar() {
+        return jButtonEBCancelar;
+    }
+
+    public void setjButtonEBCancelar(JButton jButtonEBCancelar) {
+        this.jButtonEBCancelar = jButtonEBCancelar;
+    }
+
+    public JButton getjButtonEBEliminar() {
+        return jButtonEBEliminar;
+    }
+
+    public void setjButtonEBEliminar(JButton jButtonEBEliminar) {
+        this.jButtonEBEliminar = jButtonEBEliminar;
+    }
+
+    
+
+    public JTextField getjTextFieldEBApellido() {
+        return jTextFieldEBApellido;
+    }
+
+    public void setjTextFieldEBApellido(JTextField jTextFieldEBApellido) {
+        this.jTextFieldEBApellido = jTextFieldEBApellido;
+    }
+
+    public JTextField getjTextFieldEBCargo() {
+        return jTextFieldEBCargo;
+    }
+
+    public void setjTextFieldEBCargo(JTextField jTextFieldEBCargo) {
+        this.jTextFieldEBCargo = jTextFieldEBCargo;
+    }
+
+    public JTextField getjTextFieldEBCedula() {
+        return jTextFieldEBCedula;
+    }
+
+    public void setjTextFieldEBCedula(JTextField jTextFieldEBCedula) {
+        this.jTextFieldEBCedula = jTextFieldEBCedula;
+    }
+
+    public JTextField getjTextFieldEBCodigo() {
+        return jTextFieldEBCodigo;
+    }
+
+    public void setjTextFieldEBCodigo(JTextField jTextFieldEBCodigo) {
+        this.jTextFieldEBCodigo = jTextFieldEBCodigo;
+    }
+
+    public JTextField getjTextFieldEBFecha() {
+        return jTextFieldEBFecha;
+    }
+
+    public void setjTextFieldEBFecha(JTextField jTextFieldEBFecha) {
+        this.jTextFieldEBFecha = jTextFieldEBFecha;
+    }
+
+    public JTextField getjTextFieldEBNombre() {
+        return jTextFieldEBNombre;
+    }
+
+    public void setjTextFieldEBNombre(JTextField jTextFieldEBNombre) {
+        this.jTextFieldEBNombre = jTextFieldEBNombre;
+    }
+
+    public JTextField getjTextFieldEBTelefono() {
+        return jTextFieldEBTelefono;
+    }
+
+    public void setjTextFieldEBTelefono(JTextField jTextFieldEBTelefono) {
+        this.jTextFieldEBTelefono = jTextFieldEBTelefono;
+    }
+
+    public JTextField getjTextFieldEBTurno() {
+        return jTextFieldEBTurno;
+    }
+
+    public void setjTextFieldEBTurno(JTextField jTextFieldEBTurno) {
+        this.jTextFieldEBTurno = jTextFieldEBTurno;
+    }
+    
+        public void mostrarInformacion(String mensaje){
+        JOptionPane.showMessageDialog(this, mensaje);
+        
     }
 
     /**
@@ -104,7 +203,7 @@ public class BorrarBibliotecario extends javax.swing.JInternalFrame {
 
         jButtonEBBCedula.setBackground(new java.awt.Color(0, 102, 153));
         jButtonEBBCedula.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonEBBCedula.setText("Guardar");
+        jButtonEBBCedula.setText("Buscar");
         jButtonEBBCedula.addActionListener(this::jButtonEBBCedulaActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
