@@ -21,7 +21,7 @@ public class DevolucionDAOMemoria implements SistemaDAO<Devolucion>{
     @Override
     public void eliminar(String isbn) {
           for (int i = 0; i < devoluciones.size(); i++) {
-            if (devoluciones.get(i).getIsbnLibro().equals(isbn)) {
+            if (devoluciones.get(i).getPrestamo().getLibro().getIsbn().equals(isbn)) {
                 devoluciones.remove(i);
                 break;
             }
@@ -31,7 +31,7 @@ public class DevolucionDAOMemoria implements SistemaDAO<Devolucion>{
     @Override
     public Devolucion buscar(String isbn) {
         for (Devolucion d : devoluciones) {
-            if (d.getIsbnLibro().equals(isbn)) {
+            if (d.getPrestamo().getLibro().getIsbn().equals(isbn)) {
                 return d;
             }
         }
@@ -41,7 +41,7 @@ public class DevolucionDAOMemoria implements SistemaDAO<Devolucion>{
     @Override
     public void actualizar(Devolucion datos) {
          for (Devolucion d : devoluciones) {
-            if (d.getIsbnLibro().equals(datos.getIsbnLibro())) {
+            if (d.getPrestamo().getLibro().getIsbn().equals(datos.getPrestamo().getLibro().getIsbn())) {
                 d.setPrestamo(datos.getPrestamo());
                 d.setFechaDevolucion(datos.getFechaDevolucion());               
             }

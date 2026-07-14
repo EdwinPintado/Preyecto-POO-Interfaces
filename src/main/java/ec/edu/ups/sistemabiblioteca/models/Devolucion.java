@@ -6,15 +6,13 @@ import java.util.Date;
 public class Devolucion {
     
     private Prestamo prestamo; 
-    private String isbnLibro;
     private Date fechaDevolucion;
 
     public Devolucion() {
     }
 
-    public Devolucion(Prestamo prestamo, String isbnLibro, Date fechaDevolucion) {
+    public Devolucion(Prestamo prestamo, Date fechaDevolucion) {
         this.prestamo = prestamo;
-        this.isbnLibro = isbnLibro;
         this.fechaDevolucion = fechaDevolucion;
     }
     public Prestamo getPrestamo() {
@@ -33,12 +31,6 @@ public class Devolucion {
         this.fechaDevolucion = fechaDevolucion;
     }
 
-    public String getIsbnLibro() {
-        return isbnLibro;
-    }
 
-    public void setIsbnLibro(String isbnLibro) {
-        this.isbnLibro = isbnLibro;
-    }
     
 }

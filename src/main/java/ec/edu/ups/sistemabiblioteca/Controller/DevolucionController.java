@@ -12,6 +12,7 @@ import ec.edu.ups.sistemabiblioteca.view.devolucion.ListarDevolucion;
 import ec.edu.ups.sistemabiblioteca.view.devolucion.RealizarDevolucion;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Date;
 import java.util.List;
 
 /**
@@ -31,6 +32,10 @@ public class DevolucionController {
         this.prestamoDAO = prestamoDAO;
         this.agregarDevolucionView = agregarDevolucionView;
         this.listarDevolucionView = listarDevolucionView;
+        
+        configurarEventosBuscarDevolucion();
+        configurarEventosListarDevoluciones();
+       
     }
 
     public void buscarDevolucion() {
@@ -43,8 +48,6 @@ public class DevolucionController {
             agregarDevolucionView.getjTextFieldDTLibro().setText(prestamo.getLibro().getTitulo());
             agregarDevolucionView.getjTextFieldDBCodigo().setText(prestamo.getBibliotecario().getCodigo());
             agregarDevolucionView.getjTextFieldDFPrestamo().setText(String.valueOf(prestamo.getFechaPrestamo()));
-            agregarDevolucionView.getjTextFieldDFLimite().setText(String.valueOf(prestamo.getFechaDevolucion()));
-
         } else {
             agregarDevolucionView.mostrarInformacion("No existe ese prestamo");
             agregarDevolucionView.getjTextFieldDUCedula().setText(" ");
@@ -55,8 +58,12 @@ public class DevolucionController {
             agregarDevolucionView.getjTextFieldDFPrestamo().setText(" ");
             agregarDevolucionView.getjTextFieldDFLimite().setText(" ");
         }
+        Date fechaDevolucion=Date.valueOf(agregarDevolucionView.getjTextFieldDFPrestamo().getText());
+        
+        Devolucion devolucion = new Devolucion(prestamo , fechaDevolucion);
+        devolucionDAO.agregar(devolucion);
+        agregarDevolucionView.mostrarInformacion("Devolcuion exitosa ,tenga buen dia");
     }
-
     public void listarDevoluciones() {
 
         List<Devolucion> lista = devolucionDAO.listar();

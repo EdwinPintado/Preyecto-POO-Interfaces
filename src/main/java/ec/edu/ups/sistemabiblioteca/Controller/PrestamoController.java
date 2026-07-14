@@ -43,6 +43,10 @@ public class PrestamoController {
         this.buscarPrestamoView = buscarPrestamoView;
         this.agregarPrestamoView = agregarPrestamoView;
         this.listarPrestamoView = listarPrestamoView;
+
+        configurarEventosAgregarPrestamo();
+        configurarEventosBuscarPrestamo();
+        configurarEventosListarPrestamo();
     }
 
     public void agregarPrestamo() {
@@ -50,23 +54,25 @@ public class PrestamoController {
             String codigo = agregarPrestamoView.getjTextFieldCPCodigo().getText().trim();
             if (codigo.isEmpty()) {
                 agregarPrestamoView.mostrarInformacion("Error: El código del préstamo no puede estar vacío.");
-                return; // Detiene la ejecución del método
+                return;
             }
-
+            if (prestamoDao.buscar(codigo) != null) {
+                agregarPrestamoView.mostrarInformacion("Ya existe un préstamo con ese código.");
+                return;
+            }
             String cedula = agregarPrestamoView.getjTextFieldCPUCedula().getText().trim();
             Usuario usuario = usuarioDAO.buscar(cedula);
             if (usuario == null) {
                 agregarPrestamoView.mostrarInformacion("Error: El usuario con cédula " + cedula + " no existe.");
                 return;
             }
-
             String isbn = agregarPrestamoView.getjTextFieldCPISBNLibro().getText().trim();
             Libro libro = libroDAO.buscar(isbn);
             if (libro == null) {
                 agregarPrestamoView.mostrarInformacion("Error: El libro con ISBN " + isbn + " no existe.");
                 return;
-            }
 
+            }
             String codigoBibliotecario = agregarPrestamoView.getjTextFieldCPBCodigo().getText().trim();
             Bibliotecario bibliotecario = bibliotecarioDAO.buscar(codigoBibliotecario);
             if (bibliotecario == null) {
@@ -74,31 +80,57 @@ public class PrestamoController {
                 return;
             }
 
-            Date fecha;
+            Date fechaPrestamo;
             Date fechaLimite;
             try {
-                fecha = Date.valueOf(agregarPrestamoView.getjTextFieldCPFPrestamo().getText().trim());
+                fechaPrestamo = Date.valueOf(agregarPrestamoView.getjTextFieldCPFPrestamo().getText().trim());
                 fechaLimite = Date.valueOf(agregarPrestamoView.getjTextFieldCPFLimite().getText().trim());
             } catch (IllegalArgumentException e) {
                 agregarPrestamoView.mostrarInformacion("Error: El formato de fecha debe ser YYYY-MM-DD.");
                 return;
             }
+            if (fechaLimite.before(fechaPrestamo)) {
+                agregarPrestamoView.mostrarInformacion(
+                        "La fecha límite debe ser posterior a la fecha del préstamo.");
+                return;
+            }
 
             Prestamo prestamo = new Prestamo(
                     codigo,
-                    fecha,
+                    fechaPrestamo,
                     fechaLimite,
                     usuario,
                     libro,
                     bibliotecario
             );
 
-            prestamoDao.agregar(prestamo); // Nota: En tu constructor usas 'prestamoDao' en minúscula, asegúrate de que coincida con tu variable de clase.
+            prestamoDao.agregar(prestamo);
 
             agregarPrestamoView.mostrarInformacion("Préstamo creado correctamente");
 
         } catch (Exception e) {
             agregarPrestamoView.mostrarInformacion("Ocurrió un error inesperado: " + e.getMessage());
+        }
+    }
+
+    public void buscarPrestamoUsuario() {
+        String cedula = agregarPrestamoView.getjTextFieldCPUCedula().getText().trim();
+        Usuario usuario = usuarioDAO.buscar(cedula);
+        if (usuario == null) {
+            agregarPrestamoView.mostrarInformacion("Error: El usuario con cédula " + cedula + " no existe.");
+        } else {
+            agregarPrestamoView.getjTextFieldCPUNombre().setText(usuario.getNombre());
+        }
+    }
+
+    public void buscarPrestamoLibro() {
+        String isbn = agregarPrestamoView.getjTextFieldCPISBNLibro().getText().trim();
+        Libro libro = libroDAO.buscar(isbn);
+        if (libro == null) {
+            agregarPrestamoView.mostrarInformacion("Error: El libro con ISBN " + isbn + " no existe.");
+
+        } else {
+            agregarPrestamoView.getjTextFieldCPTLibro().setText(libro.getTitulo());
         }
     }
 
@@ -171,6 +203,20 @@ public class PrestamoController {
                 agregarPrestamo();
             }
         });
+        agregarPrestamoView.getjButtonCPUBuscar().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                buscarPrestamoUsuario();
+            }
+
+        });
+        agregarPrestamoView.getjButtonCPLBuscar().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                buscarPrestamoLibro();
+            }
+
+        });
 
     }
 
@@ -184,14 +230,15 @@ public class PrestamoController {
         });
 
     }
-    public void configurarEventosListarPrestamo(){
-        listarPrestamoView.getBtnMostrarListaPrestamo().addActionListener(new ActionListener(){
+
+    public void configurarEventosListarPrestamo() {
+        listarPrestamoView.getBtnMostrarListaPrestamo().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 listarPrestamos();
                 mostrarContadorAutores();
             }
-            
+
         });
     }
 }

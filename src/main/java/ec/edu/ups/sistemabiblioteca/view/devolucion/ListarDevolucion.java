@@ -56,7 +56,7 @@ public class ListarDevolucion extends javax.swing.JInternalFrame {
 
             Object[] fila = {
                 b.getPrestamo(),
-                b.getIsbnLibro(),
+                b.getPrestamo().getLibro().getIsbn(),
                 b.getFechaDevolucion(),};
             modelo.addRow(fila);
 
