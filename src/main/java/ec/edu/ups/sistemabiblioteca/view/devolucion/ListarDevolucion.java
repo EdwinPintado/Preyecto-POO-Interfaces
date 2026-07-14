@@ -4,18 +4,36 @@
  */
 package ec.edu.ups.sistemabiblioteca.view.devolucion;
 
+import ec.edu.ups.sistemabiblioteca.models.Autor;
+import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Usuario
  */
 public class ListarDevolucion extends javax.swing.JInternalFrame {
 
+    private DefaultTableModel modelo;
     /**
      * Creates new form ListarDevolucion
      */
     public ListarDevolucion() {
         initComponents();
+        configurarTabla;
     }
+    public void configurarTabla(){
+        modelo = new DefaultTableModel();
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Libro");
+        modelo.addColumn("Codigo");
+        modelo.addColumn("Fecha de Devolucion");
+
+        tblListadoDevoluciones.setModel(modelo);
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -35,9 +53,7 @@ public class ListarDevolucion extends javax.swing.JInternalFrame {
         jLabelURListaDevoluciones = new javax.swing.JLabel();
         txtContadordeDevoluciones = new javax.swing.JTextField();
 
-        setIconifiable(true);
-        setMaximizable(true);
-        setResizable(true);
+        setClosable(true);
         setTitle("Lista Devolucion");
         setToolTipText("");
 
@@ -50,7 +66,7 @@ public class ListarDevolucion extends javax.swing.JInternalFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Nombre", "Libro", "Codigo", "Fecha de Devolucion"
             }
         ));
         jScrollPane1.setViewportView(tblListadoDevoluciones);
@@ -67,7 +83,7 @@ public class ListarDevolucion extends javax.swing.JInternalFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(75, 75, 75)
                 .addComponent(jLabelListaDevoluciones, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -86,7 +102,7 @@ public class ListarDevolucion extends javax.swing.JInternalFrame {
         btnMostrarListaDevoluciones.setText("Mostrar");
 
         jLabelURListaDevoluciones.setFont(new java.awt.Font("Segoe UI Variable", 1, 12)); // NOI18N
-        jLabelURListaDevoluciones.setText("Usuarios Registrados");
+        jLabelURListaDevoluciones.setText("Prestamos Registrados");
 
         txtContadordeDevoluciones.addActionListener(this::txtContadordeDevolucionesActionPerformed);
 
@@ -97,11 +113,11 @@ public class ListarDevolucion extends javax.swing.JInternalFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnMostrarListaDevoluciones, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(59, 59, 59)
-                .addComponent(jLabelURListaDevoluciones, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabelURListaDevoluciones)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtContadordeDevoluciones, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(17, 17, 17))
+                .addComponent(txtContadordeDevoluciones, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -121,10 +137,10 @@ public class ListarDevolucion extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(33, 33, 33))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 519, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -145,6 +161,20 @@ public class ListarDevolucion extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtContadordeDevolucionesActionPerformed
 
+    public void cambiarIdioma(Locale locale){
+        ResourceBundle bundle =ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n", locale);
+        jLabelListaDevoluciones.setText(bundle.getString("Tlistp"));
+        btnMostrarListaDevoluciones.setText(bundle.getString("bttnMostrar"));
+        tblListadoDevoluciones.setModel(modelo);
+        modelo.addColumn(bundle.getString("listarPNombre"));
+        modelo.addColumn(bundle.getString("listarPLibro"));
+        modelo.addColumn(bundle.getString("listarPCodigo"));
+        modelo.addColumn(bundle.getString("listarPFD"));
+        tblListadoDevoluciones.setModel(modelo);
+        jLabelURListaDevoluciones.setText(bundle.getString("labelMP"));
+        
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnMostrarListaDevoluciones;
