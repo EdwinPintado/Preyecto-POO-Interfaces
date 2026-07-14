@@ -4,6 +4,8 @@
  */
 package ec.edu.ups.sistemabiblioteca.view.autor;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -126,9 +128,7 @@ public class CrearAutor extends javax.swing.JInternalFrame {
         jPanel4 = new javax.swing.JPanel();
         jLabelCrearAutor = new javax.swing.JLabel();
 
-        setIconifiable(true);
-        setMaximizable(true);
-        setResizable(true);
+        setClosable(true);
         setTitle("Crear Autor");
 
         jLabelCAGenero.setText("Genero Literario:");
@@ -146,7 +146,7 @@ public class CrearAutor extends javax.swing.JInternalFrame {
 
         jButtonCACrear.setBackground(new java.awt.Color(0, 102, 153));
         jButtonCACrear.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonCACrear.setText("Guardar");
+        jButtonCACrear.setText("Crear");
         jButtonCACrear.addActionListener(this::jButtonCACrearActionPerformed);
 
         jLabelCANacionalidad.setText("Nacionalidad:");
@@ -283,6 +283,20 @@ public class CrearAutor extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonCACrearActionPerformed
 
+    public void cambiarIdioma(Locale locale){
+        ResourceBundle bundle =ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n", locale);
+        jLabelCrearAutor.setText(bundle.getString("TAcrear"));
+        jButtonCACrear.setText(bundle.getString("bttnCrear"));
+        jButtonCACancelar.setText(bundle.getString("bttnCancelar"));
+        jLabelCACedula.setText(bundle.getString("labelCACedula"));
+        jLabelCANombre.setText(bundle.getString("labelCANombre"));
+        jLabelCAApellido.setText(bundle.getString("labelCAApellido"));
+        jLabelCANacionalidad.setText(bundle.getString("labelCANacionalidad"));
+        jLabelCATelefono.setText(bundle.getString("labelCATelefono"));
+        jLabelCAGenero.setText(bundle.getString("labelCAGT"));
+        jLabelCAFecha.setText(bundle.getString("labelCAFN"));
+        jLabelCABibliotecario.setText(bundle.getString("labelCAbL"));
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCACancelar;

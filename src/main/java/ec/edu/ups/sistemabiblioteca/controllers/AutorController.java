@@ -12,6 +12,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Date;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.swing.JOptionPane;
 
 public class AutorController {
@@ -282,5 +284,15 @@ public class AutorController {
             }
         });
     }
+    
+    
+/*
+    public void cambiarIdioma(Locale locale){
+        ResourceBundle bundle = new ResourceBundle("ec.edu.ups.sistemabiblioteca.i18n", locale);
+        
+        
+    }
+    */
+    
     
 }

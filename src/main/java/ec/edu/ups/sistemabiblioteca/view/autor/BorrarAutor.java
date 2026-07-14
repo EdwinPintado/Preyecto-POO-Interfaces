@@ -1,6 +1,8 @@
 
 package ec.edu.ups.sistemabiblioteca.view.autor;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -125,9 +127,7 @@ public class BorrarAutor extends javax.swing.JInternalFrame {
         jButtonEACancelar = new javax.swing.JButton();
         jButtonEABCedula = new javax.swing.JButton();
 
-        setIconifiable(true);
-        setMaximizable(true);
-        setResizable(true);
+        setClosable(true);
         setTitle("Borrar Autor");
 
         jLabelEAApellido.setText("Apellido:");
@@ -249,7 +249,7 @@ public class BorrarAutor extends javax.swing.JInternalFrame {
                         .addComponent(jButtonEAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButtonEACancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(0, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -313,6 +313,22 @@ public class BorrarAutor extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonEABCedulaActionPerformed
 
+    public void cambiarIdioma(Locale locale){
+        ResourceBundle bundle =ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n", locale);
+        jLabelEliminarAutor.setText(bundle.getString("TAbo"));
+        jButtonEABCedula.setText(bundle.getString("bttnBuscar"));
+        jButtonEAEliminar.setText(bundle.getString("bttnEliminar"));
+        jButtonEACancelar.setText(bundle.getString("bttnCancelar"));
+        jLabelEACedula.setText(bundle.getString("labelBACedula"));
+        jLabelEANombre.setText(bundle.getString("labelBANombre"));
+        jLabelEAApellido.setText(bundle.getString("labelBAApellido"));
+        jLabelEANacionalidad.setText(bundle.getString("labelBANacionalidad"));
+        jLabelEATelefono.setText(bundle.getString("labelBATelefono"));
+        jLabelEAGenero.setText(bundle.getString("labelBAGT"));
+        jLabelEAFecha.setText(bundle.getString("labelBAFN"));
+        jLabelEABibliotecario.setText(bundle.getString("labelBAbL"));
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonEABCedula;
