@@ -3,6 +3,8 @@ package ec.edu.ups.sistemabiblioteca.view.autor;
 
 import ec.edu.ups.sistemabiblioteca.models.Autor;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -89,9 +91,7 @@ public class ListarAutor extends javax.swing.JInternalFrame {
         jLabelURListaAutores = new javax.swing.JLabel();
         txtContadordeAutores = new javax.swing.JTextField();
 
-        setIconifiable(true);
-        setMaximizable(true);
-        setResizable(true);
+        setClosable(true);
         setTitle("Lista Autores");
 
         tblListadoAutores.setBackground(new java.awt.Color(196, 220, 220));
@@ -103,7 +103,7 @@ public class ListarAutor extends javax.swing.JInternalFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Cedula", "Nombre", "Telefono", "Fecha de Nacimiento"
             }
         ));
         jScrollPane1.setViewportView(tblListadoAutores);
@@ -119,10 +119,10 @@ public class ListarAutor extends javax.swing.JInternalFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(101, Short.MAX_VALUE)
                 .addComponent(jLabelListaAutores, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(90, 90, 90))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -139,7 +139,7 @@ public class ListarAutor extends javax.swing.JInternalFrame {
         btnMostrarListaAutores.setText("Mostrar");
 
         jLabelURListaAutores.setFont(new java.awt.Font("Segoe UI Variable", 1, 12)); // NOI18N
-        jLabelURListaAutores.setText("Usuarios Registrados");
+        jLabelURListaAutores.setText("Autores Registrados");
 
         txtContadordeAutores.addActionListener(this::txtContadordeAutoresActionPerformed);
 
@@ -150,11 +150,11 @@ public class ListarAutor extends javax.swing.JInternalFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnMostrarListaAutores, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(59, 59, 59)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabelURListaAutores, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtContadordeAutores, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(17, 17, 17))
+                .addGap(19, 19, 19))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -174,10 +174,10 @@ public class ListarAutor extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(33, 33, 33))
+                    .addComponent(jScrollPane1)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -197,7 +197,21 @@ public class ListarAutor extends javax.swing.JInternalFrame {
     private void txtContadordeAutoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContadordeAutoresActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtContadordeAutoresActionPerformed
-
+    public void cambiarIdioma(Locale locale){
+        ResourceBundle bundle =ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n", locale);
+        jLabelListaAutores.setText(bundle.getString("TAlist"));
+        btnMostrarListaAutores.setText(bundle.getString("bttnMostrar"));
+        modelo = new DefaultTableModel();
+        modelo.addColumn(bundle.getString("listarACedula"));
+        modelo.addColumn(bundle.getString("listarAnombre"));
+        modelo.addColumn(bundle.getString("listarATL"));
+        modelo.addColumn(bundle.getString("listarAFN "));
+        tblListadoAutores.setModel(modelo);
+        jLabelURListaAutores.setText(bundle.getString("labelMA"));
+        
+        
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnMostrarListaAutores;

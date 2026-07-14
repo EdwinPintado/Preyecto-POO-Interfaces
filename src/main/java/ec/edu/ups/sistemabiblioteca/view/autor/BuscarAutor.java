@@ -1,6 +1,8 @@
 
 package ec.edu.ups.sistemabiblioteca.view.autor;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
@@ -107,9 +109,7 @@ public class BuscarAutor extends javax.swing.JInternalFrame {
         jLabelBuscarAutor = new javax.swing.JLabel();
         jTextFieldBANombre = new javax.swing.JTextField();
 
-        setIconifiable(true);
-        setMaximizable(true);
-        setResizable(true);
+        setClosable(true);
         setTitle("Buscar Autor");
         setToolTipText("");
 
@@ -119,7 +119,7 @@ public class BuscarAutor extends javax.swing.JInternalFrame {
 
         jButtonBACedula.setBackground(new java.awt.Color(0, 102, 153));
         jButtonBACedula.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonBACedula.setText("Guardar");
+        jButtonBACedula.setText("Buscar");
         jButtonBACedula.addActionListener(this::jButtonBACedulaActionPerformed);
 
         jLabelBAGenero.setText("Genero Literario:");
@@ -249,7 +249,19 @@ public class BuscarAutor extends javax.swing.JInternalFrame {
     private void jButtonBACedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBACedulaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonBACedulaActionPerformed
-
+    public void cambiarIdioma(Locale locale){
+        ResourceBundle bundle =ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n", locale);
+        jLabelBuscarAutor.setText(bundle.getString("TAsc"));
+        jButtonBACedula.setText(bundle.getString("bttnBuscar"));
+        jLabelBACedula.setText(bundle.getString("labelBuACedula"));
+        jLabelBANombre.setText(bundle.getString("labelBuANombre"));
+        jLabelBAApellido.setText(bundle.getString("labelBuAApellido"));
+        jLabelBANacionalidad.setText(bundle.getString("labelBuANacionalidad"));
+        jLabelBATelefono.setText(bundle.getString("labelBuATelefono"));
+        jLabelBAGenero.setText(bundle.getString("labelBuAGT"));
+        jLabelBAFecha.setText(bundle.getString("labelBuAFN"));
+        jLabelBABibliotecario.setText(bundle.getString("labelBuAbL"));
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonBACedula;
