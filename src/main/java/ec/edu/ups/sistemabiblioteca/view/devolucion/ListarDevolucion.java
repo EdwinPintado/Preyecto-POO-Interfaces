@@ -4,8 +4,6 @@
  */
 package ec.edu.ups.sistemabiblioteca.view.devolucion;
 
-import ec.edu.ups.sistemabiblioteca.models.Autor;
-import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import javax.swing.table.DefaultTableModel;
