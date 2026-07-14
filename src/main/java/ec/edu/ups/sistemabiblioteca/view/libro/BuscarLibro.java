@@ -1,10 +1,69 @@
 
 package ec.edu.ups.sistemabiblioteca.view.libro;
 
+import javax.swing.JButton;
+import javax.swing.JTextField;
+
 public class BuscarLibro extends javax.swing.JInternalFrame {
 
     public BuscarLibro() {
         initComponents();
+    }
+
+    public JButton getjButtonBsBISBN() {
+        return jButtonBsBISBN;
+    }
+
+    public void setjButtonBsBISBN(JButton jButtonBsBISBN) {
+        this.jButtonBsBISBN = jButtonBsBISBN;
+    }
+
+    public JTextField getjTextFieldBsACedula() {
+        return jTextFieldBsACedula;
+    }
+
+    public void setjTextFieldBsACedula(JTextField jTextFieldBsACedula) {
+        this.jTextFieldBsACedula = jTextFieldBsACedula;
+    }
+
+    public JTextField getjTextFieldBsANombre() {
+        return jTextFieldBsANombre;
+    }
+
+    public void setjTextFieldBsANombre(JTextField jTextFieldBsANombre) {
+        this.jTextFieldBsANombre = jTextFieldBsANombre;
+    }
+
+    public JTextField getjTextFieldBsAnio() {
+        return jTextFieldBsAnio;
+    }
+
+    public void setjTextFieldBsAnio(JTextField jTextFieldBsAnio) {
+        this.jTextFieldBsAnio = jTextFieldBsAnio;
+    }
+
+    public JTextField getjTextFieldBsEditorial() {
+        return jTextFieldBsEditorial;
+    }
+
+    public void setjTextFieldBsEditorial(JTextField jTextFieldBsEditorial) {
+        this.jTextFieldBsEditorial = jTextFieldBsEditorial;
+    }
+
+    public JTextField getjTextFieldBsISBN() {
+        return jTextFieldBsISBN;
+    }
+
+    public void setjTextFieldBsISBN(JTextField jTextFieldBsISBN) {
+        this.jTextFieldBsISBN = jTextFieldBsISBN;
+    }
+
+    public JTextField getjTextFieldBsTitulo() {
+        return jTextFieldBsTitulo;
+    }
+
+    public void setjTextFieldBsTitulo(JTextField jTextFieldBsTitulo) {
+        this.jTextFieldBsTitulo = jTextFieldBsTitulo;
     }
 
     

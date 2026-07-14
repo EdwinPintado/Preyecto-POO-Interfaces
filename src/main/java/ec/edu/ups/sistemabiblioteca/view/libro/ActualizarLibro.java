@@ -1,11 +1,88 @@
 
 package ec.edu.ups.sistemabiblioteca.view.libro;
 
+import javax.swing.JButton;
+import javax.swing.JTextField;
+
 public class ActualizarLibro extends javax.swing.JInternalFrame {
 
     public ActualizarLibro() {
         initComponents();
     }
+
+    public JButton getjButtonActLCancelar() {
+        return jButtonActLCancelar;
+    }
+
+    public void setjButtonActLCancelar(JButton jButtonActLCancelar) {
+        this.jButtonActLCancelar = jButtonActLCancelar;
+    }
+
+    public JButton getjButtonActLibro() {
+        return jButtonActLibro;
+    }
+
+    public void setjButtonActLibro(JButton jButtonActLibro) {
+        this.jButtonActLibro = jButtonActLibro;
+    }
+
+    public JButton getjButtonBsLISBN() {
+        return jButtonBsLISBN;
+    }
+
+    public void setjButtonBsLISBN(JButton jButtonBsLISBN) {
+        this.jButtonBsLISBN = jButtonBsLISBN;
+    }
+
+    public JTextField getjTextFieldActISBN() {
+        return jTextFieldActISBN;
+    }
+
+    public void setjTextFieldActISBN(JTextField jTextFieldActISBN) {
+        this.jTextFieldActISBN = jTextFieldActISBN;
+    }
+
+    public JTextField getjTextFieldActLACedula() {
+        return jTextFieldActLACedula;
+    }
+
+    public void setjTextFieldActLACedula(JTextField jTextFieldActLACedula) {
+        this.jTextFieldActLACedula = jTextFieldActLACedula;
+    }
+
+    public JTextField getjTextFieldActLANombre() {
+        return jTextFieldActLANombre;
+    }
+
+    public void setjTextFieldActLANombre(JTextField jTextFieldActLANombre) {
+        this.jTextFieldActLANombre = jTextFieldActLANombre;
+    }
+
+    public JTextField getjTextFieldActLAnio() {
+        return jTextFieldActLAnio;
+    }
+
+    public void setjTextFieldActLAnio(JTextField jTextFieldActLAnio) {
+        this.jTextFieldActLAnio = jTextFieldActLAnio;
+    }
+
+    public JTextField getjTextFieldActLEditorial() {
+        return jTextFieldActLEditorial;
+    }
+
+    public void setjTextFieldActLEditorial(JTextField jTextFieldActLEditorial) {
+        this.jTextFieldActLEditorial = jTextFieldActLEditorial;
+    }
+
+    public JTextField getjTextFieldActLTitulo() {
+        return jTextFieldActLTitulo;
+    }
+
+    public void setjTextFieldActLTitulo(JTextField jTextFieldActLTitulo) {
+        this.jTextFieldActLTitulo = jTextFieldActLTitulo;
+    }
+    
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

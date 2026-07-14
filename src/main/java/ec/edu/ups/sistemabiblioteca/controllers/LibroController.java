@@ -3,6 +3,8 @@ package ec.edu.ups.sistemabiblioteca.controllers;
 
 import ec.edu.ups.sistemabiblioteca.DAO.AutorDAOMemoria;
 import ec.edu.ups.sistemabiblioteca.DAO.LibroDAOMemoria;
+import ec.edu.ups.sistemabiblioteca.models.Autor;
+import ec.edu.ups.sistemabiblioteca.models.Libro;
 import ec.edu.ups.sistemabiblioteca.view.libro.ActualizarLibro;
 import ec.edu.ups.sistemabiblioteca.view.libro.BorrarLibro;
 import ec.edu.ups.sistemabiblioteca.view.libro.BuscarLibro;
@@ -50,6 +52,17 @@ public class LibroController {
         configurarEventosActualizarLibro();
         configurarEventosListarLibro();
     }
+    
+    public void mostrarInformacion(java.awt.Component ventana, String mensaje) {
+        JOptionPane.showMessageDialog(ventana, mensaje);
+        java.awt.Window win = javax.swing.SwingUtilities.getWindowAncestor(ventana);
+        if (win != null) {
+            win.dispose();
+        }
+    }
+    public void mostrarMensaje(java.awt.Component ventana, String mensaje, String titulo, int tipoMensaje) {
+        JOptionPane.showMessageDialog(ventana, mensaje, titulo, tipoMensaje);
+    }
 
     public void agregarLibro() {
 
@@ -57,36 +70,37 @@ public class LibroController {
         if (respuesta == JOptionPane.YES_OPTION) {
 
             try {
-                String isbn = crearLibro.getTxtAgregarLibroISBN().getText();
-                String titulo = crearLibro.getTxtTituloLibroRegistro().getText();
-                String editorial = crearLibro.getTxtAgregarEditorialLibro().getText();
-                Date anio = Date.valueOf(crearLibro.getTxtAnioPublicacionLibro().getText());
-                String cedulaAutor = crearLibro.getTxtRegistrarLibroAutorNom().getText();
+                String isbn = crearLibro.getjTextFieldLbISBN().getText();
+                String titulo = crearLibro.getjTextFieldLbTitulo().getText();
+                String editorial = crearLibro.getjTextFieldLbEditorial().getText();
+                Date anio = Date.valueOf(crearLibro.getjTextFieldLbAnio().getText());
+                String cedulaAutor = crearLibro.getjTextFieldLbACedula().getText();
+                
                 Autor autor = autorDao.buscar(cedulaAutor);
                 if (autor == null) {
-                    agregarLibroView.mostrarInformacion("Autor no encontrado");
+                    mostrarInformacion(crearLibro, "Autor no encontrado");
                     return;
                 }
-                agregarLibroView.getTxtRegistrarLibroNombreAutor().setText(autor.getNombre());
+                crearLibro.getjTextFieldLbANombre().setText(autor.getNombre());
                 Libro libro = new Libro(isbn, titulo, editorial, anio, autor);
                 libroDAO.agregar(libro);
-                agregarLibroView.mostrarInformacion("Libro registrado correctamente :)");
-                agregarLibroView.getTxtAgregarLibroISBN().setText("");
-                agregarLibroView.getTxtTituloLibroRegistro().setText("");
-                agregarLibroView.getTxtAgregarEditorialLibro().setText("");
-                agregarLibroView.getTxtAnioPublicacionLibro().setText("");
-                agregarLibroView.getTxtRegistrarLibroAutorNom().setText("");
-                agregarLibroView.getTxtRegistrarLibroNombreAutor().setText("");
+                mostrarInformacion(crearLibro, "Libro registrado correctamente :)");
+                crearLibro.getjTextFieldLbISBN().setText("");
+                crearLibro.getjTextFieldLbTitulo().setText("");
+                crearLibro.getjTextFieldLbEditorial().setText("");
+                crearLibro.getjTextFieldLbAnio().setText("");
+                crearLibro.getjTextFieldLbACedula().setText("");
+                crearLibro.getjTextFieldLbANombre().setText("");
             } catch (IllegalArgumentException e) {
-                agregarLibroView.mostrarInformacion("Error: formato de fecha AAAA-MM-DD");
+                mostrarInformacion(crearLibro, "Error: formato de fecha AAAA-MM-DD");
             }
         } else {
-            agregarLibroView.mostrarInformacion("Acción cancelada");
+            mostrarInformacion(crearLibro, "Acción cancelada");
         }
     }
 
     public void configurarEventosAgregarLibro() {
-        agregarLibroView.getBtnRegistrarLibro().addActionListener(new ActionListener() {
+        crearLibro.getjButtonLbCLibro().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 agregarLibro();
@@ -96,29 +110,29 @@ public class LibroController {
 
     public void BuscarLibro() {
 
-        String isbn = buscarLibroView.getTxtBuscarLibroIsbN().getText();
+        String isbn = buscarLibro.getjTextFieldBsISBN().getText();
         Libro libro = libroDAO.buscar(isbn);
 
         if (libro != null) {
 
-            buscarLibroView.getTxtBuscarLibroIsbN().setText(libro.getIsbn());
-            buscarLibroView.getTxtBuscarLibroTitulo().setText(libro.getTitulo());
-            buscarLibroView.getTxtBuscarLibroEditorial().setText(libro.getEditorial());
-            buscarLibroView.getTxtBuscarLibroAnio().setText(String.valueOf(libro.getAnioPublicacion()));
+            buscarLibro.getjTextFieldBsISBN().setText(libro.getIsbn());
+            buscarLibro.getjTextFieldBsTitulo().setText(libro.getTitulo());
+            buscarLibro.getjTextFieldBsEditorial().setText(libro.getEditorial());
+            buscarLibro.getjTextFieldBsAnio().setText(String.valueOf(libro.getAnioPublicacion()));
 
         } else {
 
-            buscarLibroView.getTxtBuscarLibroIsbN().setText("");
-            buscarLibroView.getTxtBuscarLibroTitulo().setText("");
-            buscarLibroView.getTxtBuscarLibroEditorial().setText("");
-            buscarLibroView.getTxtBuscarLibroAnio().setText("");
+            buscarLibro.getjTextFieldBsISBN().setText("");
+            buscarLibro.getjTextFieldBsTitulo().setText("");
+            buscarLibro.getjTextFieldBsEditorial().setText("");
+            buscarLibro.getjTextFieldBsAnio().setText("");
 
-            buscarLibroView.mostrarInformacion("No se encontró el libro");
+            mostrarInformacion(buscarLibro, "No se encontró el libro");
         }
     }
 
     public void configurarEventosBuscarLibro() {
-        buscarLibroView.getBtnBuscarLibro().addActionListener(new ActionListener() {
+        buscarLibro.getjButtonBsBISBN().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 BuscarLibro();
@@ -128,36 +142,36 @@ public class LibroController {
 
     public void buscarEliminarLibro() {
 
-        String isbn = eliminarLibroView.getTxtEiminarLibro().getText();
+        String isbn = eliminarLibro.getjTextFieldBrISBN().getText();
         Libro libro = libroDAO.buscar(isbn);
 
         if (libro != null) {
 
-            eliminarLibroView.getTxtEiminarLibro().setText(libro.getIsbn());
-            eliminarLibroView.getTxtEliminarLibroTitulo().setText(libro.getTitulo());
-            eliminarLibroView.getTxtEliminarLibroEditorial().setText(libro.getEditorial());
-            eliminarLibroView.getTxtEliminarLibroAnio().setText(String.valueOf(libro.getAnioPublicacion()));
+            eliminarLibro.getjTextFieldBrISBN().setText(libro.getIsbn());
+            eliminarLibro.getjTextFieldBrTitulo().setText(libro.getTitulo());
+            eliminarLibro.getjTextFieldBrEditorial().setText(libro.getEditorial());
+            eliminarLibro.getjTextFieldBrAnio().setText(String.valueOf(libro.getAnioPublicacion()));
 
         } else {
 
-            eliminarLibroView.getTxtEiminarLibro().setText("");
-            eliminarLibroView.getTxtEliminarLibroTitulo().setText("");
-            eliminarLibroView.getTxtEliminarLibroEditorial().setText("");
-            eliminarLibroView.getTxtEliminarLibroAnio().setText("");
+            eliminarLibro.getjTextFieldBrISBN().setText("");
+            eliminarLibro.getjTextFieldBrTitulo().setText("");
+            eliminarLibro.getjTextFieldBrEditorial().setText("");
+            eliminarLibro.getjTextFieldBrAnio().setText("");
 
-            eliminarLibroView.mostrarInformacion("No se encontró el libro");
+            mostrarInformacion(eliminarLibro, "No se encontró el libro");
         }
     }
 
     public void eliminarLibro() {
 
-        String isbn = eliminarLibroView.getTxtEiminarLibro().getText();
+        String isbn = eliminarLibro.getjTextFieldBrISBN().getText();
         Libro libro = libroDAO.buscar(isbn);
 
         if (libro != null) {
 
             int respuesta = JOptionPane.showConfirmDialog(
-                    eliminarLibroView,
+                    eliminarLibro,
                     "¿Desea eliminar el libro: " + libro.getTitulo() + "?",
                     "Confirmar eliminación",
                     JOptionPane.YES_NO_OPTION);
@@ -166,31 +180,31 @@ public class LibroController {
 
                 libroDAO.eliminar(isbn);
 
-                eliminarLibroView.mostrarInformacion("Libro eliminado correctamente :)");
+                mostrarInformacion(eliminarLibro, "Libro eliminado correctamente :)");
 
-                eliminarLibroView.getTxtEiminarLibro().setText("");
-                eliminarLibroView.getTxtEliminarLibroTitulo().setText("");
-                eliminarLibroView.getTxtEliminarLibroEditorial().setText("");
-                eliminarLibroView.getTxtEliminarLibroAnio().setText("");
+                eliminarLibro.getjTextFieldBrISBN().setText("");
+                eliminarLibro.getjTextFieldBrTitulo().setText("");
+                eliminarLibro.getjTextFieldBrEditorial().setText("");
+                eliminarLibro.getjTextFieldBrAnio().setText("");
 
             } else {
-                eliminarLibroView.mostrarInformacion("Acción cancelada :(");
+                mostrarInformacion(eliminarLibro, " eliminarLibroAcción cancelada :(");
             }
 
         } else {
 
-            eliminarLibroView.mostrarInformacion("No se encontró el libro");
+            mostrarInformacion(eliminarLibro, "No se encontró el libro");
         }
     }
 
     public void configurarEventosEliminarLibro() {
-        eliminarLibroView.getBtnEliminarLibroBuscar().addActionListener(new ActionListener() {
+        eliminarLibro.getjButtonBrBISBN().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 buscarEliminarLibro();
             }
         });
-        eliminarLibroView.getBtnEliminarLibro().addActionListener(new ActionListener() {
+        eliminarLibro.getjButtonBrALibro().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 eliminarLibro();
@@ -199,46 +213,46 @@ public class LibroController {
     }
 
     public void buscarActualizarLibro() {
-        String cedula = actualizarLibroView.getTxtActualizarLibroAutor().getText();
-        String isbn = actualizarLibroView.getTxtActualizarLibroIsbn().getText();
+        String cedula = actualizarLibro.getjTextFieldActLACedula().getText();
+        String isbn = actualizarLibro.getjTextFieldActISBN().getText();
 
         Libro libro = libroDAO.buscar(isbn);
         Autor autor = autorDao.buscar(cedula);
         if (libro != null) {
 
-            actualizarLibroView.getTxtActualizarLibroTitulo().setText(libro.getTitulo());
-            actualizarLibroView.getTxtActualizarLibroEditorial().setText(libro.getEditorial());
-            actualizarLibroView.getTxtActualizarLibroAnio().setText(String.valueOf(libro.getAnioPublicacion()));
+            actualizarLibro.getjTextFieldActLTitulo().setText(libro.getTitulo());
+            actualizarLibro.getjTextFieldActLEditorial().setText(libro.getEditorial());
+            actualizarLibro.getjTextFieldActLAnio().setText(String.valueOf(libro.getAnioPublicacion()));
 
         } else {
 
-            actualizarLibroView.getTxtActualizarLibroTitulo().setText("");
-            actualizarLibroView.getTxtActualizarLibroEditorial().setText("");
-            actualizarLibroView.getTxtActualizarLibroAnio().setText("");
-            actualizarLibroView.getTxtActualizarLibroAutor().setText("");
+            actualizarLibro.getjTextFieldActLTitulo().setText("");
+            actualizarLibro.getjTextFieldActLEditorial().setText("");
+            actualizarLibro.getjTextFieldActLAnio().setText("");
+            actualizarLibro.getjTextFieldActLACedula().setText("");
 
-            actualizarLibroView.mostrarInformacion("Libro no encontrado");
+            mostrarInformacion(actualizarLibro, "Libro no encontrado");
         }
     }
 
     public void actualizarLibro() {
 
-        String isbn = actualizarLibroView.getTxtActualizarLibroIsbn().getText();
+        String isbn = actualizarLibro.getjTextFieldActISBN().getText();
         Libro libroExistente = libroDAO.buscar(isbn);
 
         if (libroExistente != null) {
 
             int respuesta = JOptionPane.showConfirmDialog(
-                    actualizarLibroView,
+                    actualizarLibro,
                     "¿Desea actualizar el libro: " + libroExistente.getTitulo() + "?",
                     "Confirmar actualización",
                     JOptionPane.YES_NO_OPTION);
 
             if (respuesta == JOptionPane.YES_OPTION) {
 
-                String titulo = actualizarLibroView.getTxtActualizarLibroTitulo().getText();
-                String editorial = actualizarLibroView.getTxtActualizarLibroEditorial().getText();
-                Date anio = Date.valueOf(actualizarLibroView.getTxtActualizarLibroAnio().getText());
+                String titulo = actualizarLibro.getjTextFieldActLTitulo().getText();
+                String editorial = actualizarLibro.getjTextFieldActLEditorial().getText();
+                Date anio = Date.valueOf(actualizarLibro.getjTextFieldActLAnio().getText());
 
                 Libro libroActualizado = new Libro(
                         isbn,
@@ -250,30 +264,30 @@ public class LibroController {
 
                 libroDAO.actualizar(libroActualizado);
 
-                actualizarLibroView.mostrarInformacion("Libro actualizado correctamente :)");
+                mostrarInformacion(actualizarLibro, "Libro actualizado correctamente :)");
 
-                actualizarLibroView.getTxtActualizarLibroIsbn().setText("");
-                actualizarLibroView.getTxtActualizarLibroTitulo().setText("");
-                actualizarLibroView.getTxtActualizarLibroEditorial().setText("");
-                actualizarLibroView.getTxtActualizarLibroAnio().setText("");
+                actualizarLibro.getjTextFieldActISBN().setText("");
+                actualizarLibro.getjTextFieldActLTitulo().setText("");
+                actualizarLibro.getjTextFieldActLEditorial().setText("");
+                actualizarLibro.getjTextFieldActLAnio().setText("");
 
             } else {
-                actualizarLibroView.mostrarInformacion("Actualización cancelada :(");
+                mostrarInformacion(actualizarLibro, "Actualización cancelada :(");
             }
 
         } else {
-            actualizarLibroView.mostrarInformacion("No se encontró el libro");
+            mostrarInformacion(actualizarLibro, "No se encontró el libro");
         }
     }
 
     public void configurarEventosActualizarLibro() {
-        actualizarLibroView.getBtnActualizarLibro().addActionListener(new ActionListener() {
+        actualizarLibro.getjButtonActLibro().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 buscarActualizarLibro();
             }
         });
-        actualizarLibroView.getBtnActualizarLibroB().addActionListener(new ActionListener() {
+        actualizarLibro.getjButtonBsLISBN().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 actualizarLibro();
@@ -283,19 +297,19 @@ public class LibroController {
 
     public void listarLibro() {
         List<Libro> lista = libroDAO.listar();
-        listarLibroView.cargarDatos(lista);
+        listarLibro.cargarDatos(lista);
     }
 
     public void mostrarContadorAutores() {
 
         int total = libroDAO.contar();
 
-        listarLibroView.getTxtContadorLibro().setText(String.valueOf(total));
+        listarLibro.getTxtContadordeLibro().setText(String.valueOf(total));
     }
 
     public void configurarEventosListarLibro() {
 
-        listarLibroView.addInternalFrameListener(new InternalFrameAdapter() {
+        listarLibro.addInternalFrameListener(new InternalFrameAdapter() {
             @Override
             public void internalFrameActivated(InternalFrameEvent e) {
                 listarLibro();
