@@ -1,12 +1,97 @@
 
 package ec.edu.ups.sistemabiblioteca.view.usuario;
 
+import javax.swing.JButton;
+import javax.swing.JTextField;
+
 public class ActualizarUsuario extends javax.swing.JInternalFrame {
 
     public ActualizarUsuario() {
         initComponents();
     }
 
+    public JButton getjButtonAUActualizar() {
+        return jButtonAUActualizar;
+    }
+
+    public void setjButtonAUActualizar(JButton jButtonAUActualizar) {
+        this.jButtonAUActualizar = jButtonAUActualizar;
+    }
+
+    public JButton getjButtonAUBuscar() {
+        return jButtonAUBuscar;
+    }
+
+    public void setjButtonAUBuscar(JButton jButtonAUBuscar) {
+        this.jButtonAUBuscar = jButtonAUBuscar;
+    }
+
+    public JButton getjButtonAUCancelar() {
+        return jButtonAUCancelar;
+    }
+
+    public void setjButtonAUCancelar(JButton jButtonAUCancelar) {
+        this.jButtonAUCancelar = jButtonAUCancelar;
+    }
+
+    public JTextField getjTextFieldAUApellido() {
+        return jTextFieldAUApellido;
+    }
+
+    public void setjTextFieldAUApellido(JTextField jTextFieldAUApellido) {
+        this.jTextFieldAUApellido = jTextFieldAUApellido;
+    }
+
+    public JTextField getjTextFieldAUCElectronico() {
+        return jTextFieldAUCElectronico;
+    }
+
+    public void setjTextFieldAUCElectronico(JTextField jTextFieldAUCElectronico) {
+        this.jTextFieldAUCElectronico = jTextFieldAUCElectronico;
+    }
+
+    public JTextField getjTextFieldAUCedula() {
+        return jTextFieldAUCedula;
+    }
+
+    public void setjTextFieldAUCedula(JTextField jTextFieldAUCedula) {
+        this.jTextFieldAUCedula = jTextFieldAUCedula;
+    }
+
+    public JTextField getjTextFieldAUDireccion() {
+        return jTextFieldAUDireccion;
+    }
+
+    public void setjTextFieldAUDireccion(JTextField jTextFieldAUDireccion) {
+        this.jTextFieldAUDireccion = jTextFieldAUDireccion;
+    }
+
+    public JTextField getjTextFieldAUFNacimiento() {
+        return jTextFieldAUFNacimiento;
+    }
+
+    public void setjTextFieldAUFNacimiento(JTextField jTextFieldAUFNacimiento) {
+        this.jTextFieldAUFNacimiento = jTextFieldAUFNacimiento;
+    }
+
+    public JTextField getjTextFieldAUNombre() {
+        return jTextFieldAUNombre;
+    }
+
+    public void setjTextFieldAUNombre(JTextField jTextFieldAUNombre) {
+        this.jTextFieldAUNombre = jTextFieldAUNombre;
+    }
+
+    public JTextField getjTextFieldAUTelefono() {
+        return jTextFieldAUTelefono;
+    }
+
+    public void setjTextFieldAUTelefono(JTextField jTextFieldAUTelefono) {
+        this.jTextFieldAUTelefono = jTextFieldAUTelefono;
+    }
+
+    
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

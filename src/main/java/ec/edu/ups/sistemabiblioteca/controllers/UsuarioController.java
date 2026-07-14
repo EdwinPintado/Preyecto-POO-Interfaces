@@ -72,26 +72,26 @@ public class UsuarioController {
 
             try {
 
-                String cedula = crearUsuario.getTxtAgregarUsuarioCedula().getText();
-                String nombre = crearUsuario.getTxtNombreUsuario().getText();
-                String apellido = crearUsuario.getTxtApellidoUsuario().getText();
-                String telefono = crearUsuario.getTxtTelefonoUsuario().getText();
-                String correo = crearUsuario.getTxtCorreoUsuario().getText();
-                String direccion = crearUsuario.getTxtDireccionUsuaria().getText();
-                Date fecha = Date.valueOf(crearUsuario.getTxtFechaUsuario().getText());
+                String cedula = crearUsuario.getjTextFieldCUCedula().getText();
+                String nombre = crearUsuario.getjTextFieldCUNombre().getText();
+                String apellido = crearUsuario.getjTextFieldCUApellido().getText();
+                String telefono = crearUsuario.getjTextFieldCUTelefono().getText();
+                String correo = crearUsuario.getjTextFieldCUCElectronico().getText();
+                String direccion = crearUsuario.getjTextFieldCUDireccion().getText();
+                Date fecha = Date.valueOf(crearUsuario.getjTextFieldCUFNacimiento().getText());
 
                 Usuario usuario = new Usuario(correo, direccion, cedula, nombre, apellido, telefono, fecha);
 
                 usuarioDao.agregar(usuario);
 
-                crearUsuario.mostrarInformacion("Usuario creado exitosamente :)");
-                crearUsuario.getTxtAgregarUsuarioCedula().setText("");
-                crearUsuario.getTxtNombreUsuario().setText("");
-                crearUsuario.getTxtApellidoUsuario().setText("");
-                crearUsuario.getTxtTelefonoUsuario().setText("");
-                crearUsuario.getTxtCorreoUsuario().setText("");
-                crearUsuario.getTxtDireccionUsuaria().setText("");
-                crearUsuario.getTxtFechaUsuario().setText("");
+                mostrarInformacion(crearUsuario, "Usuario creado exitosamente :)");
+                crearUsuario.getjTextFieldCUCedula().setText("");
+                crearUsuario.getjTextFieldCUNombre().setText("");
+                crearUsuario.getjTextFieldCUApellido().setText("");
+                crearUsuario.getjTextFieldCUTelefono().setText("");
+                crearUsuario.getjTextFieldCUCElectronico().setText("");
+                crearUsuario.getjTextFieldCUDireccion().setText("");
+                crearUsuario.getjTextFieldCUFNacimiento().setText("");
 
             } catch (IllegalArgumentException e) {
                 mostrarMensaje(crearUsuario, "Error: El formato de fecha debe ser AAAA-MM-DD.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -103,7 +103,7 @@ public class UsuarioController {
     }
 
     public void configurarEventosAgregarUsuario() {
-        crearUsuario.getBtbAgregarUsuario().addActionListener(new ActionListener() {
+        crearUsuario.getjButtonCUCrear().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 agregarUsuario();
@@ -113,33 +113,33 @@ public class UsuarioController {
 
     public void buscarUsuario() {
 
-        String cedula = buscarUsuarioView.getTxtBuscarUsuario().getText();
+        String cedula = buscarUsuario.getjTextFieldBUCedula().getText();
         Usuario usuario = usuarioDao.buscar(cedula);
 
         if (usuario != null) {
 
-            buscarUsuarioView.getTxtBuscarUsuario().setText(usuario.getCedula());
-            buscarUsuarioView.getTxtNombreUsuarioBuscado().setText(usuario.getNombre());
-            buscarUsuarioView.getTxtApellidoUsuarioBuscado().setText(usuario.getApellido());
-            buscarUsuarioView.getTxtTelefonoUsuarioBuscado().setText(usuario.getTelefono());
-            buscarUsuarioView.getTxtCorreoUsuarioBuscado().setText(usuario.getCorreoElectronico());
-            buscarUsuarioView.getTxtFechaUsuarioBuscado().setText(String.valueOf(usuario.getFechaNacimiento()));
+            buscarUsuario.getjTextFieldBUCedula().setText(usuario.getCedula());
+            buscarUsuario.getjTextFieldBUNombre().setText(usuario.getNombre());
+            buscarUsuario.getjTextFieldBUApellido().setText(usuario.getApellido());
+            buscarUsuario.getjTextFieldBUTelefono().setText(usuario.getTelefono());
+            buscarUsuario.getjTextFieldBUCElectronico().setText(usuario.getCorreoElectronico());
+            buscarUsuario.getjTextFieldBUFNacimiento().setText(String.valueOf(usuario.getFechaNacimiento()));
 
         } else {
 
-            buscarUsuarioView.getTxtBuscarUsuario().setText("");
-            buscarUsuarioView.getTxtNombreUsuarioBuscado().setText("");
-            buscarUsuarioView.getTxtApellidoUsuarioBuscado().setText("");
-            buscarUsuarioView.getTxtTelefonoUsuarioBuscado().setText("");
-            buscarUsuarioView.getTxtCorreoUsuarioBuscado().setText("");
-            buscarUsuarioView.getTxtFechaUsuarioBuscado().setText("");
+            buscarUsuario.getjTextFieldBUCedula().setText("");
+            buscarUsuario.getjTextFieldBUNombre().setText("");
+            buscarUsuario.getjTextFieldBUApellido().setText("");
+            buscarUsuario.getjTextFieldBUTelefono().setText("");
+            buscarUsuario.getjTextFieldBUCElectronico().setText("");
+            buscarUsuario.getjTextFieldBUFNacimiento().setText("");
 
-            buscarUsuarioView.mostrarInformacion("No se encontró el usuario");
+            mostrarInformacion(buscarUsuario, "No se encontró el usuario");
         }
     }
 
     public void configurarEventosBuscarUsuario() {
-        buscarUsuarioView.getBtnBuscarBUsuario().addActionListener(new ActionListener() {
+        buscarUsuario.getjButtonBUBuscar().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 buscarUsuario();
@@ -149,91 +149,91 @@ public class UsuarioController {
 
     public void buscarActualizarUsuario() {
 
-        String cedula = actualizarUsuarioView.getTxtActualizarUsuarioCedula().getText();
+        String cedula = actualizarUsuario.getjTextFieldAUCedula().getText();
         Usuario usuario = usuarioDao.buscar(cedula);
 
         if (usuario != null) {
 
-            actualizarUsuarioView.getTxtNombreUsuarioActualizar().setText(usuario.getNombre());
-            actualizarUsuarioView.getTxtApellidoUsuarioActualizar().setText(usuario.getApellido());
-            actualizarUsuarioView.getTxtTelefonoUsuarioActualizar().setText(usuario.getTelefono());
-            actualizarUsuarioView.getTxtCorreoUsuarioActualizar().setText(usuario.getCorreoElectronico());
-            actualizarUsuarioView.getTxtDireccionUsuarioActualizar().setText(usuario.getDireccion());
-            actualizarUsuarioView.getTxtFechaUsuarioActualizar().setText(String.valueOf(usuario.getFechaNacimiento()));
+            actualizarUsuario.getjTextFieldAUNombre().setText(usuario.getNombre());
+            actualizarUsuario.getjTextFieldAUApellido().setText(usuario.getApellido());
+            actualizarUsuario.getjTextFieldAUTelefono().setText(usuario.getTelefono());
+            actualizarUsuario.getjTextFieldAUCElectronico().setText(usuario.getCorreoElectronico());
+            actualizarUsuario.getjTextFieldAUDireccion().setText(usuario.getDireccion());
+            actualizarUsuario.getjTextFieldAUFNacimiento().setText(String.valueOf(usuario.getFechaNacimiento()));
 
         } else {
 
-            actualizarUsuarioView.getTxtNombreUsuarioActualizar().setText("");
-            actualizarUsuarioView.getTxtApellidoUsuarioActualizar().setText("");
-            actualizarUsuarioView.getTxtTelefonoUsuarioActualizar().setText("");
-            actualizarUsuarioView.getTxtCorreoUsuarioActualizar().setText("");
-            actualizarUsuarioView.getTxtDireccionUsuarioActualizar().setText("");
-            actualizarUsuarioView.getTxtFechaUsuarioActualizar().setText("");
+            actualizarUsuario.getjTextFieldAUNombre().setText("");
+            actualizarUsuario.getjTextFieldAUApellido().setText("");
+            actualizarUsuario.getjTextFieldAUTelefono().setText("");
+            actualizarUsuario.getjTextFieldAUCElectronico().setText("");
+            actualizarUsuario.getjTextFieldAUDireccion().setText("");
+            actualizarUsuario.getjTextFieldAUFNacimiento().setText("");
 
-            actualizarUsuarioView.mostrarInformacion("No se encontró el usuario");
+            mostrarInformacion(actualizarUsuario, "No se encontró el usuario");
         }
     }
 
     public void actualizarUsuario() {
 
-        String cedula = actualizarUsuarioView.getTxtActualizarUsuarioCedula().getText();
+        String cedula = actualizarUsuario.getjTextFieldAUCedula().getText();
         Usuario existe = usuarioDao.buscar(cedula);
 
         if (existe != null) {
 
             int respuesta = JOptionPane.showConfirmDialog(
-                    actualizarUsuarioView,
+                    actualizarUsuario,
                     "¿Quieres actualizar este usuario?",
                     "Confirmar",
                     JOptionPane.YES_NO_OPTION);
 
             if (respuesta == 0) {
 
-                String nombre = actualizarUsuarioView.getTxtNombreUsuarioActualizar().getText();
-                String apellido = actualizarUsuarioView.getTxtApellidoUsuarioActualizar().getText();
-                String telefono = actualizarUsuarioView.getTxtTelefonoUsuarioActualizar().getText();
-                String correo = actualizarUsuarioView.getTxtCorreoUsuarioActualizar().getText();
-                String direccion = actualizarUsuarioView.getTxtDireccionUsuarioActualizar().getText();
-                Date fecha = Date.valueOf(actualizarUsuarioView.getTxtFechaUsuarioActualizar().getText());
+                String nombre = actualizarUsuario.getjTextFieldAUNombre().getText();
+                String apellido = actualizarUsuario.getjTextFieldAUApellido().getText();
+                String telefono = actualizarUsuario.getjTextFieldAUTelefono().getText();
+                String correo = actualizarUsuario.getjTextFieldAUCElectronico().getText();
+                String direccion = actualizarUsuario.getjTextFieldAUDireccion().getText();
+                Date fecha = Date.valueOf(actualizarUsuario.getjTextFieldAUFNacimiento().getText());
 
                 Usuario nuevo = new Usuario(correo, direccion, cedula, nombre, apellido, telefono, fecha);
 
                 usuarioDao.actualizar(nuevo);
 
-                actualizarUsuarioView.mostrarInformacion("Usuario actualizado correctamente :)");
+                mostrarInformacion(actualizarUsuario,"Usuario actualizado correctamente :)");
             }
         } else {
-            actualizarUsuarioView.mostrarInformacion("No se encontró el usuario");
+            mostrarInformacion(actualizarUsuario, "No se encontró el usuario");
         }
     }
 
     public void buscarEliminarUsuario() {
 
-        String cedula = eliminarUsuarioView.getTxtEliminarUsuarioCedula().getText();
+        String cedula = eliminarUsuario.getjTextFieldEUCedula().getText();
         Usuario usuario = usuarioDao.buscar(cedula);
 
         if (usuario != null) {
 
-            eliminarUsuarioView.getTxtEliminarUsuarioNombre().setText(usuario.getNombre());
-            eliminarUsuarioView.getTxtApellidoUsuarioEliminado().setText(usuario.getApellido());
-            eliminarUsuarioView.getTxtTelefonoUsuarioEliminado().setText(usuario.getTelefono());
-            eliminarUsuarioView.getTxtCorreoUsuarioEliminado().setText(usuario.getCorreoElectronico());
-            eliminarUsuarioView.getTxtFechaUsuarioEliminado().setText(String.valueOf(usuario.getFechaNacimiento()));
+            eliminarUsuario.getjTextFieldEUNombre().setText(usuario.getNombre());
+            eliminarUsuario.getjTextFieldEUApellido().setText(usuario.getApellido());
+            eliminarUsuario.getjTextFieldEUTelefono().setText(usuario.getTelefono());
+            eliminarUsuario.getjTextFieldEUCElectronico().setText(usuario.getCorreoElectronico());
+            eliminarUsuario.getjTextFieldEUFNacimiento().setText(String.valueOf(usuario.getFechaNacimiento()));
 
         } else {
-            eliminarUsuarioView.mostrarInformacion("No se encontró el usuario");
+            mostrarInformacion(eliminarUsuario, "No se encontró el usuario");
         }
     }
 
     public void eliminarUsuario() {
 
-        String cedula = eliminarUsuarioView.getTxtEliminarUsuarioCedula().getText();
+        String cedula = eliminarUsuario.getjTextFieldEUCedula().getText();
         Usuario usuario = usuarioDao.buscar(cedula);
 
         if (usuario != null) {
 
             int respuesta = JOptionPane.showConfirmDialog(
-                    eliminarUsuarioView,
+                    eliminarUsuario,
                     "¿Desea eliminar este usuario?",
                     "Confirmar",
                     JOptionPane.YES_NO_OPTION);
@@ -242,30 +242,30 @@ public class UsuarioController {
 
                 usuarioDao.eliminar(cedula);
 
-                eliminarUsuarioView.mostrarInformacion("Usuario eliminado correctamente :)");
-                agregarUsuarioView.getTxtAgregarUsuarioCedula().setText("");
-                agregarUsuarioView.getTxtNombreUsuario().setText("");
-                agregarUsuarioView.getTxtApellidoUsuario().setText("");
-                agregarUsuarioView.getTxtTelefonoUsuario().setText("");
-                agregarUsuarioView.getTxtCorreoUsuario().setText("");
-                agregarUsuarioView.getTxtDireccionUsuaria().setText("");
-                agregarUsuarioView.getTxtFechaUsuario().setText("");
+                mostrarInformacion(eliminarUsuario, "Usuario eliminado correctamente :)");
+                crearUsuario.getjTextFieldCUCedula().setText("");
+                crearUsuario.getjTextFieldCUNombre().setText("");
+                crearUsuario.getjTextFieldCUApellido().setText("");
+                crearUsuario.getjTextFieldCUTelefono().setText("");
+                crearUsuario.getjTextFieldCUCElectronico().setText("");
+                crearUsuario.getjTextFieldCUDireccion().setText("");
+                crearUsuario.getjTextFieldCUFNacimiento().setText("");
             }
 
         } else {
-            eliminarUsuarioView.mostrarInformacion("No se encontró el usuario");
+            mostrarInformacion(eliminarUsuario, "No se encontró el usuario");
         }
     }
 
     public void configurarEventosActualizarUsuario() {
-        actualizarUsuarioView.getBtnBuscarActualizarUsuario().addActionListener(new ActionListener() {
+        actualizarUsuario.getjButtonAUBuscar().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 buscarActualizarUsuario();
             }
         });
 
-        actualizarUsuarioView.getBtnActualizarUsuario().addActionListener(new ActionListener() {
+        actualizarUsuario.getjButtonAUActualizar().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 actualizarUsuario();
@@ -275,31 +275,31 @@ public class UsuarioController {
 
     public void buscarUsuarioParaEliminar() {
 
-        String cedula = eliminarUsuarioView.getTxtEliminarUsuarioCedula().getText();
+        String cedula = eliminarUsuario.getjTextFieldEUCedula().getText();
         Usuario usuario = usuarioDao.buscar(cedula);
 
         if (usuario != null) {
 
-            eliminarUsuarioView.getTxtEliminarUsuarioNombre().setText(usuario.getNombre());
-            eliminarUsuarioView.getTxtApellidoUsuarioEliminado().setText(usuario.getApellido());
-            eliminarUsuarioView.getTxtTelefonoUsuarioEliminado().setText(usuario.getTelefono());
-            eliminarUsuarioView.getTxtCorreoUsuarioEliminado().setText(usuario.getCorreoElectronico());
-            eliminarUsuarioView.getTxtFechaUsuarioEliminado().setText(String.valueOf(usuario.getFechaNacimiento()));
+            eliminarUsuario.getjTextFieldEUNombre().setText(usuario.getNombre());
+            eliminarUsuario.getjTextFieldEUApellido().setText(usuario.getApellido());
+            eliminarUsuario.getjTextFieldEUTelefono().setText(usuario.getTelefono());
+            eliminarUsuario.getjTextFieldEUCElectronico().setText(usuario.getCorreoElectronico());
+            eliminarUsuario.getjTextFieldEUFNacimiento().setText(String.valueOf(usuario.getFechaNacimiento()));
 
         } else {
-            eliminarUsuarioView.mostrarInformacion("No se encontró el usuario");
+            mostrarInformacion(eliminarUsuario, "No se encontró el usuario");
         }
     }
 
     public void configurarEventosEliminarUsuario() {
-        eliminarUsuarioView.getBtbBuscarEliminarUsuario().addActionListener(new ActionListener() {
+        eliminarUsuario.getjButtonEUBuscar().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 buscarEliminarUsuario();
             }
         });
 
-        eliminarUsuarioView.getBtbEliminarUsuario().addActionListener(new ActionListener() {
+        eliminarUsuario.getjButtonEUBorrar().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 eliminarUsuario();
@@ -309,23 +309,23 @@ public class UsuarioController {
 
     public void listarUsuarios() {
         List<Usuario> lista = usuarioDao.listar();
-        listaUsuariosView.cargarDatos(lista);
+        listaUsuarios.cargarDatos(lista);
     }
         public void mostrarContadorAutores() {
 
         int total = usuarioDao.contar();
 
-        listaUsuariosView.getTxtContadordeUsuarios().setText(String.valueOf(total));
+        listaUsuarios.getTxtContadordeUsuarios().setText(String.valueOf(total));
     }
 
     public void configurarEventosListarUsuarios() {
 
-        listaUsuariosView.addInternalFrameListener(new InternalFrameAdapter() {
+        listaUsuarios.addInternalFrameListener(new InternalFrameAdapter() {
             @Override
             public void internalFrameActivated(InternalFrameEvent e) {
                 listarUsuarios();
                 mostrarContadorAutores();
             }
         });
-
     }
+}

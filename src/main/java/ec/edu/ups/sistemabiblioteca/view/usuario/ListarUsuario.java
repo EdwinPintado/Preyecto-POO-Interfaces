@@ -1,15 +1,53 @@
 
 package ec.edu.ups.sistemabiblioteca.view.usuario;
 
+import ec.edu.ups.sistemabiblioteca.models.Autor;
+import ec.edu.ups.sistemabiblioteca.models.Usuario;
+import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 
 public class ListarUsuario extends javax.swing.JInternalFrame {
 
+    private DefaultTableModel modelo;
+
     public ListarUsuario() {
         initComponents();
+        configuracionTabla();
+    }
+    public void configuracionTabla(){
+        modelo = new DefaultTableModel();
+
+        modelo.addColumn("Cédula");
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Apellido");
+        modelo.addColumn("Teléfono");
+        modelo.addColumn("Correo");
+        modelo.addColumn("Fecha");
+
+        tblListadoUsuarios.setModel(modelo);
+    }
+
+    public void cargarDatos(List<Usuario> lista) {
+
+        modelo.setRowCount(0);
+
+        for (Usuario b : lista) {
+
+            Object[]fila ={
+                b.getCedula(),
+                b.getNombre(),
+                b.getApellido(),
+                b.getTelefono(),
+                b.getCorreoElectronico(),
+                b.getFechaNacimiento()
+            };
+            modelo.addRow(fila);
+
+        }
     }
 
     public JButton getBtnMostrarListaUsuarios() {
