@@ -1,5 +1,7 @@
 package ec.edu.ups.sistemabiblioteca.view.usuario;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -340,6 +342,16 @@ public class BorrarUsuario extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonEUCancelarActionPerformed
 
+    public void cambiarIdioma(Locale locale){
+        ResourceBundle bundle =ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n", locale);
+        jLabelBorrarUsuario.setText(bundle.getString("TUbrr"));
+        jButtonEUBuscar.setText(bundle.getString("bttnBuscar"));
+        jLabelEUCedula.setText(bundle.getString("labelUBCedula"));
+        jLabelEUNombre.setText(bundle.getString("labelUBNombre"));
+        jLabelEUApellido.setText(bundle.getString("labelUBApellido"));
+        jLabelEUCElectronico.setText(bundle.getString("labelUBCorreo"));
+        jLabelEUTelefono.setText(bundle.getString("labelTel"));
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonEUABorrar;

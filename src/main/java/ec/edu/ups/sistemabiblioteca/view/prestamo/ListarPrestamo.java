@@ -6,6 +6,8 @@ package ec.edu.ups.sistemabiblioteca.view.prestamo;
 
 import ec.edu.ups.sistemabiblioteca.models.Prestamo;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -111,7 +113,7 @@ public class ListarPrestamo extends javax.swing.JInternalFrame {
         btnMostrarListaPrestamo.setText("Mostrar");
 
         jLabelURListaPrestamo.setFont(new java.awt.Font("Segoe UI Variable", 1, 12)); // NOI18N
-        jLabelURListaPrestamo.setText("Usuarios Registrados");
+        jLabelURListaPrestamo.setText("Prestamos Registrados");
 
         txtContadordePrestamo.addActionListener(this::txtContadordePrestamoActionPerformed);
 
@@ -208,6 +210,25 @@ public class ListarPrestamo extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtContadordePrestamoActionPerformed
 
+    public void cambiarIdioma(Locale locale){
+        ResourceBundle bundle =ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n", locale);
+        jLabelListaPrestamo.setText(bundle.getString("TPlp"));
+        jLabelURListaPrestamo.setText(bundle.getString("labelCPm"));
+        btnMostrarListaPrestamo.setText(bundle.getString("bttnMostrar"));
+        modelo = new DefaultTableModel();
+        modelo.addColumn(bundle.getString("labelCPCodigo"));
+        modelo.addColumn(bundle.getString("labelCPUsuario"));
+        modelo.addColumn(bundle.getString("labelCPNombre"));
+        modelo.addColumn(bundle.getString("labelCPLibro"));
+        modelo.addColumn(bundle.getString("labelCPTitulo"));
+        modelo.addColumn(bundle.getString("labelCPBLc"));
+        modelo.addColumn(bundle.getString("labelCPfa"));
+        modelo.addColumn(bundle.getString("labelCPfl"));
+        tblListadoPrestamo.setModel(modelo);
+        
+        
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnMostrarListaPrestamo;

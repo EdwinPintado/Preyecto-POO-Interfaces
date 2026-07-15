@@ -2,6 +2,8 @@ package ec.edu.ups.sistemabiblioteca.view.libro;
 
 import ec.edu.ups.sistemabiblioteca.models.Libro;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -193,6 +195,19 @@ public class ListarLibro extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtContadordeLibroActionPerformed
 
+    public void cambiarIdioma(Locale locale){
+        ResourceBundle bundle =ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n", locale);
+        jLabelListaLibro.setText(bundle.getString("TLlis"));
+        btnMostrarListaLibro.setText(bundle.getString("bttnMostrar"));
+        jLabelURListaLibro.setText(bundle.getString("labelBR"));
+        modelo = new DefaultTableModel();
+        modelo.addColumn(bundle.getString("labelISBN"));
+        modelo.addColumn(bundle.getString("labelTitulo"));
+        modelo.addColumn(bundle.getString("labelEditorial"));
+        modelo.addColumn(bundle.getString("labelLfb"));
+        tblListadoLibro.setModel(modelo);
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnMostrarListaLibro;

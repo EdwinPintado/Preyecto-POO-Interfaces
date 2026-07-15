@@ -53,6 +53,8 @@ import ec.edu.ups.sistemabiblioteca.view.usuario.BorrarUsuario;
 import ec.edu.ups.sistemabiblioteca.view.usuario.BuscarUsuario;
 import ec.edu.ups.sistemabiblioteca.view.usuario.CrearUsuario;
 import ec.edu.ups.sistemabiblioteca.view.usuario.ListarUsuario;
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
 
@@ -185,38 +187,38 @@ public class Principal extends javax.swing.JFrame {
         desktopPane = new javax.swing.JDesktopPane();
         jButton1 = new javax.swing.JButton();
         menuBar = new javax.swing.JMenuBar();
-        fileMenu = new javax.swing.JMenu();
-        openMenuItem = new javax.swing.JMenuItem();
-        Buscar = new javax.swing.JMenuItem();
-        saveAsMenuItem = new javax.swing.JMenuItem();
-        exitMenuItem = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        fileMenu2 = new javax.swing.JMenu();
-        openMenuItem2 = new javax.swing.JMenuItem();
-        Buscar1 = new javax.swing.JMenuItem();
-        saveAsMenuItem2 = new javax.swing.JMenuItem();
-        exitMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        fileMenu3 = new javax.swing.JMenu();
-        openMenuItem3 = new javax.swing.JMenuItem();
-        Buscar2 = new javax.swing.JMenuItem();
-        saveAsMenuItem3 = new javax.swing.JMenuItem();
-        exitMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        fileMenu4 = new javax.swing.JMenu();
-        openMenuItem4 = new javax.swing.JMenuItem();
-        Buscar3 = new javax.swing.JMenuItem();
-        saveAsMenuItem4 = new javax.swing.JMenuItem();
-        exitMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        Prestamo = new javax.swing.JMenu();
-        openMenuItem5 = new javax.swing.JMenuItem();
-        Buscar4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        Devolucion = new javax.swing.JMenu();
-        openMenuItem6 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        Devolucion1 = new javax.swing.JMenu();
+        AutorMenu = new javax.swing.JMenu();
+        CrearAItem = new javax.swing.JMenuItem();
+        BuscarAItem = new javax.swing.JMenuItem();
+        ActAItem = new javax.swing.JMenuItem();
+        BorrarAItem = new javax.swing.JMenuItem();
+        ListarAItem = new javax.swing.JMenuItem();
+        LibroMenu = new javax.swing.JMenu();
+        CrearLItem = new javax.swing.JMenuItem();
+        BuscarLItem = new javax.swing.JMenuItem();
+        ActLItem = new javax.swing.JMenuItem();
+        BorrarLItem = new javax.swing.JMenuItem();
+        LisLItem = new javax.swing.JMenuItem();
+        BliMenu = new javax.swing.JMenu();
+        BCrearItem = new javax.swing.JMenuItem();
+        BBuscarItem = new javax.swing.JMenuItem();
+        BActItem = new javax.swing.JMenuItem();
+        BBorrarItem = new javax.swing.JMenuItem();
+        BlisItem = new javax.swing.JMenuItem();
+        UsuarioMenu = new javax.swing.JMenu();
+        UCrearItem = new javax.swing.JMenuItem();
+        UBuscarItem = new javax.swing.JMenuItem();
+        UActItem = new javax.swing.JMenuItem();
+        UBorrarItem = new javax.swing.JMenuItem();
+        UListarItem = new javax.swing.JMenuItem();
+        PrestamoMenu = new javax.swing.JMenu();
+        PCrearItem = new javax.swing.JMenuItem();
+        PBuscarItem = new javax.swing.JMenuItem();
+        PListarItem = new javax.swing.JMenuItem();
+        DevolucionMenu = new javax.swing.JMenu();
+        DCrearItem = new javax.swing.JMenuItem();
+        DListarItem = new javax.swing.JMenuItem();
+        IdiomaMenu = new javax.swing.JMenu();
         openMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
@@ -252,148 +254,148 @@ public class Principal extends javax.swing.JFrame {
         saveAsMenuItem.addActionListener(this::saveAsMenuItemActionPerformed);
         fileMenu.add(saveAsMenuItem);
 
-        exitMenuItem.setMnemonic('x');
-        exitMenuItem.setText("Borrar");
-        exitMenuItem.addActionListener(this::exitMenuItemActionPerformed);
-        fileMenu.add(exitMenuItem);
+        BorrarAItem.setMnemonic('x');
+        BorrarAItem.setText("Borrar");
+        BorrarAItem.addActionListener(this::BorrarAItemActionPerformed);
+        AutorMenu.add(BorrarAItem);
 
-        jMenuItem1.setText("Listar");
-        jMenuItem1.addActionListener(this::jMenuItem1ActionPerformed);
-        fileMenu.add(jMenuItem1);
+        ListarAItem.setText("Listar");
+        ListarAItem.addActionListener(this::ListarAItemActionPerformed);
+        AutorMenu.add(ListarAItem);
 
-        menuBar.add(fileMenu);
+        menuBar.add(AutorMenu);
 
-        fileMenu2.setMnemonic('f');
-        fileMenu2.setText("Libro");
+        LibroMenu.setMnemonic('f');
+        LibroMenu.setText("Libro");
 
-        openMenuItem2.setMnemonic('o');
-        openMenuItem2.setText("Crear");
-        openMenuItem2.addActionListener(this::openMenuItem2ActionPerformed);
-        fileMenu2.add(openMenuItem2);
+        CrearLItem.setMnemonic('o');
+        CrearLItem.setText("Crear");
+        CrearLItem.addActionListener(this::CrearLItemActionPerformed);
+        LibroMenu.add(CrearLItem);
 
-        Buscar1.setMnemonic('s');
-        Buscar1.setText("Buscar");
-        Buscar1.addActionListener(this::Buscar1ActionPerformed);
-        fileMenu2.add(Buscar1);
+        BuscarLItem.setMnemonic('s');
+        BuscarLItem.setText("Buscar");
+        BuscarLItem.addActionListener(this::BuscarLItemActionPerformed);
+        LibroMenu.add(BuscarLItem);
 
-        saveAsMenuItem2.setMnemonic('a');
-        saveAsMenuItem2.setText("Actualizar");
-        saveAsMenuItem2.addActionListener(this::saveAsMenuItem2ActionPerformed);
-        fileMenu2.add(saveAsMenuItem2);
+        ActLItem.setMnemonic('a');
+        ActLItem.setText("Actualizar");
+        ActLItem.addActionListener(this::ActLItemActionPerformed);
+        LibroMenu.add(ActLItem);
 
-        exitMenuItem2.setMnemonic('x');
-        exitMenuItem2.setText("Borrar");
-        exitMenuItem2.addActionListener(this::exitMenuItem2ActionPerformed);
-        fileMenu2.add(exitMenuItem2);
+        BorrarLItem.setMnemonic('x');
+        BorrarLItem.setText("Borrar");
+        BorrarLItem.addActionListener(this::BorrarLItemActionPerformed);
+        LibroMenu.add(BorrarLItem);
 
-        jMenuItem2.setText("Listar");
-        jMenuItem2.addActionListener(this::jMenuItem2ActionPerformed);
-        fileMenu2.add(jMenuItem2);
+        LisLItem.setText("Listar");
+        LisLItem.addActionListener(this::LisLItemActionPerformed);
+        LibroMenu.add(LisLItem);
 
-        menuBar.add(fileMenu2);
+        menuBar.add(LibroMenu);
 
-        fileMenu3.setMnemonic('f');
-        fileMenu3.setText("Bibliotecario");
+        BliMenu.setMnemonic('f');
+        BliMenu.setText("Bibliotecario");
 
-        openMenuItem3.setMnemonic('o');
-        openMenuItem3.setText("Crear");
-        openMenuItem3.addActionListener(this::openMenuItem3ActionPerformed);
-        fileMenu3.add(openMenuItem3);
+        BCrearItem.setMnemonic('o');
+        BCrearItem.setText("Crear");
+        BCrearItem.addActionListener(this::BCrearItemActionPerformed);
+        BliMenu.add(BCrearItem);
 
-        Buscar2.setMnemonic('s');
-        Buscar2.setText("Buscar");
-        Buscar2.addActionListener(this::Buscar2ActionPerformed);
-        fileMenu3.add(Buscar2);
+        BBuscarItem.setMnemonic('s');
+        BBuscarItem.setText("Buscar");
+        BBuscarItem.addActionListener(this::BBuscarItemActionPerformed);
+        BliMenu.add(BBuscarItem);
 
-        saveAsMenuItem3.setMnemonic('a');
-        saveAsMenuItem3.setText("Actualizar");
-        saveAsMenuItem3.addActionListener(this::saveAsMenuItem3ActionPerformed);
-        fileMenu3.add(saveAsMenuItem3);
+        BActItem.setMnemonic('a');
+        BActItem.setText("Actualizar");
+        BActItem.addActionListener(this::BActItemActionPerformed);
+        BliMenu.add(BActItem);
 
-        exitMenuItem3.setMnemonic('x');
-        exitMenuItem3.setText("Borrar");
-        exitMenuItem3.addActionListener(this::exitMenuItem3ActionPerformed);
-        fileMenu3.add(exitMenuItem3);
+        BBorrarItem.setMnemonic('x');
+        BBorrarItem.setText("Borrar");
+        BBorrarItem.addActionListener(this::BBorrarItemActionPerformed);
+        BliMenu.add(BBorrarItem);
 
-        jMenuItem3.setText("Listar");
-        jMenuItem3.addActionListener(this::jMenuItem3ActionPerformed);
-        fileMenu3.add(jMenuItem3);
+        BlisItem.setText("Listar");
+        BlisItem.addActionListener(this::BlisItemActionPerformed);
+        BliMenu.add(BlisItem);
 
-        menuBar.add(fileMenu3);
+        menuBar.add(BliMenu);
 
-        fileMenu4.setMnemonic('f');
-        fileMenu4.setText("Usuario");
+        UsuarioMenu.setMnemonic('f');
+        UsuarioMenu.setText("Usuario");
 
-        openMenuItem4.setMnemonic('o');
-        openMenuItem4.setText("Crear");
-        openMenuItem4.addActionListener(this::openMenuItem4ActionPerformed);
-        fileMenu4.add(openMenuItem4);
+        UCrearItem.setMnemonic('o');
+        UCrearItem.setText("Crear");
+        UCrearItem.addActionListener(this::UCrearItemActionPerformed);
+        UsuarioMenu.add(UCrearItem);
 
-        Buscar3.setMnemonic('s');
-        Buscar3.setText("Buscar");
-        Buscar3.addActionListener(this::Buscar3ActionPerformed);
-        fileMenu4.add(Buscar3);
+        UBuscarItem.setMnemonic('s');
+        UBuscarItem.setText("Buscar");
+        UBuscarItem.addActionListener(this::UBuscarItemActionPerformed);
+        UsuarioMenu.add(UBuscarItem);
 
-        saveAsMenuItem4.setMnemonic('a');
-        saveAsMenuItem4.setText("Actualizar");
-        saveAsMenuItem4.addActionListener(this::saveAsMenuItem4ActionPerformed);
-        fileMenu4.add(saveAsMenuItem4);
+        UActItem.setMnemonic('a');
+        UActItem.setText("Actualizar");
+        UActItem.addActionListener(this::UActItemActionPerformed);
+        UsuarioMenu.add(UActItem);
 
-        exitMenuItem4.setMnemonic('x');
-        exitMenuItem4.setText("Borrar");
-        exitMenuItem4.addActionListener(this::exitMenuItem4ActionPerformed);
-        fileMenu4.add(exitMenuItem4);
+        UBorrarItem.setMnemonic('x');
+        UBorrarItem.setText("Borrar");
+        UBorrarItem.addActionListener(this::UBorrarItemActionPerformed);
+        UsuarioMenu.add(UBorrarItem);
 
-        jMenuItem4.setText("Listar");
-        jMenuItem4.addActionListener(this::jMenuItem4ActionPerformed);
-        fileMenu4.add(jMenuItem4);
+        UListarItem.setText("Listar");
+        UListarItem.addActionListener(this::UListarItemActionPerformed);
+        UsuarioMenu.add(UListarItem);
 
-        menuBar.add(fileMenu4);
+        menuBar.add(UsuarioMenu);
 
-        Prestamo.setMnemonic('f');
-        Prestamo.setText("Prestamo");
+        PrestamoMenu.setMnemonic('f');
+        PrestamoMenu.setText("Prestamo");
 
-        openMenuItem5.setMnemonic('o');
-        openMenuItem5.setText("Crear");
-        openMenuItem5.addActionListener(this::openMenuItem5ActionPerformed);
-        Prestamo.add(openMenuItem5);
+        PCrearItem.setMnemonic('o');
+        PCrearItem.setText("Crear");
+        PCrearItem.addActionListener(this::PCrearItemActionPerformed);
+        PrestamoMenu.add(PCrearItem);
 
-        Buscar4.setMnemonic('s');
-        Buscar4.setText("Buscar");
-        Buscar4.addActionListener(this::Buscar4ActionPerformed);
-        Prestamo.add(Buscar4);
+        PBuscarItem.setMnemonic('s');
+        PBuscarItem.setText("Buscar");
+        PBuscarItem.addActionListener(this::PBuscarItemActionPerformed);
+        PrestamoMenu.add(PBuscarItem);
 
-        jMenuItem5.setText("Listar");
-        jMenuItem5.addActionListener(this::jMenuItem5ActionPerformed);
-        Prestamo.add(jMenuItem5);
+        PListarItem.setText("Listar");
+        PListarItem.addActionListener(this::PListarItemActionPerformed);
+        PrestamoMenu.add(PListarItem);
 
-        menuBar.add(Prestamo);
+        menuBar.add(PrestamoMenu);
 
-        Devolucion.setMnemonic('f');
-        Devolucion.setText("Devolucion");
+        DevolucionMenu.setMnemonic('f');
+        DevolucionMenu.setText("Devolucion");
 
-        openMenuItem6.setMnemonic('o');
-        openMenuItem6.setText("Crear");
-        openMenuItem6.addActionListener(this::openMenuItem6ActionPerformed);
-        Devolucion.add(openMenuItem6);
+        DCrearItem.setMnemonic('o');
+        DCrearItem.setText("Crear");
+        DCrearItem.addActionListener(this::DCrearItemActionPerformed);
+        DevolucionMenu.add(DCrearItem);
 
-        jMenuItem6.setText("Listar");
-        jMenuItem6.addActionListener(this::jMenuItem6ActionPerformed);
-        Devolucion.add(jMenuItem6);
+        DListarItem.setText("Listar");
+        DListarItem.addActionListener(this::DListarItemActionPerformed);
+        DevolucionMenu.add(DListarItem);
 
-        menuBar.add(Devolucion);
+        menuBar.add(DevolucionMenu);
 
-        Devolucion1.setMnemonic('f');
-        Devolucion1.setText("Idioma");
+        IdiomaMenu.setMnemonic('f');
+        IdiomaMenu.setText("Idioma");
 
         openMenuItem7.setMnemonic('o');
         openMenuItem7.setText("Español");
-        Devolucion1.add(openMenuItem7);
+        IdiomaMenu.add(openMenuItem7);
 
         jMenuItem7.setText("Ingles");
-        Devolucion1.add(jMenuItem7);
+        IdiomaMenu.add(jMenuItem7);
 
-        menuBar.add(Devolucion1);
+        menuBar.add(IdiomaMenu);
 
         jMenu1.setText("Archivos");
 
@@ -443,51 +445,51 @@ public class Principal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void exitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItemActionPerformed
-        if (borrarAutor == null || !borrarAutor.isVisible()) {
+    private void BorrarAItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BorrarAItemActionPerformed
+        if(borrarAutor== null||!borrarAutor.isVisible()){
             desktopPane.remove(borrarAutor);
             desktopPane.add(borrarAutor);
             borrarAutor.setVisible(true);
         }
-    }//GEN-LAST:event_exitMenuItemActionPerformed
+    }//GEN-LAST:event_BorrarAItemActionPerformed
 
-    private void exitMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItem2ActionPerformed
+    private void BorrarLItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BorrarLItemActionPerformed
         // TODO add your handling code here:
         if (borrarLibro == null || !borrarLibro.isVisible()) {
             desktopPane.remove(borrarLibro);
             desktopPane.add(borrarLibro);
             borrarLibro.setVisible(true);
         }
-    }//GEN-LAST:event_exitMenuItem2ActionPerformed
+    }//GEN-LAST:event_BorrarLItemActionPerformed
 
-    private void exitMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItem3ActionPerformed
+    private void BBorrarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BBorrarItemActionPerformed
         // TODO add your handling code here:
         if (borrarBibliotecario == null || !buscarBibliotecario.isVisible()) {
             desktopPane.remove(borrarBibliotecario);
             desktopPane.add(borrarBibliotecario);
             borrarBibliotecario.setVisible(true);
         }
-    }//GEN-LAST:event_exitMenuItem3ActionPerformed
+    }//GEN-LAST:event_BBorrarItemActionPerformed
 
-    private void exitMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItem4ActionPerformed
+    private void UBorrarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UBorrarItemActionPerformed
         // TODO add your handling code here:
         if (borrarUsuario == null || !borrarUsuario.isVisible()) {
             desktopPane.remove(borrarUsuario);
             desktopPane.add(borrarUsuario);
             borrarUsuario.setVisible(true);
         }
-    }//GEN-LAST:event_exitMenuItem4ActionPerformed
+    }//GEN-LAST:event_UBorrarItemActionPerformed
 
-    private void openMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openMenuItemActionPerformed
+    private void CrearAItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearAItemActionPerformed
         // TODO add your handling code here:
         if (crearAutor == null || !crearAutor.isVisible()) {
             desktopPane.remove(crearAutor);
             desktopPane.add(crearAutor);
             crearAutor.setVisible(true);
         }
-    }//GEN-LAST:event_openMenuItemActionPerformed
+    }//GEN-LAST:event_CrearAItemActionPerformed
 
-    private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
+    private void BuscarAItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarAItemActionPerformed
         // TODO add your handling code here:
         if (buscarAutor == null || !buscarAutor.isVisible()) {
             desktopPane.remove(buscarAutor);
@@ -495,9 +497,9 @@ public class Principal extends javax.swing.JFrame {
             buscarAutor.setVisible(true);
 
         }
-    }//GEN-LAST:event_BuscarActionPerformed
+    }//GEN-LAST:event_BuscarAItemActionPerformed
 
-    private void saveAsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveAsMenuItemActionPerformed
+    private void ActAItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActAItemActionPerformed
         // TODO add your handling code here:
         if (actualizarAutor == null || !actualizarAutor.isVisible()) {
             desktopPane.remove(actualizarAutor);
@@ -505,169 +507,169 @@ public class Principal extends javax.swing.JFrame {
             actualizarAutor.setVisible(true);
 
         }
-    }//GEN-LAST:event_saveAsMenuItemActionPerformed
+    }//GEN-LAST:event_ActAItemActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void ListarAItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListarAItemActionPerformed
         // TODO add your handling code here:
         if (listarAutor == null || !listarAutor.isVisible()) {
             desktopPane.remove(listarAutor);
             desktopPane.add(listarAutor);
             listarAutor.setVisible(true);
         }
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_ListarAItemActionPerformed
 
-    private void openMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openMenuItem2ActionPerformed
+    private void CrearLItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearLItemActionPerformed
         // TODO add your handling code here:
         if (crearLibro == null || !crearLibro.isVisible()) {
             desktopPane.remove(crearLibro);
             desktopPane.add(crearLibro);
             crearLibro.setVisible(true);
         }
-    }//GEN-LAST:event_openMenuItem2ActionPerformed
+    }//GEN-LAST:event_CrearLItemActionPerformed
 
-    private void Buscar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Buscar1ActionPerformed
+    private void BuscarLItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarLItemActionPerformed
         // TODO add your handling code here:
         if (buscarLibro == null || !buscarLibro.isVisible()) {
             desktopPane.remove(buscarLibro);
             desktopPane.add(buscarLibro);
             buscarLibro.setVisible(true);
         }
-    }//GEN-LAST:event_Buscar1ActionPerformed
+    }//GEN-LAST:event_BuscarLItemActionPerformed
 
-    private void saveAsMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveAsMenuItem2ActionPerformed
+    private void ActLItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActLItemActionPerformed
         // TODO add your handling code here:
         if (actualizarLibro == null || !actualizarLibro.isVisible()) {
             desktopPane.remove(actualizarLibro);
             desktopPane.add(actualizarLibro);
             actualizarLibro.setVisible(true);
         }
-    }//GEN-LAST:event_saveAsMenuItem2ActionPerformed
+    }//GEN-LAST:event_ActLItemActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void LisLItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LisLItemActionPerformed
         // TODO add your handling code here:
         if (listarLibro == null || !listarLibro.isVisible()) {
             desktopPane.remove(listarLibro);
             desktopPane.add(listarLibro);
             listarLibro.setVisible(true);
         }
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_LisLItemActionPerformed
 
-    private void openMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openMenuItem3ActionPerformed
+    private void BCrearItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BCrearItemActionPerformed
         // TODO add your handling code here:
         if (crearBibliotecario == null || !crearBibliotecario.isVisible()) {
             desktopPane.remove(crearBibliotecario);
             desktopPane.add(crearBibliotecario);
             crearBibliotecario.setVisible(true);
         }
-    }//GEN-LAST:event_openMenuItem3ActionPerformed
+    }//GEN-LAST:event_BCrearItemActionPerformed
 
-    private void Buscar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Buscar2ActionPerformed
+    private void BBuscarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BBuscarItemActionPerformed
         // TODO add your handling code here:
         if (buscarBibliotecario == null || !buscarBibliotecario.isVisible()) {
             desktopPane.remove(buscarBibliotecario);
             desktopPane.add(buscarBibliotecario);
             buscarBibliotecario.setVisible(true);
         }
-    }//GEN-LAST:event_Buscar2ActionPerformed
+    }//GEN-LAST:event_BBuscarItemActionPerformed
 
-    private void saveAsMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveAsMenuItem3ActionPerformed
+    private void BActItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BActItemActionPerformed
         // TODO add your handling code here:
         if (actualizarBibliotecario == null || !actualizarBibliotecario.isVisible()) {
             desktopPane.remove(actualizarBibliotecario);
             desktopPane.add(actualizarBibliotecario);
             actualizarBibliotecario.setVisible(true);
         }
-    }//GEN-LAST:event_saveAsMenuItem3ActionPerformed
+    }//GEN-LAST:event_BActItemActionPerformed
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+    private void BlisItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BlisItemActionPerformed
         // TODO add your handling code here:
         if (listarBibliotecario == null || !listarBibliotecario.isVisible()) {
             desktopPane.remove(listarBibliotecario);
             desktopPane.add(listarBibliotecario);
             listarBibliotecario.setVisible(true);
         }
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
+    }//GEN-LAST:event_BlisItemActionPerformed
 
-    private void openMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openMenuItem4ActionPerformed
+    private void UCrearItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UCrearItemActionPerformed
         // TODO add your handling code here:
         if (crearUsuario == null || !crearUsuario.isVisible()) {
             desktopPane.remove(crearUsuario);
             desktopPane.add(crearUsuario);
             crearUsuario.setVisible(true);
         }
-    }//GEN-LAST:event_openMenuItem4ActionPerformed
+    }//GEN-LAST:event_UCrearItemActionPerformed
 
-    private void Buscar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Buscar3ActionPerformed
+    private void UBuscarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UBuscarItemActionPerformed
         // TODO add your handling code here:
         if (buscarUsuario == null || !buscarUsuario.isVisible()) {
             desktopPane.remove(buscarUsuario);
             desktopPane.add(buscarUsuario);
             buscarUsuario.setVisible(true);
         }
-    }//GEN-LAST:event_Buscar3ActionPerformed
+    }//GEN-LAST:event_UBuscarItemActionPerformed
 
-    private void saveAsMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveAsMenuItem4ActionPerformed
+    private void UActItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UActItemActionPerformed
         // TODO add your handling code here:
         if (actualizarUsuario == null || !actualizarUsuario.isVisible()) {
             desktopPane.remove(actualizarUsuario);
             desktopPane.add(actualizarUsuario);
             actualizarUsuario.setVisible(true);
         }
-    }//GEN-LAST:event_saveAsMenuItem4ActionPerformed
+    }//GEN-LAST:event_UActItemActionPerformed
 
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+    private void UListarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UListarItemActionPerformed
         // TODO add your handling code here:
         if (listarUsuario == null || !listarUsuario.isVisible()) {
             desktopPane.remove(listarUsuario);
             desktopPane.add(listarUsuario);
             listarUsuario.setVisible(true);
         }
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
+    }//GEN-LAST:event_UListarItemActionPerformed
 
-    private void openMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openMenuItem5ActionPerformed
+    private void PCrearItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PCrearItemActionPerformed
         // TODO add your handling code here:
         if (crearPrestamo == null || !crearPrestamo.isVisible()) {
             desktopPane.remove(crearPrestamo);
             desktopPane.add(crearPrestamo);
             crearPrestamo.setVisible(true);
         }
-    }//GEN-LAST:event_openMenuItem5ActionPerformed
+    }//GEN-LAST:event_PCrearItemActionPerformed
 
-    private void Buscar4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Buscar4ActionPerformed
+    private void PBuscarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PBuscarItemActionPerformed
         // TODO add your handling code here:
         if (buscarPrestamo == null || !buscarPrestamo.isVisible()) {
             desktopPane.remove(buscarPrestamo);
             desktopPane.add(buscarPrestamo);
             buscarPrestamo.setVisible(true);
         }
-    }//GEN-LAST:event_Buscar4ActionPerformed
+    }//GEN-LAST:event_PBuscarItemActionPerformed
 
-    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+    private void PListarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PListarItemActionPerformed
         // TODO add your handling code here:
         if (listarPrestamo == null || !listarPrestamo.isVisible()) {
             desktopPane.remove(listarPrestamo);
             desktopPane.add(listarPrestamo);
             listarPrestamo.setVisible(true);
         }
-    }//GEN-LAST:event_jMenuItem5ActionPerformed
+    }//GEN-LAST:event_PListarItemActionPerformed
 
-    private void openMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openMenuItem6ActionPerformed
+    private void DCrearItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DCrearItemActionPerformed
         // TODO add your handling code here:
         if (realizarDevolucion == null || !realizarDevolucion.isVisible()) {
             desktopPane.remove(realizarDevolucion);
             desktopPane.add(realizarDevolucion);
             realizarDevolucion.setVisible(true);
         }
-    }//GEN-LAST:event_openMenuItem6ActionPerformed
+    }//GEN-LAST:event_DCrearItemActionPerformed
 
-    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+    private void DListarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DListarItemActionPerformed
         // TODO add your handling code here:
         if (listarDevolucion == null || !listarDevolucion.isVisible()) {
             desktopPane.remove(listarDevolucion);
             desktopPane.add(listarDevolucion);
             listarDevolucion.setVisible(true);
         }
-    }//GEN-LAST:event_jMenuItem6ActionPerformed
+    }//GEN-LAST:event_DListarItemActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
@@ -794,15 +796,101 @@ public class Principal extends javax.swing.JFrame {
         });
     }
 
+    public void cambiarIdioma(Locale locale){
+        ResourceBundle bundle =ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n", locale);
+        //Nombres Menu
+        AutorMenu.setText(bundle.getString("au"));
+        LibroMenu.setText(bundle.getString("lib"));
+        BliMenu.setText(bundle.getString("bli"));
+        UsuarioMenu.setText(bundle.getString("usu"));
+        PrestamoMenu.setText(bundle.getString("pres"));
+        DevolucionMenu.setText(bundle.getString("dev"));
+        //Items Autor
+        CrearAItem.setText(bundle.getString("iC"));
+        BuscarAItem.setText(bundle.getString("iBus"));
+        ActAItem.setText(bundle.getString("iAc"));
+        BorrarAItem.setText(bundle.getString("iBo"));
+        ListarAItem.setText(bundle.getString("iLis"));
+        //Items Libro
+        CrearLItem.setText(bundle.getString("iC"));
+        BuscarLItem.setText(bundle.getString("iBus"));
+        ActLItem.setText(bundle.getString("iAc"));
+        BorrarLItem.setText(bundle.getString("iBo"));
+        LisLItem.setText(bundle.getString("iLis"));
+        //Item Bli
+        BCrearItem.setText(bundle.getString("iC"));
+        BBuscarItem.setText(bundle.getString("iBus"));
+        BActItem.setText(bundle.getString("iAc"));
+        BBorrarItem.setText(bundle.getString("iBo"));
+        BlisItem.setText(bundle.getString("iLis"));
+        //Item Usuario
+        //Autor
+        actualizarAutor.cambiarIdioma(locale);
+        borrarAutor.cambiarIdioma(locale);
+        buscarAutor.cambiarIdioma(locale);
+        crearAutor.cambiarIdioma(locale);
+        listarAutor.cambiarIdioma(locale);
+        //Bibliotecario
+        actualizarBibliotecario.cambiarIdioma(locale);
+        borrarBibliotecario.cambiarIdioma(locale);
+        buscarBibliotecario.cambiarIdioma(locale);
+        crearBibliotecario.cambiarIdioma(locale);
+        listarBibliotecario.cambiarIdioma(locale);
+        //Devoluciones
+        listarDevolucion.cambiarIdioma(locale);
+        realizarDevolucion.cambiarIdioma(locale);
+        //Libro
+        actualizarLibro.cambiarIdioma(locale);
+        borrarLibro.cambiarIdioma(locale);
+        buscarLibro.cambiarIdioma(locale);
+        crearLibro.cambiarIdioma(locale);
+        listarLibro.cambiarIdioma(locale);
+        //Prestamos
+        buscarPrestamo.cambiarIdioma(locale);
+        crearPrestamo.cambiarIdioma(locale);
+        listarPrestamo.cambiarIdioma(locale);
+        //Usuarios
+        actualizarUsuario.cambiarIdioma(locale);
+        borrarUsuario.cambiarIdioma(locale);
+        buscarUsuario.cambiarIdioma(locale);
+        crearUsuario.cambiarIdioma(locale);
+        listarUsuario.cambiarIdioma(locale);
+        
+        
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem Buscar;
-    private javax.swing.JMenuItem Buscar1;
-    private javax.swing.JMenuItem Buscar2;
-    private javax.swing.JMenuItem Buscar3;
-    private javax.swing.JMenuItem Buscar4;
-    private javax.swing.JMenu Devolucion;
-    private javax.swing.JMenu Devolucion1;
-    private javax.swing.JMenu Prestamo;
+    private javax.swing.JMenuItem ActAItem;
+    private javax.swing.JMenuItem ActLItem;
+    private javax.swing.JMenu AutorMenu;
+    private javax.swing.JMenuItem BActItem;
+    private javax.swing.JMenuItem BBorrarItem;
+    private javax.swing.JMenuItem BBuscarItem;
+    private javax.swing.JMenuItem BCrearItem;
+    private javax.swing.JMenu BliMenu;
+    private javax.swing.JMenuItem BlisItem;
+    private javax.swing.JMenuItem BorrarAItem;
+    private javax.swing.JMenuItem BorrarLItem;
+    private javax.swing.JMenuItem BuscarAItem;
+    private javax.swing.JMenuItem BuscarLItem;
+    private javax.swing.JMenuItem CrearAItem;
+    private javax.swing.JMenuItem CrearLItem;
+    private javax.swing.JMenuItem DCrearItem;
+    private javax.swing.JMenuItem DListarItem;
+    private javax.swing.JMenu DevolucionMenu;
+    private javax.swing.JMenu IdiomaMenu;
+    private javax.swing.JMenu LibroMenu;
+    private javax.swing.JMenuItem LisLItem;
+    private javax.swing.JMenuItem ListarAItem;
+    private javax.swing.JMenuItem PBuscarItem;
+    private javax.swing.JMenuItem PCrearItem;
+    private javax.swing.JMenuItem PListarItem;
+    private javax.swing.JMenu PrestamoMenu;
+    private javax.swing.JMenuItem UActItem;
+    private javax.swing.JMenuItem UBorrarItem;
+    private javax.swing.JMenuItem UBuscarItem;
+    private javax.swing.JMenuItem UCrearItem;
+    private javax.swing.JMenuItem UListarItem;
+    private javax.swing.JMenu UsuarioMenu;
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenuItem exitMenuItem;
     private javax.swing.JMenuItem exitMenuItem2;
@@ -828,17 +916,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JMenuBar menuBar;
-    private javax.swing.JMenuItem openMenuItem;
-    private javax.swing.JMenuItem openMenuItem2;
-    private javax.swing.JMenuItem openMenuItem3;
-    private javax.swing.JMenuItem openMenuItem4;
-    private javax.swing.JMenuItem openMenuItem5;
-    private javax.swing.JMenuItem openMenuItem6;
     private javax.swing.JMenuItem openMenuItem7;
-    private javax.swing.JMenuItem saveAsMenuItem;
-    private javax.swing.JMenuItem saveAsMenuItem2;
-    private javax.swing.JMenuItem saveAsMenuItem3;
-    private javax.swing.JMenuItem saveAsMenuItem4;
     // End of variables declaration//GEN-END:variables
 
 }

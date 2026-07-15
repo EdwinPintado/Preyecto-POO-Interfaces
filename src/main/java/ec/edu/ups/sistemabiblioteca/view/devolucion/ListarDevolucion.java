@@ -6,6 +6,8 @@ package ec.edu.ups.sistemabiblioteca.view.devolucion;
 
 import ec.edu.ups.sistemabiblioteca.models.Devolucion;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -200,6 +202,20 @@ public class ListarDevolucion extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtContadordeDevolucionesActionPerformed
 
+    public void cambiarIdioma(Locale locale){
+        ResourceBundle bundle =ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n", locale);
+        jLabelListaDevoluciones.setText(bundle.getString("Tlistp"));
+        btnMostrarListaDevoluciones.setText(bundle.getString("bttnMostrar"));
+        tblListadoDevoluciones.setModel(modelo);
+        modelo.addColumn(bundle.getString("listarPNombre"));
+        modelo.addColumn(bundle.getString("listarPLibro"));
+        modelo.addColumn(bundle.getString("listarPCodigo"));
+        modelo.addColumn(bundle.getString("listarPFD"));
+        tblListadoDevoluciones.setModel(modelo);
+        jLabelURListaDevoluciones.setText(bundle.getString("labelMP"));
+        
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnMostrarListaDevoluciones;

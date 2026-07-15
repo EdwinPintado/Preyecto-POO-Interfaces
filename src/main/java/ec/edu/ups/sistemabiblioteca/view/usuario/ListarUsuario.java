@@ -3,6 +3,8 @@ package ec.edu.ups.sistemabiblioteca.view.usuario;
 import ec.edu.ups.sistemabiblioteca.models.Autor;
 import ec.edu.ups.sistemabiblioteca.models.Usuario;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -201,6 +203,22 @@ public class ListarUsuario extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtContadordeUsuariosActionPerformed
 
+    public void cambiarIdioma(Locale locale){
+        ResourceBundle bundle =ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n", locale);
+        jLabelListaUsuarios.setText(bundle.getString("TUlis"));
+        btnMostrarListaUsuarios.setText(bundle.getString("bttnMostrar"));
+        jLabelURListaUsuarios.setText(bundle.getString("labelLm"));
+        modelo = new DefaultTableModel();
+        modelo.addColumn(bundle.getString("labelULCedula"));
+        modelo.addColumn(bundle.getString("labelULNombre"));
+        modelo.addColumn(bundle.getString("labelULApellido"));
+        modelo.addColumn(bundle.getString("labelTelUL"));
+        modelo.addColumn(bundle.getString("labelULCorreo"));
+        modelo.addColumn(bundle.getString("labelFh"));
+        tblListadoUsuarios.setModel(modelo);
+        
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnMostrarListaUsuarios;
