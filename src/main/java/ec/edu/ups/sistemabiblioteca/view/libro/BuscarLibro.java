@@ -1,5 +1,7 @@
 package ec.edu.ups.sistemabiblioteca.view.libro;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -234,6 +236,19 @@ public class BuscarLibro extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldBsACedulaActionPerformed
 
+    public void cambiarIdioma(Locale locale){
+        ResourceBundle bundle =ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n", locale);
+        jLabelBuscarLibro.setText(bundle.getString("TLbus"));
+        jButtonBsBISBN.setText(bundle.getString("bttnBuscar"));
+        jLabelBsISBN.setText(bundle.getString("labelBISBN"));
+        jLabelBsTitulo.setText(bundle.getString("labelBTitulo"));
+        jLabelBsEditorial.setText(bundle.getString("labelBEditorial"));
+        jLabelBsAnio.setText(bundle.getString("labelBFB"));
+        jLabelBsACedula.setText(bundle.getString("labelBAutor"));
+        jLabelBsUNombre.setText(bundle.getString("labelBNombre"));
+        
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonBsBISBN;

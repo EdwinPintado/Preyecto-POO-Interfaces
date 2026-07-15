@@ -1,5 +1,7 @@
 package ec.edu.ups.sistemabiblioteca.view.libro;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -284,6 +286,20 @@ public class CrearLibro extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldLbANombreActionPerformed
 
+    public void cambiarIdioma(Locale locale){
+        ResourceBundle bundle =ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n", locale);
+        jLabelCrearLibro.setText(bundle.getString("TLct"));
+        jButtonLbBAutor.setText(bundle.getString("bttnBuscar"));
+        jButtonLbCLibro.setText(bundle.getString("bttnCrear"));
+        jButtonLbCancelar.setText(bundle.getString("bttnCancelar"));
+        jLabelLbISBN.setText(bundle.getString("labelCTISBN"));
+        jLabelLbTitulo.setText(bundle.getString("labelCtTitulo"));
+        jLabelLbEditorial.setText(bundle.getString("labelCTEditorial"));
+        jLabelLbAnio.setText(bundle.getString("labelCTFB"));
+        jLabelLbACedula.setText(bundle.getString("labelCTAutor"));
+        jLabelLbUNombre.setText(bundle.getString("labelCTNombre"));
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonLbBAutor;

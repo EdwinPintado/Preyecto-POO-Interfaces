@@ -4,6 +4,8 @@
  */
 package ec.edu.ups.sistemabiblioteca.view.devolucion;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -346,7 +348,20 @@ public class RealizarDevolucion extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonBuscarPresamoDActionPerformed
 
-
+    
+    public void cambiarIdioma(Locale locale){
+        ResourceBundle bundle =ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n", locale);
+        jLabelDevolucion.setText(bundle.getString("Tdevp"));
+        jButtonBuscarPresamoD.setText(bundle.getString("bttnBuscar"));
+        jLabelDCodigo.setText(bundle.getString("labelCP"));
+        jLabelDCUsuario.setText(bundle.getString("labelUcedula"));
+        jLabelDNUsuario.setText(bundle.getString("labelDnombre"));
+        jLabelDISBNLibro.setText(bundle.getString("labelDlibro"));
+        jLabelDTLibro.setText(bundle.getString("labelDtitulo"));
+        jLabelDBCodigo.setText(bundle.getString("labelDCodigo"));
+        jLabelDFPrestamo.setText(bundle.getString("labelFP"));
+        jLabelDFDevolucion.setText(bundle.getString("labelFd"));     
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonBuscarPresamoD;
     private javax.swing.JLabel jLabelDBCodigo;
