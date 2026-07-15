@@ -95,6 +95,11 @@ public class RealizarDevolucion extends javax.swing.JInternalFrame {
 
     public void mostrarInformacion(String mensaje) {
         JOptionPane.showMessageDialog(this, mensaje);
+        
+    }
+
+    public void mostrarInformacion1(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensaje);
         dispose();
     }
 

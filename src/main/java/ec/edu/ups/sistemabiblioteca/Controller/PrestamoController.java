@@ -106,7 +106,7 @@ public class PrestamoController {
 
             prestamoDao.agregar(prestamo);
 
-            agregarPrestamoView.mostrarInformacion("Préstamo creado correctamente");
+            agregarPrestamoView.mostrarInformacion1("Préstamo creado correctamente");
 
         } catch (Exception e) {
             agregarPrestamoView.mostrarInformacion("Ocurrió un error inesperado: " + e.getMessage());

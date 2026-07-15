@@ -1,4 +1,3 @@
-
 package ec.edu.ups.sistemabiblioteca.Controller;
 
 import ec.edu.ups.sistemabiblioteca.DAO.AutorDAOMemoria;
@@ -19,6 +18,7 @@ import javax.swing.event.InternalFrameAdapter;
 import javax.swing.event.InternalFrameEvent;
 
 public class LibroController {
+
     private LibroDAOMemoria libroDAO;
     private AutorDAOMemoria autorDao;
 
@@ -52,21 +52,14 @@ public class LibroController {
         configurarEventosActualizarLibro();
         configurarEventosListarLibro();
     }
-    
-    public void mostrarInformacion(java.awt.Component ventana, String mensaje) {
-        JOptionPane.showMessageDialog(ventana, mensaje);
-        java.awt.Window win = javax.swing.SwingUtilities.getWindowAncestor(ventana);
-        if (win != null) {
-            win.dispose();
-        }
-    }
+
     public void mostrarMensaje(java.awt.Component ventana, String mensaje, String titulo, int tipoMensaje) {
         JOptionPane.showMessageDialog(ventana, mensaje, titulo, tipoMensaje);
     }
 
     public void agregarLibro() {
 
-        int respuesta = JOptionPane.showConfirmDialog(crearLibro,"¿Desea registrar un nuevo libro?","Confirmar",JOptionPane.YES_NO_OPTION);
+        int respuesta = JOptionPane.showConfirmDialog(crearLibro, "¿Desea registrar un nuevo libro?", "Confirmar", JOptionPane.YES_NO_OPTION);
         if (respuesta == JOptionPane.YES_OPTION) {
 
             try {
@@ -75,16 +68,16 @@ public class LibroController {
                 String editorial = crearLibro.getjTextFieldLbEditorial().getText();
                 Date anio = Date.valueOf(crearLibro.getjTextFieldLbAnio().getText());
                 String cedulaAutor = crearLibro.getjTextFieldLbACedula().getText();
-                
+
                 Autor autor = autorDao.buscar(cedulaAutor);
                 if (autor == null) {
-                    mostrarInformacion(crearLibro, "Autor no encontrado");
+                    crearLibro.mostrarInformacion("Autor no encontrado");
                     return;
                 }
                 crearLibro.getjTextFieldLbANombre().setText(autor.getNombre());
                 Libro libro = new Libro(isbn, titulo, editorial, anio, autor);
                 libroDAO.agregar(libro);
-                mostrarInformacion(crearLibro, "Libro registrado correctamente :)");
+                crearLibro.mostrarInformacion1("Libro registrado correctamente :)");
                 crearLibro.getjTextFieldLbISBN().setText("");
                 crearLibro.getjTextFieldLbTitulo().setText("");
                 crearLibro.getjTextFieldLbEditorial().setText("");
@@ -92,10 +85,20 @@ public class LibroController {
                 crearLibro.getjTextFieldLbACedula().setText("");
                 crearLibro.getjTextFieldLbANombre().setText("");
             } catch (IllegalArgumentException e) {
-                mostrarInformacion(crearLibro, "Error: formato de fecha AAAA-MM-DD");
+                mostrarMensaje(crearLibro, "Error: El formato de fecha debe ser AAAA-MM-DD.", "Error", JOptionPane.ERROR_MESSAGE);
             }
         } else {
-            mostrarInformacion(crearLibro, "Acción cancelada");
+            crearLibro.mostrarInformacion1("Acción cancelada");
+        }
+    }
+
+    public void buscarRegistroLibro() {
+        String cedula = crearLibro.getjTextFieldLbACedula().getText().trim();
+        Autor autor= autorDao.buscar(cedula);
+        if (autor == null) {
+            crearLibro.mostrarInformacion("Error: El usuario con cédula " + cedula + " no existe.");
+        } else {
+            crearLibro.getjTextFieldLbANombre().setText(autor.getNombre());
         }
     }
 
@@ -105,6 +108,13 @@ public class LibroController {
             public void actionPerformed(ActionEvent e) {
                 agregarLibro();
             }
+        });
+        crearLibro.getjButtonLbBAutor().addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                buscarRegistroLibro();
+            }
+            
         });
     }
 
@@ -119,6 +129,8 @@ public class LibroController {
             buscarLibro.getjTextFieldBsTitulo().setText(libro.getTitulo());
             buscarLibro.getjTextFieldBsEditorial().setText(libro.getEditorial());
             buscarLibro.getjTextFieldBsAnio().setText(String.valueOf(libro.getAnioPublicacion()));
+            buscarLibro.getjTextFieldBsACedula().setText(libro.getAutor().getCedula());
+            buscarLibro.getjTextFieldBsANombre().setText(libro.getAutor().getNombre());
 
         } else {
 
@@ -126,8 +138,10 @@ public class LibroController {
             buscarLibro.getjTextFieldBsTitulo().setText("");
             buscarLibro.getjTextFieldBsEditorial().setText("");
             buscarLibro.getjTextFieldBsAnio().setText("");
+            buscarLibro.getjTextFieldBsACedula().setText("");
+            buscarLibro.getjTextFieldBsANombre().setText("");
 
-            mostrarInformacion(buscarLibro, "No se encontró el libro");
+            buscarLibro.mostrarInformacion("No se encontró el libro");
         }
     }
 
@@ -159,7 +173,7 @@ public class LibroController {
             eliminarLibro.getjTextFieldBrEditorial().setText("");
             eliminarLibro.getjTextFieldBrAnio().setText("");
 
-            mostrarInformacion(eliminarLibro, "No se encontró el libro");
+            eliminarLibro.mostrarInformacion("No se encontró el libro");
         }
     }
 
@@ -180,7 +194,7 @@ public class LibroController {
 
                 libroDAO.eliminar(isbn);
 
-                mostrarInformacion(eliminarLibro, "Libro eliminado correctamente :)");
+                eliminarLibro.mostrarInformacion1("Libro eliminado correctamente :)");
 
                 eliminarLibro.getjTextFieldBrISBN().setText("");
                 eliminarLibro.getjTextFieldBrTitulo().setText("");
@@ -188,12 +202,12 @@ public class LibroController {
                 eliminarLibro.getjTextFieldBrAnio().setText("");
 
             } else {
-                mostrarInformacion(eliminarLibro, " eliminarLibroAcción cancelada :(");
+                eliminarLibro.mostrarInformacion(" eliminarLibroAcción cancelada :(");
             }
 
         } else {
 
-            mostrarInformacion(eliminarLibro, "No se encontró el libro");
+            eliminarLibro.mostrarInformacion("No se encontró el libro");
         }
     }
 
@@ -231,7 +245,7 @@ public class LibroController {
             actualizarLibro.getjTextFieldActLAnio().setText("");
             actualizarLibro.getjTextFieldActLACedula().setText("");
 
-            mostrarInformacion(actualizarLibro, "Libro no encontrado");
+            actualizarLibro.mostrarInformacion("Libro no encontrado");
         }
     }
 
@@ -264,7 +278,7 @@ public class LibroController {
 
                 libroDAO.actualizar(libroActualizado);
 
-                mostrarInformacion(actualizarLibro, "Libro actualizado correctamente :)");
+                actualizarLibro.mostrarInformacion1("Libro actualizado correctamente :)");
 
                 actualizarLibro.getjTextFieldActISBN().setText("");
                 actualizarLibro.getjTextFieldActLTitulo().setText("");
@@ -272,11 +286,11 @@ public class LibroController {
                 actualizarLibro.getjTextFieldActLAnio().setText("");
 
             } else {
-                mostrarInformacion(actualizarLibro, "Actualización cancelada :(");
+                actualizarLibro.mostrarInformacion("Actualización cancelada :(");
             }
 
         } else {
-            mostrarInformacion(actualizarLibro, "No se encontró el libro");
+            actualizarLibro.mostrarInformacion("No se encontró el libro");
         }
     }
 

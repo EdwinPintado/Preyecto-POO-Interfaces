@@ -1,7 +1,7 @@
-
 package ec.edu.ups.sistemabiblioteca.view.libro;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 public class BorrarLibro extends javax.swing.JInternalFrame {
@@ -82,8 +82,16 @@ public class BorrarLibro extends javax.swing.JInternalFrame {
         this.jTextFieldBrTitulo = jTextFieldBrTitulo;
     }
 
-    
-    
+    public void mostrarInformacion(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensaje);
+
+    }
+
+    public void mostrarInformacion1(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensaje);
+        dispose();
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

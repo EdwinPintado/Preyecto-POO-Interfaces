@@ -108,10 +108,15 @@ public class ActualizarBibliotecario extends javax.swing.JInternalFrame {
     public void setjTextFieldActBTurno(JTextField jTextFieldActBTurno) {
         this.jTextFieldActBTurno = jTextFieldActBTurno;
     }
-    
-        public void mostrarInformacion(String mensaje){
+
+    public void mostrarInformacion(String mensaje) {
         JOptionPane.showMessageDialog(this, mensaje);
-        
+
+    }
+
+    public void mostrarInformacion1(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensaje);
+        dispose();
     }
 
     /**

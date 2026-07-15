@@ -45,8 +45,6 @@ public class BorrarBibliotecario extends javax.swing.JInternalFrame {
         this.jButtonEBEliminar = jButtonEBEliminar;
     }
 
-    
-
     public JTextField getjTextFieldEBApellido() {
         return jTextFieldEBApellido;
     }
@@ -110,10 +108,15 @@ public class BorrarBibliotecario extends javax.swing.JInternalFrame {
     public void setjTextFieldEBTurno(JTextField jTextFieldEBTurno) {
         this.jTextFieldEBTurno = jTextFieldEBTurno;
     }
-    
-        public void mostrarInformacion(String mensaje){
+
+    public void mostrarInformacion(String mensaje) {
         JOptionPane.showMessageDialog(this, mensaje);
-        
+
+    }
+
+    public void mostrarInformacion1(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensaje);
+        dispose();
     }
 
     /**

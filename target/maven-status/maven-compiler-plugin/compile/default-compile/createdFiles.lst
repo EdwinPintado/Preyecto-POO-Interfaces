@@ -7,6 +7,7 @@ ec\edu\ups\sistemabiblioteca\Controller\DevolucionController$2.class
 ec\edu\ups\sistemabiblioteca\DAO\BibliotecarioDAOMemoria.class
 ec\edu\ups\sistemabiblioteca\view\prestamo\CrearPrestamo.class
 ec\edu\ups\sistemabiblioteca\view\bibliotecario\CrearBibliotecario.class
+ec\edu\ups\sistemabiblioteca\Controller\LibroController$8.class
 ec\edu\ups\sistemabiblioteca\Controller\BibliotecarioController$7.class
 ec\edu\ups\sistemabiblioteca\Controller\AutorController$4.class
 ec\edu\ups\sistemabiblioteca\Controller\BibliotecarioController$4.class

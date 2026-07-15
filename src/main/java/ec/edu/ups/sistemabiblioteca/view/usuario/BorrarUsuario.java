@@ -1,7 +1,7 @@
-
 package ec.edu.ups.sistemabiblioteca.view.usuario;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 public class BorrarUsuario extends javax.swing.JInternalFrame {
@@ -17,7 +17,6 @@ public class BorrarUsuario extends javax.swing.JInternalFrame {
     public void setjButtonEUABorrar(JButton jButtonEUABorrar) {
         this.jButtonEUABorrar = jButtonEUABorrar;
     }
-    
 
     public JButton getjButtonEUActualizar() {
         return jButtonEUABorrar;
@@ -99,8 +98,16 @@ public class BorrarUsuario extends javax.swing.JInternalFrame {
         this.jTextFieldEUTelefono = jTextFieldEUTelefono;
     }
 
-    
-    
+    public void mostrarInformacion(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensaje);
+
+    }
+
+    public void mostrarInformacion1(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensaje);
+        dispose();
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

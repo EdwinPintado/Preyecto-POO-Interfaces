@@ -49,13 +49,8 @@ public class UsuarioController {
         configurarEventosListarUsuarios();
     }
     
-    public void mostrarInformacion(java.awt.Component ventana, String mensaje) {
-        JOptionPane.showMessageDialog(ventana, mensaje);
-        java.awt.Window win = javax.swing.SwingUtilities.getWindowAncestor(ventana);
-        if (win != null) {
-            win.dispose();
-        }
-    }
+ 
+    
     public void mostrarMensaje(java.awt.Component ventana, String mensaje, String titulo, int tipoMensaje) {
         JOptionPane.showMessageDialog(ventana, mensaje, titulo, tipoMensaje);
     }
@@ -84,7 +79,7 @@ public class UsuarioController {
 
                 usuarioDao.agregar(usuario);
 
-                mostrarInformacion(crearUsuario, "Usuario creado exitosamente :)");
+                crearUsuario.mostrarInformacion1("Usuario creado exitosamente :)");
                 crearUsuario.getjTextFieldCUCedula().setText("");
                 crearUsuario.getjTextFieldCUNombre().setText("");
                 crearUsuario.getjTextFieldCUApellido().setText("");
@@ -98,7 +93,7 @@ public class UsuarioController {
             }
 
         } else {
-            mostrarInformacion(crearUsuario, "Acción cancelada :(");
+            crearUsuario.mostrarInformacion("Acción cancelada :(");
         }
     }
 
@@ -134,7 +129,7 @@ public class UsuarioController {
             buscarUsuario.getjTextFieldBUCElectronico().setText("");
             buscarUsuario.getjTextFieldBUFNacimiento().setText("");
 
-            mostrarInformacion(buscarUsuario, "No se encontró el usuario");
+            buscarUsuario.mostrarInformacion( "No se encontró el usuario");
         }
     }
 
@@ -160,6 +155,7 @@ public class UsuarioController {
             actualizarUsuario.getjTextFieldAUCElectronico().setText(usuario.getCorreoElectronico());
             actualizarUsuario.getjTextFieldAUDireccion().setText(usuario.getDireccion());
             actualizarUsuario.getjTextFieldAUFNacimiento().setText(String.valueOf(usuario.getFechaNacimiento()));
+            
 
         } else {
 
@@ -170,7 +166,7 @@ public class UsuarioController {
             actualizarUsuario.getjTextFieldAUDireccion().setText("");
             actualizarUsuario.getjTextFieldAUFNacimiento().setText("");
 
-            mostrarInformacion(actualizarUsuario, "No se encontró el usuario");
+            actualizarUsuario.mostrarInformacion( "No se encontró el usuario");
         }
     }
 
@@ -200,10 +196,10 @@ public class UsuarioController {
 
                 usuarioDao.actualizar(nuevo);
 
-                mostrarInformacion(actualizarUsuario,"Usuario actualizado correctamente :)");
+                actualizarUsuario.mostrarInformacion1("Usuario actualizado correctamente :)");
             }
         } else {
-            mostrarInformacion(actualizarUsuario, "No se encontró el usuario");
+            actualizarUsuario.mostrarInformacion( "No se encontró el usuario");
         }
     }
 
@@ -221,7 +217,7 @@ public class UsuarioController {
             eliminarUsuario.getjTextFieldEUFNacimiento().setText(String.valueOf(usuario.getFechaNacimiento()));
 
         } else {
-            mostrarInformacion(eliminarUsuario, "No se encontró el usuario");
+            eliminarUsuario.mostrarInformacion("No se encontró el usuario");
         }
     }
 
@@ -242,7 +238,7 @@ public class UsuarioController {
 
                 usuarioDao.eliminar(cedula);
 
-                mostrarInformacion(eliminarUsuario, "Usuario eliminado correctamente :)");
+                eliminarUsuario.mostrarInformacion( "Usuario eliminado correctamente :)");
                 crearUsuario.getjTextFieldCUCedula().setText("");
                 crearUsuario.getjTextFieldCUNombre().setText("");
                 crearUsuario.getjTextFieldCUApellido().setText("");
@@ -253,7 +249,7 @@ public class UsuarioController {
             }
 
         } else {
-            mostrarInformacion(eliminarUsuario, "No se encontró el usuario");
+            eliminarUsuario.mostrarInformacion( "No se encontró el usuario");
         }
     }
 
@@ -287,7 +283,7 @@ public class UsuarioController {
             eliminarUsuario.getjTextFieldEUFNacimiento().setText(String.valueOf(usuario.getFechaNacimiento()));
 
         } else {
-            mostrarInformacion(eliminarUsuario, "No se encontró el usuario");
+            eliminarUsuario.mostrarInformacion("No se encontró el usuario");
         }
     }
 

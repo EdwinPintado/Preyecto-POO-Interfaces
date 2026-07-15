@@ -68,7 +68,7 @@ public class BibliotecarioController {
 
                 bibliotecarioDAOMemoria.agregar(bibliotecario);
 
-                crearBibliotecario.mostrarInformacion("Bibliotecario creado exitosamente");
+                crearBibliotecario.mostrarInformacion1("Bibliotecario creado exitosamente");
                 buscarBibliotecario.getjTextFieldBBCedula().setText(" ");
                 buscarBibliotecario.getjTextFieldBBNombre().setText(" ");
                 buscarBibliotecario.getjTextFieldBBApellido().setText(" ");
@@ -89,12 +89,13 @@ public class BibliotecarioController {
     }
 
     public void buscarBibliotecario() {
-        String cedula = buscarBibliotecario.getjTextFieldBBCedula().getText();
+        String cedula = buscarBibliotecario.getjTextFieldBBCedula().getText().trim();
         Bibliotecario bibliotecario = bibliotecarioDAOMemoria.buscar(cedula);
 
         if (bibliotecario != null) {
             buscarBibliotecario.getjTextFieldBBNombre().setText(bibliotecario.getNombre());
             buscarBibliotecario.getjTextFieldBBApellido().setText(bibliotecario.getApellido());
+            buscarBibliotecario.getjTextFieldBBCodigo().setText(bibliotecario.getCodigo());
             buscarBibliotecario.getjTextFieldBBCargo().setText(bibliotecario.getCargo());
             buscarBibliotecario.getjTextFieldBBTelefono().setText(bibliotecario.getTelefono());
             buscarBibliotecario.getjTextFieldBBFecha().setText(String.valueOf(bibliotecario.getFechaNacimiento()));
@@ -125,7 +126,7 @@ public class BibliotecarioController {
             if (respuesta == JOptionPane.YES_OPTION) {
                 bibliotecarioDAOMemoria.eliminar(cedula);
 
-                eliminarBibliotecario.mostrarInformacion("Bibliotecario eliminado exitosamente");
+                eliminarBibliotecario.mostrarInformacion1("Bibliotecario eliminado exitosamente");
                 eliminarBibliotecario.getjButtonEBBCedula().setText(" ");
                 eliminarBibliotecario.getjTextFieldEBNombre().setText(" ");
                 eliminarBibliotecario.getjTextFieldEBApellido().setText(" ");
@@ -183,6 +184,7 @@ public class BibliotecarioController {
             actualizarBibliotecario.getjTextFieldActBCodigo().setText(bibliotecario.getCodigo());
             actualizarBibliotecario.getjTextFieldActBFecha().setText(String.valueOf(bibliotecario.getFechaNacimiento()));
             actualizarBibliotecario.getjTextFieldActBTurno().setText(bibliotecario.getTurno());
+            
 
         } else {
             actualizarBibliotecario.getjTextFieldActBNombre().setText(" ");
@@ -218,7 +220,7 @@ public class BibliotecarioController {
 
                 Bibliotecario bibliotecarioActualizado = new Bibliotecario(codigo, turno, cargo, cedula, nombre, apellido, telefono, fechaNa);
                 bibliotecarioDAOMemoria.actualizar(bibliotecarioActualizado);
-                actualizarBibliotecario.mostrarInformacion("Bibliotecarip actualizado correctamente");
+                actualizarBibliotecario.mostrarInformacion1("Bibliotecarip actualizado correctamente");
 
                 actualizarBibliotecario.getjTextFieldActBNombre().setText(" ");
                 actualizarBibliotecario.getjTextFieldActBApellido().setText(" ");

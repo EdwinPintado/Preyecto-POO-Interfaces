@@ -62,7 +62,7 @@ public class DevolucionController {
         
         Devolucion devolucion = new Devolucion(prestamo , fechaDevolucion);
         devolucionDAO.agregar(devolucion);
-        agregarDevolucionView.mostrarInformacion("Devolcuion exitosa ,tenga buen dia");
+        agregarDevolucionView.mostrarInformacion1("Devolcuion exitosa ,tenga buen dia");
     }
     public void listarDevoluciones() {
 

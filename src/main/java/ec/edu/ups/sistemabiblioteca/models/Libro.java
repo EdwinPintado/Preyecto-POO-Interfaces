@@ -20,6 +20,7 @@ public class Libro {
         this.titulo = titulo;
         this.editorial = editorial;
         this.anioPublicacion = anioPublicacion;
+        this.autor= autor;
         this.disponible = disponible;
     }
 

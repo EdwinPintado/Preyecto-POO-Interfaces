@@ -100,9 +100,15 @@ public class CrearBibliotecario extends javax.swing.JInternalFrame {
     public void setjTextFieldCBTurno(JTextField jTextFieldCBTurno) {
         this.jTextFieldCBTurno = jTextFieldCBTurno;
     }
-    public void mostrarInformacion(String mensaje){
+
+    public void mostrarInformacion(String mensaje) {
         JOptionPane.showMessageDialog(this, mensaje);
-        
+
+    }
+
+    public void mostrarInformacion1(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensaje);
+        dispose();
     }
 
     /**

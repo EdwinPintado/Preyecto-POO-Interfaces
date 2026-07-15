@@ -1,4 +1,3 @@
-
 package ec.edu.ups.sistemabiblioteca.Controller;
 
 import ec.edu.ups.sistemabiblioteca.DAO.AutorDAOMemoria;
@@ -17,9 +16,9 @@ import java.util.ResourceBundle;
 import javax.swing.JOptionPane;
 
 public class AutorController {
-    
+
     //Dao
-    private AutorDAOMemoria autorDAO; 
+    private AutorDAOMemoria autorDAO;
     //Autores
     private CrearAutor crearAutor;
     private BorrarAutor borrarAutor;
@@ -41,9 +40,10 @@ public class AutorController {
         configurarEventosListarAutor();
     }
 
+    public void mostrarMensaje(java.awt.Component ventana, String mensaje, String titulo, int tipoMensaje) {
+        JOptionPane.showMessageDialog(ventana, mensaje, titulo, tipoMensaje);
+    }
 
-
-    
     //Agregar autor
     public void agregarAutor() {
         int respuesta = JOptionPane.showConfirmDialog(crearAutor, "¿Quieres crear un nuevo autor?", "Confirmar", JOptionPane.YES_NO_OPTION);
@@ -58,10 +58,10 @@ public class AutorController {
                 String generoLiterario = crearAutor.getjTextFieldCAGenero().getText();
                 String bibliografia = crearAutor.getjTextFieldCABibliografia().getText();
                 Autor autor = new Autor(nacionalidad, generoLiterario, bibliografia, cedula, nombre, apellido, telefono, fechaNacimiento);
-                
+
                 autorDAO.agregar(autor);
                 crearAutor.mostrarInformacion1("Autor creado exitosamente :)");
-                
+
                 crearAutor.getjTextFieldCANombre().setText("");
                 crearAutor.getjTextFieldCAApellido().setText("");
                 crearAutor.getjTextFieldCANacionalidad().setText("");
@@ -69,17 +69,15 @@ public class AutorController {
                 crearAutor.getjTextFieldCAGenero().setText("");
                 crearAutor.getjTextFieldCAFecha().setText("");
                 crearAutor.getjTextFieldCABibliografia().setText("");
-                
+
             } catch (IllegalArgumentException e) {
                 //Por si el formato no es año-mes-disa
-                crearAutor.mostrarInformacion("Error: El formato de fecha debe ser AAAA-MM-DD.");
+                mostrarMensaje(crearAutor, "Error: El formato de fecha debe ser AAAA-MM-DD.", "Error", JOptionPane.ERROR_MESSAGE);
             }
         } else {
             crearAutor.mostrarInformacion1("Accion cancelada :(");
         }
     }
-    
-    
 
     public void buscarEliminarAutor() {
         String cedulaBuscar = borrarAutor.getjTextFieldEACedula().getText();
@@ -101,7 +99,7 @@ public class AutorController {
             borrarAutor.getjTextFieldEAGenero().setText("");
             borrarAutor.getjTextFieldEAFecha().setText("");
             borrarAutor.getjTextFieldEABibliografia().setText("");
-            borrarAutor.mostrarInformacion( "No se encontro el autor (autor no existe)");
+            borrarAutor.mostrarInformacion("No se encontro el autor (autor no existe)");
         }
     }
 
@@ -167,7 +165,7 @@ public class AutorController {
             actualizarAutor.getjTextFieldActAGenero().setText("");
             actualizarAutor.getjTextFieldActAFecha().setText("");
             actualizarAutor.getjTextFieldActABibliografia().setText("");
-            buscarAutor.mostrarInformacion( "No se encontro el autor (autor no existe)");
+            buscarAutor.mostrarInformacion("No se encontro el autor (autor no existe)");
         }
     }
 
@@ -188,7 +186,7 @@ public class AutorController {
                 Autor autorAct = new Autor(nuevoNacionalidad, nuevoGenero, nuevoBlibliografia, cedulaBuscar, nuevoNombre, nuevoApellido, nuevoTelefono, nuevoFechaN);
                 autorDAO.actualizar(autorAct);
 
-                actualizarAutor.mostrarInformacion1( "Autor actualizado correctamente :)");
+                actualizarAutor.mostrarInformacion1("Autor actualizado correctamente :)");
 
                 actualizarAutor.getjTextFieldActACedula().setText("");
                 actualizarAutor.getjTextFieldActANombre().setText("");
@@ -199,7 +197,7 @@ public class AutorController {
                 actualizarAutor.getjTextFieldActAFecha().setText("");
                 actualizarAutor.getjTextFieldActABibliografia().setText("");
             } else {
-                actualizarAutor.mostrarInformacion1( "Actualizacion candelada");
+                actualizarAutor.mostrarInformacion1("Actualizacion candelada");
             }
         } else {
             actualizarAutor.mostrarInformacion1("No se encontro el autor (cedula no existe)");
@@ -276,15 +274,12 @@ public class AutorController {
             }
         });
     }
-    
-    
-/*
+
+    /*
     public void cambiarIdioma(Locale locale){
         ResourceBundle bundle = new ResourceBundle("ec.edu.ups.sistemabiblioteca.i18n", locale);
         
         
     }
-    */
-    
-    
+     */
 }
