@@ -1,7 +1,7 @@
 package ec.edu.ups.sistemabiblioteca.Controller;
 
-import ec.edu.ups.sistemabiblioteca.DAO.AutorDAOMemoria;
-import ec.edu.ups.sistemabiblioteca.DAO.LibroDAOMemoria;
+import ec.edu.ups.sistemabiblioteca.DAOMemoria.AutorDAOMemoria;
+import ec.edu.ups.sistemabiblioteca.DAOMemoria.LibroDAOMemoria;
 import ec.edu.ups.sistemabiblioteca.Exceptions.AutorNoEncontradoException;
 import ec.edu.ups.sistemabiblioteca.Exceptions.LibroNoEncontrado;
 import ec.edu.ups.sistemabiblioteca.models.Autor;

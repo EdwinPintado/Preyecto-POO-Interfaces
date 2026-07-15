@@ -4,10 +4,10 @@
  */
 package ec.edu.ups.sistemabiblioteca.Controller;
 
-import ec.edu.ups.sistemabiblioteca.DAO.BibliotecarioDAOMemoria;
-import ec.edu.ups.sistemabiblioteca.DAO.LibroDAOMemoria;
-import ec.edu.ups.sistemabiblioteca.DAO.PrestamoDAOMemoria;
-import ec.edu.ups.sistemabiblioteca.DAO.UsuarioDAOMemoria;
+import ec.edu.ups.sistemabiblioteca.DAOMemoria.BibliotecarioDAOMemoria;
+import ec.edu.ups.sistemabiblioteca.DAOMemoria.LibroDAOMemoria;
+import ec.edu.ups.sistemabiblioteca.DAOMemoria.PrestamoDAOMemoria;
+import ec.edu.ups.sistemabiblioteca.DAOMemoria.UsuarioDAOMemoria;
 import ec.edu.ups.sistemabiblioteca.Exceptions.LibroNoEncontrado;
 import ec.edu.ups.sistemabiblioteca.Exceptions.PrestamoNoEncontrado;
 import ec.edu.ups.sistemabiblioteca.Exceptions.UsuarioNoExiste;

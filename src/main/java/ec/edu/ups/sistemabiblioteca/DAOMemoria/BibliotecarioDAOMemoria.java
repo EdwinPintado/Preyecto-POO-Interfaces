@@ -1,11 +1,12 @@
-package ec.edu.ups.sistemabiblioteca.DAO;
+package ec.edu.ups.sistemabiblioteca.DAOMemoria;
 
+import ec.edu.ups.sistemabiblioteca.DAO.BibliotecarioDAO;
 import ec.edu.ups.sistemabiblioteca.Exceptions.BibliotecarioNoExiste;
 import ec.edu.ups.sistemabiblioteca.models.Bibliotecario;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BibliotecarioDAOMemoria implements SistemaDAO<Bibliotecario> {
+public class BibliotecarioDAOMemoria implements BibliotecarioDAO {
 
     private List<Bibliotecario> bibliotecarios;
 

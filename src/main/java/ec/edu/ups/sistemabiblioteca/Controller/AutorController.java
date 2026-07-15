@@ -1,6 +1,7 @@
 package ec.edu.ups.sistemabiblioteca.Controller;
 
-import ec.edu.ups.sistemabiblioteca.DAO.AutorDAOMemoria;
+import ec.edu.ups.sistemabiblioteca.DAO.AutorDAO;
+import ec.edu.ups.sistemabiblioteca.DAOMemoria.AutorDAOMemoria;
 import ec.edu.ups.sistemabiblioteca.Exceptions.AutorNoEncontradoException;
 import ec.edu.ups.sistemabiblioteca.models.Autor;
 import ec.edu.ups.sistemabiblioteca.view.autor.ActualizarAutor;
@@ -19,7 +20,7 @@ import javax.swing.JOptionPane;
 public class AutorController {
 
     //Dao
-    private AutorDAOMemoria autorDAO;
+    private AutorDAO autorDAO;
     //Autores
     private CrearAutor crearAutor;
     private BorrarAutor borrarAutor;

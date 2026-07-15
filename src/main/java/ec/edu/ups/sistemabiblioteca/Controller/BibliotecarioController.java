@@ -4,7 +4,7 @@
  */
 package ec.edu.ups.sistemabiblioteca.Controller;
 
-import ec.edu.ups.sistemabiblioteca.DAO.BibliotecarioDAOMemoria;
+import ec.edu.ups.sistemabiblioteca.DAOMemoria.BibliotecarioDAOMemoria;
 import ec.edu.ups.sistemabiblioteca.Exceptions.BibliotecarioNoExiste;
 import ec.edu.ups.sistemabiblioteca.models.Bibliotecario;
 import ec.edu.ups.sistemabiblioteca.view.bibliotecario.ActualizarBibliotecario;

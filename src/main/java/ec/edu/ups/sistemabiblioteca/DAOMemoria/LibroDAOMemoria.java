@@ -1,11 +1,12 @@
-package ec.edu.ups.sistemabiblioteca.DAO;
+package ec.edu.ups.sistemabiblioteca.DAOMemoria;
 
+import ec.edu.ups.sistemabiblioteca.DAO.LibroDAO;
 import ec.edu.ups.sistemabiblioteca.Exceptions.LibroNoEncontrado;
 import ec.edu.ups.sistemabiblioteca.models.Libro;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LibroDAOMemoria implements SistemaDAO<Libro> {
+public class LibroDAOMemoria implements LibroDAO {
 
     private List<Libro> libros = new ArrayList<>();
 

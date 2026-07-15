@@ -1,12 +1,13 @@
 
-package ec.edu.ups.sistemabiblioteca.DAO;
+package ec.edu.ups.sistemabiblioteca.DAOMemoria;
 
+import ec.edu.ups.sistemabiblioteca.DAO.UsuarioDAO;
 import ec.edu.ups.sistemabiblioteca.Exceptions.UsuarioNoExiste;
 import ec.edu.ups.sistemabiblioteca.models.Usuario;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UsuarioDAOMemoria implements SistemaDAO<Usuario> {
+public class UsuarioDAOMemoria implements UsuarioDAO {
 
     private List<Usuario> usuarios;
 

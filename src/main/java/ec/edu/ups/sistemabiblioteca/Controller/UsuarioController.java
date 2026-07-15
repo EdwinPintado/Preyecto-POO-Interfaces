@@ -1,6 +1,6 @@
 package ec.edu.ups.sistemabiblioteca.Controller;
 
-import ec.edu.ups.sistemabiblioteca.DAO.UsuarioDAOMemoria;
+import ec.edu.ups.sistemabiblioteca.DAOMemoria.UsuarioDAOMemoria;
 import ec.edu.ups.sistemabiblioteca.Exceptions.UsuarioNoExiste;
 import ec.edu.ups.sistemabiblioteca.models.Usuario;
 import ec.edu.ups.sistemabiblioteca.view.usuario.ActualizarUsuario;

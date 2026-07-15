@@ -1,12 +1,13 @@
 
-package ec.edu.ups.sistemabiblioteca.DAO;
+package ec.edu.ups.sistemabiblioteca.DAOMemoria;
 
+import ec.edu.ups.sistemabiblioteca.DAO.PrestamoDAO;
 import ec.edu.ups.sistemabiblioteca.Exceptions.PrestamoNoEncontrado;
 import ec.edu.ups.sistemabiblioteca.models.Prestamo;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PrestamoDAOMemoria implements SistemaDAO<Prestamo> {
+public class PrestamoDAOMemoria implements PrestamoDAO {
 
     private List<Prestamo> prestamos;
 

@@ -1,11 +1,12 @@
-package ec.edu.ups.sistemabiblioteca.DAO;
+package ec.edu.ups.sistemabiblioteca.DAOMemoria;
 
+import ec.edu.ups.sistemabiblioteca.DAO.AutorDAO;
 import ec.edu.ups.sistemabiblioteca.Exceptions.AutorNoEncontradoException;
 import ec.edu.ups.sistemabiblioteca.models.Autor;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AutorDAOMemoria implements SistemaDAO<Autor> {
+public class AutorDAOMemoria implements AutorDAO{
 
     private List<Autor> autores;
 
@@ -30,32 +31,9 @@ public class AutorDAOMemoria implements SistemaDAO<Autor> {
         System.out.println("se agresknfsd");
     }
 
-    @Override
-    public void eliminar(String cedula) {
-        for (int i = 0; i < autores.size(); i++) {
-            if (autores.get(i).getCedula().equals(cedula)) {
-                autores.remove(i);
-                break;
-            }
-        }
 
-    }
 
-    @Override
-    public Autor buscar(String cedula) throws AutorNoEncontradoException {
-
-        for (Autor a : autores) {
-
-            if (a.getCedula().equals(cedula)) {
-                return a;
-            }
-        }
-
-        throw new AutorNoEncontradoException(
-                "No se encontró el autor con cédula: " + cedula
-        );
-    }
-
+  
     @Override
     public void actualizar(Autor datos) {
         for (Autor a : autores) {
@@ -79,6 +57,28 @@ public class AutorDAOMemoria implements SistemaDAO<Autor> {
     @Override
     public int contar() {
         return autores.size();
+    }
+
+    @Override
+    public Autor buscar(String cedula) throws AutorNoEncontradoException {
+        for (Autor a : autores) {
+
+            if (a.getCedula().equals(cedula)) {
+                return a;
+            }
+        }
+
+        throw new AutorNoEncontradoException(
+                "No se encontró el autor con cédula: " + cedula
+        );    }
+
+    @Override
+    public void eliminar(String cedula) {
+                for (int i = 0; i < autores.size(); i++) {
+            if (autores.get(i).getCedula().equals(cedula)) {
+                autores.remove(i);
+            }
+        }
     }
 
 }

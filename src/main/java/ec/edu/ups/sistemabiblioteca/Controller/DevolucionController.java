@@ -4,8 +4,8 @@
  */
 package ec.edu.ups.sistemabiblioteca.Controller;
 
-import ec.edu.ups.sistemabiblioteca.DAO.DevolucionDAOMemoria;
-import ec.edu.ups.sistemabiblioteca.DAO.PrestamoDAOMemoria;
+import ec.edu.ups.sistemabiblioteca.DAOMemoria.DevolucionDAOMemoria;
+import ec.edu.ups.sistemabiblioteca.DAOMemoria.PrestamoDAOMemoria;
 import ec.edu.ups.sistemabiblioteca.Exceptions.PrestamoNoEncontrado;
 import ec.edu.ups.sistemabiblioteca.models.Devolucion;
 import ec.edu.ups.sistemabiblioteca.models.Prestamo;

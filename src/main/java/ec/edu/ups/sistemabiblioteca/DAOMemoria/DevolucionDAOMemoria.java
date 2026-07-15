@@ -1,11 +1,12 @@
-package ec.edu.ups.sistemabiblioteca.DAO;
+package ec.edu.ups.sistemabiblioteca.DAOMemoria;
 
+import ec.edu.ups.sistemabiblioteca.DAO.DevolucionDAO;
 import ec.edu.ups.sistemabiblioteca.Exceptions.DevolucionNoEncontradaException;
 import ec.edu.ups.sistemabiblioteca.models.Devolucion;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DevolucionDAOMemoria implements SistemaDAO<Devolucion> {
+public class DevolucionDAOMemoria implements DevolucionDAO {
 
     private List<Devolucion> devoluciones;
 

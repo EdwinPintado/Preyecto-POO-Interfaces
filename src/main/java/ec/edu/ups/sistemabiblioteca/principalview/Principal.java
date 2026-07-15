@@ -10,12 +10,24 @@ import ec.edu.ups.sistemabiblioteca.Controller.DevolucionController;
 import ec.edu.ups.sistemabiblioteca.Controller.LibroController;
 import ec.edu.ups.sistemabiblioteca.Controller.PrestamoController;
 import ec.edu.ups.sistemabiblioteca.Controller.UsuarioController;
-import ec.edu.ups.sistemabiblioteca.DAO.AutorDAOMemoria;
-import ec.edu.ups.sistemabiblioteca.DAO.BibliotecarioDAOMemoria;
-import ec.edu.ups.sistemabiblioteca.DAO.DevolucionDAOMemoria;
-import ec.edu.ups.sistemabiblioteca.DAO.LibroDAOMemoria;
-import ec.edu.ups.sistemabiblioteca.DAO.PrestamoDAOMemoria;
-import ec.edu.ups.sistemabiblioteca.DAO.UsuarioDAOMemoria;
+import ec.edu.ups.sistemabiblioteca.DAOArchivo.AutorDAOArchivo;
+import ec.edu.ups.sistemabiblioteca.DAOArchivo.BibliotecarioDAOArchivo;
+import ec.edu.ups.sistemabiblioteca.DAOArchivo.DevolucionDAOArchivo;
+import ec.edu.ups.sistemabiblioteca.DAOArchivo.LibroDAOArchivo;
+import ec.edu.ups.sistemabiblioteca.DAOArchivo.PrestamoDAOArchivo;
+import ec.edu.ups.sistemabiblioteca.DAOArchivo.UsuarioDAOArchivo;
+import ec.edu.ups.sistemabiblioteca.DAOMemoria.AutorDAOMemoria;
+import ec.edu.ups.sistemabiblioteca.DAOMemoria.BibliotecarioDAOMemoria;
+import ec.edu.ups.sistemabiblioteca.DAOMemoria.DevolucionDAOMemoria;
+import ec.edu.ups.sistemabiblioteca.DAOMemoria.LibroDAOMemoria;
+import ec.edu.ups.sistemabiblioteca.DAOMemoria.PrestamoDAOMemoria;
+import ec.edu.ups.sistemabiblioteca.DAOMemoria.UsuarioDAOMemoria;
+import ec.edu.ups.sistemabiblioteca.models.Autor;
+import ec.edu.ups.sistemabiblioteca.models.Bibliotecario;
+import ec.edu.ups.sistemabiblioteca.models.Devolucion;
+import ec.edu.ups.sistemabiblioteca.models.Libro;
+import ec.edu.ups.sistemabiblioteca.models.Prestamo;
+import ec.edu.ups.sistemabiblioteca.models.Usuario;
 import ec.edu.ups.sistemabiblioteca.view.autor.ActualizarAutor;
 import ec.edu.ups.sistemabiblioteca.view.autor.BorrarAutor;
 import ec.edu.ups.sistemabiblioteca.view.autor.BuscarAutor;
@@ -42,6 +54,7 @@ import ec.edu.ups.sistemabiblioteca.view.usuario.BuscarUsuario;
 import ec.edu.ups.sistemabiblioteca.view.usuario.CrearUsuario;
 import ec.edu.ups.sistemabiblioteca.view.usuario.ListarUsuario;
 import javax.swing.JDesktopPane;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -57,44 +70,49 @@ public class Principal extends javax.swing.JFrame {
     private BibliotecarioController bibliotecarioController;
 
     private AutorDAOMemoria autorDAO;
+    private AutorDAOArchivo autorArchivos;
     private UsuarioDAOMemoria usuarioDAO;
+    private UsuarioDAOArchivo usuarioArchivo;
     private BibliotecarioDAOMemoria bibliotecarioDAO;
+    private BibliotecarioDAOArchivo bibliotecarioDAOArhivo;
     private LibroDAOMemoria libroDAO;
+    private LibroDAOArchivo libroDAOArchivo;
     private DevolucionDAOMemoria devolucionDAO;
+    private DevolucionDAOArchivo devolucionArchivo;
     private PrestamoDAOMemoria prestamoDAO;
+    private PrestamoDAOArchivo prestamoArchivo;
 
     private ActualizarAutor actualizarAutor;
     private BorrarAutor borrarAutor;
     private BuscarAutor buscarAutor;
     private CrearAutor crearAutor;
     private ListarAutor listarAutor;
-    
+
     private ActualizarBibliotecario actualizarBibliotecario;
     private BorrarBibliotecario borrarBibliotecario;
     private BuscarBibliotecario buscarBibliotecario;
     private CrearBibliotecario crearBibliotecario;
     private ListarBibliotecario listarBibliotecario;
-    
+
     private ListarDevolucion listarDevolucion;
     private RealizarDevolucion realizarDevolucion;
-    
+
     private ActualizarLibro actualizarLibro;
     private BorrarLibro borrarLibro;
     private BuscarLibro buscarLibro;
     private CrearLibro crearLibro;
     private ListarLibro listarLibro;
-    
+
     private BuscarPrestamo buscarPrestamo;
     private CrearPrestamo crearPrestamo;
     private ListarPrestamo listarPrestamo;
-    
+
     private ActualizarUsuario actualizarUsuario;
     private BorrarUsuario borrarUsuario;
     private BuscarUsuario buscarUsuario;
     private CrearUsuario crearUsuario;
     private ListarUsuario listarUsuario;
-    
-    
+
     /**
      * Creates new form Principal
      */
@@ -102,51 +120,57 @@ public class Principal extends javax.swing.JFrame {
         desktopPane = new JDesktopPane();
         this.setContentPane(desktopPane);
         initComponents();
-        
-        autorDAO= new AutorDAOMemoria();
-        usuarioDAO= new UsuarioDAOMemoria();
-        bibliotecarioDAO= new BibliotecarioDAOMemoria();
-        libroDAO= new LibroDAOMemoria();
-        devolucionDAO= new DevolucionDAOMemoria();
-        prestamoDAO= new PrestamoDAOMemoria();
-        
-        crearAutor= new CrearAutor();
-        borrarAutor= new BorrarAutor();
-        buscarAutor= new BuscarAutor();
-        actualizarAutor= new ActualizarAutor();
-        listarAutor= new ListarAutor();
-        
-        crearBibliotecario= new CrearBibliotecario();
-        borrarBibliotecario= new BorrarBibliotecario();
-        buscarBibliotecario= new BuscarBibliotecario();
-        actualizarBibliotecario= new ActualizarBibliotecario();
-        listarBibliotecario= new ListarBibliotecario();
-        
-        crearLibro= new CrearLibro();
-        borrarLibro= new BorrarLibro();
-        buscarLibro= new BuscarLibro();
-        actualizarLibro= new ActualizarLibro();
-        listarLibro= new ListarLibro();
-        
-        crearPrestamo= new CrearPrestamo();
-        buscarPrestamo= new BuscarPrestamo();
-        listarPrestamo= new ListarPrestamo();
-        
-        realizarDevolucion= new RealizarDevolucion();
-        listarDevolucion= new ListarDevolucion();
-        
-        crearUsuario= new CrearUsuario();
-        borrarUsuario= new BorrarUsuario();
-        buscarUsuario= new BuscarUsuario();
-        actualizarUsuario= new ActualizarUsuario();
-        listarUsuario= new ListarUsuario();
-        
+
+        autorArchivos = new AutorDAOArchivo();
+        autorDAO = new AutorDAOMemoria();
+        usuarioDAO = new UsuarioDAOMemoria();
+        usuarioArchivo = new UsuarioDAOArchivo();
+        bibliotecarioDAO = new BibliotecarioDAOMemoria();
+        bibliotecarioDAOArhivo = new BibliotecarioDAOArchivo();
+        libroDAO = new LibroDAOMemoria();
+        libroDAOArchivo = new LibroDAOArchivo();
+        devolucionDAO = new DevolucionDAOMemoria();
+        devolucionArchivo = new DevolucionDAOArchivo();
+        prestamoDAO = new PrestamoDAOMemoria();
+        prestamoArchivo = new PrestamoDAOArchivo(usuarioDAO, libroDAO, bibliotecarioDAO);
+
+        crearAutor = new CrearAutor();
+        borrarAutor = new BorrarAutor();
+        buscarAutor = new BuscarAutor();
+        actualizarAutor = new ActualizarAutor();
+        listarAutor = new ListarAutor();
+
+        crearBibliotecario = new CrearBibliotecario();
+        borrarBibliotecario = new BorrarBibliotecario();
+        buscarBibliotecario = new BuscarBibliotecario();
+        actualizarBibliotecario = new ActualizarBibliotecario();
+        listarBibliotecario = new ListarBibliotecario();
+
+        crearLibro = new CrearLibro();
+        borrarLibro = new BorrarLibro();
+        buscarLibro = new BuscarLibro();
+        actualizarLibro = new ActualizarLibro();
+        listarLibro = new ListarLibro();
+
+        crearPrestamo = new CrearPrestamo();
+        buscarPrestamo = new BuscarPrestamo();
+        listarPrestamo = new ListarPrestamo();
+
+        realizarDevolucion = new RealizarDevolucion();
+        listarDevolucion = new ListarDevolucion();
+
+        crearUsuario = new CrearUsuario();
+        borrarUsuario = new BorrarUsuario();
+        buscarUsuario = new BuscarUsuario();
+        actualizarUsuario = new ActualizarUsuario();
+        listarUsuario = new ListarUsuario();
+
         autorController = new AutorController(autorDAO, crearAutor, borrarAutor, buscarAutor, actualizarAutor, listarAutor);
-        usuarioController= new UsuarioController(usuarioDAO, crearUsuario, borrarUsuario, buscarUsuario, actualizarUsuario, listarUsuario);
-        libroController= new LibroController(libroDAO, autorDAO, crearLibro, buscarLibro, borrarLibro, actualizarLibro, listarLibro);
-        bibliotecarioController= new BibliotecarioController(bibliotecarioDAO, crearBibliotecario, buscarBibliotecario, borrarBibliotecario, actualizarBibliotecario, listarBibliotecario);
-        prestamoController= new PrestamoController(prestamoDAO, usuarioDAO, libroDAO, bibliotecarioDAO, buscarPrestamo, crearPrestamo, listarPrestamo);
-        devolucionController= new DevolucionController(devolucionDAO, prestamoDAO, realizarDevolucion, listarDevolucion);
+        usuarioController = new UsuarioController(usuarioDAO, crearUsuario, borrarUsuario, buscarUsuario, actualizarUsuario, listarUsuario);
+        libroController = new LibroController(libroDAO, autorDAO, crearLibro, buscarLibro, borrarLibro, actualizarLibro, listarLibro);
+        bibliotecarioController = new BibliotecarioController(bibliotecarioDAO, crearBibliotecario, buscarBibliotecario, borrarBibliotecario, actualizarBibliotecario, listarBibliotecario);
+        prestamoController = new PrestamoController(prestamoDAO, usuarioDAO, libroDAO, bibliotecarioDAO, buscarPrestamo, crearPrestamo, listarPrestamo);
+        devolucionController = new DevolucionController(devolucionDAO, prestamoDAO, realizarDevolucion, listarDevolucion);
     }
 
     /**
@@ -159,6 +183,7 @@ public class Principal extends javax.swing.JFrame {
     private void initComponents() {
 
         desktopPane = new javax.swing.JDesktopPane();
+        jButton1 = new javax.swing.JButton();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         openMenuItem = new javax.swing.JMenuItem();
@@ -194,8 +219,20 @@ public class Principal extends javax.swing.JFrame {
         Devolucion1 = new javax.swing.JMenu();
         openMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem8 = new javax.swing.JMenuItem();
+        jMenuItem9 = new javax.swing.JMenuItem();
+        jMenuItem10 = new javax.swing.JMenuItem();
+        jMenuItem11 = new javax.swing.JMenuItem();
+        jMenuItem12 = new javax.swing.JMenuItem();
+        jMenuItem13 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jButton1.setText("ARCHIVOS");
+        jButton1.addActionListener(this::jButton1ActionPerformed);
+        desktopPane.add(jButton1);
+        jButton1.setBounds(290, 220, 160, 23);
 
         fileMenu.setMnemonic('f');
         fileMenu.setText("Autor");
@@ -358,6 +395,34 @@ public class Principal extends javax.swing.JFrame {
 
         menuBar.add(Devolucion1);
 
+        jMenu1.setText("Archivos");
+
+        jMenuItem8.setText("Exportar autores a Archivo,ups");
+        jMenuItem8.addActionListener(this::jMenuItem8ActionPerformed);
+        jMenu1.add(jMenuItem8);
+
+        jMenuItem9.setText("Exportar libros a Archivos.ups");
+        jMenuItem9.addActionListener(this::jMenuItem9ActionPerformed);
+        jMenu1.add(jMenuItem9);
+
+        jMenuItem10.setText("Exportar bibliotecario a Archivos.ups");
+        jMenuItem10.addActionListener(this::jMenuItem10ActionPerformed);
+        jMenu1.add(jMenuItem10);
+
+        jMenuItem11.setText("Exportar usuarios a Archivos.ups");
+        jMenuItem11.addActionListener(this::jMenuItem11ActionPerformed);
+        jMenu1.add(jMenuItem11);
+
+        jMenuItem12.setText("Exportar Prestamo a Archivo.ups");
+        jMenuItem12.addActionListener(this::jMenuItem12ActionPerformed);
+        jMenu1.add(jMenuItem12);
+
+        jMenuItem13.setText("Exportar Devolucion a Archivos.ups");
+        jMenuItem13.addActionListener(this::jMenuItem13ActionPerformed);
+        jMenu1.add(jMenuItem13);
+
+        menuBar.add(jMenu1);
+
         setJMenuBar(menuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -379,7 +444,7 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void exitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItemActionPerformed
-        if(borrarAutor== null||!borrarAutor.isVisible()){
+        if (borrarAutor == null || !borrarAutor.isVisible()) {
             desktopPane.remove(borrarAutor);
             desktopPane.add(borrarAutor);
             borrarAutor.setVisible(true);
@@ -388,7 +453,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void exitMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItem2ActionPerformed
         // TODO add your handling code here:
-        if(borrarLibro== null|| ! borrarLibro.isVisible()){
+        if (borrarLibro == null || !borrarLibro.isVisible()) {
             desktopPane.remove(borrarLibro);
             desktopPane.add(borrarLibro);
             borrarLibro.setVisible(true);
@@ -397,7 +462,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void exitMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItem3ActionPerformed
         // TODO add your handling code here:
-        if(borrarBibliotecario== null|| !buscarBibliotecario.isVisible()){
+        if (borrarBibliotecario == null || !buscarBibliotecario.isVisible()) {
             desktopPane.remove(borrarBibliotecario);
             desktopPane.add(borrarBibliotecario);
             borrarBibliotecario.setVisible(true);
@@ -406,7 +471,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void exitMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItem4ActionPerformed
         // TODO add your handling code here:
-        if(borrarUsuario== null || !borrarUsuario.isVisible()){
+        if (borrarUsuario == null || !borrarUsuario.isVisible()) {
             desktopPane.remove(borrarUsuario);
             desktopPane.add(borrarUsuario);
             borrarUsuario.setVisible(true);
@@ -415,7 +480,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void openMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openMenuItemActionPerformed
         // TODO add your handling code here:
-        if(crearAutor == null|| !crearAutor.isVisible()){
+        if (crearAutor == null || !crearAutor.isVisible()) {
             desktopPane.remove(crearAutor);
             desktopPane.add(crearAutor);
             crearAutor.setVisible(true);
@@ -424,27 +489,27 @@ public class Principal extends javax.swing.JFrame {
 
     private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
         // TODO add your handling code here:
-        if(buscarAutor== null|| !buscarAutor.isVisible()){
+        if (buscarAutor == null || !buscarAutor.isVisible()) {
             desktopPane.remove(buscarAutor);
             desktopPane.add(buscarAutor);
             buscarAutor.setVisible(true);
-            
+
         }
     }//GEN-LAST:event_BuscarActionPerformed
 
     private void saveAsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveAsMenuItemActionPerformed
         // TODO add your handling code here:
-        if(actualizarAutor== null|| !actualizarAutor.isVisible()){
+        if (actualizarAutor == null || !actualizarAutor.isVisible()) {
             desktopPane.remove(actualizarAutor);
             desktopPane.add(actualizarAutor);
             actualizarAutor.setVisible(true);
-            
+
         }
     }//GEN-LAST:event_saveAsMenuItemActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
-        if(listarAutor== null || !listarAutor.isVisible()){
+        if (listarAutor == null || !listarAutor.isVisible()) {
             desktopPane.remove(listarAutor);
             desktopPane.add(listarAutor);
             listarAutor.setVisible(true);
@@ -453,7 +518,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void openMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openMenuItem2ActionPerformed
         // TODO add your handling code here:
-        if(crearLibro== null || !crearLibro.isVisible()){
+        if (crearLibro == null || !crearLibro.isVisible()) {
             desktopPane.remove(crearLibro);
             desktopPane.add(crearLibro);
             crearLibro.setVisible(true);
@@ -462,7 +527,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void Buscar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Buscar1ActionPerformed
         // TODO add your handling code here:
-        if(buscarLibro== null|| !buscarLibro.isVisible()){
+        if (buscarLibro == null || !buscarLibro.isVisible()) {
             desktopPane.remove(buscarLibro);
             desktopPane.add(buscarLibro);
             buscarLibro.setVisible(true);
@@ -471,7 +536,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void saveAsMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveAsMenuItem2ActionPerformed
         // TODO add your handling code here:
-        if(actualizarLibro== null ||!actualizarLibro.isVisible()){
+        if (actualizarLibro == null || !actualizarLibro.isVisible()) {
             desktopPane.remove(actualizarLibro);
             desktopPane.add(actualizarLibro);
             actualizarLibro.setVisible(true);
@@ -480,7 +545,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
-        if(listarLibro== null || ! listarLibro.isVisible()){
+        if (listarLibro == null || !listarLibro.isVisible()) {
             desktopPane.remove(listarLibro);
             desktopPane.add(listarLibro);
             listarLibro.setVisible(true);
@@ -489,7 +554,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void openMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openMenuItem3ActionPerformed
         // TODO add your handling code here:
-        if(crearBibliotecario== null || ! crearBibliotecario.isVisible()){
+        if (crearBibliotecario == null || !crearBibliotecario.isVisible()) {
             desktopPane.remove(crearBibliotecario);
             desktopPane.add(crearBibliotecario);
             crearBibliotecario.setVisible(true);
@@ -498,7 +563,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void Buscar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Buscar2ActionPerformed
         // TODO add your handling code here:
-        if(buscarBibliotecario== null || !buscarBibliotecario.isVisible()){
+        if (buscarBibliotecario == null || !buscarBibliotecario.isVisible()) {
             desktopPane.remove(buscarBibliotecario);
             desktopPane.add(buscarBibliotecario);
             buscarBibliotecario.setVisible(true);
@@ -507,7 +572,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void saveAsMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveAsMenuItem3ActionPerformed
         // TODO add your handling code here:
-        if(actualizarBibliotecario== null || !actualizarBibliotecario.isVisible()){
+        if (actualizarBibliotecario == null || !actualizarBibliotecario.isVisible()) {
             desktopPane.remove(actualizarBibliotecario);
             desktopPane.add(actualizarBibliotecario);
             actualizarBibliotecario.setVisible(true);
@@ -516,7 +581,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // TODO add your handling code here:
-        if(listarBibliotecario== null|| !listarBibliotecario.isVisible()){
+        if (listarBibliotecario == null || !listarBibliotecario.isVisible()) {
             desktopPane.remove(listarBibliotecario);
             desktopPane.add(listarBibliotecario);
             listarBibliotecario.setVisible(true);
@@ -525,7 +590,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void openMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openMenuItem4ActionPerformed
         // TODO add your handling code here:
-        if(crearUsuario== null || ! crearUsuario.isVisible()){
+        if (crearUsuario == null || !crearUsuario.isVisible()) {
             desktopPane.remove(crearUsuario);
             desktopPane.add(crearUsuario);
             crearUsuario.setVisible(true);
@@ -534,7 +599,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void Buscar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Buscar3ActionPerformed
         // TODO add your handling code here:
-        if(buscarUsuario==null||!buscarUsuario.isVisible()){
+        if (buscarUsuario == null || !buscarUsuario.isVisible()) {
             desktopPane.remove(buscarUsuario);
             desktopPane.add(buscarUsuario);
             buscarUsuario.setVisible(true);
@@ -543,7 +608,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void saveAsMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveAsMenuItem4ActionPerformed
         // TODO add your handling code here:
-        if(actualizarUsuario== null || !actualizarUsuario.isVisible()){
+        if (actualizarUsuario == null || !actualizarUsuario.isVisible()) {
             desktopPane.remove(actualizarUsuario);
             desktopPane.add(actualizarUsuario);
             actualizarUsuario.setVisible(true);
@@ -552,7 +617,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         // TODO add your handling code here:
-        if(listarUsuario== null || !listarUsuario.isVisible()){
+        if (listarUsuario == null || !listarUsuario.isVisible()) {
             desktopPane.remove(listarUsuario);
             desktopPane.add(listarUsuario);
             listarUsuario.setVisible(true);
@@ -561,7 +626,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void openMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openMenuItem5ActionPerformed
         // TODO add your handling code here:
-        if(crearPrestamo== null || !crearPrestamo.isVisible()){
+        if (crearPrestamo == null || !crearPrestamo.isVisible()) {
             desktopPane.remove(crearPrestamo);
             desktopPane.add(crearPrestamo);
             crearPrestamo.setVisible(true);
@@ -570,7 +635,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void Buscar4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Buscar4ActionPerformed
         // TODO add your handling code here:
-        if(buscarPrestamo== null ||! buscarPrestamo.isVisible()){
+        if (buscarPrestamo == null || !buscarPrestamo.isVisible()) {
             desktopPane.remove(buscarPrestamo);
             desktopPane.add(buscarPrestamo);
             buscarPrestamo.setVisible(true);
@@ -579,7 +644,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
         // TODO add your handling code here:
-        if(listarPrestamo== null || !listarPrestamo.isVisible()){
+        if (listarPrestamo == null || !listarPrestamo.isVisible()) {
             desktopPane.remove(listarPrestamo);
             desktopPane.add(listarPrestamo);
             listarPrestamo.setVisible(true);
@@ -588,7 +653,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void openMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openMenuItem6ActionPerformed
         // TODO add your handling code here:
-        if(realizarDevolucion== null || !realizarDevolucion.isVisible()){
+        if (realizarDevolucion == null || !realizarDevolucion.isVisible()) {
             desktopPane.remove(realizarDevolucion);
             desktopPane.add(realizarDevolucion);
             realizarDevolucion.setVisible(true);
@@ -597,12 +662,102 @@ public class Principal extends javax.swing.JFrame {
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
         // TODO add your handling code here:
-        if(listarDevolucion== null ||!listarDevolucion.isVisible()){
+        if (listarDevolucion == null || !listarDevolucion.isVisible()) {
             desktopPane.remove(listarDevolucion);
             desktopPane.add(listarDevolucion);
             listarDevolucion.setVisible(true);
         }
     }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+
+
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        // TODO add your handling code here:
+        for (Autor autor : autorDAO.listar()) {
+
+            autorArchivos.agregar(autor);
+
+        }
+
+        JOptionPane.showMessageDialog(
+                this,
+                "Autores guardados en archivo"
+        );
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
+
+    private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
+        // TODO add your handling code here:
+        for (Bibliotecario b : bibliotecarioDAO.listar()) {
+
+            bibliotecarioDAOArhivo.agregar(b);
+
+        }
+
+        JOptionPane.showMessageDialog(
+                this,
+                "Bibliotecarios guardados en archivo"
+        );
+    }//GEN-LAST:event_jMenuItem10ActionPerformed
+
+    private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
+        // TODO add your handling code here:
+        for (Usuario u : usuarioDAO.listar()) {
+
+            usuarioArchivo.agregar(u);
+
+        }
+
+        JOptionPane.showMessageDialog(
+                this,
+                "Usuarios guardados en archivo"
+        );
+    }//GEN-LAST:event_jMenuItem11ActionPerformed
+
+    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+        // TODO add your handling code here:
+        for (Libro libro : libroDAO.listar()) {
+
+            libroDAOArchivo.agregar(libro);
+
+        }
+
+        JOptionPane.showMessageDialog(
+                this,
+                "Libros guardados en archivo"
+        );
+    }//GEN-LAST:event_jMenuItem9ActionPerformed
+
+    private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
+        // TODO add your handling code here:
+        for (Prestamo p : prestamoDAO.listar()) {
+
+            prestamoArchivo.agregar(p);
+
+        }
+
+        JOptionPane.showMessageDialog(
+                this,
+                "Prestamos guardados en archivo"
+        );
+    }//GEN-LAST:event_jMenuItem12ActionPerformed
+
+    private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
+        // TODO add your handling code here:
+        for (Devolucion autor : devolucionDAO.listar()) {
+
+            devolucionArchivo.agregar(autor);
+
+        }
+
+        JOptionPane.showMessageDialog(
+                this,
+                "Devolucion guardados en archivo"
+        );
+    }//GEN-LAST:event_jMenuItem13ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -657,13 +812,21 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenu fileMenu2;
     private javax.swing.JMenu fileMenu3;
     private javax.swing.JMenu fileMenu4;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem10;
+    private javax.swing.JMenuItem jMenuItem11;
+    private javax.swing.JMenuItem jMenuItem12;
+    private javax.swing.JMenuItem jMenuItem13;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem openMenuItem;
     private javax.swing.JMenuItem openMenuItem2;
