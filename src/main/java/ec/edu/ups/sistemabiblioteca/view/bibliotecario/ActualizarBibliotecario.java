@@ -4,6 +4,8 @@
  */
 package ec.edu.ups.sistemabiblioteca.view.bibliotecario;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -313,6 +315,20 @@ public class ActualizarBibliotecario extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonActualizarBActionPerformed
 
+    public void cambiarIdioma(Locale locale){
+        ResourceBundle bundle =ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n", locale);
+        jLabelActualizarBibliotecario.setText(bundle.getString("TBliudp"));
+        jButtonActualizarB.setText(bundle.getString("bttnUpd"));
+        jButtonActBCancelar.setText(bundle.getString("bttnCancelar"));
+        jLabelActBCedula.setText(bundle.getString("labelBliCedula"));
+        jLabelActBNombre.setText(bundle.getString("labelBliNombre"));
+        jLabelActBApellido.setText(bundle.getString("labelBliApellido"));
+        jLabelActBCargo.setText(bundle.getString("labelBliCargo"));
+        jLabelActBTelefono.setText(bundle.getString("labelBuATelefono"));
+        jLabelActBCodBibliotecario.setText(bundle.getString("labelBliCodigo"));
+        jLabelActBFNacimiento.setText(bundle.getString("labelBliFN"));
+        jLabelActBTurno.setText(bundle.getString("labelBliT"));
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonActBBCedula;
