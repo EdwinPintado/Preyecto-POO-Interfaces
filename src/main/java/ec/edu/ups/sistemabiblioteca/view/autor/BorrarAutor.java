@@ -1,4 +1,3 @@
-
 package ec.edu.ups.sistemabiblioteca.view.autor;
 
 import java.util.Locale;
@@ -100,68 +99,49 @@ public class BorrarAutor extends javax.swing.JInternalFrame {
     public void setjTextFieldEATelefono(JTextField jTextFieldEATelefono) {
         this.jTextFieldEATelefono = jTextFieldEATelefono;
     }
-    
+
+    public void mostrarInformacion(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensaje);
+
+    }
+
+    public void mostrarInformacion1(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensaje);
+        dispose();
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabelEAApellido = new javax.swing.JLabel();
-        jTextFieldEATelefono = new javax.swing.JTextField();
-        jButtonEAEliminar = new javax.swing.JButton();
-        jLabelEAGenero = new javax.swing.JLabel();
-        jTextFieldEAApellido = new javax.swing.JTextField();
-        jLabelEACedula = new javax.swing.JLabel();
-        jTextFieldEABibliografia = new javax.swing.JTextField();
-        jTextFieldEAGenero = new javax.swing.JTextField();
-        jLabelEANacionalidad = new javax.swing.JLabel();
-        jTextFieldEACedula = new javax.swing.JTextField();
-        jLabelEABibliotecario = new javax.swing.JLabel();
-        jLabelEAFecha = new javax.swing.JLabel();
-        jTextFieldEANacionalidad = new javax.swing.JTextField();
-        jLabelEANombre = new javax.swing.JLabel();
-        jLabelEATelefono = new javax.swing.JLabel();
-        jTextFieldEAFecha = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jLabelEliminarAutor = new javax.swing.JLabel();
-        jTextFieldEANombre = new javax.swing.JTextField();
-        jButtonEACancelar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jPanel2 = new javax.swing.JPanel();
+        jLabelEACedula = new javax.swing.JLabel();
+        jTextFieldEACedula = new javax.swing.JTextField();
         jButtonEABCedula = new javax.swing.JButton();
+        jLabelEANombre = new javax.swing.JLabel();
+        jTextFieldEANombre = new javax.swing.JTextField();
+        jLabelEAApellido = new javax.swing.JLabel();
+        jTextFieldEAApellido = new javax.swing.JTextField();
+        jLabelEANacionalidad = new javax.swing.JLabel();
+        jTextFieldEANacionalidad = new javax.swing.JTextField();
+        jLabelEATelefono = new javax.swing.JLabel();
+        jTextFieldEATelefono = new javax.swing.JTextField();
+        jLabelEAGenero = new javax.swing.JLabel();
+        jTextFieldEAGenero = new javax.swing.JTextField();
+        jLabelEAFecha = new javax.swing.JLabel();
+        jTextFieldEAFecha = new javax.swing.JTextField();
+        jLabelEABibliotecario = new javax.swing.JLabel();
+        jTextFieldEABibliografia = new javax.swing.JTextField();
+        jButtonEAEliminar = new javax.swing.JButton();
+        jButtonEACancelar = new javax.swing.JButton();
 
         setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
         setTitle("Borrar Autor");
-
-        jLabelEAApellido.setText("Apellido:");
-
-        jTextFieldEATelefono.setEditable(false);
-
-        jButtonEAEliminar.setBackground(new java.awt.Color(0, 102, 153));
-        jButtonEAEliminar.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonEAEliminar.setText("ELIMINAR");
-        jButtonEAEliminar.addActionListener(this::jButtonEAEliminarActionPerformed);
-
-        jLabelEAGenero.setText("Genero Literario:");
-
-        jTextFieldEAApellido.setEditable(false);
-
-        jLabelEACedula.setText("Cedula:");
-
-        jTextFieldEABibliografia.setEditable(false);
-
-        jTextFieldEAGenero.setEditable(false);
-
-        jLabelEANacionalidad.setText("Nacionalidad:");
-
-        jLabelEABibliotecario.setText("Bibliografia:");
-
-        jLabelEAFecha.setText("Fecha de Nacimiento:");
-
-        jTextFieldEANacionalidad.setEditable(false);
-
-        jLabelEANombre.setText("Nombre:");
-
-        jLabelEATelefono.setText("Telefono:");
-
-        jTextFieldEAFecha.setEditable(false);
 
         jPanel4.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -186,83 +166,94 @@ public class BorrarAutor extends javax.swing.JInternalFrame {
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
-        jTextFieldEANombre.setEditable(false);
+        jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jButtonEACancelar.setText("Cancelar");
-        jButtonEACancelar.addActionListener(this::jButtonEACancelarActionPerformed);
+        jLabelEACedula.setText("Cedula:");
 
         jButtonEABCedula.setBackground(new java.awt.Color(0, 102, 153));
         jButtonEABCedula.setForeground(new java.awt.Color(255, 255, 255));
         jButtonEABCedula.setText("Buscar");
         jButtonEABCedula.addActionListener(this::jButtonEABCedulaActionPerformed);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabelEANombre)
-                                    .addGap(217, 217, 217))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabelEACedula)
-                                    .addGap(224, 224, 224))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabelEAApellido)
-                                    .addGap(217, 217, 217))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabelEANacionalidad)
-                                    .addGap(191, 191, 191))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabelEATelefono)
-                                    .addGap(214, 214, 214))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabelEAGenero)
-                                    .addGap(177, 177, 177))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabelEABibliotecario)
-                                    .addGap(201, 201, 201)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabelEAFecha)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(jTextFieldEANombre, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jTextFieldEAApellido, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jTextFieldEANacionalidad, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jTextFieldEATelefono, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jTextFieldEAGenero, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jTextFieldEAFecha, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jTextFieldEABibliografia, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jTextFieldEACedula)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(jButtonEABCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addGap(40, 40, 40))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(54, 54, 54)
+        jLabelEANombre.setText("Nombre:");
+
+        jTextFieldEANombre.setEditable(false);
+
+        jLabelEAApellido.setText("Apellido:");
+
+        jTextFieldEAApellido.setEditable(false);
+
+        jLabelEANacionalidad.setText("Nacionalidad:");
+
+        jTextFieldEANacionalidad.setEditable(false);
+
+        jLabelEATelefono.setText("Telefono:");
+
+        jTextFieldEATelefono.setEditable(false);
+
+        jLabelEAGenero.setText("Genero Literario:");
+
+        jTextFieldEAGenero.setEditable(false);
+
+        jLabelEAFecha.setText("Fecha de Nacimiento:");
+
+        jTextFieldEAFecha.setEditable(false);
+
+        jLabelEABibliotecario.setText("Bibliografia:");
+
+        jTextFieldEABibliografia.setEditable(false);
+
+        jButtonEAEliminar.setBackground(new java.awt.Color(0, 102, 153));
+        jButtonEAEliminar.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonEAEliminar.setText("ELIMINAR");
+        jButtonEAEliminar.addActionListener(this::jButtonEAEliminarActionPerformed);
+
+        jButtonEACancelar.setText("Cancelar");
+        jButtonEACancelar.addActionListener(this::jButtonEACancelarActionPerformed);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jTextFieldEACedula, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonEABCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelEACedula)
+                    .addComponent(jLabelEANombre)
+                    .addComponent(jLabelEAApellido)
+                    .addComponent(jLabelEANacionalidad)
+                    .addComponent(jLabelEATelefono)
+                    .addComponent(jLabelEAGenero)
+                    .addComponent(jLabelEABibliotecario)
+                    .addComponent(jLabelEAFecha)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
                         .addComponent(jButtonEAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonEACancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jButtonEACancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldEANombre, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldEAApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldEANacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldEATelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldEAGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldEAFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldEABibliografia, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 58, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
                 .addComponent(jLabelEACedula)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldEACedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonEABCedula))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabelEANombre)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextFieldEANombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -291,10 +282,36 @@ public class BorrarAutor extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextFieldEABibliografia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonEAEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonEACancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20))
+                .addContainerGap(71, Short.MAX_VALUE))
+        );
+
+        jScrollPane1.setViewportView(jPanel2);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(79, 79, 79)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(31, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1)
+                .addContainerGap())
         );
 
         pack();
@@ -313,8 +330,8 @@ public class BorrarAutor extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonEABCedulaActionPerformed
 
-    public void cambiarIdioma(Locale locale){
-        ResourceBundle bundle =ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n", locale);
+    public void cambiarIdioma(Locale locale) {
+        ResourceBundle bundle = ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n", locale);
         jLabelEliminarAutor.setText(bundle.getString("TAbo"));
         jButtonEABCedula.setText(bundle.getString("bttnBuscar"));
         jButtonEAEliminar.setText(bundle.getString("bttnEliminar"));
@@ -327,7 +344,7 @@ public class BorrarAutor extends javax.swing.JInternalFrame {
         jLabelEAGenero.setText(bundle.getString("labelBAGT"));
         jLabelEAFecha.setText(bundle.getString("labelBAFN"));
         jLabelEABibliotecario.setText(bundle.getString("labelBAbL"));
-        
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -343,7 +360,9 @@ public class BorrarAutor extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabelEANombre;
     private javax.swing.JLabel jLabelEATelefono;
     private javax.swing.JLabel jLabelEliminarAutor;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextFieldEAApellido;
     private javax.swing.JTextField jTextFieldEABibliografia;
     private javax.swing.JTextField jTextFieldEACedula;

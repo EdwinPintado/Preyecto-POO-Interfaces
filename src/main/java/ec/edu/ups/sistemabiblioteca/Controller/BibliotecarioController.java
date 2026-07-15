@@ -56,27 +56,46 @@ public class BibliotecarioController {
 
         if (respuesta == JOptionPane.YES_OPTION) {
             try {
-                String cedula = crearBibliotecario.getjTextFieldCBCedula().getText();
-                String nombre = crearBibliotecario.getjTextFieldCBNombre().getText();
-                String apellido = crearBibliotecario.getjTextFieldCBApellido().getText();
-                String cargo = crearBibliotecario.getjTextFieldCBCargo().getText();
-                String telefono = crearBibliotecario.getjTextFieldCBTelefono().getText();
-                String codigo = crearBibliotecario.getjTextFieldCBCodigo().getText();
-                Date fechaNacimiento = Date.valueOf(crearBibliotecario.getjTextFieldCBFecha().getText());
-                String turno = crearBibliotecario.getjTextFieldCBTurno().getText();
+                String cedula = crearBibliotecario.getjTextFieldCBCedula().getText().trim();
+                String nombre = crearBibliotecario.getjTextFieldCBNombre().getText().trim();
+                String apellido = crearBibliotecario.getjTextFieldCBApellido().getText().trim();
+                String cargo = crearBibliotecario.getjTextFieldCBCargo().getText().trim();
+                String telefono = crearBibliotecario.getjTextFieldCBTelefono().getText().trim();
+                String codigo = crearBibliotecario.getjTextFieldCBCodigo().getText().trim();
+                String fechaTexto = crearBibliotecario.getjTextFieldCBFecha().getText().trim();
+                String turno = crearBibliotecario.getjTextFieldCBTurno().getText().trim();
+
+                if (cedula.isEmpty() || nombre.isEmpty() || apellido.isEmpty()|| cargo.isEmpty() || telefono.isEmpty()|| codigo.isEmpty() || fechaTexto.isEmpty()|| turno.isEmpty()) {
+                    
+                    crearBibliotecario.mostrarInformacion(
+                            "Todos los campos deben estar llenos para guardar el bibliotecario.");
+                    return;
+                }
+                Date fechaNacimiento;
+
+                try {
+
+                    fechaNacimiento = Date.valueOf(fechaTexto);
+
+                } catch (IllegalArgumentException e) {
+
+                    crearBibliotecario.mostrarInformacion(
+                            "Error: El formato de fecha debe ser AAAA-MM-DD.");
+                    return;
+                }
                 Bibliotecario bibliotecario = new Bibliotecario(codigo, turno, cargo, cedula, nombre, apellido, telefono, fechaNacimiento);
 
                 bibliotecarioDAOMemoria.agregar(bibliotecario);
 
-                crearBibliotecario.mostrarInformacion("Bibliotecario creado exitosamente");
-                buscarBibliotecario.getjTextFieldBBCedula().setText(" ");
-                buscarBibliotecario.getjTextFieldBBNombre().setText(" ");
-                buscarBibliotecario.getjTextFieldBBApellido().setText(" ");
-                buscarBibliotecario.getjTextFieldBBCargo().setText(" ");
-                buscarBibliotecario.getjTextFieldBBTelefono().setText(" ");
-                buscarBibliotecario.getjTextFieldBBCodigo().setText(" ");
-                buscarBibliotecario.getjTextFieldBBFecha().setText(" ");
-                buscarBibliotecario.getjTextFieldBBTurno().setText(" ");
+                crearBibliotecario.mostrarInformacion1("Bibliotecario creado exitosamente");
+                buscarBibliotecario.getjTextFieldBBCedula().setText("");
+                buscarBibliotecario.getjTextFieldBBNombre().setText("");
+                buscarBibliotecario.getjTextFieldBBApellido().setText("");
+                buscarBibliotecario.getjTextFieldBBCargo().setText("");
+                buscarBibliotecario.getjTextFieldBBTelefono().setText("");
+                buscarBibliotecario.getjTextFieldBBCodigo().setText("");
+                buscarBibliotecario.getjTextFieldBBFecha().setText("");
+                buscarBibliotecario.getjTextFieldBBTurno().setText("");
 
             } catch (IllegalArgumentException e) {
                 crearBibliotecario.mostrarInformacion("Error : El formato de la fech deber ser AAA-MM-DD");
@@ -89,12 +108,13 @@ public class BibliotecarioController {
     }
 
     public void buscarBibliotecario() {
-        String cedula = buscarBibliotecario.getjTextFieldBBCedula().getText();
+        String cedula = buscarBibliotecario.getjTextFieldBBCedula().getText().trim();
         Bibliotecario bibliotecario = bibliotecarioDAOMemoria.buscar(cedula);
 
         if (bibliotecario != null) {
             buscarBibliotecario.getjTextFieldBBNombre().setText(bibliotecario.getNombre());
             buscarBibliotecario.getjTextFieldBBApellido().setText(bibliotecario.getApellido());
+            buscarBibliotecario.getjTextFieldBBCodigo().setText(bibliotecario.getCodigo());
             buscarBibliotecario.getjTextFieldBBCargo().setText(bibliotecario.getCargo());
             buscarBibliotecario.getjTextFieldBBTelefono().setText(bibliotecario.getTelefono());
             buscarBibliotecario.getjTextFieldBBFecha().setText(String.valueOf(bibliotecario.getFechaNacimiento()));
@@ -125,7 +145,7 @@ public class BibliotecarioController {
             if (respuesta == JOptionPane.YES_OPTION) {
                 bibliotecarioDAOMemoria.eliminar(cedula);
 
-                eliminarBibliotecario.mostrarInformacion("Bibliotecario eliminado exitosamente");
+                eliminarBibliotecario.mostrarInformacion1("Bibliotecario eliminado exitosamente");
                 eliminarBibliotecario.getjButtonEBBCedula().setText(" ");
                 eliminarBibliotecario.getjTextFieldEBNombre().setText(" ");
                 eliminarBibliotecario.getjTextFieldEBApellido().setText(" ");
@@ -218,7 +238,7 @@ public class BibliotecarioController {
 
                 Bibliotecario bibliotecarioActualizado = new Bibliotecario(codigo, turno, cargo, cedula, nombre, apellido, telefono, fechaNa);
                 bibliotecarioDAOMemoria.actualizar(bibliotecarioActualizado);
-                actualizarBibliotecario.mostrarInformacion("Bibliotecarip actualizado correctamente");
+                actualizarBibliotecario.mostrarInformacion1("Bibliotecarip actualizado correctamente");
 
                 actualizarBibliotecario.getjTextFieldActBNombre().setText(" ");
                 actualizarBibliotecario.getjTextFieldActBApellido().setText(" ");

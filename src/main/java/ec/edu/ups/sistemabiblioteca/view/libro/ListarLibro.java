@@ -80,6 +80,7 @@ public class ListarLibro extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabelListaLibro = new javax.swing.JLabel();
 
+        setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);

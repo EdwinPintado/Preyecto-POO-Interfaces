@@ -116,9 +116,15 @@ public class CrearPrestamo extends javax.swing.JInternalFrame {
     public void setjTextFieldCPUNombre(JTextField jTextFieldCPUNombre) {
         this.jTextFieldCPUNombre = jTextFieldCPUNombre;
     }
-    public void mostrarInformacion(String mensaje){
+
+    public void mostrarInformacion(String mensaje) {
         JOptionPane.showMessageDialog(this, mensaje);
-        
+
+    }
+
+    public void mostrarInformacion1(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensaje);
+        dispose();
     }
 
     /**
@@ -130,53 +136,40 @@ public class CrearPrestamo extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabelCPTLibro = new javax.swing.JLabel();
-        jLabelCPCUsuario = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
-        jTextFieldCPCodigo = new javax.swing.JTextField();
-        jLabelCPNUsuario = new javax.swing.JLabel();
-        jLabelCPCodigo = new javax.swing.JLabel();
-        jTextFieldCPUNombre = new javax.swing.JTextField();
-        jTextFieldCPFPrestamo = new javax.swing.JTextField();
-        jSeparator2 = new javax.swing.JSeparator();
-        jLabelCPFPrestamo = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabelCrearPrestamo = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jPanel1 = new javax.swing.JPanel();
         jTextFieldCPISBNLibro = new javax.swing.JTextField();
-        jTextFieldCPFLimite = new javax.swing.JTextField();
-        jLabelCPISBNLibro = new javax.swing.JLabel();
-        jTextFieldCPBCodigo = new javax.swing.JTextField();
-        jLabelCPFDevolucion = new javax.swing.JLabel();
-        jButtonCPCrear = new javax.swing.JButton();
-        jLabelCPBCodigo = new javax.swing.JLabel();
-        jTextFieldCPUCedula = new javax.swing.JTextField();
-        jTextFieldCPTLibro = new javax.swing.JTextField();
-        jButtonCPCancelar = new javax.swing.JButton();
-        jSeparator3 = new javax.swing.JSeparator();
-        jSeparator4 = new javax.swing.JSeparator();
-        jButtonCPUBuscar = new javax.swing.JButton();
+        jLabelCPFPrestamo = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
+        jTextFieldCPFPrestamo = new javax.swing.JTextField();
+        jTextFieldCPUNombre = new javax.swing.JTextField();
+        jLabelCPCodigo = new javax.swing.JLabel();
+        jLabelCPNUsuario = new javax.swing.JLabel();
+        jTextFieldCPCodigo = new javax.swing.JTextField();
         jButtonCPLBuscar = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
+        jButtonCPUBuscar = new javax.swing.JButton();
+        jLabelCPCUsuario = new javax.swing.JLabel();
+        jSeparator4 = new javax.swing.JSeparator();
+        jSeparator3 = new javax.swing.JSeparator();
+        jButtonCPCancelar = new javax.swing.JButton();
+        jTextFieldCPTLibro = new javax.swing.JTextField();
+        jTextFieldCPUCedula = new javax.swing.JTextField();
+        jLabelCPBCodigo = new javax.swing.JLabel();
+        jButtonCPCrear = new javax.swing.JButton();
+        jLabelCPFDevolucion = new javax.swing.JLabel();
+        jTextFieldCPBCodigo = new javax.swing.JTextField();
+        jLabelCPISBNLibro = new javax.swing.JLabel();
+        jTextFieldCPFLimite = new javax.swing.JTextField();
+        jLabelCPTLibro = new javax.swing.JLabel();
 
+        setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
         setTitle("Crear Prestamo");
-
-        jLabelCPTLibro.setText("Titulo:");
-
-        jLabelCPCUsuario.setText("Usuario(Cedula):");
-
-        jTextFieldCPCodigo.addActionListener(this::jTextFieldCPCodigoActionPerformed);
-
-        jLabelCPNUsuario.setText("Nombre:");
-
-        jLabelCPCodigo.setText("Codigo del Prestamo:");
-
-        jTextFieldCPUNombre.setEditable(false);
-
-        jTextFieldCPFPrestamo.addActionListener(this::jTextFieldCPFPrestamoActionPerformed);
-
-        jLabelCPFPrestamo.setText("Fecha prestamo:");
 
         jPanel4.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -187,10 +180,10 @@ public class CrearPrestamo extends javax.swing.JInternalFrame {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(56, 56, 56)
                 .addComponent(jLabelCrearPrestamo)
-                .addGap(43, 43, 43))
+                .addContainerGap(69, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -202,34 +195,161 @@ public class CrearPrestamo extends javax.swing.JInternalFrame {
 
         jTextFieldCPISBNLibro.addActionListener(this::jTextFieldCPISBNLibroActionPerformed);
 
-        jLabelCPISBNLibro.setText("Libro(ISBN):");
+        jLabelCPFPrestamo.setText("Fecha prestamo:");
 
-        jTextFieldCPBCodigo.addActionListener(this::jTextFieldCPBCodigoActionPerformed);
+        jTextFieldCPFPrestamo.addActionListener(this::jTextFieldCPFPrestamoActionPerformed);
 
-        jLabelCPFDevolucion.setText("Fecha Limite:");
+        jTextFieldCPUNombre.setEditable(false);
 
-        jButtonCPCrear.setBackground(new java.awt.Color(0, 102, 153));
-        jButtonCPCrear.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonCPCrear.setText("CREAR");
-        jButtonCPCrear.addActionListener(this::jButtonCPCrearActionPerformed);
+        jLabelCPCodigo.setText("Codigo del Prestamo:");
 
-        jLabelCPBCodigo.setText("Bibliotecario(Codigo):");
+        jLabelCPNUsuario.setText("Nombre:");
 
-        jTextFieldCPTLibro.setEditable(false);
-        jTextFieldCPTLibro.addActionListener(this::jTextFieldCPTLibroActionPerformed);
+        jTextFieldCPCodigo.addActionListener(this::jTextFieldCPCodigoActionPerformed);
 
-        jButtonCPCancelar.setText("Cancelar");
-        jButtonCPCancelar.addActionListener(this::jButtonCPCancelarActionPerformed);
+        jButtonCPLBuscar.setBackground(new java.awt.Color(0, 102, 153));
+        jButtonCPLBuscar.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonCPLBuscar.setText("BUSCAR");
+        jButtonCPLBuscar.addActionListener(this::jButtonCPLBuscarActionPerformed);
 
         jButtonCPUBuscar.setBackground(new java.awt.Color(0, 102, 153));
         jButtonCPUBuscar.setForeground(new java.awt.Color(255, 255, 255));
         jButtonCPUBuscar.setText("BUSCAR");
         jButtonCPUBuscar.addActionListener(this::jButtonCPUBuscarActionPerformed);
 
-        jButtonCPLBuscar.setBackground(new java.awt.Color(0, 102, 153));
-        jButtonCPLBuscar.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonCPLBuscar.setText("BUSCAR");
-        jButtonCPLBuscar.addActionListener(this::jButtonCPLBuscarActionPerformed);
+        jLabelCPCUsuario.setText("Usuario(Cedula):");
+
+        jButtonCPCancelar.setText("Cancelar");
+        jButtonCPCancelar.addActionListener(this::jButtonCPCancelarActionPerformed);
+
+        jTextFieldCPTLibro.setEditable(false);
+        jTextFieldCPTLibro.addActionListener(this::jTextFieldCPTLibroActionPerformed);
+
+        jLabelCPBCodigo.setText("Bibliotecario(Codigo):");
+
+        jButtonCPCrear.setBackground(new java.awt.Color(0, 102, 153));
+        jButtonCPCrear.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonCPCrear.setText("CREAR");
+        jButtonCPCrear.addActionListener(this::jButtonCPCrearActionPerformed);
+
+        jLabelCPFDevolucion.setText("Fecha Limite:");
+
+        jTextFieldCPBCodigo.addActionListener(this::jTextFieldCPBCodigoActionPerformed);
+
+        jLabelCPISBNLibro.setText("Libro(ISBN):");
+
+        jLabelCPTLibro.setText("Titulo:");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(jButtonCPCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonCPCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabelCPTLibro)
+                                .addComponent(jLabelCPISBNLibro))
+                            .addGap(58, 58, 58)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jTextFieldCPTLibro)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jTextFieldCPISBNLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jButtonCPLBuscar))))
+                        .addComponent(jSeparator1)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(jLabelCPCodigo)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jTextFieldCPCodigo))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabelCPFPrestamo)
+                                .addComponent(jLabelCPFDevolucion))
+                            .addGap(36, 36, 36)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jTextFieldCPFPrestamo)
+                                .addComponent(jTextFieldCPFLimite)))
+                        .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabelCPCUsuario)
+                                .addComponent(jLabelCPNUsuario))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jTextFieldCPUCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jButtonCPUBuscar))
+                                .addComponent(jTextFieldCPUNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(jLabelCPBCodigo)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jTextFieldCPBCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jSeparator4, javax.swing.GroupLayout.Alignment.TRAILING)))
+                .addContainerGap(41, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(14, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelCPCodigo)
+                    .addComponent(jTextFieldCPCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 7, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelCPCUsuario)
+                    .addComponent(jTextFieldCPUCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonCPUBuscar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldCPUNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelCPNUsuario))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelCPISBNLibro)
+                    .addComponent(jTextFieldCPISBNLibro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonCPLBuscar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelCPTLibro)
+                    .addComponent(jTextFieldCPTLibro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelCPBCodigo)
+                    .addComponent(jTextFieldCPBCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelCPFPrestamo)
+                    .addComponent(jTextFieldCPFPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelCPFDevolucion)
+                    .addComponent(jTextFieldCPFLimite, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonCPCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonCPCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+
+        jScrollPane1.setViewportView(jPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -237,110 +357,19 @@ public class CrearPrestamo extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(jButtonCPCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonCPCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabelCPTLibro)
-                                .addComponent(jLabelCPISBNLibro))
-                            .addGap(58, 58, 58)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextFieldCPTLibro)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jTextFieldCPISBNLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jButtonCPLBuscar))))
-                        .addComponent(jSeparator1)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabelCPCodigo)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jTextFieldCPCodigo))
-                        .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabelCPFPrestamo)
-                                .addComponent(jLabelCPFDevolucion))
-                            .addGap(36, 36, 36)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextFieldCPFPrestamo)
-                                .addComponent(jTextFieldCPFLimite)))
-                        .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabelCPCUsuario)
-                                .addComponent(jLabelCPNUsuario))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jTextFieldCPUCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jButtonCPUBuscar))
-                                .addComponent(jTextFieldCPUNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabelCPBCodigo)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jTextFieldCPBCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jSeparator4, javax.swing.GroupLayout.Alignment.TRAILING)))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelCPCodigo)
-                    .addComponent(jTextFieldCPCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 7, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelCPCUsuario)
-                    .addComponent(jTextFieldCPUCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonCPUBuscar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldCPUNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelCPNUsuario))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelCPISBNLibro)
-                    .addComponent(jTextFieldCPISBNLibro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonCPLBuscar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelCPTLibro)
-                    .addComponent(jTextFieldCPTLibro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelCPBCodigo)
-                    .addComponent(jTextFieldCPBCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelCPFPrestamo)
-                    .addComponent(jTextFieldCPFPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelCPFDevolucion)
-                    .addComponent(jTextFieldCPFLimite, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonCPCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonCPCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         pack();
@@ -398,7 +427,9 @@ public class CrearPrestamo extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabelCPNUsuario;
     private javax.swing.JLabel jLabelCPTLibro;
     private javax.swing.JLabel jLabelCrearPrestamo;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;

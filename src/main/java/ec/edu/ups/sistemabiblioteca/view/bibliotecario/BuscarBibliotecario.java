@@ -109,46 +109,34 @@ public class BuscarBibliotecario extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabelBBCargo = new javax.swing.JLabel();
-        jTextFieldBBCedula = new javax.swing.JTextField();
-        jLabelBBFecha = new javax.swing.JLabel();
-        jTextFieldBBTurno = new javax.swing.JTextField();
-        jLabelBBNombre = new javax.swing.JLabel();
-        jTextFieldBBCargo = new javax.swing.JTextField();
-        jTextFieldBBFecha = new javax.swing.JTextField();
-        jLabelBBTelefono = new javax.swing.JLabel();
-        jTextFieldBBNombre = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jLabelBuscarBibliotecario = new javax.swing.JLabel();
-        jLabelBBApellido = new javax.swing.JLabel();
-        jTextFieldBBTelefono = new javax.swing.JTextField();
-        jButtonBBBCedula = new javax.swing.JButton();
-        jLabelBBCodigo = new javax.swing.JLabel();
-        jTextFieldBBApellido = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jPanel1 = new javax.swing.JPanel();
         jLabelBBCedula = new javax.swing.JLabel();
-        jLabelBBTurno = new javax.swing.JLabel();
+        jTextFieldBBCedula = new javax.swing.JTextField();
+        jButtonBBBCedula = new javax.swing.JButton();
+        jLabelBBNombre = new javax.swing.JLabel();
+        jTextFieldBBNombre = new javax.swing.JTextField();
+        jLabelBBApellido = new javax.swing.JLabel();
+        jTextFieldBBApellido = new javax.swing.JTextField();
+        jLabelBBCargo = new javax.swing.JLabel();
+        jTextFieldBBCargo = new javax.swing.JTextField();
+        jLabelBBTelefono = new javax.swing.JLabel();
+        jTextFieldBBTelefono = new javax.swing.JTextField();
+        jLabelBBCodigo = new javax.swing.JLabel();
         jTextFieldBBCodigo = new javax.swing.JTextField();
+        jLabelBBFecha = new javax.swing.JLabel();
+        jTextFieldBBFecha = new javax.swing.JTextField();
+        jLabelBBTurno = new javax.swing.JLabel();
+        jTextFieldBBTurno = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
 
+        setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
         setTitle("Buscar Biblotecario");
-
-        jLabelBBCargo.setText("Cargo:");
-
-        jLabelBBFecha.setText("Fecha de Nacimiento:");
-
-        jTextFieldBBTurno.setEditable(false);
-
-        jLabelBBNombre.setText("Nombre:");
-
-        jTextFieldBBCargo.setEditable(false);
-
-        jTextFieldBBFecha.setEditable(false);
-
-        jLabelBBTelefono.setText("Telefono:");
-
-        jTextFieldBBNombre.setEditable(false);
 
         jPanel4.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -160,7 +148,7 @@ public class BuscarBibliotecario extends javax.swing.JInternalFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(29, Short.MAX_VALUE)
                 .addComponent(jLabelBuscarBibliotecario)
                 .addGap(23, 23, 23))
         );
@@ -172,25 +160,89 @@ public class BuscarBibliotecario extends javax.swing.JInternalFrame {
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
-        jLabelBBApellido.setText("Apellido:");
-
-        jTextFieldBBTelefono.setEditable(false);
+        jLabelBBCedula.setText("Cedula:");
 
         jButtonBBBCedula.setBackground(new java.awt.Color(0, 102, 153));
         jButtonBBBCedula.setForeground(new java.awt.Color(255, 255, 255));
         jButtonBBBCedula.setText("Buscar");
         jButtonBBBCedula.addActionListener(this::jButtonBBBCedulaActionPerformed);
 
-        jLabelBBCodigo.setText("Codigo:");
+        jLabelBBNombre.setText("Nombre:");
+
+        jTextFieldBBNombre.setEditable(false);
+
+        jLabelBBApellido.setText("Apellido:");
 
         jTextFieldBBApellido.setEditable(false);
 
-        jLabelBBCedula.setText("Cedula:");
+        jLabelBBCargo.setText("Cargo:");
 
-        jLabelBBTurno.setText("Turno:");
+        jTextFieldBBCargo.setEditable(false);
+
+        jLabelBBTelefono.setText("Telefono:");
+
+        jTextFieldBBTelefono.setEditable(false);
+
+        jLabelBBCodigo.setText("Codigo:");
 
         jTextFieldBBCodigo.setEditable(false);
 
+<<<<<<< HEAD
+        jLabelBBFecha.setText("Fecha de Nacimiento:");
+
+        jTextFieldBBFecha.setEditable(false);
+
+        jLabelBBTurno.setText("Turno:");
+
+        jTextFieldBBTurno.setEditable(false);
+
+        jButton1.setBackground(new java.awt.Color(0, 102, 153));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Cancelar");
+        jButton1.setToolTipText("");
+        jButton1.addActionListener(this::jButton1ActionPerformed);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabelBBTelefono)
+                                    .addGap(242, 242, 242))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabelBBCodigo)
+                                    .addGap(250, 250, 250))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabelBBFecha)
+                                    .addGap(177, 177, 177)))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabelBBTurno)
+                                .addComponent(jLabelBBApellido)
+                                .addComponent(jLabelBBCedula)
+                                .addComponent(jLabelBBCargo)
+                                .addComponent(jTextFieldBBApellido)
+                                .addComponent(jLabelBBNombre)
+                                .addComponent(jTextFieldBBNombre)
+                                .addComponent(jTextFieldBBCargo)
+                                .addComponent(jTextFieldBBTelefono)
+                                .addComponent(jTextFieldBBCodigo)
+                                .addComponent(jTextFieldBBFecha)
+                                .addComponent(jTextFieldBBTurno)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jTextFieldBBCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jButtonBBBCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(101, 101, 101)
+                        .addComponent(jButton1)))
+                .addContainerGap(39, Short.MAX_VALUE))
+=======
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -227,16 +279,15 @@ public class BuscarBibliotecario extends javax.swing.JInternalFrame {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(jButtonBBBCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(22, 22, 22))
+>>>>>>> main
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addComponent(jLabelBBCedula)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldBBCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonBBBCedula))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -267,7 +318,32 @@ public class BuscarBibliotecario extends javax.swing.JInternalFrame {
                 .addComponent(jLabelBBTurno)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextFieldBBTurno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20))
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addContainerGap(42, Short.MAX_VALUE))
+        );
+
+        jScrollPane1.setViewportView(jPanel1);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(25, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         pack();
@@ -277,6 +353,13 @@ public class BuscarBibliotecario extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonBBBCedulaActionPerformed
 
+<<<<<<< HEAD
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+=======
     public void cambiarIdioma(Locale locale){
         ResourceBundle bundle =ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n", locale);
         jLabelBuscarBibliotecario.setText(bundle.getString("TBlibus"));
@@ -291,8 +374,10 @@ public class BuscarBibliotecario extends javax.swing.JInternalFrame {
         jLabelBBTurno.setText(bundle.getString("labelBusBT"));        
         
     }
+>>>>>>> main
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonBBBCedula;
     private javax.swing.JLabel jLabelBBApellido;
     private javax.swing.JLabel jLabelBBCargo;
@@ -303,7 +388,9 @@ public class BuscarBibliotecario extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabelBBTelefono;
     private javax.swing.JLabel jLabelBBTurno;
     private javax.swing.JLabel jLabelBuscarBibliotecario;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextFieldBBApellido;
     private javax.swing.JTextField jTextFieldBBCargo;
     private javax.swing.JTextField jTextFieldBBCedula;

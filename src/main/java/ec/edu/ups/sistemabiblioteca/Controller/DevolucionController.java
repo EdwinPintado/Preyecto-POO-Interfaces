@@ -32,10 +32,10 @@ public class DevolucionController {
         this.prestamoDAO = prestamoDAO;
         this.agregarDevolucionView = agregarDevolucionView;
         this.listarDevolucionView = listarDevolucionView;
-        
+
         configurarEventosBuscarDevolucion();
         configurarEventosListarDevoluciones();
-       
+
     }
 
     public void buscarDevolucion() {
@@ -48,22 +48,27 @@ public class DevolucionController {
             agregarDevolucionView.getjTextFieldDTLibro().setText(prestamo.getLibro().getTitulo());
             agregarDevolucionView.getjTextFieldDBCodigo().setText(prestamo.getBibliotecario().getCodigo());
             agregarDevolucionView.getjTextFieldDFPrestamo().setText(String.valueOf(prestamo.getFechaPrestamo()));
+     
+            Date fechaDevolucion = Date.valueOf(agregarDevolucionView.getjTextFieldDFPrestamo().getText().trim());
+            Devolucion devolucion = new Devolucion(prestamo, fechaDevolucion);
+            devolucionDAO.agregar(devolucion);
+            if (prestamo.getLibro() != null) {
+                prestamo.getLibro().setDisponible(true);
+            }
+            agregarDevolucionView.mostrarInformacion1("Devolcuion exitosa ,tenga buen dia");
         } else {
             agregarDevolucionView.mostrarInformacion("No existe ese prestamo");
-            agregarDevolucionView.getjTextFieldDUCedula().setText(" ");
-            agregarDevolucionView.getjTextFieldDUNombre().setText(" ");
-            agregarDevolucionView.getjTextFieldDISBNLibro().setText(" ");
-            agregarDevolucionView.getjTextFieldDTLibro().setText(" ");
-            agregarDevolucionView.getjTextFieldDBCodigo().setText(" ");
-            agregarDevolucionView.getjTextFieldDFPrestamo().setText(" ");
-            agregarDevolucionView.getjTextFieldDFLimite().setText(" ");
+            agregarDevolucionView.getjTextFieldDUCedula().setText("");
+            agregarDevolucionView.getjTextFieldDUNombre().setText("");
+            agregarDevolucionView.getjTextFieldDISBNLibro().setText("");
+            agregarDevolucionView.getjTextFieldDTLibro().setText("");
+            agregarDevolucionView.getjTextFieldDBCodigo().setText("");
+            agregarDevolucionView.getjTextFieldDFPrestamo().setText("");
+            agregarDevolucionView.getjTextFieldDFLimite().setText("");
         }
-        Date fechaDevolucion=Date.valueOf(agregarDevolucionView.getjTextFieldDFPrestamo().getText());
-        
-        Devolucion devolucion = new Devolucion(prestamo , fechaDevolucion);
-        devolucionDAO.agregar(devolucion);
-        agregarDevolucionView.mostrarInformacion("Devolcuion exitosa ,tenga buen dia");
+
     }
+
     public void listarDevoluciones() {
 
         List<Devolucion> lista = devolucionDAO.listar();
@@ -71,10 +76,11 @@ public class DevolucionController {
         listarDevolucionView.cargarDatos(lista);
 
     }
-    public void contadorDevolucion(){
+
+    public void contadorDevolucion() {
         int total = devolucionDAO.contar();
         listarDevolucionView.getTxtContadordeDevoluciones().setText(String.valueOf(total));
-                
+
     }
 
     public void configurarEventosBuscarDevolucion() {
@@ -90,15 +96,14 @@ public class DevolucionController {
 
     public void configurarEventosListarDevoluciones() {
 
-       listarDevolucionView.getBtnMostrarListaDevoluciones().addActionListener(new ActionListener(){
-           @Override
-           public void actionPerformed(ActionEvent e) {
-               listarDevoluciones();
-               contadorDevolucion();
-           }
-           
-       });
-       
+        listarDevolucionView.getBtnMostrarListaDevoluciones().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                listarDevoluciones();
+                contadorDevolucion();
+            }
+
+        });
 
     }
 

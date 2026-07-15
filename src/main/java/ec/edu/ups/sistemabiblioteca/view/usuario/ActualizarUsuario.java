@@ -1,7 +1,7 @@
-
 package ec.edu.ups.sistemabiblioteca.view.usuario;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 public class ActualizarUsuario extends javax.swing.JInternalFrame {
@@ -90,87 +90,48 @@ public class ActualizarUsuario extends javax.swing.JInternalFrame {
         this.jTextFieldAUTelefono = jTextFieldAUTelefono;
     }
 
-    
-    
+    public void mostrarInformacion(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensaje);
+
+    }
+
+    public void mostrarInformacion1(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensaje);
+        dispose();
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabelAUDireccion = new javax.swing.JLabel();
-        jTextFieldAUCedula = new javax.swing.JTextField();
-        jTextFieldAUFNacimiento = new javax.swing.JTextField();
-        jTextFieldAUNombre = new javax.swing.JTextField();
-        jLabelAUFNacimiento = new javax.swing.JLabel();
-        jLabelAUNombre = new javax.swing.JLabel();
-        jTextFieldAUApellido = new javax.swing.JTextField();
-        jButtonAUCancelar = new javax.swing.JButton();
-        jLabelAUApellido = new javax.swing.JLabel();
-        jButtonAUActualizar = new javax.swing.JButton();
-        jTextFieldAUCElectronico = new javax.swing.JTextField();
-        jLabelAUCElectronico = new javax.swing.JLabel();
-        jTextFieldAUTelefono = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jLabelActualizarUsuario = new javax.swing.JLabel();
-        jLabelAUTelefono = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jPanel2 = new javax.swing.JPanel();
+        jLabelAUNombre = new javax.swing.JLabel();
         jTextFieldAUDireccion = new javax.swing.JTextField();
-        jLabelAUCedula = new javax.swing.JLabel();
+        jLabelAUFNacimiento = new javax.swing.JLabel();
+        jLabelAUTelefono = new javax.swing.JLabel();
+        jTextFieldAUNombre = new javax.swing.JTextField();
+        jTextFieldAUFNacimiento = new javax.swing.JTextField();
+        jTextFieldAUTelefono = new javax.swing.JTextField();
+        jTextFieldAUCedula = new javax.swing.JTextField();
+        jLabelAUDireccion = new javax.swing.JLabel();
+        jLabelAUCElectronico = new javax.swing.JLabel();
+        jTextFieldAUCElectronico = new javax.swing.JTextField();
+        jButtonAUActualizar = new javax.swing.JButton();
+        jLabelAUApellido = new javax.swing.JLabel();
+        jButtonAUCancelar = new javax.swing.JButton();
         jButtonAUBuscar = new javax.swing.JButton();
+        jTextFieldAUApellido = new javax.swing.JTextField();
+        jLabelAUCedula = new javax.swing.JLabel();
 
+        setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
         setTitle("Actualizar Usuario");
-        setMinimumSize(new java.awt.Dimension(104, 36));
         setPreferredSize(new java.awt.Dimension(348, 500));
-
-        jLabelAUDireccion.setText("Dirección:");
-        jLabelAUDireccion.setMaximumSize(null);
-        jLabelAUDireccion.setMinimumSize(new java.awt.Dimension(104, 36));
-
-        jTextFieldAUCedula.setMaximumSize(null);
-        jTextFieldAUCedula.setMinimumSize(new java.awt.Dimension(104, 36));
-
-        jTextFieldAUFNacimiento.setMaximumSize(null);
-        jTextFieldAUFNacimiento.setMinimumSize(new java.awt.Dimension(104, 36));
-
-        jTextFieldAUNombre.setMaximumSize(null);
-        jTextFieldAUNombre.setMinimumSize(new java.awt.Dimension(104, 36));
-
-        jLabelAUFNacimiento.setText("Fecha de nacimiento:");
-        jLabelAUFNacimiento.setMaximumSize(null);
-        jLabelAUFNacimiento.setMinimumSize(new java.awt.Dimension(104, 36));
-
-        jLabelAUNombre.setText("Nombre:");
-        jLabelAUNombre.setMaximumSize(null);
-        jLabelAUNombre.setMinimumSize(new java.awt.Dimension(104, 36));
-
-        jTextFieldAUApellido.setMaximumSize(null);
-        jTextFieldAUApellido.setMinimumSize(new java.awt.Dimension(104, 36));
-
-        jButtonAUCancelar.setText("CANCELAR");
-        jButtonAUCancelar.setMaximumSize(null);
-        jButtonAUCancelar.setMinimumSize(new java.awt.Dimension(104, 36));
-        jButtonAUCancelar.addActionListener(this::jButtonAUCancelarActionPerformed);
-
-        jLabelAUApellido.setText("Apellido:");
-        jLabelAUApellido.setMaximumSize(null);
-        jLabelAUApellido.setMinimumSize(new java.awt.Dimension(104, 36));
-
-        jButtonAUActualizar.setBackground(new java.awt.Color(0, 102, 153));
-        jButtonAUActualizar.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonAUActualizar.setText("ACTUALIZAR");
-        jButtonAUActualizar.setMinimumSize(new java.awt.Dimension(104, 36));
-        jButtonAUActualizar.addActionListener(this::jButtonAUActualizarActionPerformed);
-
-        jTextFieldAUCElectronico.setMaximumSize(null);
-        jTextFieldAUCElectronico.setMinimumSize(new java.awt.Dimension(104, 36));
-
-        jLabelAUCElectronico.setText("Correo Electrónico: ");
-        jLabelAUCElectronico.setMaximumSize(null);
-        jLabelAUCElectronico.setMinimumSize(new java.awt.Dimension(104, 36));
-
-        jTextFieldAUTelefono.setMaximumSize(null);
-        jTextFieldAUTelefono.setMinimumSize(new java.awt.Dimension(104, 36));
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setMinimumSize(new java.awt.Dimension(100, 100));
@@ -196,72 +157,118 @@ public class ActualizarUsuario extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLabelAUTelefono.setText("Teléfono:");
-        jLabelAUTelefono.setMaximumSize(null);
-        jLabelAUTelefono.setMinimumSize(new java.awt.Dimension(104, 36));
+        jLabelAUNombre.setText("Nombre:");
+        jLabelAUNombre.setMaximumSize(null);
+        jLabelAUNombre.setMinimumSize(new java.awt.Dimension(104, 36));
 
         jTextFieldAUDireccion.setMaximumSize(null);
         jTextFieldAUDireccion.setMinimumSize(new java.awt.Dimension(104, 36));
 
-        jLabelAUCedula.setText("Cedula:");
-        jLabelAUCedula.setMaximumSize(null);
-        jLabelAUCedula.setMinimumSize(new java.awt.Dimension(104, 36));
+        jLabelAUFNacimiento.setText("Fecha de nacimiento:");
+        jLabelAUFNacimiento.setMaximumSize(null);
+        jLabelAUFNacimiento.setMinimumSize(new java.awt.Dimension(104, 36));
+
+        jLabelAUTelefono.setText("Teléfono:");
+        jLabelAUTelefono.setMaximumSize(null);
+        jLabelAUTelefono.setMinimumSize(new java.awt.Dimension(104, 36));
+
+        jTextFieldAUNombre.setMaximumSize(null);
+        jTextFieldAUNombre.setMinimumSize(new java.awt.Dimension(104, 36));
+
+        jTextFieldAUFNacimiento.setMaximumSize(null);
+        jTextFieldAUFNacimiento.setMinimumSize(new java.awt.Dimension(104, 36));
+
+        jTextFieldAUTelefono.setMaximumSize(null);
+        jTextFieldAUTelefono.setMinimumSize(new java.awt.Dimension(104, 36));
+
+        jTextFieldAUCedula.setMaximumSize(null);
+        jTextFieldAUCedula.setMinimumSize(new java.awt.Dimension(104, 36));
+
+        jLabelAUDireccion.setText("Dirección:");
+        jLabelAUDireccion.setMaximumSize(null);
+        jLabelAUDireccion.setMinimumSize(new java.awt.Dimension(104, 36));
+
+        jLabelAUCElectronico.setText("Correo Electrónico: ");
+        jLabelAUCElectronico.setMaximumSize(null);
+        jLabelAUCElectronico.setMinimumSize(new java.awt.Dimension(104, 36));
+
+        jTextFieldAUCElectronico.setMaximumSize(null);
+        jTextFieldAUCElectronico.setMinimumSize(new java.awt.Dimension(104, 36));
+
+        jButtonAUActualizar.setBackground(new java.awt.Color(0, 102, 153));
+        jButtonAUActualizar.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonAUActualizar.setText("ACTUALIZAR");
+        jButtonAUActualizar.setMinimumSize(new java.awt.Dimension(104, 36));
+        jButtonAUActualizar.addActionListener(this::jButtonAUActualizarActionPerformed);
+
+        jLabelAUApellido.setText("Apellido:");
+        jLabelAUApellido.setMaximumSize(null);
+        jLabelAUApellido.setMinimumSize(new java.awt.Dimension(104, 36));
+
+        jButtonAUCancelar.setText("CANCELAR");
+        jButtonAUCancelar.setMaximumSize(null);
+        jButtonAUCancelar.setMinimumSize(new java.awt.Dimension(104, 36));
+        jButtonAUCancelar.addActionListener(this::jButtonAUCancelarActionPerformed);
 
         jButtonAUBuscar.setBackground(new java.awt.Color(0, 102, 153));
         jButtonAUBuscar.setForeground(new java.awt.Color(255, 255, 255));
         jButtonAUBuscar.setText("Buscar");
         jButtonAUBuscar.addActionListener(this::jButtonAUBuscarActionPerformed);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabelAUFNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelAUDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelAUTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelAUCElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelAUApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelAUNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelAUCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextFieldAUNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextFieldAUApellido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextFieldAUCElectronico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextFieldAUTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextFieldAUDireccion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextFieldAUFNacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTextFieldAUCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButtonAUBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(58, 58, 58)
+        jTextFieldAUApellido.setMaximumSize(null);
+        jTextFieldAUApellido.setMinimumSize(new java.awt.Dimension(104, 36));
+
+        jLabelAUCedula.setText("Cedula:");
+        jLabelAUCedula.setMaximumSize(null);
+        jLabelAUCedula.setMinimumSize(new java.awt.Dimension(104, 36));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
                         .addComponent(jButtonAUActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonAUCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(35, Short.MAX_VALUE))
+                        .addComponent(jButtonAUCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabelAUFNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabelAUDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabelAUTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabelAUCElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabelAUApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabelAUNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabelAUCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextFieldAUNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jTextFieldAUApellido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jTextFieldAUCElectronico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jTextFieldAUTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jTextFieldAUDireccion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jTextFieldAUFNacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addComponent(jTextFieldAUCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jButtonAUBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(18, Short.MAX_VALUE)
                 .addComponent(jLabelAUCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jTextFieldAUCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonAUBuscar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelAUNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextFieldAUNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(11, 11, 11)
                 .addComponent(jLabelAUApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextFieldAUApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -282,10 +289,33 @@ public class ActualizarUsuario extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextFieldAUFNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonAUCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonAUActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+
+        jScrollPane1.setViewportView(jPanel2);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(33, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         pack();
@@ -317,6 +347,8 @@ public class ActualizarUsuario extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabelAUTelefono;
     private javax.swing.JLabel jLabelActualizarUsuario;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextFieldAUApellido;
     private javax.swing.JTextField jTextFieldAUCElectronico;
     private javax.swing.JTextField jTextFieldAUCedula;

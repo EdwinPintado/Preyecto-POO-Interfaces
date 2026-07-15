@@ -12,9 +12,7 @@ public class Prestamo {
     private Libro libro;
     private Bibliotecario bibliotecario;
 
-    public Prestamo() {
-    }
-
+    
     public Prestamo(String codigoPrestamo, Date fechaPrestamo, Date fechaDevolucion, Usuario usuario, Libro libro, Bibliotecario bibliotecario) {
         this.codigoPrestamo = codigoPrestamo;
         this.fechaPrestamo = fechaPrestamo;

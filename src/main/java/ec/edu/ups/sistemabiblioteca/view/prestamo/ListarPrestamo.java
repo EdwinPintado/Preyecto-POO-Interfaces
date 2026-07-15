@@ -92,6 +92,7 @@ public class ListarPrestamo extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabelListaPrestamo = new javax.swing.JLabel();
 
+        setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);

@@ -1,7 +1,7 @@
-
 package ec.edu.ups.sistemabiblioteca.view.usuario;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 public class BorrarUsuario extends javax.swing.JInternalFrame {
@@ -10,12 +10,20 @@ public class BorrarUsuario extends javax.swing.JInternalFrame {
         initComponents();
     }
 
+    public JButton getjButtonEUABorrar() {
+        return jButtonEUABorrar;
+    }
+
+    public void setjButtonEUABorrar(JButton jButtonEUABorrar) {
+        this.jButtonEUABorrar = jButtonEUABorrar;
+    }
+
     public JButton getjButtonEUActualizar() {
-        return jButtonEUActualizar;
+        return jButtonEUABorrar;
     }
 
     public void setjButtonEUActualizar(JButton jButtonEUActualizar) {
-        this.jButtonEUActualizar = jButtonEUActualizar;
+        this.jButtonEUABorrar = jButtonEUActualizar;
     }
 
     public JButton getjButtonEUBuscar() {
@@ -90,71 +98,47 @@ public class BorrarUsuario extends javax.swing.JInternalFrame {
         this.jTextFieldEUTelefono = jTextFieldEUTelefono;
     }
 
-    
-    
+    public void mostrarInformacion(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensaje);
+
+    }
+
+    public void mostrarInformacion1(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensaje);
+        dispose();
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButtonEUBuscar = new javax.swing.JButton();
-        jLabelEUApellido = new javax.swing.JLabel();
-        jButtonEUActualizar = new javax.swing.JButton();
-        jTextFieldEUCElectronico = new javax.swing.JTextField();
-        jLabelEUDireccion = new javax.swing.JLabel();
-        jLabelEUCElectronico = new javax.swing.JLabel();
-        jTextFieldEUCedula = new javax.swing.JTextField();
-        jTextFieldEUTelefono = new javax.swing.JTextField();
-        jTextFieldEUFNacimiento = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jLabelBorrarUsuario = new javax.swing.JLabel();
-        jTextFieldEUNombre = new javax.swing.JTextField();
-        jLabelEUFNacimiento = new javax.swing.JLabel();
-        jLabelEUTelefono = new javax.swing.JLabel();
-        jLabelEUNombre = new javax.swing.JLabel();
-        jTextFieldEUDireccion = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jPanel2 = new javax.swing.JPanel();
+        jLabelEUCElectronico = new javax.swing.JLabel();
         jTextFieldEUApellido = new javax.swing.JTextField();
-        jLabelEUCedula = new javax.swing.JLabel();
+        jLabelEUDireccion = new javax.swing.JLabel();
+        jTextFieldEUDireccion = new javax.swing.JTextField();
+        jTextFieldEUCElectronico = new javax.swing.JTextField();
+        jLabelEUNombre = new javax.swing.JLabel();
+        jButtonEUABorrar = new javax.swing.JButton();
+        jLabelEUTelefono = new javax.swing.JLabel();
+        jLabelEUApellido = new javax.swing.JLabel();
+        jLabelEUFNacimiento = new javax.swing.JLabel();
+        jButtonEUBuscar = new javax.swing.JButton();
+        jTextFieldEUNombre = new javax.swing.JTextField();
+        jTextFieldEUFNacimiento = new javax.swing.JTextField();
+        jTextFieldEUTelefono = new javax.swing.JTextField();
         jButtonEUCancelar = new javax.swing.JButton();
+        jTextFieldEUCedula = new javax.swing.JTextField();
+        jLabelEUCedula = new javax.swing.JLabel();
 
+        setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
         setTitle("Borrar Usuario");
-
-        jButtonEUBuscar.setBackground(new java.awt.Color(0, 102, 153));
-        jButtonEUBuscar.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonEUBuscar.setText("Buscar");
-        jButtonEUBuscar.addActionListener(this::jButtonEUBuscarActionPerformed);
-
-        jLabelEUApellido.setText("Apellido:");
-        jLabelEUApellido.setMaximumSize(null);
-        jLabelEUApellido.setMinimumSize(new java.awt.Dimension(104, 36));
-
-        jButtonEUActualizar.setBackground(new java.awt.Color(0, 102, 153));
-        jButtonEUActualizar.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonEUActualizar.setText("BORRAR");
-        jButtonEUActualizar.setMinimumSize(new java.awt.Dimension(104, 36));
-        jButtonEUActualizar.addActionListener(this::jButtonEUActualizarActionPerformed);
-
-        jTextFieldEUCElectronico.setMaximumSize(null);
-        jTextFieldEUCElectronico.setMinimumSize(new java.awt.Dimension(104, 36));
-
-        jLabelEUDireccion.setText("Dirección:");
-        jLabelEUDireccion.setMaximumSize(null);
-        jLabelEUDireccion.setMinimumSize(new java.awt.Dimension(104, 36));
-
-        jLabelEUCElectronico.setText("Correo Electrónico: ");
-        jLabelEUCElectronico.setMaximumSize(null);
-        jLabelEUCElectronico.setMinimumSize(new java.awt.Dimension(104, 36));
-
-        jTextFieldEUCedula.setMaximumSize(null);
-        jTextFieldEUCedula.setMinimumSize(new java.awt.Dimension(104, 36));
-
-        jTextFieldEUTelefono.setMaximumSize(null);
-        jTextFieldEUTelefono.setMinimumSize(new java.awt.Dimension(104, 36));
-
-        jTextFieldEUFNacimiento.setMaximumSize(null);
-        jTextFieldEUFNacimiento.setMinimumSize(new java.awt.Dimension(104, 36));
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setMinimumSize(new java.awt.Dimension(100, 100));
@@ -168,9 +152,9 @@ public class BorrarUsuario extends javax.swing.JInternalFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(23, 23, 23)
                 .addComponent(jLabelBorrarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -180,79 +164,111 @@ public class BorrarUsuario extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTextFieldEUNombre.setMaximumSize(null);
-        jTextFieldEUNombre.setMinimumSize(new java.awt.Dimension(104, 36));
+        jLabelEUCElectronico.setText("Correo Electrónico: ");
+        jLabelEUCElectronico.setMaximumSize(null);
+        jLabelEUCElectronico.setMinimumSize(new java.awt.Dimension(104, 36));
 
-        jLabelEUFNacimiento.setText("Fecha de nacimiento:");
-        jLabelEUFNacimiento.setMaximumSize(null);
-        jLabelEUFNacimiento.setMinimumSize(new java.awt.Dimension(104, 36));
+        jTextFieldEUApellido.setMaximumSize(null);
+        jTextFieldEUApellido.setMinimumSize(new java.awt.Dimension(104, 36));
 
-        jLabelEUTelefono.setText("Teléfono:");
-        jLabelEUTelefono.setMaximumSize(null);
-        jLabelEUTelefono.setMinimumSize(new java.awt.Dimension(104, 36));
+        jLabelEUDireccion.setText("Dirección:");
+        jLabelEUDireccion.setMaximumSize(null);
+        jLabelEUDireccion.setMinimumSize(new java.awt.Dimension(104, 36));
+
+        jTextFieldEUDireccion.setMaximumSize(null);
+        jTextFieldEUDireccion.setMinimumSize(new java.awt.Dimension(104, 36));
+
+        jTextFieldEUCElectronico.setMaximumSize(null);
+        jTextFieldEUCElectronico.setMinimumSize(new java.awt.Dimension(104, 36));
 
         jLabelEUNombre.setText("Nombre:");
         jLabelEUNombre.setMaximumSize(null);
         jLabelEUNombre.setMinimumSize(new java.awt.Dimension(104, 36));
 
-        jTextFieldEUDireccion.setMaximumSize(null);
-        jTextFieldEUDireccion.setMinimumSize(new java.awt.Dimension(104, 36));
+        jButtonEUABorrar.setBackground(new java.awt.Color(0, 102, 153));
+        jButtonEUABorrar.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonEUABorrar.setText("BORRAR");
+        jButtonEUABorrar.setMinimumSize(new java.awt.Dimension(104, 36));
+        jButtonEUABorrar.addActionListener(this::jButtonEUABorrarActionPerformed);
 
-        jTextFieldEUApellido.setMaximumSize(null);
-        jTextFieldEUApellido.setMinimumSize(new java.awt.Dimension(104, 36));
+        jLabelEUTelefono.setText("Teléfono:");
+        jLabelEUTelefono.setMaximumSize(null);
+        jLabelEUTelefono.setMinimumSize(new java.awt.Dimension(104, 36));
 
-        jLabelEUCedula.setText("Cedula:");
-        jLabelEUCedula.setMaximumSize(null);
-        jLabelEUCedula.setMinimumSize(new java.awt.Dimension(104, 36));
+        jLabelEUApellido.setText("Apellido:");
+        jLabelEUApellido.setMaximumSize(null);
+        jLabelEUApellido.setMinimumSize(new java.awt.Dimension(104, 36));
+
+        jLabelEUFNacimiento.setText("Fecha de nacimiento:");
+        jLabelEUFNacimiento.setMaximumSize(null);
+        jLabelEUFNacimiento.setMinimumSize(new java.awt.Dimension(104, 36));
+
+        jButtonEUBuscar.setBackground(new java.awt.Color(0, 102, 153));
+        jButtonEUBuscar.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonEUBuscar.setText("Buscar");
+        jButtonEUBuscar.addActionListener(this::jButtonEUBuscarActionPerformed);
+
+        jTextFieldEUNombre.setMaximumSize(null);
+        jTextFieldEUNombre.setMinimumSize(new java.awt.Dimension(104, 36));
+
+        jTextFieldEUFNacimiento.setMaximumSize(null);
+        jTextFieldEUFNacimiento.setMinimumSize(new java.awt.Dimension(104, 36));
+
+        jTextFieldEUTelefono.setMaximumSize(null);
+        jTextFieldEUTelefono.setMinimumSize(new java.awt.Dimension(104, 36));
 
         jButtonEUCancelar.setText("CANCELAR");
         jButtonEUCancelar.setMaximumSize(null);
         jButtonEUCancelar.setMinimumSize(new java.awt.Dimension(104, 36));
         jButtonEUCancelar.addActionListener(this::jButtonEUCancelarActionPerformed);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabelEUFNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelEUDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelEUTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelEUCElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelEUApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelEUNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelEUCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextFieldEUNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextFieldEUApellido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextFieldEUCElectronico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextFieldEUTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextFieldEUDireccion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextFieldEUFNacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTextFieldEUCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButtonEUBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addComponent(jButtonEUActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+        jTextFieldEUCedula.setMaximumSize(null);
+        jTextFieldEUCedula.setMinimumSize(new java.awt.Dimension(104, 36));
+
+        jLabelEUCedula.setText("Cedula:");
+        jLabelEUCedula.setMaximumSize(null);
+        jLabelEUCedula.setMinimumSize(new java.awt.Dimension(104, 36));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(jButtonEUABorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonEUCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jButtonEUCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabelEUFNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabelEUDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabelEUTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabelEUCElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabelEUApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabelEUNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabelEUCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextFieldEUNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jTextFieldEUApellido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jTextFieldEUCElectronico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jTextFieldEUTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jTextFieldEUDireccion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jTextFieldEUFNacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addComponent(jTextFieldEUCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jButtonEUBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(16, Short.MAX_VALUE)
                 .addComponent(jLabelEUCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jTextFieldEUCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonEUBuscar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -265,7 +281,7 @@ public class BorrarUsuario extends javax.swing.JInternalFrame {
                 .addComponent(jTextFieldEUApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelEUCElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(12, 12, 12)
                 .addComponent(jTextFieldEUCElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelEUTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -279,11 +295,34 @@ public class BorrarUsuario extends javax.swing.JInternalFrame {
                 .addComponent(jLabelEUFNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextFieldEUFNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(22, 22, 22)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonEUCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonEUActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21))
+                    .addComponent(jButtonEUABorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+
+        jScrollPane1.setViewportView(jPanel2);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         pack();
@@ -293,9 +332,9 @@ public class BorrarUsuario extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonEUBuscarActionPerformed
 
-    private void jButtonEUActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEUActualizarActionPerformed
+    private void jButtonEUABorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEUABorrarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonEUActualizarActionPerformed
+    }//GEN-LAST:event_jButtonEUABorrarActionPerformed
 
     private void jButtonEUCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEUCancelarActionPerformed
         // TODO add your handling code here:
@@ -303,7 +342,7 @@ public class BorrarUsuario extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonEUActualizar;
+    private javax.swing.JButton jButtonEUABorrar;
     private javax.swing.JButton jButtonEUBuscar;
     private javax.swing.JButton jButtonEUCancelar;
     private javax.swing.JLabel jLabelBorrarUsuario;
@@ -315,6 +354,8 @@ public class BorrarUsuario extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabelEUNombre;
     private javax.swing.JLabel jLabelEUTelefono;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextFieldEUApellido;
     private javax.swing.JTextField jTextFieldEUCElectronico;
     private javax.swing.JTextField jTextFieldEUCedula;

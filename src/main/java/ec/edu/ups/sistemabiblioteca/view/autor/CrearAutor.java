@@ -102,58 +102,52 @@ public class CrearAutor extends javax.swing.JInternalFrame {
     public void setjTextFieldCATelefono(JTextField jTextFieldCATelefono) {
         this.jTextFieldCATelefono = jTextFieldCATelefono;
     }
-    
+
+    public void mostrarInformacion(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensaje);
+
+    }
+
+    public void mostrarInformacion1(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensaje);
+        dispose();
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextFieldCATelefono = new javax.swing.JTextField();
-        jLabelCAGenero = new javax.swing.JLabel();
-        jLabelCACedula = new javax.swing.JLabel();
-        jTextFieldCAGenero = new javax.swing.JTextField();
-        jTextFieldCACedula = new javax.swing.JTextField();
-        jLabelCAFecha = new javax.swing.JLabel();
-        jLabelCANombre = new javax.swing.JLabel();
-        jTextFieldCAFecha = new javax.swing.JTextField();
-        jTextFieldCANombre = new javax.swing.JTextField();
-        jButtonCACancelar = new javax.swing.JButton();
-        jLabelCAApellido = new javax.swing.JLabel();
-        jButtonCACrear = new javax.swing.JButton();
-        jTextFieldCAApellido = new javax.swing.JTextField();
-        jTextFieldCABibliografia = new javax.swing.JTextField();
-        jLabelCANacionalidad = new javax.swing.JLabel();
-        jLabelCABibliotecario = new javax.swing.JLabel();
-        jTextFieldCANacionalidad = new javax.swing.JTextField();
-        jLabelCATelefono = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabelCrearAutor = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jPanel1 = new javax.swing.JPanel();
+        jButtonCACrear = new javax.swing.JButton();
+        jButtonCACancelar = new javax.swing.JButton();
+        jTextFieldCABibliografia = new javax.swing.JTextField();
+        jLabelCABibliotecario = new javax.swing.JLabel();
+        jLabelCAFecha = new javax.swing.JLabel();
+        jTextFieldCAFecha = new javax.swing.JTextField();
+        jTextFieldCAGenero = new javax.swing.JTextField();
+        jLabelCAGenero = new javax.swing.JLabel();
+        jTextFieldCATelefono = new javax.swing.JTextField();
+        jLabelCATelefono = new javax.swing.JLabel();
+        jTextFieldCANacionalidad = new javax.swing.JTextField();
+        jLabelCANacionalidad = new javax.swing.JLabel();
+        jTextFieldCAApellido = new javax.swing.JTextField();
+        jLabelCAApellido = new javax.swing.JLabel();
+        jTextFieldCANombre = new javax.swing.JTextField();
+        jLabelCANombre = new javax.swing.JLabel();
+        jLabelCACedula = new javax.swing.JLabel();
+        jTextFieldCACedula = new javax.swing.JTextField();
 
+        setBorder(null);
         setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
         setTitle("Crear Autor");
-
-        jLabelCAGenero.setText("Genero Literario:");
-
-        jLabelCACedula.setText("Cedula:");
-
-        jLabelCAFecha.setText("Fecha de Nacimiento:");
-
-        jLabelCANombre.setText("Nombre:");
-
-        jButtonCACancelar.setText("Cancelar");
-        jButtonCACancelar.addActionListener(this::jButtonCACancelarActionPerformed);
-
-        jLabelCAApellido.setText("Apellido:");
-
-        jButtonCACrear.setBackground(new java.awt.Color(0, 102, 153));
-        jButtonCACrear.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonCACrear.setText("Crear");
-        jButtonCACrear.addActionListener(this::jButtonCACrearActionPerformed);
-
-        jLabelCANacionalidad.setText("Nacionalidad:");
-
-        jLabelCABibliotecario.setText("Bibliografia:");
-
-        jLabelCATelefono.setText("Telefono:");
+        setMaximumSize(new java.awt.Dimension(223456677, 232456899));
+        setMinimumSize(new java.awt.Dimension(400, 12334));
 
         jPanel4.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -178,63 +172,69 @@ public class CrearAutor extends javax.swing.JInternalFrame {
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabelCANombre)
-                            .addGap(217, 217, 217))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabelCACedula)
-                            .addGap(224, 224, 224))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabelCAApellido)
-                            .addGap(217, 217, 217))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabelCANacionalidad)
-                            .addGap(191, 191, 191))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabelCATelefono)
-                            .addGap(214, 214, 214))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabelCAGenero)
-                            .addGap(177, 177, 177))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabelCABibliotecario)
-                            .addGap(201, 201, 201)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelCAFecha)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jTextFieldCACedula, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextFieldCANombre, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextFieldCAApellido, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextFieldCANacionalidad, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextFieldCATelefono, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextFieldCAGenero, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextFieldCAFecha, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextFieldCABibliografia, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGap(40, 40, 40))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(54, 54, 54)
-                .addComponent(jButtonCACrear, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButtonCACancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        jButtonCACrear.setBackground(new java.awt.Color(0, 102, 153));
+        jButtonCACrear.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonCACrear.setText("Crear");
+        jButtonCACrear.addActionListener(this::jButtonCACrearActionPerformed);
+
+        jButtonCACancelar.setText("Cancelar");
+        jButtonCACancelar.addActionListener(this::jButtonCACancelarActionPerformed);
+
+        jLabelCABibliotecario.setText("Bibliografia:");
+
+        jLabelCAFecha.setText("Fecha de Nacimiento:");
+
+        jLabelCAGenero.setText("Genero Literario:");
+
+        jLabelCATelefono.setText("Telefono:");
+
+        jLabelCANacionalidad.setText("Nacionalidad:");
+
+        jLabelCAApellido.setText("Apellido:");
+
+        jLabelCANombre.setText("Nombre:");
+
+        jLabelCACedula.setText("Cedula:");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelCANombre)
+                    .addComponent(jLabelCAApellido)
+                    .addComponent(jLabelCANacionalidad)
+                    .addComponent(jLabelCATelefono)
+                    .addComponent(jLabelCAGenero)
+                    .addComponent(jLabelCABibliotecario)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(jButtonCACrear, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButtonCACancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelCAFecha)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jTextFieldCACedula, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jTextFieldCANombre, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jTextFieldCAApellido, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jTextFieldCANacionalidad, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jTextFieldCATelefono, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jTextFieldCAGenero, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jTextFieldCAFecha, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jTextFieldCABibliografia, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelCACedula))
+                .addContainerGap(83, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addComponent(jLabelCACedula)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jTextFieldCACedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelCANombre)
@@ -264,11 +264,34 @@ public class CrearAutor extends javax.swing.JInternalFrame {
                 .addComponent(jLabelCABibliotecario)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextFieldCABibliografia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(29, 29, 29)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonCACrear, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonCACancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20))
+                .addContainerGap(195, Short.MAX_VALUE))
+        );
+
+        jScrollPane1.setViewportView(jPanel1);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(91, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 536, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(62, Short.MAX_VALUE))
         );
 
         pack();
@@ -283,8 +306,8 @@ public class CrearAutor extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonCACrearActionPerformed
 
-    public void cambiarIdioma(Locale locale){
-        ResourceBundle bundle =ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n", locale);
+    public void cambiarIdioma(Locale locale) {
+        ResourceBundle bundle = ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n", locale);
         jLabelCrearAutor.setText(bundle.getString("TAcrear"));
         jButtonCACrear.setText(bundle.getString("bttnCrear"));
         jButtonCACancelar.setText(bundle.getString("bttnCancelar"));
@@ -310,7 +333,9 @@ public class CrearAutor extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabelCANombre;
     private javax.swing.JLabel jLabelCATelefono;
     private javax.swing.JLabel jLabelCrearAutor;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextFieldCAApellido;
     private javax.swing.JTextField jTextFieldCABibliografia;
     private javax.swing.JTextField jTextFieldCACedula;
