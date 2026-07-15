@@ -130,19 +130,7 @@ public class BorrarBibliotecario extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-<<<<<<< HEAD
-=======
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        jLabelEBCargo = new javax.swing.JLabel();
-        jTextFieldEBCedula = new javax.swing.JTextField();
-        jLabelEBFNacimiento = new javax.swing.JLabel();
-        jTextFieldEBTurno = new javax.swing.JTextField();
-        jLabelEBNombre = new javax.swing.JLabel();
-        jTextFieldEBCargo = new javax.swing.JTextField();
-        jTextFieldEBFecha = new javax.swing.JTextField();
-        jLabelEBTelefono = new javax.swing.JLabel();
-        jTextFieldEBNombre = new javax.swing.JTextField();
->>>>>>> main
         jPanel4 = new javax.swing.JPanel();
         jLabelEliminarBibliotecario = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -321,9 +309,9 @@ public class BorrarBibliotecario extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(71, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -331,8 +319,8 @@ public class BorrarBibliotecario extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -386,11 +374,8 @@ public class BorrarBibliotecario extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabelEliminarBibliotecario;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
-<<<<<<< HEAD
     private javax.swing.JScrollPane jScrollPane1;
-=======
     private javax.swing.JTabbedPane jTabbedPane1;
->>>>>>> main
     private javax.swing.JTextField jTextFieldEBApellido;
     private javax.swing.JTextField jTextFieldEBCargo;
     private javax.swing.JTextField jTextFieldEBCedula;
