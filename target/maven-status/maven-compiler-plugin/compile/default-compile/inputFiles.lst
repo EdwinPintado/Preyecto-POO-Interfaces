@@ -11,6 +11,12 @@ C:\Users\marco\Documents\NetBeansProjects\Preyecto-POO-Interfacess\src\main\java
 C:\Users\marco\Documents\NetBeansProjects\Preyecto-POO-Interfacess\src\main\java\ec\edu\ups\sistemabiblioteca\DAO\PrestamoDAOMemoria.java
 C:\Users\marco\Documents\NetBeansProjects\Preyecto-POO-Interfacess\src\main\java\ec\edu\ups\sistemabiblioteca\DAO\SistemaDAO.java
 C:\Users\marco\Documents\NetBeansProjects\Preyecto-POO-Interfacess\src\main\java\ec\edu\ups\sistemabiblioteca\DAO\UsuarioDAOMemoria.java
+C:\Users\marco\Documents\NetBeansProjects\Preyecto-POO-Interfacess\src\main\java\ec\edu\ups\sistemabiblioteca\Exceptions\AutorNoEncontradoException.java
+C:\Users\marco\Documents\NetBeansProjects\Preyecto-POO-Interfacess\src\main\java\ec\edu\ups\sistemabiblioteca\Exceptions\BibliotecarioNoExiste.java
+C:\Users\marco\Documents\NetBeansProjects\Preyecto-POO-Interfacess\src\main\java\ec\edu\ups\sistemabiblioteca\Exceptions\DevolucionNoEncontradaException.java
+C:\Users\marco\Documents\NetBeansProjects\Preyecto-POO-Interfacess\src\main\java\ec\edu\ups\sistemabiblioteca\Exceptions\LibroNoEncontrado.java
+C:\Users\marco\Documents\NetBeansProjects\Preyecto-POO-Interfacess\src\main\java\ec\edu\ups\sistemabiblioteca\Exceptions\PrestamoNoEncontrado.java
+C:\Users\marco\Documents\NetBeansProjects\Preyecto-POO-Interfacess\src\main\java\ec\edu\ups\sistemabiblioteca\Exceptions\UsuarioNoExiste.java
 C:\Users\marco\Documents\NetBeansProjects\Preyecto-POO-Interfacess\src\main\java\ec\edu\ups\sistemabiblioteca\models\Autor.java
 C:\Users\marco\Documents\NetBeansProjects\Preyecto-POO-Interfacess\src\main\java\ec\edu\ups\sistemabiblioteca\models\Bibliotecario.java
 C:\Users\marco\Documents\NetBeansProjects\Preyecto-POO-Interfacess\src\main\java\ec\edu\ups\sistemabiblioteca\models\Devolucion.java

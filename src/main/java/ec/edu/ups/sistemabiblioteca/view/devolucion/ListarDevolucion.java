@@ -7,6 +7,7 @@ package ec.edu.ups.sistemabiblioteca.view.devolucion;
 import ec.edu.ups.sistemabiblioteca.models.Devolucion;
 import java.util.List;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
@@ -15,7 +16,9 @@ import javax.swing.table.DefaultTableModel;
  * @author Usuario
  */
 public class ListarDevolucion extends javax.swing.JInternalFrame {
+
     private DefaultTableModel modelo;
+
     /**
      * Creates new form ListarDevolucion
      */
@@ -61,6 +64,11 @@ public class ListarDevolucion extends javax.swing.JInternalFrame {
             modelo.addRow(fila);
 
         }
+    }
+
+    public void mostrarInformacion(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensaje);
+
     }
 
     /**

@@ -41,10 +41,12 @@ ec\edu\ups\sistemabiblioteca\Controller\UsuarioController$2.class
 ec\edu\ups\sistemabiblioteca\Controller\UsuarioController$5.class
 ec\edu\ups\sistemabiblioteca\view\libro\CrearLibro.class
 ec\edu\ups\sistemabiblioteca\view\usuario\ListarUsuario.class
+ec\edu\ups\sistemabiblioteca\Exceptions\LibroNoEncontrado.class
 ec\edu\ups\sistemabiblioteca\view\autor\ListarAutor.class
 ec\edu\ups\sistemabiblioteca\DAO\AutorDAOMemoria.class
 ec\edu\ups\sistemabiblioteca\DAO\SistemaDAO.class
 ec\edu\ups\sistemabiblioteca\Controller\PrestamoController$4.class
+ec\edu\ups\sistemabiblioteca\Exceptions\PrestamoNoEncontrado.class
 ec\edu\ups\sistemabiblioteca\Controller\LibroController$3.class
 ec\edu\ups\sistemabiblioteca\Controller\BibliotecarioController$2.class
 ec\edu\ups\sistemabiblioteca\view\autor\ActualizarAutor.class
@@ -65,9 +67,11 @@ ec\edu\ups\sistemabiblioteca\Controller\LibroController$6.class
 ec\edu\ups\sistemabiblioteca\view\prestamo\ListarPrestamo.class
 ec\edu\ups\sistemabiblioteca\Controller\BibliotecarioController$1.class
 ec\edu\ups\sistemabiblioteca\Controller\PrestamoController$5.class
+ec\edu\ups\sistemabiblioteca\Exceptions\AutorNoEncontradoException.class
 ec\edu\ups\sistemabiblioteca\view\devolucion\ListarDevolucion.class
 ec\edu\ups\sistemabiblioteca\Controller\LibroController$4.class
 ec\edu\ups\sistemabiblioteca\Controller\PrestamoController.class
+ec\edu\ups\sistemabiblioteca\Exceptions\DevolucionNoEncontradaException.class
 ec\edu\ups\sistemabiblioteca\view\bibliotecario\ListarBibliotecario.class
 ec\edu\ups\sistemabiblioteca\view\usuario\ActualizarUsuario.class
 ec\edu\ups\sistemabiblioteca\Controller\PrestamoController$1.class
@@ -81,3 +85,5 @@ ec\edu\ups\sistemabiblioteca\DAO\PrestamoDAOMemoria.class
 ec\edu\ups\sistemabiblioteca\Controller\BibliotecarioController$5.class
 ec\edu\ups\sistemabiblioteca\DAO\UsuarioDAOMemoria.class
 ec\edu\ups\sistemabiblioteca\Controller\AutorController$1.class
+ec\edu\ups\sistemabiblioteca\Exceptions\BibliotecarioNoExiste.class
+ec\edu\ups\sistemabiblioteca\Exceptions\UsuarioNoExiste.class

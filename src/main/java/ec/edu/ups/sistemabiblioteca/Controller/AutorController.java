@@ -1,6 +1,7 @@
 package ec.edu.ups.sistemabiblioteca.Controller;
 
 import ec.edu.ups.sistemabiblioteca.DAO.AutorDAOMemoria;
+import ec.edu.ups.sistemabiblioteca.Exceptions.AutorNoEncontradoException;
 import ec.edu.ups.sistemabiblioteca.models.Autor;
 import ec.edu.ups.sistemabiblioteca.view.autor.ActualizarAutor;
 import ec.edu.ups.sistemabiblioteca.view.autor.BorrarAutor;
@@ -47,8 +48,10 @@ public class AutorController {
     //Agregar autor
     public void agregarAutor() {
         int respuesta = JOptionPane.showConfirmDialog(crearAutor, "¿Quieres crear un nuevo autor?", "Confirmar", JOptionPane.YES_NO_OPTION);
+
         if (respuesta == JOptionPane.YES_OPTION) {
             try {
+
                 String cedula = crearAutor.getjTextFieldCACedula().getText().trim();
                 String nombre = crearAutor.getjTextFieldCANombre().getText().trim();
                 String apellido = crearAutor.getjTextFieldCAApellido().getText().trim();
@@ -63,24 +66,56 @@ public class AutorController {
                         || nacionalidad.isEmpty() || generoLiterario.isEmpty()
                         || bibliografia.isEmpty()) {
 
-                    crearAutor.mostrarInformacion(
-                            "Todos los campos deben estar llenos para guardar el autor.");
-                    return;
+                    throw new IllegalArgumentException("Todos los campos deben estar llenos para guardar el autor.");
                 }
+
+                if (!cedula.matches("\\d{10}")) {
+                    throw new IllegalArgumentException("La cédula debe contener exactamente 10 dígitos.");
+                }
+
+                if (!telefono.matches("\\d{10}")) {
+                    throw new IllegalArgumentException("El teléfono debe contener exactamente 10 dígitos.");
+                }
+
+                if (!nombre.matches("[a-zA-ZÁÉÍÓÚáéíóúÑñ ]+")) {
+                    throw new IllegalArgumentException("El nombre solo puede contener letras.");
+                }
+
+                if (!apellido.matches("[a-zA-ZÁÉÍÓÚáéíóúÑñ ]+")) {
+                    throw new IllegalArgumentException("El apellido solo puede contener letras.");
+                }
+
+                if (!nacionalidad.matches("[a-zA-ZÁÉÍÓÚáéíóúÑñ ]+")) {
+                    throw new IllegalArgumentException("La nacionalidad solo puede contener letras.");
+                }
+
+                if (!generoLiterario.matches("[a-zA-ZÁÉÍÓÚáéíóúÑñ ]+")) {
+                    throw new IllegalArgumentException("El género literario solo puede contener letras.");
+                }
+
                 Date fechaNacimiento;
 
                 try {
+
                     fechaNacimiento = Date.valueOf(fechaTexto);
 
                 } catch (IllegalArgumentException e) {
 
-                    crearAutor.mostrarInformacion(
-                            "Error: El formato de fecha debe ser AAAA-MM-DD.");
-                    return;
+                    throw new IllegalArgumentException("Error: El formato de fecha debe ser AAAA-MM-DD.");
                 }
-                Autor autor = new Autor(nacionalidad, generoLiterario, bibliografia, cedula, nombre, apellido, telefono, fechaNacimiento);
+
+                Autor autor = new Autor(
+                        nacionalidad,
+                        generoLiterario,
+                        bibliografia,
+                        cedula,
+                        nombre,
+                        apellido,
+                        telefono,
+                        fechaNacimiento);
 
                 autorDAO.agregar(autor);
+
                 crearAutor.mostrarInformacion1("Autor creado exitosamente :)");
 
                 crearAutor.getjTextFieldCANombre().setText("");
@@ -92,19 +127,30 @@ public class AutorController {
                 crearAutor.getjTextFieldCABibliografia().setText("");
 
             } catch (IllegalArgumentException e) {
-                //Por si el formato no es año-mes-disa
-                mostrarMensaje(crearAutor, "Error: El formato de fecha debe ser AAAA-MM-DD.", "Error", JOptionPane.ERROR_MESSAGE);
+                crearAutor.mostrarInformacion(e.getMessage());
             }
+
         } else {
-            crearAutor.mostrarInformacion1("Accion cancelada :(");
+            crearAutor.mostrarInformacion1("Acción cancelada :(");
         }
     }
 
     public void buscarEliminarAutor() {
-        String cedulaBuscar = borrarAutor.getjTextFieldEACedula().getText();
-        Autor autor = autorDAO.buscar(cedulaBuscar);
 
-        if (autor != null) {
+        try {
+
+            String cedulaBuscar = borrarAutor.getjTextFieldEACedula().getText().trim();
+
+            if (cedulaBuscar.isEmpty()) {
+                throw new IllegalArgumentException("Debe ingresar una cédula.");
+            }
+
+            if (!cedulaBuscar.matches("\\d{10}")) {
+                throw new IllegalArgumentException("La cédula debe contener exactamente 10 dígitos.");
+            }
+
+            Autor autor = autorDAO.buscar(cedulaBuscar);
+
             borrarAutor.getjTextFieldEANombre().setText(autor.getNombre());
             borrarAutor.getjTextFieldEAApellido().setText(autor.getApellido());
             borrarAutor.getjTextFieldEANacionalidad().setText(autor.getNacionalidad());
@@ -112,7 +158,9 @@ public class AutorController {
             borrarAutor.getjTextFieldEAGenero().setText(autor.getGeneroLiterario());
             borrarAutor.getjTextFieldEAFecha().setText(String.valueOf(autor.getFechaNacimiento()));
             borrarAutor.getjTextFieldEABibliografia().setText(autor.getBibliografia());
-        } else {
+
+        } catch (AutorNoEncontradoException e) {
+
             borrarAutor.getjTextFieldEANombre().setText("");
             borrarAutor.getjTextFieldEAApellido().setText("");
             borrarAutor.getjTextFieldEANacionalidad().setText("");
@@ -120,33 +168,76 @@ public class AutorController {
             borrarAutor.getjTextFieldEAGenero().setText("");
             borrarAutor.getjTextFieldEAFecha().setText("");
             borrarAutor.getjTextFieldEABibliografia().setText("");
-            borrarAutor.mostrarInformacion("No se encontro el autor (autor no existe)");
+
+            borrarAutor.mostrarInformacion(e.getMessage());
+
+        } catch (IllegalArgumentException e) {
+
+            borrarAutor.mostrarInformacion(e.getMessage());
         }
     }
 
     public void eliminarAutor() {
-        String cedulaEliminar = borrarAutor.getjTextFieldEACedula().getText();
-        Autor autor = autorDAO.buscar(cedulaEliminar);
-        if (autor != null) {
-            int respuesta = JOptionPane.showConfirmDialog(borrarAutor, "¿Quieres eliminar este autor: " + autor.getNombre() + " ?", "Confirmar", JOptionPane.YES_NO_OPTION);
-            if (respuesta == 0) {
+
+        try {
+
+            String cedulaEliminar = borrarAutor.getjTextFieldEACedula().getText().trim();
+
+            if (cedulaEliminar.isEmpty()) {
+                throw new IllegalArgumentException("Debe ingresar una cédula.");
+            }
+
+            if (!cedulaEliminar.matches("\\d{10}")) {
+                throw new IllegalArgumentException("La cédula debe contener exactamente 10 dígitos.");
+            }
+
+            Autor autor = autorDAO.buscar(cedulaEliminar);
+
+            int respuesta = JOptionPane.showConfirmDialog(
+                    borrarAutor,
+                    "¿Quieres eliminar este autor: " + autor.getNombre() + " ?",
+                    "Confirmar",
+                    JOptionPane.YES_NO_OPTION);
+
+            if (respuesta == JOptionPane.YES_OPTION) {
+
                 autorDAO.eliminar(cedulaEliminar);
-                borrarAutor.mostrarInformacion1("Autor eliminado con exito :)");
+
+                borrarAutor.mostrarInformacion1("Autor eliminado con éxito :)");
 
                 borrarAutor.getjTextFieldEACedula().setText("");
+
             } else {
-                borrarAutor.mostrarInformacion1("Accion cancelada :(");
+
+                borrarAutor.mostrarInformacion1("Acción cancelada :(");
             }
-        } else {
-            borrarAutor.mostrarInformacion("No se encontro el autor (cedula no existe)");
+
+        } catch (AutorNoEncontradoException e) {
+
+            borrarAutor.mostrarInformacion(e.getMessage());
+
+        } catch (IllegalArgumentException e) {
+
+            borrarAutor.mostrarInformacion(e.getMessage());
         }
     }
 
     public void buscarAutor() {
-        String cedulaBuscar = buscarAutor.getjTextFieldBACedula().getText();
-        Autor autor = autorDAO.buscar(cedulaBuscar);
 
-        if (autor != null) {
+        try {
+
+            String cedulaBuscar = buscarAutor.getjTextFieldBACedula().getText().trim();
+
+            if (cedulaBuscar.isEmpty()) {
+                throw new IllegalArgumentException("Debe ingresar una cédula.");
+            }
+
+            if (!cedulaBuscar.matches("\\d{10}")) {
+                throw new IllegalArgumentException("La cédula debe contener exactamente 10 dígitos.");
+            }
+
+            Autor autor = autorDAO.buscar(cedulaBuscar);
+
             buscarAutor.getjTextFieldBANombre().setText(autor.getNombre());
             buscarAutor.getjTextFieldBAApellido().setText(autor.getApellido());
             buscarAutor.getjTextFieldBANacionalidad().setText(autor.getNacionalidad());
@@ -154,7 +245,9 @@ public class AutorController {
             buscarAutor.getjTextFieldBAGenero().setText(autor.getGeneroLiterario());
             buscarAutor.getjTextFieldBAFecha().setText(String.valueOf(autor.getFechaNacimiento()));
             buscarAutor.getjTextFieldBABibliografia().setText(autor.getBibliografia());
-        } else {
+
+        } catch (AutorNoEncontradoException e) {
+
             buscarAutor.getjTextFieldBANombre().setText("");
             buscarAutor.getjTextFieldBAApellido().setText("");
             buscarAutor.getjTextFieldBANacionalidad().setText("");
@@ -162,15 +255,31 @@ public class AutorController {
             buscarAutor.getjTextFieldBAGenero().setText("");
             buscarAutor.getjTextFieldBAFecha().setText("");
             buscarAutor.getjTextFieldBABibliografia().setText("");
-            buscarAutor.mostrarInformacion("No se encontro el autor (autor no existe)");
+
+            buscarAutor.mostrarInformacion(e.getMessage());
+
+        } catch (IllegalArgumentException e) {
+
+            buscarAutor.mostrarInformacion(e.getMessage());
         }
     }
 
     public void buscarActualizarAutor() {
-        String cedulaBuscar = actualizarAutor.getjTextFieldActACedula().getText();
-        Autor autor = autorDAO.buscar(cedulaBuscar);
 
-        if (autor != null) {
+        try {
+
+            String cedulaBuscar = actualizarAutor.getjTextFieldActACedula().getText().trim();
+
+            if (cedulaBuscar.isEmpty()) {
+                throw new IllegalArgumentException("Debe ingresar una cédula.");
+            }
+
+            if (!cedulaBuscar.matches("\\d{10}")) {
+                throw new IllegalArgumentException("La cédula debe contener exactamente 10 dígitos.");
+            }
+
+            Autor autor = autorDAO.buscar(cedulaBuscar);
+
             actualizarAutor.getjTextFieldActANombre().setText(autor.getNombre());
             actualizarAutor.getjTextFieldActAApellido().setText(autor.getApellido());
             actualizarAutor.getjTextFieldActANacionalidad().setText(autor.getNacionalidad());
@@ -178,7 +287,9 @@ public class AutorController {
             actualizarAutor.getjTextFieldActAGenero().setText(autor.getGeneroLiterario());
             actualizarAutor.getjTextFieldActAFecha().setText(String.valueOf(autor.getFechaNacimiento()));
             actualizarAutor.getjTextFieldActABibliografia().setText(autor.getBibliografia());
-        } else {
+
+        } catch (AutorNoEncontradoException e) {
+
             actualizarAutor.getjTextFieldActANombre().setText("");
             actualizarAutor.getjTextFieldActAApellido().setText("");
             actualizarAutor.getjTextFieldActANacionalidad().setText("");
@@ -186,48 +297,134 @@ public class AutorController {
             actualizarAutor.getjTextFieldActAGenero().setText("");
             actualizarAutor.getjTextFieldActAFecha().setText("");
             actualizarAutor.getjTextFieldActABibliografia().setText("");
-            buscarAutor.mostrarInformacion("No se encontro el autor (autor no existe)");
+
+            actualizarAutor.mostrarInformacion(e.getMessage());
+
+        } catch (IllegalArgumentException e) {
+
+            actualizarAutor.mostrarInformacion(e.getMessage());
         }
     }
 
     public void actualizarAutor() {
-        String cedulaBuscar = actualizarAutor.getjTextFieldActACedula().getText();
-        Autor autorExt = autorDAO.buscar(cedulaBuscar);
 
-        if (autorExt != null) {
-            int respuesta = JOptionPane.showConfirmDialog(actualizarAutor, "¿Quieres actualizar este autor: " + autorExt.getNombre() + " ?", "Confirmar", JOptionPane.YES_NO_OPTION);
-            if (respuesta == 0) {
-                String nuevoNombre = actualizarAutor.getjTextFieldActANombre().getText();
-                String nuevoApellido = actualizarAutor.getjTextFieldActAApellido().getText();
-                String nuevoNacionalidad = actualizarAutor.getjTextFieldActANacionalidad().getText();
-                String nuevoTelefono = actualizarAutor.getjTextFieldActATelefono().getText();
-                String nuevoGenero = actualizarAutor.getjTextFieldActAGenero().getText();
-                Date nuevoFechaN = Date.valueOf(actualizarAutor.getjTextFieldActAFecha().getText());
-                String nuevoBlibliografia = actualizarAutor.getjTextFieldActABibliografia().getText();
-                Autor autorAct = new Autor(nuevoNacionalidad, nuevoGenero, nuevoBlibliografia, cedulaBuscar, nuevoNombre, nuevoApellido, nuevoTelefono, nuevoFechaN);
+        try {
+
+            String cedulaBuscar = actualizarAutor.getjTextFieldActACedula().getText().trim();
+
+            if (cedulaBuscar.isEmpty()) {
+                throw new IllegalArgumentException("Debe ingresar una cédula.");
+            }
+
+            if (!cedulaBuscar.matches("\\d{10}")) {
+                throw new IllegalArgumentException("La cédula debe contener exactamente 10 dígitos.");
+            }
+
+            Autor autorExt = autorDAO.buscar(cedulaBuscar);
+
+            int respuesta = JOptionPane.showConfirmDialog(
+                    actualizarAutor,
+                    "¿Quieres actualizar este autor: " + autorExt.getNombre() + " ?",
+                    "Confirmar",
+                    JOptionPane.YES_NO_OPTION);
+
+            if (respuesta == JOptionPane.YES_OPTION) {
+
+                String nuevoNombre = actualizarAutor.getjTextFieldActANombre().getText().trim();
+                String nuevoApellido = actualizarAutor.getjTextFieldActAApellido().getText().trim();
+                String nuevoNacionalidad = actualizarAutor.getjTextFieldActANacionalidad().getText().trim();
+                String nuevoTelefono = actualizarAutor.getjTextFieldActATelefono().getText().trim();
+                String nuevoGenero = actualizarAutor.getjTextFieldActAGenero().getText().trim();
+                String fechaTexto = actualizarAutor.getjTextFieldActAFecha().getText().trim();
+                String nuevoBlibliografia = actualizarAutor.getjTextFieldActABibliografia().getText().trim();
+
+                if (nuevoNombre.isEmpty() || nuevoApellido.isEmpty()
+                        || nuevoNacionalidad.isEmpty() || nuevoTelefono.isEmpty()
+                        || nuevoGenero.isEmpty() || fechaTexto.isEmpty()
+                        || nuevoBlibliografia.isEmpty()) {
+
+                    throw new IllegalArgumentException("Todos los campos deben estar llenos.");
+                }
+
+                if (!nuevoNombre.matches("[a-zA-ZÁÉÍÓÚáéíóúÑñ ]+")) {
+                    throw new IllegalArgumentException("El nombre solo puede contener letras.");
+                }
+
+                if (!nuevoApellido.matches("[a-zA-ZÁÉÍÓÚáéíóúÑñ ]+")) {
+                    throw new IllegalArgumentException("El apellido solo puede contener letras.");
+                }
+
+                if (!nuevoNacionalidad.matches("[a-zA-ZÁÉÍÓÚáéíóúÑñ ]+")) {
+                    throw new IllegalArgumentException("La nacionalidad solo puede contener letras.");
+                }
+
+                if (!nuevoGenero.matches("[a-zA-ZÁÉÍÓÚáéíóúÑñ ]+")) {
+                    throw new IllegalArgumentException("El género literario solo puede contener letras.");
+                }
+
+                if (!nuevoTelefono.matches("\\d{10}")) {
+                    throw new IllegalArgumentException("El teléfono debe contener exactamente 10 dígitos.");
+                }
+
+                Date nuevoFechaN;
+
+                try {
+                    nuevoFechaN = Date.valueOf(fechaTexto);
+
+                } catch (IllegalArgumentException e) {
+
+                    throw new IllegalArgumentException(
+                            "La fecha debe tener el formato AAAA-MM-DD.");
+                }
+
+                Autor autorAct = new Autor(
+                        nuevoNacionalidad,
+                        nuevoGenero,
+                        nuevoBlibliografia,
+                        cedulaBuscar,
+                        nuevoNombre,
+                        nuevoApellido,
+                        nuevoTelefono,
+                        nuevoFechaN
+                );
+
                 autorDAO.actualizar(autorAct);
 
-                actualizarAutor.mostrarInformacion1("Autor actualizado correctamente :)");
+                actualizarAutor.mostrarInformacion1(
+                        "Autor actualizado correctamente :)");
 
-                actualizarAutor.getjTextFieldActACedula().setText("");
-                actualizarAutor.getjTextFieldActANombre().setText("");
-                actualizarAutor.getjTextFieldActAApellido().setText("");
-                actualizarAutor.getjTextFieldActANacionalidad().setText("");
-                actualizarAutor.getjTextFieldActATelefono().setText("");
-                actualizarAutor.getjTextFieldActAGenero().setText("");
-                actualizarAutor.getjTextFieldActAFecha().setText("");
-                actualizarAutor.getjTextFieldActABibliografia().setText("");
             } else {
-                actualizarAutor.mostrarInformacion1("Actualizacion candelada");
+
+                actualizarAutor.mostrarInformacion1(
+                        "Actualización cancelada");
             }
-        } else {
-            actualizarAutor.mostrarInformacion1("No se encontro el autor (cedula no existe)");
+
+        } catch (AutorNoEncontradoException e) {
+
+            actualizarAutor.mostrarInformacion(e.getMessage());
+
+        } catch (IllegalArgumentException e) {
+
+            actualizarAutor.mostrarInformacion(e.getMessage());
         }
     }
 
     public void listarAutores() {
-        List<Autor> lista = autorDAO.listar();
-        listarAutor.cargarDatos(lista);
+
+        try {
+
+            List<Autor> lista = autorDAO.listar();
+
+            if (lista == null || lista.isEmpty()) {
+                throw new IllegalArgumentException("No existen autores registrados.");
+            }
+
+            listarAutor.cargarDatos(lista);
+
+        } catch (IllegalArgumentException e) {
+
+            listarAutor.mostrarInformacion(e.getMessage());
+        }
     }
 
     public void mostrarContadorAutores() {

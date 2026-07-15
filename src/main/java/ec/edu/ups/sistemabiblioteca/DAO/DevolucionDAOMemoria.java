@@ -1,26 +1,26 @@
-
 package ec.edu.ups.sistemabiblioteca.DAO;
 
+import ec.edu.ups.sistemabiblioteca.Exceptions.DevolucionNoEncontradaException;
 import ec.edu.ups.sistemabiblioteca.models.Devolucion;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DevolucionDAOMemoria implements SistemaDAO<Devolucion>{
-    
+public class DevolucionDAOMemoria implements SistemaDAO<Devolucion> {
+
     private List<Devolucion> devoluciones;
-    
+
     public DevolucionDAOMemoria() {
         devoluciones = new ArrayList<>();
     }
-    
+
     @Override
     public void agregar(Devolucion datos) {
         devoluciones.add(datos);
-   }
+    }
 
     @Override
     public void eliminar(String isbn) {
-          for (int i = 0; i < devoluciones.size(); i++) {
+        for (int i = 0; i < devoluciones.size(); i++) {
             if (devoluciones.get(i).getPrestamo().getLibro().getIsbn().equals(isbn)) {
                 devoluciones.remove(i);
                 break;
@@ -29,21 +29,26 @@ public class DevolucionDAOMemoria implements SistemaDAO<Devolucion>{
     }
 
     @Override
-    public Devolucion buscar(String isbn) {
+    public Devolucion buscar(String isbn) throws DevolucionNoEncontradaException {
+
         for (Devolucion d : devoluciones) {
+
             if (d.getPrestamo().getLibro().getIsbn().equals(isbn)) {
                 return d;
             }
         }
-        return null;
+
+        throw new DevolucionNoEncontradaException(
+                "No se encontró la devolución del libro con ISBN: " + isbn
+        );
     }
 
     @Override
     public void actualizar(Devolucion datos) {
-         for (Devolucion d : devoluciones) {
+        for (Devolucion d : devoluciones) {
             if (d.getPrestamo().getLibro().getIsbn().equals(datos.getPrestamo().getLibro().getIsbn())) {
                 d.setPrestamo(datos.getPrestamo());
-                d.setFechaDevolucion(datos.getFechaDevolucion());               
+                d.setFechaDevolucion(datos.getFechaDevolucion());
             }
         }
     }
@@ -57,5 +62,5 @@ public class DevolucionDAOMemoria implements SistemaDAO<Devolucion>{
     public int contar() {
         return devoluciones.size();
     }
-    
+
 }

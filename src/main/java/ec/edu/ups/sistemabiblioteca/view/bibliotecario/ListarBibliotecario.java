@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
@@ -17,7 +18,9 @@ import javax.swing.table.DefaultTableModel;
  * @author Usuario
  */
 public class ListarBibliotecario extends javax.swing.JInternalFrame {
+
     private DefaultTableModel modelo;
+
     /**
      * Creates new form ListarBibliotecario
      */
@@ -33,7 +36,6 @@ public class ListarBibliotecario extends javax.swing.JInternalFrame {
     public void setTxtContadordeBibliotecarios(JTextField txtContadordeBibliotecarios) {
         this.txtContadordeBibliotecarios = txtContadordeBibliotecarios;
     }
-    
 
     public JButton getBtnMostrarListaBibliotecarios() {
         return btnMostrarListaBibliotecarios;
@@ -67,6 +69,11 @@ public class ListarBibliotecario extends javax.swing.JInternalFrame {
             modelo.addRow(fila);
 
         }
+    }
+
+    public void mostrarInformacion(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensaje);
+
     }
 
     /**
@@ -197,8 +204,8 @@ public class ListarBibliotecario extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtContadordeBibliotecariosActionPerformed
 
-    public void cambiarIdioma(Locale locale){
-        ResourceBundle bundle =ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n", locale);
+    public void cambiarIdioma(Locale locale) {
+        ResourceBundle bundle = ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n", locale);
         jLabelListaBibliotecarios.setText(bundle.getString("TBliLis"));
         btnMostrarListaBibliotecarios.setText(bundle.getString("bttnMostrar"));
         jLabelURListaBibliotecarios.setText(bundle.getString("labelBR"));
@@ -207,7 +214,7 @@ public class ListarBibliotecario extends javax.swing.JInternalFrame {
         modelo.addColumn(bundle.getString("labelLBNombre"));
         modelo.addColumn(bundle.getString("labelLBApellido"));
         modelo.addColumn(bundle.getString("labelLBCargo"));
-        tblListadoBibliotecarios.setModel(modelo);   
+        tblListadoBibliotecarios.setModel(modelo);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

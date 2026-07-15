@@ -7,6 +7,7 @@ package ec.edu.ups.sistemabiblioteca.view.prestamo;
 import ec.edu.ups.sistemabiblioteca.models.Prestamo;
 import java.util.List;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
@@ -41,7 +42,7 @@ public class ListarPrestamo extends javax.swing.JInternalFrame {
     public void setTxtContadordePrestamo(JTextField txtContadordePrestamo) {
         this.txtContadordePrestamo = txtContadordePrestamo;
     }
-    
+
     public void configurarTabla() {
         modelo = new DefaultTableModel();
         modelo.addColumn("Codigo");
@@ -72,6 +73,11 @@ public class ListarPrestamo extends javax.swing.JInternalFrame {
             modelo.addRow(fila);
 
         }
+    }
+
+    public void mostrarInformacion(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensaje);
+
     }
 
     /**

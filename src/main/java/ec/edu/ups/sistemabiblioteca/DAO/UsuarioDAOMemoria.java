@@ -1,6 +1,7 @@
 
 package ec.edu.ups.sistemabiblioteca.DAO;
 
+import ec.edu.ups.sistemabiblioteca.Exceptions.UsuarioNoExiste;
 import ec.edu.ups.sistemabiblioteca.models.Usuario;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,13 +30,13 @@ public class UsuarioDAOMemoria implements SistemaDAO<Usuario> {
     }
 
     @Override
-    public Usuario buscar(String cedula) {
+    public Usuario buscar(String cedula) throws UsuarioNoExiste{
         for (Usuario u : usuarios) {
             if (u.getCedula().equals(cedula)) {
                 return u;
             }
         }
-        return null;
+        throw new UsuarioNoExiste("No existe usuario con la cedula:"+cedula);
     }
     
     @Override

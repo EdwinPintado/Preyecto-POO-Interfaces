@@ -1,6 +1,6 @@
-
 package ec.edu.ups.sistemabiblioteca.DAO;
 
+import ec.edu.ups.sistemabiblioteca.Exceptions.LibroNoEncontrado;
 import ec.edu.ups.sistemabiblioteca.models.Libro;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,13 +19,18 @@ public class LibroDAOMemoria implements SistemaDAO<Libro> {
     }
 
     @Override
-    public Libro buscar(String isbn) {
+    public Libro buscar(String isbn) throws LibroNoEncontrado {
+
         for (Libro l : libros) {
+
             if (l.getIsbn().equals(isbn)) {
                 return l;
             }
         }
-        return null;
+
+        throw new LibroNoEncontrado(
+                "No se encontró el libro con ISBN: " + isbn
+        );
     }
 
     @Override
@@ -58,6 +63,6 @@ public class LibroDAOMemoria implements SistemaDAO<Libro> {
     @Override
     public int contar() {
         return libros.size();
-   }
+    }
 
 }
