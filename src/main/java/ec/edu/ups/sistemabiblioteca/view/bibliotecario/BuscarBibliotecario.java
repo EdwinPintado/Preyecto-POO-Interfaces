@@ -4,6 +4,8 @@
  */
 package ec.edu.ups.sistemabiblioteca.view.bibliotecario;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -176,7 +178,7 @@ public class BuscarBibliotecario extends javax.swing.JInternalFrame {
 
         jButtonBBBCedula.setBackground(new java.awt.Color(0, 102, 153));
         jButtonBBBCedula.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonBBBCedula.setText("Guardar");
+        jButtonBBBCedula.setText("Buscar");
         jButtonBBBCedula.addActionListener(this::jButtonBBBCedulaActionPerformed);
 
         jLabelBBCodigo.setText("Codigo:");
@@ -206,25 +208,24 @@ public class BuscarBibliotecario extends javax.swing.JInternalFrame {
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                             .addComponent(jLabelBBFecha)
                             .addGap(181, 181, 181)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabelBBTurno)
-                            .addComponent(jLabelBBApellido)
-                            .addComponent(jLabelBBCedula)
-                            .addComponent(jLabelBBCargo)
-                            .addComponent(jTextFieldBBApellido)
-                            .addComponent(jLabelBBNombre)
-                            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextFieldBBNombre)
-                            .addComponent(jTextFieldBBCargo)
-                            .addComponent(jTextFieldBBTelefono)
-                            .addComponent(jTextFieldBBCodigo)
-                            .addComponent(jTextFieldBBFecha)
-                            .addComponent(jTextFieldBBTurno)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTextFieldBBCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButtonBBBCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabelBBTurno)
+                        .addComponent(jLabelBBApellido)
+                        .addComponent(jLabelBBCedula)
+                        .addComponent(jLabelBBCargo)
+                        .addComponent(jTextFieldBBApellido)
+                        .addComponent(jLabelBBNombre)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jTextFieldBBNombre)
+                        .addComponent(jTextFieldBBCargo)
+                        .addComponent(jTextFieldBBTelefono)
+                        .addComponent(jTextFieldBBCodigo)
+                        .addComponent(jTextFieldBBFecha)
+                        .addComponent(jTextFieldBBTurno)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jTextFieldBBCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jButtonBBBCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(22, 22, 22))
         );
         layout.setVerticalGroup(
@@ -276,6 +277,20 @@ public class BuscarBibliotecario extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonBBBCedulaActionPerformed
 
+    public void cambiarIdioma(Locale locale){
+        ResourceBundle bundle =ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n", locale);
+        jLabelBuscarBibliotecario.setText(bundle.getString("TBlibus"));
+        jButtonBBBCedula.setText(bundle.getString("bttnBuscar"));
+        jLabelBBCedula.setText(bundle.getString("labelBusBCedula"));
+        jLabelBBNombre.setText(bundle.getString("labelBusBNombre"));
+        jLabelBBApellido.setText(bundle.getString("labelBusBApellido"));
+        jLabelBBCargo.setText(bundle.getString("labelBusBCargo"));
+        jLabelBBTelefono.setText(bundle.getString("labelBusBTelefono"));
+        jLabelBBCodigo.setText(bundle.getString("labelBusBCodigo"));
+        jLabelBBFecha.setText(bundle.getString("labelBusBFN"));
+        jLabelBBTurno.setText(bundle.getString("labelBusBT"));        
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonBBBCedula;

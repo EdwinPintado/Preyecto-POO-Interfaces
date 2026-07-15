@@ -4,6 +4,8 @@
  */
 package ec.edu.ups.sistemabiblioteca.view.bibliotecario;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -288,6 +290,20 @@ public class CrearBibliotecario extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldCBFechaActionPerformed
 
+    public void cambiarIdioma(Locale locale){
+        ResourceBundle bundle =ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n", locale);
+        jLabelCrearBibliotecario.setText(bundle.getString("TBlict"));
+        jButtonCBCrear.setText(bundle.getString("bttnCrear"));
+        jButtonCBCancelar.setText(bundle.getString("bttnCancelar"));
+        jLabelCBCedula.setText(bundle.getString("labelCBCedula"));
+        jLabelCBNombre.setText(bundle.getString("labelCBNombre"));
+        jLabelCBApellido.setText(bundle.getString("labelCBApellido"));
+        jLabelCBCargo.setText(bundle.getString("labelCBCargo"));        
+        jLabelCBTelefono.setText(bundle.getString("labelCBTelefono"));
+        jLabelCBCodBibliotecario.setText(bundle.getString("labelCBCodigo"));       
+        jLabelCBFNacimiento.setText(bundle.getString("labelCBFN "));        
+        jLabelCBTurno.setText(bundle.getString("labelCBT"));                    
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCBCancelar;
