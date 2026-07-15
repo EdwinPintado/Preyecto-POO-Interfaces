@@ -4,6 +4,8 @@
  */
 package ec.edu.ups.sistemabiblioteca.view.prestamo;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -412,6 +414,19 @@ public class CrearPrestamo extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldCPCodigoActionPerformed
 
+    public void cambiarIdioma(Locale locale){
+        ResourceBundle bundle =ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n", locale);
+        jLabelCrearPrestamo.setText(bundle.getString("TPcp"));
+        jButtonCPUBuscar.setText(bundle.getString("TPbs"));
+        jButtonCPLBuscar.setText(bundle.getString("TPbs"));
+        jLabelCPCodigo.setText(bundle.getString("labelCPCodigo"));       
+        jLabelCPCUsuario.setText(bundle.getString("labelCPUsuario"));        
+        jLabelCPNUsuario.setText(bundle.getString("labelCPNombre"));      
+        jLabelCPISBNLibro.setText(bundle.getString("labelCPLibro"));
+        jLabelCPTLibro.setText(bundle.getString("labelCPTitulo"));
+        jLabelCPBCodigo.setText(bundle.getString("labelCPBLc"));
+                
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCPCancelar;

@@ -4,6 +4,8 @@
  */
 package ec.edu.ups.sistemabiblioteca.view.prestamo;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -364,6 +366,20 @@ public class BuscarPrestamo extends javax.swing.JInternalFrame {
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    public void cambiarIdioma(Locale locale){
+        ResourceBundle bundle =ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n", locale);
+        jLabelBuscarPrestamo.setText(bundle.getString("TPbs"));
+        jButtonBuscarPresamo.setText(bundle.getString("bttnBuscar"));
+        jLabelBPCodigo.setText(bundle.getString("labelPCodigo"));
+        jLabelBPCUsuario.setText(bundle.getString("labelPUsuario"));        
+        jLabelBPNUsuario.setText(bundle.getString("labelPNombre"));
+        jLabelBPISBNLibro.setText(bundle.getString("labelPLibro"));
+        jLabelBPTLibro.setText(bundle.getString("labelPTitulo"));
+        jLabelBPBCodigo.setText(bundle.getString("labelPBLc"));
+                
+                
+                
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

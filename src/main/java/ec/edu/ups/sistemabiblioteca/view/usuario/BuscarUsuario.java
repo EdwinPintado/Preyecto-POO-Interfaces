@@ -1,5 +1,7 @@
 package ec.edu.ups.sistemabiblioteca.view.usuario;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -278,6 +280,15 @@ public class BuscarUsuario extends javax.swing.JInternalFrame {
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    public void cambiarIdioma(Locale locale){
+        ResourceBundle bundle =ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n", locale);
+        jLabelBuscarUsuario.setText(bundle.getString("TUbus"));
+        jButtonBUBuscar.setText(bundle.getString("bttnBuscar"));
+        jLabelBUCedula.setText(bundle.getString("labelUBCedula"));
+        jLabelBUNombre.setText(bundle.getString("labelUBNombre"));
+        jLabelBUApellido.setText(bundle.getString("labelUBApellido"));
+        jLabelBUCElectronico.setText(bundle.getString("labelUBCorreo"));
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

@@ -1,5 +1,7 @@
 package ec.edu.ups.sistemabiblioteca.view.libro;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -287,6 +289,19 @@ public class BorrarLibro extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonBrALibroActionPerformed
 
+    public void cambiarIdioma(Locale locale){
+        ResourceBundle bundle =ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n", locale);
+        jLabelBorrarLibro.setText(bundle.getString("TLdele"));
+        jButtonBrBISBN.setText(bundle.getString("bttnBuscar"));
+        jButtonBrALibro.setText(bundle.getString("bttnEliminar"));
+        jButtonBrCancelar.setText(bundle.getString("bttnCancelar"));
+        jLabelBrISBN.setText(bundle.getString("labelDISBN"));
+        jLabelBrTitulo.setText(bundle.getString("labelDTitulo"));
+        jLabelBrEditorial.setText(bundle.getString("labelDEditorial"));
+        jLabelBrAnio.setText(bundle.getString("labelDFB"));
+        jLabelBrACedula.setText(bundle.getString("labelDAutor"));
+        jLabelBrUNombre.setText(bundle.getString("labelDNombre"));     
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonBrALibro;
