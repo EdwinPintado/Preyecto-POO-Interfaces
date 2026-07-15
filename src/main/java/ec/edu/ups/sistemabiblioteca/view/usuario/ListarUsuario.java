@@ -89,6 +89,7 @@ public class ListarUsuario extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabelListaUsuarios = new javax.swing.JLabel();
 
+        setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);

@@ -89,6 +89,7 @@ public class BuscarLibro extends javax.swing.JInternalFrame {
         jTextFieldBsANombre = new javax.swing.JTextField();
         jTextFieldBsACedula = new javax.swing.JTextField();
 
+        setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);

@@ -1,5 +1,5 @@
 
-package ec.edu.ups.sistemabiblioteca.controllers;
+package ec.edu.ups.sistemabiblioteca.Controller;
 
 import ec.edu.ups.sistemabiblioteca.DAO.UsuarioDAOMemoria;
 import ec.edu.ups.sistemabiblioteca.models.Usuario;
@@ -299,7 +299,7 @@ public class UsuarioController {
             }
         });
 
-        eliminarUsuario.getjButtonEUBorrar().addActionListener(new ActionListener() {
+        eliminarUsuario.getjButtonEUABorrar().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 eliminarUsuario();

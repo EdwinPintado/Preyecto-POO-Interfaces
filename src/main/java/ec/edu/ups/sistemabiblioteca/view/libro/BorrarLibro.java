@@ -107,6 +107,7 @@ public class BorrarLibro extends javax.swing.JInternalFrame {
         jLabelBrEditorial = new javax.swing.JLabel();
         jLabelBrUNombre = new javax.swing.JLabel();
 
+        setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);

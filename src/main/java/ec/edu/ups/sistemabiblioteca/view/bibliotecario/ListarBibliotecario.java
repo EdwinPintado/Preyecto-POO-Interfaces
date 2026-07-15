@@ -85,6 +85,7 @@ public class ListarBibliotecario extends javax.swing.JInternalFrame {
         jLabelURListaBibliotecarios = new javax.swing.JLabel();
         txtContadordeBibliotecarios = new javax.swing.JTextField();
 
+        setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);

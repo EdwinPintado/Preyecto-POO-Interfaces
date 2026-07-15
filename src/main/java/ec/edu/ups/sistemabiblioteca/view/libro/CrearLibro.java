@@ -107,6 +107,7 @@ public class CrearLibro extends javax.swing.JInternalFrame {
         jButtonLbCLibro = new javax.swing.JButton();
         jButtonLbBAutor = new javax.swing.JButton();
 
+        setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);

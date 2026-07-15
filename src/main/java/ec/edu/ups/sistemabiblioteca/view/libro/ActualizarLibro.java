@@ -107,6 +107,7 @@ public class ActualizarLibro extends javax.swing.JInternalFrame {
         jTextFieldActLANombre = new javax.swing.JTextField();
         jLabelActLEditorial = new javax.swing.JLabel();
 
+        setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);

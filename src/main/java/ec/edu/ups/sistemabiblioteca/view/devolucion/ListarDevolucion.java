@@ -81,6 +81,7 @@ public class ListarDevolucion extends javax.swing.JInternalFrame {
         jLabelURListaDevoluciones = new javax.swing.JLabel();
         txtContadordeDevoluciones = new javax.swing.JTextField();
 
+        setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);

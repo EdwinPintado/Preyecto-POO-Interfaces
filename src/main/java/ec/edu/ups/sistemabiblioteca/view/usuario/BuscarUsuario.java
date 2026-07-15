@@ -80,54 +80,32 @@ public class BuscarUsuario extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabelBUDireccion = new javax.swing.JLabel();
-        jTextFieldBUCedula = new javax.swing.JTextField();
-        jTextFieldBUFNacimiento = new javax.swing.JTextField();
-        jTextFieldBUNombre = new javax.swing.JTextField();
-        jLabelBUFNacimiento = new javax.swing.JLabel();
-        jLabelBUNombre = new javax.swing.JLabel();
-        jTextFieldBUApellido = new javax.swing.JTextField();
-        jLabelBUApellido = new javax.swing.JLabel();
-        jButtonBUBuscar = new javax.swing.JButton();
-        jTextFieldBUCElectronico = new javax.swing.JTextField();
-        jLabelBUCElectronico = new javax.swing.JLabel();
-        jTextFieldBUTelefono = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jLabelBuscarUsuario = new javax.swing.JLabel();
-        jLabelBUTelefono = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jPanel2 = new javax.swing.JPanel();
+        jLabelBUApellido = new javax.swing.JLabel();
+        jLabelBUFNacimiento = new javax.swing.JLabel();
         jTextFieldBUDireccion = new javax.swing.JTextField();
+        jTextFieldBUNombre = new javax.swing.JTextField();
+        jLabelBUTelefono = new javax.swing.JLabel();
+        jTextFieldBUFNacimiento = new javax.swing.JTextField();
+        jTextFieldBUCedula = new javax.swing.JTextField();
+        jLabelBUDireccion = new javax.swing.JLabel();
+        jTextFieldBUTelefono = new javax.swing.JTextField();
+        jLabelBUCElectronico = new javax.swing.JLabel();
+        jTextFieldBUCElectronico = new javax.swing.JTextField();
+        jButtonBUBuscar = new javax.swing.JButton();
+        jTextFieldBUApellido = new javax.swing.JTextField();
+        jLabelBUNombre = new javax.swing.JLabel();
         jLabelBUCedula = new javax.swing.JLabel();
 
+        setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
         setTitle("Buscar Usuario");
-        setMinimumSize(new java.awt.Dimension(104, 36));
         setPreferredSize(new java.awt.Dimension(348, 500));
-
-        jLabelBUDireccion.setText("Dirección:");
-
-        jTextFieldBUFNacimiento.setEditable(false);
-
-        jTextFieldBUNombre.setEditable(false);
-
-        jLabelBUFNacimiento.setText("Fecha de nacimiento:");
-
-        jLabelBUNombre.setText("Nombre:");
-
-        jTextFieldBUApellido.setEditable(false);
-
-        jLabelBUApellido.setText("Apellido:");
-
-        jButtonBUBuscar.setBackground(new java.awt.Color(0, 102, 153));
-        jButtonBUBuscar.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonBUBuscar.setText("BUSCAR");
-
-        jTextFieldBUCElectronico.setEditable(false);
-
-        jLabelBUCElectronico.setText("Correo Electrónico: ");
-
-        jTextFieldBUTelefono.setEditable(false);
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -152,62 +130,81 @@ public class BuscarUsuario extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLabelBUTelefono.setText("Teléfono:");
+        jLabelBUApellido.setText("Apellido:");
+
+        jLabelBUFNacimiento.setText("Fecha de nacimiento:");
 
         jTextFieldBUDireccion.setEditable(false);
         jTextFieldBUDireccion.addActionListener(this::jTextFieldBUDireccionActionPerformed);
 
+        jTextFieldBUNombre.setEditable(false);
+
+        jLabelBUTelefono.setText("Teléfono:");
+
+        jTextFieldBUFNacimiento.setEditable(false);
+
+        jLabelBUDireccion.setText("Dirección:");
+
+        jTextFieldBUTelefono.setEditable(false);
+
+        jLabelBUCElectronico.setText("Correo Electrónico: ");
+
+        jTextFieldBUCElectronico.setEditable(false);
+
+        jButtonBUBuscar.setBackground(new java.awt.Color(0, 102, 153));
+        jButtonBUBuscar.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonBUBuscar.setText("BUSCAR");
+
+        jTextFieldBUApellido.setEditable(false);
+
+        jLabelBUNombre.setText("Nombre:");
+
         jLabelBUCedula.setText("Cedula:");
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabelBUNombre)
-                        .addComponent(jTextFieldBUNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE))
-                    .addComponent(jLabelBUCElectronico)
-                    .addComponent(jLabelBUApellido)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jTextFieldBUCElectronico, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
-                        .addComponent(jTextFieldBUApellido, javax.swing.GroupLayout.Alignment.LEADING))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabelBUTelefono)
-                        .addComponent(jTextFieldBUTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabelBUDireccion)
-                        .addComponent(jTextFieldBUDireccion, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabelBUFNacimiento)
-                        .addComponent(jTextFieldBUFNacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE))
-                    .addComponent(jLabelBUCedula)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jTextFieldBUCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(27, 27, 27)
-                            .addComponent(jButtonBUBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(25, Short.MAX_VALUE))
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelBUCElectronico)
+                            .addComponent(jLabelBUApellido)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jTextFieldBUCElectronico)
+                                .addComponent(jTextFieldBUApellido, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabelBUTelefono)
+                            .addComponent(jTextFieldBUTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelBUDireccion)
+                            .addComponent(jTextFieldBUDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelBUFNacimiento)
+                            .addComponent(jTextFieldBUFNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelBUCedula))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelBUNombre)
+                    .addComponent(jTextFieldBUNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jTextFieldBUCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)
+                        .addComponent(jButtonBUBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(20, Short.MAX_VALUE)
                 .addComponent(jLabelBUCedula)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jTextFieldBUCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonBUBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabelBUNombre)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextFieldBUNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(17, 17, 17)
                 .addComponent(jLabelBUApellido)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextFieldBUApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -227,7 +224,30 @@ public class BuscarUsuario extends javax.swing.JInternalFrame {
                 .addComponent(jLabelBUFNacimiento)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextFieldBUFNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+
+        jScrollPane1.setViewportView(jPanel2);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(33, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(53, Short.MAX_VALUE))
         );
 
         pack();
@@ -249,6 +269,8 @@ public class BuscarUsuario extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabelBUTelefono;
     private javax.swing.JLabel jLabelBuscarUsuario;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextFieldBUApellido;
     private javax.swing.JTextField jTextFieldBUCElectronico;
     private javax.swing.JTextField jTextFieldBUCedula;
