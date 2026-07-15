@@ -47,16 +47,37 @@ public class AutorController {
     //Agregar autor
     public void agregarAutor() {
         int respuesta = JOptionPane.showConfirmDialog(crearAutor, "¿Quieres crear un nuevo autor?", "Confirmar", JOptionPane.YES_NO_OPTION);
-        if (respuesta == 0) {
+        if (respuesta == JOptionPane.YES_OPTION) {
             try {
-                String cedula = crearAutor.getjTextFieldCACedula().getText();
-                String nombre = crearAutor.getjTextFieldCANombre().getText();
-                String apellido = crearAutor.getjTextFieldCAApellido().getText();
-                String telefono = crearAutor.getjTextFieldCATelefono().getText();
-                Date fechaNacimiento = Date.valueOf(crearAutor.getjTextFieldCAFecha().getText());
-                String nacionalidad = crearAutor.getjTextFieldCANacionalidad().getText();
-                String generoLiterario = crearAutor.getjTextFieldCAGenero().getText();
-                String bibliografia = crearAutor.getjTextFieldCABibliografia().getText();
+                String cedula = crearAutor.getjTextFieldCACedula().getText().trim();
+                String nombre = crearAutor.getjTextFieldCANombre().getText().trim();
+                String apellido = crearAutor.getjTextFieldCAApellido().getText().trim();
+                String telefono = crearAutor.getjTextFieldCATelefono().getText().trim();
+                String fechaTexto = crearAutor.getjTextFieldCAFecha().getText().trim();
+                String nacionalidad = crearAutor.getjTextFieldCANacionalidad().getText().trim();
+                String generoLiterario = crearAutor.getjTextFieldCAGenero().getText().trim();
+                String bibliografia = crearAutor.getjTextFieldCABibliografia().getText().trim();
+
+                if (cedula.isEmpty() || nombre.isEmpty() || apellido.isEmpty()
+                        || telefono.isEmpty() || fechaTexto.isEmpty()
+                        || nacionalidad.isEmpty() || generoLiterario.isEmpty()
+                        || bibliografia.isEmpty()) {
+
+                    crearAutor.mostrarInformacion(
+                            "Todos los campos deben estar llenos para guardar el autor.");
+                    return;
+                }
+                Date fechaNacimiento;
+
+                try {
+                    fechaNacimiento = Date.valueOf(fechaTexto);
+
+                } catch (IllegalArgumentException e) {
+
+                    crearAutor.mostrarInformacion(
+                            "Error: El formato de fecha debe ser AAAA-MM-DD.");
+                    return;
+                }
                 Autor autor = new Autor(nacionalidad, generoLiterario, bibliografia, cedula, nombre, apellido, telefono, fechaNacimiento);
 
                 autorDAO.agregar(autor);

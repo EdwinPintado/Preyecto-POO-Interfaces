@@ -61,6 +61,7 @@ public class PrestamoController {
                 return;
             }
             String cedula = agregarPrestamoView.getjTextFieldCPUCedula().getText().trim();
+
             Usuario usuario = usuarioDAO.buscar(cedula);
             if (usuario == null) {
                 agregarPrestamoView.mostrarInformacion("Error: El usuario con cédula " + cedula + " no existe.");
@@ -72,6 +73,11 @@ public class PrestamoController {
                 agregarPrestamoView.mostrarInformacion("Error: El libro con ISBN " + isbn + " no existe.");
                 return;
 
+            }
+            if (!libro.isDisponible()) {
+                agregarPrestamoView.mostrarInformacion(
+                        "El libro ya está prestado.");
+                return;
             }
             String codigoBibliotecario = agregarPrestamoView.getjTextFieldCPBCodigo().getText().trim();
             Bibliotecario bibliotecario = bibliotecarioDAO.buscar(codigoBibliotecario);
@@ -103,10 +109,17 @@ public class PrestamoController {
                     libro,
                     bibliotecario
             );
+            libro.setDisponible(false);
 
             prestamoDao.agregar(prestamo);
 
             agregarPrestamoView.mostrarInformacion1("Préstamo creado correctamente");
+            agregarPrestamoView.getjTextFieldCPCodigo().setText("");
+            agregarPrestamoView.getjTextFieldCPUCedula().setText("");
+            agregarPrestamoView.getjTextFieldCPISBNLibro().setText("");
+            agregarPrestamoView.getjTextFieldCPBCodigo().setText("");
+            agregarPrestamoView.getjTextFieldCPFPrestamo().setText("");
+            agregarPrestamoView.getjTextFieldCPFLimite().setText("");
 
         } catch (Exception e) {
             agregarPrestamoView.mostrarInformacion("Ocurrió un error inesperado: " + e.getMessage());

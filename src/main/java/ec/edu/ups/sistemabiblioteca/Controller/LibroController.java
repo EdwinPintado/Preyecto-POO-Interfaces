@@ -63,12 +63,25 @@ public class LibroController {
         if (respuesta == JOptionPane.YES_OPTION) {
 
             try {
-                String isbn = crearLibro.getjTextFieldLbISBN().getText();
-                String titulo = crearLibro.getjTextFieldLbTitulo().getText();
-                String editorial = crearLibro.getjTextFieldLbEditorial().getText();
-                Date anio = Date.valueOf(crearLibro.getjTextFieldLbAnio().getText());
-                String cedulaAutor = crearLibro.getjTextFieldLbACedula().getText();
+                String isbn = crearLibro.getjTextFieldLbISBN().getText().trim();
+                String titulo = crearLibro.getjTextFieldLbTitulo().getText().trim();
+                String editorial = crearLibro.getjTextFieldLbEditorial().getText().trim();
+                String fechaTexto = crearLibro.getjTextFieldLbAnio().getText().trim();
+                String cedulaAutor = crearLibro.getjTextFieldLbACedula().getText().trim();
+                if (isbn.isEmpty() || titulo.isEmpty() || editorial.isEmpty() || fechaTexto.isEmpty() || cedulaAutor.isEmpty()) {
+                    crearLibro.mostrarInformacion("Todos los campos deben estar llenados , para guardar el libro");
+                }
+                Date anio;
 
+                try {
+                    anio = Date.valueOf(fechaTexto);
+
+                } catch (IllegalArgumentException e) {
+
+                    crearLibro.mostrarInformacion(
+                            "Error: El formato de fecha debe ser AAAA-MM-DD.");
+                    return;
+                }
                 Autor autor = autorDao.buscar(cedulaAutor);
                 if (autor == null) {
                     crearLibro.mostrarInformacion("Autor no encontrado");
@@ -94,7 +107,7 @@ public class LibroController {
 
     public void buscarRegistroLibro() {
         String cedula = crearLibro.getjTextFieldLbACedula().getText().trim();
-        Autor autor= autorDao.buscar(cedula);
+        Autor autor = autorDao.buscar(cedula);
         if (autor == null) {
             crearLibro.mostrarInformacion("Error: El usuario con cédula " + cedula + " no existe.");
         } else {
@@ -109,12 +122,12 @@ public class LibroController {
                 agregarLibro();
             }
         });
-        crearLibro.getjButtonLbBAutor().addActionListener(new ActionListener(){
+        crearLibro.getjButtonLbBAutor().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 buscarRegistroLibro();
             }
-            
+
         });
     }
 

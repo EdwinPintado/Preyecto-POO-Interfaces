@@ -1,4 +1,3 @@
-
 package ec.edu.ups.sistemabiblioteca.Controller;
 
 import ec.edu.ups.sistemabiblioteca.DAO.UsuarioDAOMemoria;
@@ -48,9 +47,7 @@ public class UsuarioController {
         configurarEventosActualizarUsuario();
         configurarEventosListarUsuarios();
     }
-    
- 
-    
+
     public void mostrarMensaje(java.awt.Component ventana, String mensaje, String titulo, int tipoMensaje) {
         JOptionPane.showMessageDialog(ventana, mensaje, titulo, tipoMensaje);
     }
@@ -63,18 +60,37 @@ public class UsuarioController {
                 "Confirmar",
                 JOptionPane.YES_NO_OPTION);
 
-        if (respuesta == 0) {
+        if (respuesta == JOptionPane.YES_OPTION) {
 
             try {
 
-                String cedula = crearUsuario.getjTextFieldCUCedula().getText();
-                String nombre = crearUsuario.getjTextFieldCUNombre().getText();
-                String apellido = crearUsuario.getjTextFieldCUApellido().getText();
-                String telefono = crearUsuario.getjTextFieldCUTelefono().getText();
-                String correo = crearUsuario.getjTextFieldCUCElectronico().getText();
-                String direccion = crearUsuario.getjTextFieldCUDireccion().getText();
-                Date fecha = Date.valueOf(crearUsuario.getjTextFieldCUFNacimiento().getText());
+                String cedula = crearUsuario.getjTextFieldCUCedula().getText().trim();
+                String nombre = crearUsuario.getjTextFieldCUNombre().getText().trim();
+                String apellido = crearUsuario.getjTextFieldCUApellido().getText().trim();
+                String telefono = crearUsuario.getjTextFieldCUTelefono().getText().trim();
+                String correo = crearUsuario.getjTextFieldCUCElectronico().getText().trim();
+                String direccion = crearUsuario.getjTextFieldCUDireccion().getText().trim();
+                String fechaTexto = crearUsuario.getjTextFieldCUFNacimiento().getText().trim();
+                if (cedula.isEmpty() || nombre.isEmpty() || apellido.isEmpty()
+                        || telefono.isEmpty() || correo.isEmpty()
+                        || direccion.isEmpty() || fechaTexto.isEmpty()) {
 
+                    crearUsuario.mostrarInformacion(
+                            "Todos los campos deben estar llenos para guardar el usuario.");
+                    return;
+                }
+                Date fecha;
+
+                try {
+
+                    fecha = Date.valueOf(fechaTexto);
+
+                } catch (IllegalArgumentException e) {
+
+                    crearUsuario.mostrarInformacion(
+                            "Error: El formato de fecha debe ser AAAA-MM-DD.");
+                    return;
+                }
                 Usuario usuario = new Usuario(correo, direccion, cedula, nombre, apellido, telefono, fecha);
 
                 usuarioDao.agregar(usuario);
@@ -129,7 +145,7 @@ public class UsuarioController {
             buscarUsuario.getjTextFieldBUCElectronico().setText("");
             buscarUsuario.getjTextFieldBUFNacimiento().setText("");
 
-            buscarUsuario.mostrarInformacion( "No se encontró el usuario");
+            buscarUsuario.mostrarInformacion("No se encontró el usuario");
         }
     }
 
@@ -155,7 +171,6 @@ public class UsuarioController {
             actualizarUsuario.getjTextFieldAUCElectronico().setText(usuario.getCorreoElectronico());
             actualizarUsuario.getjTextFieldAUDireccion().setText(usuario.getDireccion());
             actualizarUsuario.getjTextFieldAUFNacimiento().setText(String.valueOf(usuario.getFechaNacimiento()));
-            
 
         } else {
 
@@ -166,7 +181,7 @@ public class UsuarioController {
             actualizarUsuario.getjTextFieldAUDireccion().setText("");
             actualizarUsuario.getjTextFieldAUFNacimiento().setText("");
 
-            actualizarUsuario.mostrarInformacion( "No se encontró el usuario");
+            actualizarUsuario.mostrarInformacion("No se encontró el usuario");
         }
     }
 
@@ -199,7 +214,7 @@ public class UsuarioController {
                 actualizarUsuario.mostrarInformacion1("Usuario actualizado correctamente :)");
             }
         } else {
-            actualizarUsuario.mostrarInformacion( "No se encontró el usuario");
+            actualizarUsuario.mostrarInformacion("No se encontró el usuario");
         }
     }
 
@@ -238,7 +253,7 @@ public class UsuarioController {
 
                 usuarioDao.eliminar(cedula);
 
-                eliminarUsuario.mostrarInformacion( "Usuario eliminado correctamente :)");
+                eliminarUsuario.mostrarInformacion("Usuario eliminado correctamente :)");
                 crearUsuario.getjTextFieldCUCedula().setText("");
                 crearUsuario.getjTextFieldCUNombre().setText("");
                 crearUsuario.getjTextFieldCUApellido().setText("");
@@ -249,7 +264,7 @@ public class UsuarioController {
             }
 
         } else {
-            eliminarUsuario.mostrarInformacion( "No se encontró el usuario");
+            eliminarUsuario.mostrarInformacion("No se encontró el usuario");
         }
     }
 
@@ -307,7 +322,8 @@ public class UsuarioController {
         List<Usuario> lista = usuarioDao.listar();
         listaUsuarios.cargarDatos(lista);
     }
-        public void mostrarContadorAutores() {
+
+    public void mostrarContadorAutores() {
 
         int total = usuarioDao.contar();
 

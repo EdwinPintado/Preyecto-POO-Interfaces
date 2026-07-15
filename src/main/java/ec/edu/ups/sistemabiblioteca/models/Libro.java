@@ -21,7 +21,7 @@ public class Libro {
         this.editorial = editorial;
         this.anioPublicacion = anioPublicacion;
         this.autor= autor;
-        this.disponible = disponible;
+        this.disponible = true;
     }
 
     public Autor getAutor() {
@@ -71,5 +71,6 @@ public class Libro {
     public void setDisponible(boolean disponible) {
         this.disponible = disponible;
     }
+    
     
 }
