@@ -164,7 +164,7 @@ public class BuscarBibliotecario extends javax.swing.JInternalFrame {
 
         jButtonBBBCedula.setBackground(new java.awt.Color(0, 102, 153));
         jButtonBBBCedula.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonBBBCedula.setText("Buscar");
+        jButtonBBBCedula.setText("Guardar");
         jButtonBBBCedula.addActionListener(this::jButtonBBBCedulaActionPerformed);
 
         jLabelBBNombre.setText("Nombre:");
@@ -187,7 +187,6 @@ public class BuscarBibliotecario extends javax.swing.JInternalFrame {
 
         jTextFieldBBCodigo.setEditable(false);
 
-<<<<<<< HEAD
         jLabelBBFecha.setText("Fecha de Nacimiento:");
 
         jTextFieldBBFecha.setEditable(false);
@@ -242,44 +241,6 @@ public class BuscarBibliotecario extends javax.swing.JInternalFrame {
                         .addGap(101, 101, 101)
                         .addComponent(jButton1)))
                 .addContainerGap(39, Short.MAX_VALUE))
-=======
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(jLabelBBTelefono)
-                            .addGap(246, 246, 246))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(jLabelBBCodigo)
-                            .addGap(254, 254, 254))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(jLabelBBFecha)
-                            .addGap(181, 181, 181)))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabelBBTurno)
-                        .addComponent(jLabelBBApellido)
-                        .addComponent(jLabelBBCedula)
-                        .addComponent(jLabelBBCargo)
-                        .addComponent(jTextFieldBBApellido)
-                        .addComponent(jLabelBBNombre)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextFieldBBNombre)
-                        .addComponent(jTextFieldBBCargo)
-                        .addComponent(jTextFieldBBTelefono)
-                        .addComponent(jTextFieldBBCodigo)
-                        .addComponent(jTextFieldBBFecha)
-                        .addComponent(jTextFieldBBTurno)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jTextFieldBBCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jButtonBBBCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(22, 22, 22))
->>>>>>> main
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -334,7 +295,7 @@ public class BuscarBibliotecario extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(86, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -342,8 +303,8 @@ public class BuscarBibliotecario extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 473, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -353,13 +314,12 @@ public class BuscarBibliotecario extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonBBBCedulaActionPerformed
 
-<<<<<<< HEAD
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-=======
     public void cambiarIdioma(Locale locale){
         ResourceBundle bundle =ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n", locale);
         jLabelBuscarBibliotecario.setText(bundle.getString("TBlibus"));
@@ -374,7 +334,7 @@ public class BuscarBibliotecario extends javax.swing.JInternalFrame {
         jLabelBBTurno.setText(bundle.getString("labelBusBT"));        
         
     }
->>>>>>> main
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
