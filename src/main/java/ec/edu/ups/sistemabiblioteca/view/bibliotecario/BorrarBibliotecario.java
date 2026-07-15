@@ -4,6 +4,8 @@
  */
 package ec.edu.ups.sistemabiblioteca.view.bibliotecario;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -128,6 +130,19 @@ public class BorrarBibliotecario extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+<<<<<<< HEAD
+=======
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jLabelEBCargo = new javax.swing.JLabel();
+        jTextFieldEBCedula = new javax.swing.JTextField();
+        jLabelEBFNacimiento = new javax.swing.JLabel();
+        jTextFieldEBTurno = new javax.swing.JTextField();
+        jLabelEBNombre = new javax.swing.JLabel();
+        jTextFieldEBCargo = new javax.swing.JTextField();
+        jTextFieldEBFecha = new javax.swing.JTextField();
+        jLabelEBTelefono = new javax.swing.JLabel();
+        jTextFieldEBNombre = new javax.swing.JTextField();
+>>>>>>> main
         jPanel4 = new javax.swing.JPanel();
         jLabelEliminarBibliotecario = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -340,6 +355,21 @@ public class BorrarBibliotecario extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonEBBCedulaActionPerformed
 
+    public void cambiarIdioma(Locale locale){
+        ResourceBundle bundle =ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n", locale);
+        jLabelEliminarBibliotecario.setText(bundle.getString("TBlidele"));
+        jButtonEBEliminar.setText(bundle.getString("bttnEliminar"));
+        jButtonEBCancelar.setText(bundle.getString("bttnCancelar"));
+        jButtonEBBCedula.setText(bundle.getString("bttnBuscar"));
+        jLabelEBCedula.setText(bundle.getString("labelDBCedula"));
+        jLabelEBNombre.setText(bundle.getString("labelDBNombre"));
+        jLabelEBApellido.setText(bundle.getString("labelDBApellido"));
+        jLabelEBCargo.setText(bundle.getString("labelDBCargo"));
+        jLabelEBTelefono.setText(bundle.getString("labelDBTelefono"));
+        jLabelEBCodBibliotecario.setText(bundle.getString("labelDBCodigo"));
+        jLabelEBFNacimiento.setText(bundle.getString("labelDBFN"));
+        jLabelEBTurno.setText(bundle.getString("labelDBT"));
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonEBBCedula;
@@ -356,7 +386,11 @@ public class BorrarBibliotecario extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabelEliminarBibliotecario;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
+<<<<<<< HEAD
     private javax.swing.JScrollPane jScrollPane1;
+=======
+    private javax.swing.JTabbedPane jTabbedPane1;
+>>>>>>> main
     private javax.swing.JTextField jTextFieldEBApellido;
     private javax.swing.JTextField jTextFieldEBCargo;
     private javax.swing.JTextField jTextFieldEBCedula;

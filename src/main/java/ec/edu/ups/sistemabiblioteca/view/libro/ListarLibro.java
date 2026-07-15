@@ -93,7 +93,7 @@ public class ListarLibro extends javax.swing.JInternalFrame {
         btnMostrarListaLibro.setText("Mostrar");
 
         jLabelURListaLibro.setFont(new java.awt.Font("Segoe UI Variable", 1, 12)); // NOI18N
-        jLabelURListaLibro.setText("Usuarios Registrados");
+        jLabelURListaLibro.setText("Libros Registrados");
 
         txtContadordeLibro.addActionListener(this::txtContadordeLibroActionPerformed);
 

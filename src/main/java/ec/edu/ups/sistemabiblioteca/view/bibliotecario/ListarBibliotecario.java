@@ -6,6 +6,8 @@ package ec.edu.ups.sistemabiblioteca.view.bibliotecario;
 
 import ec.edu.ups.sistemabiblioteca.models.Bibliotecario;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
@@ -136,7 +138,7 @@ public class ListarBibliotecario extends javax.swing.JInternalFrame {
         btnMostrarListaBibliotecarios.setText("Mostrar");
 
         jLabelURListaBibliotecarios.setFont(new java.awt.Font("Segoe UI Variable", 1, 12)); // NOI18N
-        jLabelURListaBibliotecarios.setText("Usuarios Registrados");
+        jLabelURListaBibliotecarios.setText("Bibliotecarios Registrados");
 
         txtContadordeBibliotecarios.addActionListener(this::txtContadordeBibliotecariosActionPerformed);
 
@@ -147,8 +149,8 @@ public class ListarBibliotecario extends javax.swing.JInternalFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnMostrarListaBibliotecarios, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(59, 59, 59)
-                .addComponent(jLabelURListaBibliotecarios, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
+                .addComponent(jLabelURListaBibliotecarios, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtContadordeBibliotecarios, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(17, 17, 17))
@@ -195,6 +197,18 @@ public class ListarBibliotecario extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtContadordeBibliotecariosActionPerformed
 
+    public void cambiarIdioma(Locale locale){
+        ResourceBundle bundle =ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n", locale);
+        jLabelListaBibliotecarios.setText(bundle.getString("TBliLis"));
+        btnMostrarListaBibliotecarios.setText(bundle.getString("bttnMostrar"));
+        jLabelURListaBibliotecarios.setText(bundle.getString("labelBR"));
+        modelo = new DefaultTableModel();
+        modelo.addColumn(bundle.getString("labelLBCedula"));
+        modelo.addColumn(bundle.getString("labelLBNombre"));
+        modelo.addColumn(bundle.getString("labelLBApellido"));
+        modelo.addColumn(bundle.getString("labelLBCargo"));
+        tblListadoBibliotecarios.setModel(modelo);   
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnMostrarListaBibliotecarios;
