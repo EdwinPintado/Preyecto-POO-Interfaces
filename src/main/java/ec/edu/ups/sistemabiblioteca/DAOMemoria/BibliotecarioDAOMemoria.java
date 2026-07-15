@@ -1,17 +1,18 @@
+package ec.edu.ups.sistemabiblioteca.DAOMemoria;
 
-package ec.edu.ups.sistemabiblioteca.DAO;
-
+import ec.edu.ups.sistemabiblioteca.DAO.BibliotecarioDAO;
+import ec.edu.ups.sistemabiblioteca.Exceptions.BibliotecarioNoExiste;
 import ec.edu.ups.sistemabiblioteca.models.Bibliotecario;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BibliotecarioDAOMemoria implements SistemaDAO<Bibliotecario> {
+public class BibliotecarioDAOMemoria implements BibliotecarioDAO {
 
     private List<Bibliotecario> bibliotecarios;
-    
-    public BibliotecarioDAOMemoria(){
+
+    public BibliotecarioDAOMemoria() {
         bibliotecarios = new ArrayList<>();
-                bibliotecarios.add(new Bibliotecario(
+        bibliotecarios.add(new Bibliotecario(
                 "BIB001",
                 "Mañana",
                 "Encargado de préstamos",
@@ -60,13 +61,18 @@ public class BibliotecarioDAOMemoria implements SistemaDAO<Bibliotecario> {
     }
 
     @Override
-    public Bibliotecario buscar(String cedula) {
+    public Bibliotecario buscar(String cedula) throws BibliotecarioNoExiste {
+
         for (Bibliotecario b : bibliotecarios) {
+
             if (b.getCedula().equals(cedula)) {
                 return b;
             }
         }
-        return null;
+
+        throw new BibliotecarioNoExiste(
+                "No se encontró el bibliotecario con cédula: " + cedula
+        );
     }
 
     @Override
@@ -92,5 +98,5 @@ public class BibliotecarioDAOMemoria implements SistemaDAO<Bibliotecario> {
     public int contar() {
         return bibliotecarios.size();
     }
-    
+
 }

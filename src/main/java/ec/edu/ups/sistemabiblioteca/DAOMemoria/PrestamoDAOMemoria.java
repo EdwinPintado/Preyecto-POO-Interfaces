@@ -1,11 +1,13 @@
 
-package ec.edu.ups.sistemabiblioteca.DAO;
+package ec.edu.ups.sistemabiblioteca.DAOMemoria;
 
+import ec.edu.ups.sistemabiblioteca.DAO.PrestamoDAO;
+import ec.edu.ups.sistemabiblioteca.Exceptions.PrestamoNoEncontrado;
 import ec.edu.ups.sistemabiblioteca.models.Prestamo;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PrestamoDAOMemoria implements SistemaDAO<Prestamo> {
+public class PrestamoDAOMemoria implements PrestamoDAO {
 
     private List<Prestamo> prestamos;
 
@@ -30,13 +32,13 @@ public class PrestamoDAOMemoria implements SistemaDAO<Prestamo> {
     }
 
     @Override
-    public Prestamo buscar(String codigo) {
+    public Prestamo buscar(String codigo)throws PrestamoNoEncontrado{
         for (Prestamo p : prestamos) {
             if (p.getCodigoPrestamo().equals(codigo)) {
                 return p;
             }
         }
-        return null;
+        throw new PrestamoNoEncontrado("Nose encontro el prestamo con el codigo: "+codigo);
     }
 
     @Override

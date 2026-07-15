@@ -1,4 +1,3 @@
-
 package ec.edu.ups.sistemabiblioteca.view.usuario;
 
 import ec.edu.ups.sistemabiblioteca.models.Autor;
@@ -7,10 +6,10 @@ import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
-
 
 public class ListarUsuario extends javax.swing.JInternalFrame {
 
@@ -20,7 +19,8 @@ public class ListarUsuario extends javax.swing.JInternalFrame {
         initComponents();
         configuracionTabla();
     }
-    public void configuracionTabla(){
+
+    public void configuracionTabla() {
         modelo = new DefaultTableModel();
 
         modelo.addColumn("Cédula");
@@ -39,7 +39,7 @@ public class ListarUsuario extends javax.swing.JInternalFrame {
 
         for (Usuario b : lista) {
 
-            Object[]fila ={
+            Object[] fila = {
                 b.getCedula(),
                 b.getNombre(),
                 b.getApellido(),
@@ -76,8 +76,11 @@ public class ListarUsuario extends javax.swing.JInternalFrame {
         this.txtContadordeUsuarios = txtContadordeUsuarios;
     }
 
-    
-    
+    public void mostrarInformacion(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensaje);
+
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

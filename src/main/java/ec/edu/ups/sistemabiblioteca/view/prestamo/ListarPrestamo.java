@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
@@ -43,7 +44,7 @@ public class ListarPrestamo extends javax.swing.JInternalFrame {
     public void setTxtContadordePrestamo(JTextField txtContadordePrestamo) {
         this.txtContadordePrestamo = txtContadordePrestamo;
     }
-    
+
     public void configurarTabla() {
         modelo = new DefaultTableModel();
         modelo.addColumn("Codigo");
@@ -74,6 +75,11 @@ public class ListarPrestamo extends javax.swing.JInternalFrame {
             modelo.addRow(fila);
 
         }
+    }
+
+    public void mostrarInformacion(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensaje);
+
     }
 
     /**

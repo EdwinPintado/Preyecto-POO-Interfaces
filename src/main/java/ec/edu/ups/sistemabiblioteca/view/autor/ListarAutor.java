@@ -1,4 +1,3 @@
-
 package ec.edu.ups.sistemabiblioteca.view.autor;
 
 import ec.edu.ups.sistemabiblioteca.models.Autor;
@@ -6,20 +5,22 @@ import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 public class ListarAutor extends javax.swing.JInternalFrame {
-    
+
     private DefaultTableModel modelo;
 
     public ListarAutor() {
         initComponents();
         configurarTabla();
     }
-    public void configurarTabla(){
+
+    public void configurarTabla() {
         modelo = new DefaultTableModel();
         modelo.addColumn("Cédula");
         modelo.addColumn("Nombre");
@@ -32,13 +33,14 @@ public class ListarAutor extends javax.swing.JInternalFrame {
 
         tblListadoAutores.setModel(modelo);
     }
+
     public void cargarDatos(List<Autor> lista) {
 
         modelo.setRowCount(0);
 
         for (Autor a : lista) {
 
-            Object[] fila= {
+            Object[] fila = {
                 a.getCedula(),
                 a.getNombre(),
                 a.getApellido(),
@@ -76,8 +78,11 @@ public class ListarAutor extends javax.swing.JInternalFrame {
         this.tblListadoAutores = tblListadoAutores;
     }
 
-    
-    
+    public void mostrarInformacion(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensaje);
+
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -199,8 +204,8 @@ public class ListarAutor extends javax.swing.JInternalFrame {
     private void txtContadordeAutoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContadordeAutoresActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtContadordeAutoresActionPerformed
-    public void cambiarIdioma(Locale locale){
-        ResourceBundle bundle =ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n", locale);
+    public void cambiarIdioma(Locale locale) {
+        ResourceBundle bundle = ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n", locale);
         jLabelListaAutores.setText(bundle.getString("TAlist"));
         btnMostrarListaAutores.setText(bundle.getString("bttnMostrar"));
         modelo = new DefaultTableModel();
@@ -210,9 +215,7 @@ public class ListarAutor extends javax.swing.JInternalFrame {
         modelo.addColumn(bundle.getString("listarAFN "));
         tblListadoAutores.setModel(modelo);
         jLabelURListaAutores.setText(bundle.getString("labelMA"));
-        
-        
-        
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

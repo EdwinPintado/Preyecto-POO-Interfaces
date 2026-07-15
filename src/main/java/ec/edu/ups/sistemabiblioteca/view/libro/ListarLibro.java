@@ -1,4 +1,3 @@
-
 package ec.edu.ups.sistemabiblioteca.view.libro;
 
 import ec.edu.ups.sistemabiblioteca.models.Libro;
@@ -6,6 +5,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
@@ -13,19 +13,20 @@ import javax.swing.table.DefaultTableModel;
 public class ListarLibro extends javax.swing.JInternalFrame {
 
     private DefaultTableModel modelo;
-    
+
     public ListarLibro() {
         initComponents();
         configuracion();
     }
-    public void configuracion(){
-         modelo = new DefaultTableModel();
-         modelo.addColumn("Isbn");
-         modelo.addColumn("Titulo");
-         modelo.addColumn("Editorial");
-         modelo.addColumn("Fecha de Publicacion");
-         
-         tblListadoLibro.setModel(modelo);
+
+    public void configuracion() {
+        modelo = new DefaultTableModel();
+        modelo.addColumn("Isbn");
+        modelo.addColumn("Titulo");
+        modelo.addColumn("Editorial");
+        modelo.addColumn("Fecha de Publicacion");
+
+        tblListadoLibro.setModel(modelo);
     }
 
     public void cargarDatos(List<Libro> lista) {
@@ -33,12 +34,11 @@ public class ListarLibro extends javax.swing.JInternalFrame {
 
         for (Libro libro : lista) {
 
-            Object[] fila ={
+            Object[] fila = {
                 libro.getIsbn(),
                 libro.getTitulo(),
                 libro.getEditorial(),
-                libro.getAnioPublicacion(),
-            };
+                libro.getAnioPublicacion(),};
             modelo.addRow(fila);
         }
     }
@@ -67,8 +67,11 @@ public class ListarLibro extends javax.swing.JInternalFrame {
         this.txtContadordeLibro = txtContadordeLibro;
     }
 
-    
-    
+    public void mostrarInformacion(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensaje);
+
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

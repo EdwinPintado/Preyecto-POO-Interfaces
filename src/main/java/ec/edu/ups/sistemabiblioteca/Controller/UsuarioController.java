@@ -1,6 +1,7 @@
 package ec.edu.ups.sistemabiblioteca.Controller;
 
-import ec.edu.ups.sistemabiblioteca.DAO.UsuarioDAOMemoria;
+import ec.edu.ups.sistemabiblioteca.DAOMemoria.UsuarioDAOMemoria;
+import ec.edu.ups.sistemabiblioteca.Exceptions.UsuarioNoExiste;
 import ec.edu.ups.sistemabiblioteca.models.Usuario;
 import ec.edu.ups.sistemabiblioteca.view.usuario.ActualizarUsuario;
 import ec.edu.ups.sistemabiblioteca.view.usuario.BorrarUsuario;
@@ -71,14 +72,35 @@ public class UsuarioController {
                 String correo = crearUsuario.getjTextFieldCUCElectronico().getText().trim();
                 String direccion = crearUsuario.getjTextFieldCUDireccion().getText().trim();
                 String fechaTexto = crearUsuario.getjTextFieldCUFNacimiento().getText().trim();
+
                 if (cedula.isEmpty() || nombre.isEmpty() || apellido.isEmpty()
                         || telefono.isEmpty() || correo.isEmpty()
                         || direccion.isEmpty() || fechaTexto.isEmpty()) {
 
-                    crearUsuario.mostrarInformacion(
+                    throw new IllegalArgumentException(
                             "Todos los campos deben estar llenos para guardar el usuario.");
-                    return;
                 }
+
+                if (!cedula.matches("\\d{10}")) {
+                    throw new IllegalArgumentException("La cédula debe contener exactamente 10 dígitos.");
+                }
+
+                if (!nombre.matches("[a-zA-ZÁÉÍÓÚáéíóúÑñ ]+")) {
+                    throw new IllegalArgumentException("El nombre solo puede contener letras.");
+                }
+
+                if (!apellido.matches("[a-zA-ZÁÉÍÓÚáéíóúÑñ ]+")) {
+                    throw new IllegalArgumentException("El apellido solo puede contener letras.");
+                }
+
+                if (!telefono.matches("\\d{10}")) {
+                    throw new IllegalArgumentException("El teléfono debe contener exactamente 10 dígitos.");
+                }
+
+                if (!correo.matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
+                    throw new IllegalArgumentException("El correo electrónico no tiene un formato válido.");
+                }
+
                 Date fecha;
 
                 try {
@@ -87,15 +109,23 @@ public class UsuarioController {
 
                 } catch (IllegalArgumentException e) {
 
-                    crearUsuario.mostrarInformacion(
+                    throw new IllegalArgumentException(
                             "Error: El formato de fecha debe ser AAAA-MM-DD.");
-                    return;
                 }
-                Usuario usuario = new Usuario(correo, direccion, cedula, nombre, apellido, telefono, fecha);
+
+                Usuario usuario = new Usuario(
+                        correo,
+                        direccion,
+                        cedula,
+                        nombre,
+                        apellido,
+                        telefono,
+                        fecha);
 
                 usuarioDao.agregar(usuario);
 
                 crearUsuario.mostrarInformacion1("Usuario creado exitosamente :)");
+
                 crearUsuario.getjTextFieldCUCedula().setText("");
                 crearUsuario.getjTextFieldCUNombre().setText("");
                 crearUsuario.getjTextFieldCUApellido().setText("");
@@ -105,10 +135,12 @@ public class UsuarioController {
                 crearUsuario.getjTextFieldCUFNacimiento().setText("");
 
             } catch (IllegalArgumentException e) {
-                mostrarMensaje(crearUsuario, "Error: El formato de fecha debe ser AAAA-MM-DD.", "Error", JOptionPane.ERROR_MESSAGE);
+
+                crearUsuario.mostrarInformacion(e.getMessage());
             }
 
         } else {
+
             crearUsuario.mostrarInformacion("Acción cancelada :(");
         }
     }
@@ -124,19 +156,44 @@ public class UsuarioController {
 
     public void buscarUsuario() {
 
-        String cedula = buscarUsuario.getjTextFieldBUCedula().getText();
-        Usuario usuario = usuarioDao.buscar(cedula);
+        try {
 
-        if (usuario != null) {
+            String cedula = buscarUsuario.getjTextFieldBUCedula()
+                    .getText().trim();
 
-            buscarUsuario.getjTextFieldBUCedula().setText(usuario.getCedula());
-            buscarUsuario.getjTextFieldBUNombre().setText(usuario.getNombre());
-            buscarUsuario.getjTextFieldBUApellido().setText(usuario.getApellido());
-            buscarUsuario.getjTextFieldBUTelefono().setText(usuario.getTelefono());
-            buscarUsuario.getjTextFieldBUCElectronico().setText(usuario.getCorreoElectronico());
-            buscarUsuario.getjTextFieldBUFNacimiento().setText(String.valueOf(usuario.getFechaNacimiento()));
+            if (cedula.isEmpty()) {
+                throw new IllegalArgumentException(
+                        "Debe ingresar la cédula del usuario."
+                );
+            }
 
-        } else {
+            if (!cedula.matches("\\d{10}")) {
+                throw new IllegalArgumentException(
+                        "La cédula debe contener exactamente 10 dígitos."
+                );
+            }
+
+            Usuario usuario = usuarioDao.buscar(cedula);
+
+            buscarUsuario.getjTextFieldBUCedula()
+                    .setText(usuario.getCedula());
+
+            buscarUsuario.getjTextFieldBUNombre()
+                    .setText(usuario.getNombre());
+
+            buscarUsuario.getjTextFieldBUApellido()
+                    .setText(usuario.getApellido());
+
+            buscarUsuario.getjTextFieldBUTelefono()
+                    .setText(usuario.getTelefono());
+
+            buscarUsuario.getjTextFieldBUCElectronico()
+                    .setText(usuario.getCorreoElectronico());
+
+            buscarUsuario.getjTextFieldBUFNacimiento()
+                    .setText(String.valueOf(usuario.getFechaNacimiento()));
+
+        } catch (UsuarioNoExiste e) {
 
             buscarUsuario.getjTextFieldBUCedula().setText("");
             buscarUsuario.getjTextFieldBUNombre().setText("");
@@ -145,7 +202,15 @@ public class UsuarioController {
             buscarUsuario.getjTextFieldBUCElectronico().setText("");
             buscarUsuario.getjTextFieldBUFNacimiento().setText("");
 
-            buscarUsuario.mostrarInformacion("No se encontró el usuario");
+            buscarUsuario.mostrarInformacion(
+                    e.getMessage()
+            );
+
+        } catch (IllegalArgumentException e) {
+
+            buscarUsuario.mostrarInformacion(
+                    e.getMessage()
+            );
         }
     }
 
@@ -160,19 +225,44 @@ public class UsuarioController {
 
     public void buscarActualizarUsuario() {
 
-        String cedula = actualizarUsuario.getjTextFieldAUCedula().getText();
-        Usuario usuario = usuarioDao.buscar(cedula);
+        try {
 
-        if (usuario != null) {
+            String cedula = actualizarUsuario.getjTextFieldAUCedula()
+                    .getText().trim();
 
-            actualizarUsuario.getjTextFieldAUNombre().setText(usuario.getNombre());
-            actualizarUsuario.getjTextFieldAUApellido().setText(usuario.getApellido());
-            actualizarUsuario.getjTextFieldAUTelefono().setText(usuario.getTelefono());
-            actualizarUsuario.getjTextFieldAUCElectronico().setText(usuario.getCorreoElectronico());
-            actualizarUsuario.getjTextFieldAUDireccion().setText(usuario.getDireccion());
-            actualizarUsuario.getjTextFieldAUFNacimiento().setText(String.valueOf(usuario.getFechaNacimiento()));
+            if (cedula.isEmpty()) {
+                throw new IllegalArgumentException(
+                        "Debe ingresar la cédula del usuario."
+                );
+            }
 
-        } else {
+            if (!cedula.matches("\\d{10}")) {
+                throw new IllegalArgumentException(
+                        "La cédula debe contener exactamente 10 dígitos."
+                );
+            }
+
+            Usuario usuario = usuarioDao.buscar(cedula);
+
+            actualizarUsuario.getjTextFieldAUNombre()
+                    .setText(usuario.getNombre());
+
+            actualizarUsuario.getjTextFieldAUApellido()
+                    .setText(usuario.getApellido());
+
+            actualizarUsuario.getjTextFieldAUTelefono()
+                    .setText(usuario.getTelefono());
+
+            actualizarUsuario.getjTextFieldAUCElectronico()
+                    .setText(usuario.getCorreoElectronico());
+
+            actualizarUsuario.getjTextFieldAUDireccion()
+                    .setText(usuario.getDireccion());
+
+            actualizarUsuario.getjTextFieldAUFNacimiento()
+                    .setText(String.valueOf(usuario.getFechaNacimiento()));
+
+        } catch (UsuarioNoExiste e) {
 
             actualizarUsuario.getjTextFieldAUNombre().setText("");
             actualizarUsuario.getjTextFieldAUApellido().setText("");
@@ -181,79 +271,236 @@ public class UsuarioController {
             actualizarUsuario.getjTextFieldAUDireccion().setText("");
             actualizarUsuario.getjTextFieldAUFNacimiento().setText("");
 
-            actualizarUsuario.mostrarInformacion("No se encontró el usuario");
+            actualizarUsuario.mostrarInformacion(
+                    e.getMessage()
+            );
+
+        } catch (IllegalArgumentException e) {
+
+            actualizarUsuario.mostrarInformacion(
+                    e.getMessage()
+            );
         }
     }
 
     public void actualizarUsuario() {
 
-        String cedula = actualizarUsuario.getjTextFieldAUCedula().getText();
-        Usuario existe = usuarioDao.buscar(cedula);
+        try {
 
-        if (existe != null) {
+            String cedula = actualizarUsuario.getjTextFieldAUCedula()
+                    .getText().trim();
+
+            if (cedula.isEmpty()) {
+                throw new IllegalArgumentException(
+                        "Debe ingresar la cédula del usuario."
+                );
+            }
+
+            if (!cedula.matches("\\d{10}")) {
+                throw new IllegalArgumentException(
+                        "La cédula debe contener exactamente 10 dígitos."
+                );
+            }
+
+            // Si no existe lanza UsuarioNoExiste
+            usuarioDao.buscar(cedula);
 
             int respuesta = JOptionPane.showConfirmDialog(
                     actualizarUsuario,
                     "¿Quieres actualizar este usuario?",
                     "Confirmar",
-                    JOptionPane.YES_NO_OPTION);
+                    JOptionPane.YES_NO_OPTION
+            );
 
-            if (respuesta == 0) {
+            if (respuesta == JOptionPane.YES_OPTION) {
 
-                String nombre = actualizarUsuario.getjTextFieldAUNombre().getText();
-                String apellido = actualizarUsuario.getjTextFieldAUApellido().getText();
-                String telefono = actualizarUsuario.getjTextFieldAUTelefono().getText();
-                String correo = actualizarUsuario.getjTextFieldAUCElectronico().getText();
-                String direccion = actualizarUsuario.getjTextFieldAUDireccion().getText();
-                Date fecha = Date.valueOf(actualizarUsuario.getjTextFieldAUFNacimiento().getText());
+                String nombre = actualizarUsuario.getjTextFieldAUNombre()
+                        .getText().trim();
 
-                Usuario nuevo = new Usuario(correo, direccion, cedula, nombre, apellido, telefono, fecha);
+                String apellido = actualizarUsuario.getjTextFieldAUApellido()
+                        .getText().trim();
+
+                String telefono = actualizarUsuario.getjTextFieldAUTelefono()
+                        .getText().trim();
+
+                String correo = actualizarUsuario.getjTextFieldAUCElectronico()
+                        .getText().trim();
+
+                String direccion = actualizarUsuario.getjTextFieldAUDireccion()
+                        .getText().trim();
+
+                String fechaTexto = actualizarUsuario.getjTextFieldAUFNacimiento()
+                        .getText().trim();
+
+                if (nombre.isEmpty() || apellido.isEmpty() || telefono.isEmpty()
+                        || correo.isEmpty() || direccion.isEmpty() || fechaTexto.isEmpty()) {
+
+                    throw new IllegalArgumentException(
+                            "Todos los campos deben estar llenos."
+                    );
+                }
+
+                if (!nombre.matches("[a-zA-ZÁÉÍÓÚáéíóúÑñ ]+")) {
+                    throw new IllegalArgumentException(
+                            "El nombre solo puede contener letras."
+                    );
+                }
+
+                if (!apellido.matches("[a-zA-ZÁÉÍÓÚáéíóúÑñ ]+")) {
+                    throw new IllegalArgumentException(
+                            "El apellido solo puede contener letras."
+                    );
+                }
+
+                if (!telefono.matches("\\d{10}")) {
+                    throw new IllegalArgumentException(
+                            "El teléfono debe contener exactamente 10 dígitos."
+                    );
+                }
+
+                if (!correo.matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
+                    throw new IllegalArgumentException(
+                            "El correo electrónico no tiene un formato válido."
+                    );
+                }
+
+                Date fecha;
+
+                try {
+
+                    fecha = Date.valueOf(fechaTexto);
+
+                } catch (IllegalArgumentException e) {
+
+                    throw new IllegalArgumentException(
+                            "El formato de fecha debe ser AAAA-MM-DD."
+                    );
+                }
+
+                Usuario nuevo = new Usuario(
+                        correo,
+                        direccion,
+                        cedula,
+                        nombre,
+                        apellido,
+                        telefono,
+                        fecha
+                );
 
                 usuarioDao.actualizar(nuevo);
 
-                actualizarUsuario.mostrarInformacion1("Usuario actualizado correctamente :)");
+                actualizarUsuario.mostrarInformacion1(
+                        "Usuario actualizado correctamente :)"
+                );
             }
-        } else {
-            actualizarUsuario.mostrarInformacion("No se encontró el usuario");
+
+        } catch (UsuarioNoExiste e) {
+
+            actualizarUsuario.mostrarInformacion(
+                    e.getMessage()
+            );
+
+        } catch (IllegalArgumentException e) {
+
+            actualizarUsuario.mostrarInformacion(
+                    e.getMessage()
+            );
         }
     }
 
     public void buscarEliminarUsuario() {
 
-        String cedula = eliminarUsuario.getjTextFieldEUCedula().getText();
-        Usuario usuario = usuarioDao.buscar(cedula);
+        try {
 
-        if (usuario != null) {
+            String cedula = eliminarUsuario.getjTextFieldEUCedula()
+                    .getText().trim();
 
-            eliminarUsuario.getjTextFieldEUNombre().setText(usuario.getNombre());
-            eliminarUsuario.getjTextFieldEUApellido().setText(usuario.getApellido());
-            eliminarUsuario.getjTextFieldEUTelefono().setText(usuario.getTelefono());
-            eliminarUsuario.getjTextFieldEUCElectronico().setText(usuario.getCorreoElectronico());
-            eliminarUsuario.getjTextFieldEUFNacimiento().setText(String.valueOf(usuario.getFechaNacimiento()));
+            if (cedula.isEmpty()) {
+                throw new IllegalArgumentException(
+                        "Debe ingresar la cédula del usuario."
+                );
+            }
 
-        } else {
-            eliminarUsuario.mostrarInformacion("No se encontró el usuario");
+            if (!cedula.matches("\\d{10}")) {
+                throw new IllegalArgumentException(
+                        "La cédula debe contener exactamente 10 dígitos."
+                );
+            }
+
+            Usuario usuario = usuarioDao.buscar(cedula);
+
+            eliminarUsuario.getjTextFieldEUNombre()
+                    .setText(usuario.getNombre());
+
+            eliminarUsuario.getjTextFieldEUApellido()
+                    .setText(usuario.getApellido());
+
+            eliminarUsuario.getjTextFieldEUTelefono()
+                    .setText(usuario.getTelefono());
+
+            eliminarUsuario.getjTextFieldEUCElectronico()
+                    .setText(usuario.getCorreoElectronico());
+
+            eliminarUsuario.getjTextFieldEUFNacimiento()
+                    .setText(String.valueOf(usuario.getFechaNacimiento()));
+
+        } catch (UsuarioNoExiste e) {
+
+            eliminarUsuario.getjTextFieldEUNombre().setText("");
+            eliminarUsuario.getjTextFieldEUApellido().setText("");
+            eliminarUsuario.getjTextFieldEUTelefono().setText("");
+            eliminarUsuario.getjTextFieldEUCElectronico().setText("");
+            eliminarUsuario.getjTextFieldEUFNacimiento().setText("");
+
+            eliminarUsuario.mostrarInformacion(
+                    e.getMessage()
+            );
+
+        } catch (IllegalArgumentException e) {
+
+            eliminarUsuario.mostrarInformacion(
+                    e.getMessage()
+            );
         }
     }
 
     public void eliminarUsuario() {
 
-        String cedula = eliminarUsuario.getjTextFieldEUCedula().getText();
-        Usuario usuario = usuarioDao.buscar(cedula);
+        try {
 
-        if (usuario != null) {
+            String cedula = eliminarUsuario.getjTextFieldEUCedula()
+                    .getText().trim();
+
+            if (cedula.isEmpty()) {
+                throw new IllegalArgumentException(
+                        "Debe ingresar la cédula del usuario."
+                );
+            }
+
+            if (!cedula.matches("\\d{10}")) {
+                throw new IllegalArgumentException(
+                        "La cédula debe contener exactamente 10 dígitos."
+                );
+            }
+
+            // Si el usuario no existe lanza UsuarioNoExiste
+            usuarioDao.buscar(cedula);
 
             int respuesta = JOptionPane.showConfirmDialog(
                     eliminarUsuario,
                     "¿Desea eliminar este usuario?",
                     "Confirmar",
-                    JOptionPane.YES_NO_OPTION);
+                    JOptionPane.YES_NO_OPTION
+            );
 
-            if (respuesta == 0) {
+            if (respuesta == JOptionPane.YES_OPTION) {
 
                 usuarioDao.eliminar(cedula);
 
-                eliminarUsuario.mostrarInformacion("Usuario eliminado correctamente :)");
+                eliminarUsuario.mostrarInformacion(
+                        "Usuario eliminado correctamente :)"
+                );
+
                 crearUsuario.getjTextFieldCUCedula().setText("");
                 crearUsuario.getjTextFieldCUNombre().setText("");
                 crearUsuario.getjTextFieldCUApellido().setText("");
@@ -263,8 +510,17 @@ public class UsuarioController {
                 crearUsuario.getjTextFieldCUFNacimiento().setText("");
             }
 
-        } else {
-            eliminarUsuario.mostrarInformacion("No se encontró el usuario");
+        } catch (UsuarioNoExiste e) {
+
+            eliminarUsuario.mostrarInformacion(
+                    e.getMessage()
+            );
+
+        } catch (IllegalArgumentException e) {
+
+            eliminarUsuario.mostrarInformacion(
+                    e.getMessage()
+            );
         }
     }
 
@@ -286,19 +542,57 @@ public class UsuarioController {
 
     public void buscarUsuarioParaEliminar() {
 
-        String cedula = eliminarUsuario.getjTextFieldEUCedula().getText();
-        Usuario usuario = usuarioDao.buscar(cedula);
+        try {
 
-        if (usuario != null) {
+            String cedula = eliminarUsuario.getjTextFieldEUCedula()
+                    .getText().trim();
 
-            eliminarUsuario.getjTextFieldEUNombre().setText(usuario.getNombre());
-            eliminarUsuario.getjTextFieldEUApellido().setText(usuario.getApellido());
-            eliminarUsuario.getjTextFieldEUTelefono().setText(usuario.getTelefono());
-            eliminarUsuario.getjTextFieldEUCElectronico().setText(usuario.getCorreoElectronico());
-            eliminarUsuario.getjTextFieldEUFNacimiento().setText(String.valueOf(usuario.getFechaNacimiento()));
+            if (cedula.isEmpty()) {
+                throw new IllegalArgumentException(
+                        "Debe ingresar la cédula del usuario."
+                );
+            }
 
-        } else {
-            eliminarUsuario.mostrarInformacion("No se encontró el usuario");
+            if (!cedula.matches("\\d{10}")) {
+                throw new IllegalArgumentException(
+                        "La cédula debe contener exactamente 10 dígitos."
+                );
+            }
+
+            Usuario usuario = usuarioDao.buscar(cedula);
+
+            eliminarUsuario.getjTextFieldEUNombre()
+                    .setText(usuario.getNombre());
+
+            eliminarUsuario.getjTextFieldEUApellido()
+                    .setText(usuario.getApellido());
+
+            eliminarUsuario.getjTextFieldEUTelefono()
+                    .setText(usuario.getTelefono());
+
+            eliminarUsuario.getjTextFieldEUCElectronico()
+                    .setText(usuario.getCorreoElectronico());
+
+            eliminarUsuario.getjTextFieldEUFNacimiento()
+                    .setText(String.valueOf(usuario.getFechaNacimiento()));
+
+        } catch (UsuarioNoExiste e) {
+
+            eliminarUsuario.getjTextFieldEUNombre().setText("");
+            eliminarUsuario.getjTextFieldEUApellido().setText("");
+            eliminarUsuario.getjTextFieldEUTelefono().setText("");
+            eliminarUsuario.getjTextFieldEUCElectronico().setText("");
+            eliminarUsuario.getjTextFieldEUFNacimiento().setText("");
+
+            eliminarUsuario.mostrarInformacion(
+                    e.getMessage()
+            );
+
+        } catch (IllegalArgumentException e) {
+
+            eliminarUsuario.mostrarInformacion(
+                    e.getMessage()
+            );
         }
     }
 
@@ -319,8 +613,16 @@ public class UsuarioController {
     }
 
     public void listarUsuarios() {
-        List<Usuario> lista = usuarioDao.listar();
-        listaUsuarios.cargarDatos(lista);
+
+        try {
+
+            List<Usuario> lista = usuarioDao.listar();
+            listaUsuarios.cargarDatos(lista);
+
+        } catch (Exception e) {
+
+            listaUsuarios.mostrarInformacion("Error al cargar la lista de usuarios: " + e.getMessage());
+        }
     }
 
     public void mostrarContadorAutores() {

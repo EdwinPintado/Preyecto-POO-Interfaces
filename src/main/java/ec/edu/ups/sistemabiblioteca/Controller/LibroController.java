@@ -1,7 +1,9 @@
 package ec.edu.ups.sistemabiblioteca.Controller;
 
-import ec.edu.ups.sistemabiblioteca.DAO.AutorDAOMemoria;
-import ec.edu.ups.sistemabiblioteca.DAO.LibroDAOMemoria;
+import ec.edu.ups.sistemabiblioteca.DAOMemoria.AutorDAOMemoria;
+import ec.edu.ups.sistemabiblioteca.DAOMemoria.LibroDAOMemoria;
+import ec.edu.ups.sistemabiblioteca.Exceptions.AutorNoEncontradoException;
+import ec.edu.ups.sistemabiblioteca.Exceptions.LibroNoEncontrado;
 import ec.edu.ups.sistemabiblioteca.models.Autor;
 import ec.edu.ups.sistemabiblioteca.models.Libro;
 import ec.edu.ups.sistemabiblioteca.view.libro.ActualizarLibro;
@@ -59,59 +61,125 @@ public class LibroController {
 
     public void agregarLibro() {
 
-        int respuesta = JOptionPane.showConfirmDialog(crearLibro, "¿Desea registrar un nuevo libro?", "Confirmar", JOptionPane.YES_NO_OPTION);
+        int respuesta = JOptionPane.showConfirmDialog(
+                crearLibro,
+                "¿Desea registrar un nuevo libro?",
+                "Confirmar",
+                JOptionPane.YES_NO_OPTION);
+
         if (respuesta == JOptionPane.YES_OPTION) {
 
             try {
+
                 String isbn = crearLibro.getjTextFieldLbISBN().getText().trim();
                 String titulo = crearLibro.getjTextFieldLbTitulo().getText().trim();
                 String editorial = crearLibro.getjTextFieldLbEditorial().getText().trim();
                 String fechaTexto = crearLibro.getjTextFieldLbAnio().getText().trim();
                 String cedulaAutor = crearLibro.getjTextFieldLbACedula().getText().trim();
-                if (isbn.isEmpty() || titulo.isEmpty() || editorial.isEmpty() || fechaTexto.isEmpty() || cedulaAutor.isEmpty()) {
-                    crearLibro.mostrarInformacion("Todos los campos deben estar llenados , para guardar el libro");
+
+                if (isbn.isEmpty() || titulo.isEmpty() || editorial.isEmpty()
+                        || fechaTexto.isEmpty() || cedulaAutor.isEmpty()) {
+
+                    throw new IllegalArgumentException(
+                            "Todos los campos deben estar llenos para guardar el libro.");
                 }
+
+                if (!isbn.matches("\\d+")) {
+                    throw new IllegalArgumentException(
+                            "El ISBN solo debe contener números.");
+                }
+
+                if (!titulo.matches("[a-zA-ZÁÉÍÓÚáéíóúÑñ0-9 ]+")) {
+                    throw new IllegalArgumentException(
+                            "El título contiene caracteres no válidos.");
+                }
+
+                if (!editorial.matches("[a-zA-ZÁÉÍÓÚáéíóúÑñ ]+")) {
+                    throw new IllegalArgumentException(
+                            "La editorial solo puede contener letras.");
+                }
+
                 Date anio;
 
                 try {
+
                     anio = Date.valueOf(fechaTexto);
 
                 } catch (IllegalArgumentException e) {
 
-                    crearLibro.mostrarInformacion(
-                            "Error: El formato de fecha debe ser AAAA-MM-DD.");
-                    return;
+                    throw new IllegalArgumentException(
+                            "El formato de fecha debe ser AAAA-MM-DD.");
                 }
+
                 Autor autor = autorDao.buscar(cedulaAutor);
-                if (autor == null) {
-                    crearLibro.mostrarInformacion("Autor no encontrado");
-                    return;
-                }
-                crearLibro.getjTextFieldLbANombre().setText(autor.getNombre());
-                Libro libro = new Libro(isbn, titulo, editorial, anio, autor);
+
+                crearLibro.getjTextFieldLbANombre()
+                        .setText(autor.getNombre());
+
+                Libro libro = new Libro(
+                        isbn,
+                        titulo,
+                        editorial,
+                        anio,
+                        autor
+                );
+
                 libroDAO.agregar(libro);
-                crearLibro.mostrarInformacion1("Libro registrado correctamente :)");
+
+                crearLibro.mostrarInformacion1(
+                        "Libro registrado correctamente :)");
+
                 crearLibro.getjTextFieldLbISBN().setText("");
                 crearLibro.getjTextFieldLbTitulo().setText("");
                 crearLibro.getjTextFieldLbEditorial().setText("");
                 crearLibro.getjTextFieldLbAnio().setText("");
                 crearLibro.getjTextFieldLbACedula().setText("");
                 crearLibro.getjTextFieldLbANombre().setText("");
+
+            } catch (AutorNoEncontradoException e) {
+
+                crearLibro.mostrarInformacion(e.getMessage());
+
             } catch (IllegalArgumentException e) {
-                mostrarMensaje(crearLibro, "Error: El formato de fecha debe ser AAAA-MM-DD.", "Error", JOptionPane.ERROR_MESSAGE);
+
+                crearLibro.mostrarInformacion(e.getMessage());
             }
+
         } else {
+
             crearLibro.mostrarInformacion1("Acción cancelada");
         }
     }
 
     public void buscarRegistroLibro() {
-        String cedula = crearLibro.getjTextFieldLbACedula().getText().trim();
-        Autor autor = autorDao.buscar(cedula);
-        if (autor == null) {
-            crearLibro.mostrarInformacion("Error: El usuario con cédula " + cedula + " no existe.");
-        } else {
-            crearLibro.getjTextFieldLbANombre().setText(autor.getNombre());
+
+        try {
+
+            String cedula = crearLibro.getjTextFieldLbACedula().getText().trim();
+
+            if (cedula.isEmpty()) {
+                throw new IllegalArgumentException("Debe ingresar una cédula.");
+            }
+
+            if (!cedula.matches("\\d{10}")) {
+                throw new IllegalArgumentException(
+                        "La cédula debe contener exactamente 10 dígitos.");
+            }
+
+            Autor autor = autorDao.buscar(cedula);
+
+            crearLibro.getjTextFieldLbANombre()
+                    .setText(autor.getNombre());
+
+        } catch (AutorNoEncontradoException e) {
+
+            crearLibro.mostrarInformacion(e.getMessage());
+
+            crearLibro.getjTextFieldLbANombre().setText("");
+
+        } catch (IllegalArgumentException e) {
+
+            crearLibro.mostrarInformacion(e.getMessage());
         }
     }
 
@@ -133,28 +201,53 @@ public class LibroController {
 
     public void BuscarLibro() {
 
-        String isbn = buscarLibro.getjTextFieldBsISBN().getText();
-        Libro libro = libroDAO.buscar(isbn);
+        try {
 
-        if (libro != null) {
+            String isbn = buscarLibro.getjTextFieldBsISBN().getText().trim();
 
-            buscarLibro.getjTextFieldBsISBN().setText(libro.getIsbn());
-            buscarLibro.getjTextFieldBsTitulo().setText(libro.getTitulo());
-            buscarLibro.getjTextFieldBsEditorial().setText(libro.getEditorial());
-            buscarLibro.getjTextFieldBsAnio().setText(String.valueOf(libro.getAnioPublicacion()));
-            buscarLibro.getjTextFieldBsACedula().setText(libro.getAutor().getCedula());
-            buscarLibro.getjTextFieldBsANombre().setText(libro.getAutor().getNombre());
+            if (isbn.isEmpty()) {
+                throw new IllegalArgumentException(
+                        "Debe ingresar el ISBN del libro.");
+            }
 
-        } else {
+            if (!isbn.matches("\\d+")) {
+                throw new IllegalArgumentException(
+                        "El ISBN solo debe contener números.");
+            }
 
-            buscarLibro.getjTextFieldBsISBN().setText("");
+            Libro libro = libroDAO.buscar(isbn);
+
+            buscarLibro.getjTextFieldBsISBN()
+                    .setText(libro.getIsbn());
+
+            buscarLibro.getjTextFieldBsTitulo()
+                    .setText(libro.getTitulo());
+
+            buscarLibro.getjTextFieldBsEditorial()
+                    .setText(libro.getEditorial());
+
+            buscarLibro.getjTextFieldBsAnio()
+                    .setText(String.valueOf(libro.getAnioPublicacion()));
+
+            buscarLibro.getjTextFieldBsACedula()
+                    .setText(libro.getAutor().getCedula());
+
+            buscarLibro.getjTextFieldBsANombre()
+                    .setText(libro.getAutor().getNombre());
+
+        } catch (LibroNoEncontrado e) {
+
             buscarLibro.getjTextFieldBsTitulo().setText("");
             buscarLibro.getjTextFieldBsEditorial().setText("");
             buscarLibro.getjTextFieldBsAnio().setText("");
             buscarLibro.getjTextFieldBsACedula().setText("");
             buscarLibro.getjTextFieldBsANombre().setText("");
 
-            buscarLibro.mostrarInformacion("No se encontró el libro");
+            buscarLibro.mostrarInformacion(e.getMessage());
+
+        } catch (IllegalArgumentException e) {
+
+            buscarLibro.mostrarInformacion(e.getMessage());
         }
     }
 
@@ -167,35 +260,77 @@ public class LibroController {
         });
     }
 
-    public void buscarEliminarLibro() {
+    public void BuscarEliminarLibro() {
 
-        String isbn = eliminarLibro.getjTextFieldBrISBN().getText();
-        Libro libro = libroDAO.buscar(isbn);
+        try {
 
-        if (libro != null) {
+            String isbn = buscarLibro.getjTextFieldBsISBN()
+                    .getText().trim();
 
-            eliminarLibro.getjTextFieldBrISBN().setText(libro.getIsbn());
-            eliminarLibro.getjTextFieldBrTitulo().setText(libro.getTitulo());
-            eliminarLibro.getjTextFieldBrEditorial().setText(libro.getEditorial());
-            eliminarLibro.getjTextFieldBrAnio().setText(String.valueOf(libro.getAnioPublicacion()));
+            if (isbn.isEmpty()) {
+                throw new IllegalArgumentException(
+                        "Debe ingresar el ISBN del libro."
+                );
+            }
 
-        } else {
+            if (!isbn.matches("\\d+")) {
+                throw new IllegalArgumentException(
+                        "El ISBN solo debe contener números."
+                );
+            }
 
-            eliminarLibro.getjTextFieldBrISBN().setText("");
-            eliminarLibro.getjTextFieldBrTitulo().setText("");
-            eliminarLibro.getjTextFieldBrEditorial().setText("");
-            eliminarLibro.getjTextFieldBrAnio().setText("");
+            Libro libro = libroDAO.buscar(isbn);
 
-            eliminarLibro.mostrarInformacion("No se encontró el libro");
+            buscarLibro.getjTextFieldBsISBN()
+                    .setText(libro.getIsbn());
+
+            buscarLibro.getjTextFieldBsTitulo()
+                    .setText(libro.getTitulo());
+
+            buscarLibro.getjTextFieldBsEditorial()
+                    .setText(libro.getEditorial());
+
+            buscarLibro.getjTextFieldBsAnio()
+                    .setText(String.valueOf(libro.getAnioPublicacion()));
+
+            buscarLibro.getjTextFieldBsACedula()
+                    .setText(libro.getAutor().getCedula());
+
+            buscarLibro.getjTextFieldBsANombre()
+                    .setText(libro.getAutor().getNombre());
+
+        } catch (LibroNoEncontrado e) {
+
+            buscarLibro.mostrarInformacion(e.getMessage());
+
+            buscarLibro.getjTextFieldBsISBN().setText("");
+            buscarLibro.getjTextFieldBsTitulo().setText("");
+            buscarLibro.getjTextFieldBsEditorial().setText("");
+            buscarLibro.getjTextFieldBsAnio().setText("");
+            buscarLibro.getjTextFieldBsACedula().setText("");
+            buscarLibro.getjTextFieldBsANombre().setText("");
+
+        } catch (IllegalArgumentException e) {
+
+            buscarLibro.mostrarInformacion(e.getMessage());
         }
     }
 
     public void eliminarLibro() {
 
-        String isbn = eliminarLibro.getjTextFieldBrISBN().getText();
-        Libro libro = libroDAO.buscar(isbn);
+        try {
 
-        if (libro != null) {
+            String isbn = eliminarLibro.getjTextFieldBrISBN().getText().trim();
+
+            if (isbn.isEmpty()) {
+                throw new IllegalArgumentException("Debe ingresar el ISBN del libro.");
+            }
+
+            if (!isbn.matches("\\d+")) {
+                throw new IllegalArgumentException("El ISBN solo debe contener números.");
+            }
+
+            Libro libro = libroDAO.buscar(isbn);
 
             int respuesta = JOptionPane.showConfirmDialog(
                     eliminarLibro,
@@ -207,7 +342,9 @@ public class LibroController {
 
                 libroDAO.eliminar(isbn);
 
-                eliminarLibro.mostrarInformacion1("Libro eliminado correctamente :)");
+                eliminarLibro.mostrarInformacion1(
+                        "Libro eliminado correctamente :)"
+                );
 
                 eliminarLibro.getjTextFieldBrISBN().setText("");
                 eliminarLibro.getjTextFieldBrTitulo().setText("");
@@ -215,12 +352,19 @@ public class LibroController {
                 eliminarLibro.getjTextFieldBrAnio().setText("");
 
             } else {
-                eliminarLibro.mostrarInformacion(" eliminarLibroAcción cancelada :(");
+
+                eliminarLibro.mostrarInformacion(
+                        "Acción cancelada :("
+                );
             }
 
-        } else {
+        } catch (LibroNoEncontrado e) {
 
-            eliminarLibro.mostrarInformacion("No se encontró el libro");
+            eliminarLibro.mostrarInformacion(e.getMessage());
+
+        } catch (IllegalArgumentException e) {
+
+            eliminarLibro.mostrarInformacion(e.getMessage());
         }
     }
 
@@ -228,7 +372,7 @@ public class LibroController {
         eliminarLibro.getjButtonBrBISBN().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                buscarEliminarLibro();
+                BuscarEliminarLibro();
             }
         });
         eliminarLibro.getjButtonBrALibro().addActionListener(new ActionListener() {
@@ -240,46 +384,143 @@ public class LibroController {
     }
 
     public void buscarActualizarLibro() {
-        String cedula = actualizarLibro.getjTextFieldActLACedula().getText();
-        String isbn = actualizarLibro.getjTextFieldActISBN().getText();
 
-        Libro libro = libroDAO.buscar(isbn);
-        Autor autor = autorDao.buscar(cedula);
-        if (libro != null) {
+        try {
 
-            actualizarLibro.getjTextFieldActLTitulo().setText(libro.getTitulo());
-            actualizarLibro.getjTextFieldActLEditorial().setText(libro.getEditorial());
-            actualizarLibro.getjTextFieldActLAnio().setText(String.valueOf(libro.getAnioPublicacion()));
+            String cedula = actualizarLibro.getjTextFieldActLACedula()
+                    .getText().trim();
 
-        } else {
+            String isbn = actualizarLibro.getjTextFieldActISBN()
+                    .getText().trim();
+
+            if (isbn.isEmpty()) {
+                throw new IllegalArgumentException(
+                        "Debe ingresar el ISBN del libro."
+                );
+            }
+
+            if (!isbn.matches("\\d+")) {
+                throw new IllegalArgumentException(
+                        "El ISBN solo debe contener números."
+                );
+            }
+
+            if (cedula.isEmpty()) {
+                throw new IllegalArgumentException(
+                        "Debe ingresar la cédula del autor."
+                );
+            }
+
+            if (!cedula.matches("\\d{10}")) {
+                throw new IllegalArgumentException(
+                        "La cédula debe contener exactamente 10 dígitos."
+                );
+            }
+
+            Libro libro = libroDAO.buscar(isbn);
+            Autor autor = autorDao.buscar(cedula);
+
+            actualizarLibro.getjTextFieldActLTitulo()
+                    .setText(libro.getTitulo());
+
+            actualizarLibro.getjTextFieldActLEditorial()
+                    .setText(libro.getEditorial());
+
+            actualizarLibro.getjTextFieldActLAnio()
+                    .setText(String.valueOf(libro.getAnioPublicacion()));
+
+        } catch (LibroNoEncontrado e) {
 
             actualizarLibro.getjTextFieldActLTitulo().setText("");
             actualizarLibro.getjTextFieldActLEditorial().setText("");
             actualizarLibro.getjTextFieldActLAnio().setText("");
             actualizarLibro.getjTextFieldActLACedula().setText("");
 
-            actualizarLibro.mostrarInformacion("Libro no encontrado");
+            actualizarLibro.mostrarInformacion(e.getMessage());
+
+        } catch (AutorNoEncontradoException e) {
+
+            actualizarLibro.mostrarInformacion(e.getMessage());
+
+        } catch (IllegalArgumentException e) {
+
+            actualizarLibro.mostrarInformacion(e.getMessage());
         }
     }
 
     public void actualizarLibro() {
 
-        String isbn = actualizarLibro.getjTextFieldActISBN().getText();
-        Libro libroExistente = libroDAO.buscar(isbn);
+        try {
 
-        if (libroExistente != null) {
+            String isbn = actualizarLibro.getjTextFieldActISBN()
+                    .getText().trim();
+
+            if (isbn.isEmpty()) {
+                throw new IllegalArgumentException(
+                        "Debe ingresar el ISBN del libro."
+                );
+            }
+
+            if (!isbn.matches("\\d+")) {
+                throw new IllegalArgumentException(
+                        "El ISBN solo debe contener números."
+                );
+            }
+
+            Libro libroExistente = libroDAO.buscar(isbn);
 
             int respuesta = JOptionPane.showConfirmDialog(
                     actualizarLibro,
-                    "¿Desea actualizar el libro: " + libroExistente.getTitulo() + "?",
+                    "¿Desea actualizar el libro: "
+                    + libroExistente.getTitulo() + "?",
                     "Confirmar actualización",
                     JOptionPane.YES_NO_OPTION);
 
             if (respuesta == JOptionPane.YES_OPTION) {
 
-                String titulo = actualizarLibro.getjTextFieldActLTitulo().getText();
-                String editorial = actualizarLibro.getjTextFieldActLEditorial().getText();
-                Date anio = Date.valueOf(actualizarLibro.getjTextFieldActLAnio().getText());
+                String titulo = actualizarLibro.getjTextFieldActLTitulo()
+                        .getText().trim();
+
+                String editorial = actualizarLibro.getjTextFieldActLEditorial()
+                        .getText().trim();
+
+                String fechaTexto = actualizarLibro.getjTextFieldActLAnio()
+                        .getText().trim();
+
+                if (titulo.isEmpty() || editorial.isEmpty()
+                        || fechaTexto.isEmpty()) {
+
+                    throw new IllegalArgumentException(
+                            "Todos los campos deben estar llenos para actualizar el libro."
+                    );
+                }
+
+                if (!titulo.matches("[a-zA-ZÁÉÍÓÚáéíóúÑñ0-9 ]+")) {
+
+                    throw new IllegalArgumentException(
+                            "El título contiene caracteres no válidos."
+                    );
+                }
+
+                if (!editorial.matches("[a-zA-ZÁÉÍÓÚáéíóúÑñ ]+")) {
+
+                    throw new IllegalArgumentException(
+                            "La editorial solo puede contener letras."
+                    );
+                }
+
+                Date anio;
+
+                try {
+
+                    anio = Date.valueOf(fechaTexto);
+
+                } catch (IllegalArgumentException e) {
+
+                    throw new IllegalArgumentException(
+                            "El formato de fecha debe ser AAAA-MM-DD."
+                    );
+                }
 
                 Libro libroActualizado = new Libro(
                         isbn,
@@ -291,7 +532,9 @@ public class LibroController {
 
                 libroDAO.actualizar(libroActualizado);
 
-                actualizarLibro.mostrarInformacion1("Libro actualizado correctamente :)");
+                actualizarLibro.mostrarInformacion1(
+                        "Libro actualizado correctamente :)"
+                );
 
                 actualizarLibro.getjTextFieldActISBN().setText("");
                 actualizarLibro.getjTextFieldActLTitulo().setText("");
@@ -299,11 +542,19 @@ public class LibroController {
                 actualizarLibro.getjTextFieldActLAnio().setText("");
 
             } else {
-                actualizarLibro.mostrarInformacion("Actualización cancelada :(");
+
+                actualizarLibro.mostrarInformacion(
+                        "Actualización cancelada :("
+                );
             }
 
-        } else {
-            actualizarLibro.mostrarInformacion("No se encontró el libro");
+        } catch (LibroNoEncontrado e) {
+
+            actualizarLibro.mostrarInformacion(e.getMessage());
+
+        } catch (IllegalArgumentException e) {
+
+            actualizarLibro.mostrarInformacion(e.getMessage());
         }
     }
 
@@ -323,8 +574,21 @@ public class LibroController {
     }
 
     public void listarLibro() {
-        List<Libro> lista = libroDAO.listar();
-        listarLibro.cargarDatos(lista);
+
+        try {
+
+            List<Libro> lista = libroDAO.listar();
+
+            if (lista == null || lista.isEmpty()) {
+                throw new IllegalArgumentException("No existen libros registrados.");
+            }
+
+            listarLibro.cargarDatos(lista);
+
+        } catch (IllegalArgumentException e) {
+
+            listarLibro.mostrarInformacion(e.getMessage());
+        }
     }
 
     public void mostrarContadorAutores() {
