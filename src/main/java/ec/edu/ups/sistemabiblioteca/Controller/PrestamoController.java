@@ -62,9 +62,7 @@ public class PrestamoController {
                 throw new IllegalArgumentException("El código del préstamo no puede estar vacío.");
             }
 
-            if (prestamoDao.buscar(codigo) != null) {
-                throw new IllegalArgumentException("Ya existe un préstamo con ese código.");
-            }
+
 
             String cedula = agregarPrestamoView.getjTextFieldCPUCedula().getText().trim();
 
