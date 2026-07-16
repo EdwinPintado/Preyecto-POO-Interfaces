@@ -52,7 +52,7 @@ public class AutorController {
     private String  mAmsj;
     private String lAmsj;
 
-    public AutorController(AutorDAOMemoria autorDAO, CrearAutor crearAutor, BorrarAutor borrarAutor, BuscarAutor buscarAutor, ActualizarAutor actualizarAutor, ListarAutor listarAutor) {
+    public AutorController(AutorDAO autorDAO, CrearAutor crearAutor, BorrarAutor borrarAutor, BuscarAutor buscarAutor, ActualizarAutor actualizarAutor, ListarAutor listarAutor) {
         this.autorDAO = autorDAO;
         this.crearAutor = crearAutor;
         this.borrarAutor = borrarAutor;
@@ -162,7 +162,6 @@ public class AutorController {
                         fechaNacimiento);
 
                 autorDAO.agregar(autor);
-
                 crearAutor.mostrarInformacion1(sCAmsj);
 
                 crearAutor.getjTextFieldCANombre().setText("");

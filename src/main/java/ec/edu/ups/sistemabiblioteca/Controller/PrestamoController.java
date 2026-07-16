@@ -172,6 +172,7 @@ public class PrestamoController {
             );
 
             libro.setDisponible(false);
+            prestamo.setEstadi0(false);
 
             prestamoDao.agregar(prestamo);
 

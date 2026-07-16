@@ -164,7 +164,7 @@ public class BuscarBibliotecario extends javax.swing.JInternalFrame {
 
         jButtonBBBCedula.setBackground(new java.awt.Color(0, 102, 153));
         jButtonBBBCedula.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonBBBCedula.setText("Guardar");
+        jButtonBBBCedula.setText("Buscar");
         jButtonBBBCedula.addActionListener(this::jButtonBBBCedulaActionPerformed);
 
         jLabelBBNombre.setText("Nombre:");

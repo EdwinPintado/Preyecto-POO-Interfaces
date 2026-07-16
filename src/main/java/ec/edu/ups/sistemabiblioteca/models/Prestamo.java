@@ -11,18 +11,28 @@ public class Prestamo {
     private Usuario usuario;
     private Libro libro;
     private Bibliotecario bibliotecario;
+    private boolean estadi0;
 
     
     public Prestamo(String codigoPrestamo, Date fechaPrestamo, Date fechaDevolucion, Usuario usuario, Libro libro, Bibliotecario bibliotecario) {
         this.codigoPrestamo = codigoPrestamo;
         this.fechaPrestamo = fechaPrestamo;
         this.fechaDevolucion = fechaDevolucion;
+        this.estadi0= true;
         
         this.usuario = usuario;
         this.libro = libro;
         this.bibliotecario = bibliotecario;
     }
 
+    public boolean isEstadi0() {
+        return estadi0;
+    }
+
+    public void setEstadi0(boolean estadi0) {
+        this.estadi0 = estadi0;
+    }
+    
     public Bibliotecario getBibliotecario() {
         return bibliotecario;
     }
