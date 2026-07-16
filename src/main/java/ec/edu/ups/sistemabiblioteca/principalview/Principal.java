@@ -185,7 +185,6 @@ public class Principal extends javax.swing.JFrame {
     private void initComponents() {
 
         desktopPane = new javax.swing.JDesktopPane();
-        jButton1 = new javax.swing.JButton();
         menuBar = new javax.swing.JMenuBar();
         AutorMenu = new javax.swing.JMenu();
         CrearAItem = new javax.swing.JMenuItem();
@@ -231,28 +230,23 @@ public class Principal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("ARCHIVOS");
-        jButton1.addActionListener(this::jButton1ActionPerformed);
-        desktopPane.add(jButton1);
-        jButton1.setBounds(290, 220, 160, 23);
+        AutorMenu.setMnemonic('f');
+        AutorMenu.setText("Autor");
 
-        fileMenu.setMnemonic('f');
-        fileMenu.setText("Autor");
+        CrearAItem.setMnemonic('o');
+        CrearAItem.setText("Crear");
+        CrearAItem.addActionListener(this::CrearAItemActionPerformed);
+        AutorMenu.add(CrearAItem);
 
-        openMenuItem.setMnemonic('o');
-        openMenuItem.setText("Crear");
-        openMenuItem.addActionListener(this::openMenuItemActionPerformed);
-        fileMenu.add(openMenuItem);
+        BuscarAItem.setMnemonic('s');
+        BuscarAItem.setText("Buscar");
+        BuscarAItem.addActionListener(this::BuscarAItemActionPerformed);
+        AutorMenu.add(BuscarAItem);
 
-        Buscar.setMnemonic('s');
-        Buscar.setText("Buscar");
-        Buscar.addActionListener(this::BuscarActionPerformed);
-        fileMenu.add(Buscar);
-
-        saveAsMenuItem.setMnemonic('a');
-        saveAsMenuItem.setText("Actualizar");
-        saveAsMenuItem.addActionListener(this::saveAsMenuItemActionPerformed);
-        fileMenu.add(saveAsMenuItem);
+        ActAItem.setMnemonic('a');
+        ActAItem.setText("Actualizar");
+        ActAItem.addActionListener(this::ActAItemActionPerformed);
+        AutorMenu.add(ActAItem);
 
         BorrarAItem.setMnemonic('x');
         BorrarAItem.setText("Borrar");
@@ -431,9 +425,7 @@ public class Principal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(desktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, 501, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 560, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -671,12 +663,6 @@ public class Principal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_DListarItemActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-
-
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
         // TODO add your handling code here:
         for (Autor autor : autorDAO.listar()) {
@@ -892,26 +878,11 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem UListarItem;
     private javax.swing.JMenu UsuarioMenu;
     private javax.swing.JDesktopPane desktopPane;
-    private javax.swing.JMenuItem exitMenuItem;
-    private javax.swing.JMenuItem exitMenuItem2;
-    private javax.swing.JMenuItem exitMenuItem3;
-    private javax.swing.JMenuItem exitMenuItem4;
-    private javax.swing.JMenu fileMenu;
-    private javax.swing.JMenu fileMenu2;
-    private javax.swing.JMenu fileMenu3;
-    private javax.swing.JMenu fileMenu4;
-    private javax.swing.JButton jButton1;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem11;
     private javax.swing.JMenuItem jMenuItem12;
     private javax.swing.JMenuItem jMenuItem13;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;

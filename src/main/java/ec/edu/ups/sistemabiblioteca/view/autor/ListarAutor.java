@@ -24,11 +24,7 @@ public class ListarAutor extends javax.swing.JInternalFrame {
         modelo = new DefaultTableModel();
         modelo.addColumn("Cédula");
         modelo.addColumn("Nombre");
-        modelo.addColumn("Apellido");
         modelo.addColumn("Teléfono");
-        modelo.addColumn("Nacionalidad");
-        modelo.addColumn("Género");
-        modelo.addColumn("Bibliografía");
         modelo.addColumn("Fecha");
 
         tblListadoAutores.setModel(modelo);
@@ -43,11 +39,7 @@ public class ListarAutor extends javax.swing.JInternalFrame {
             Object[] fila = {
                 a.getCedula(),
                 a.getNombre(),
-                a.getApellido(),
                 a.getTelefono(),
-                a.getNacionalidad(),
-                a.getGeneroLiterario(),
-                a.getBibliografia(),
                 a.getFechaNacimiento()
             };
             modelo.addRow(fila);
@@ -100,6 +92,7 @@ public class ListarAutor extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setTitle("Lista Autores");
+        setMinimumSize(new java.awt.Dimension(150, 36));
 
         tblListadoAutores.setBackground(new java.awt.Color(196, 220, 220));
         tblListadoAutores.setModel(new javax.swing.table.DefaultTableModel(
@@ -126,10 +119,10 @@ public class ListarAutor extends javax.swing.JInternalFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(101, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(62, 62, 62)
                 .addComponent(jLabelListaAutores, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(90, 90, 90))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -180,11 +173,11 @@ public class ListarAutor extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1))
-                .addContainerGap(208, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 496, Short.MAX_VALUE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
