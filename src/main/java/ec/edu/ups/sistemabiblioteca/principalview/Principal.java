@@ -125,43 +125,29 @@ public class Principal extends javax.swing.JFrame {
         this.setContentPane(desktopPane);
         initComponents();
 
-        
         //Icon 1
         {
-        ImageIcon icono = new ImageIcon(
-        getClass().getResource("/ec/edu/ups/sistemabiblioteca/pictures/ups.png"));
+            ImageIcon icono = new ImageIcon(
+                    getClass().getResource("/ec/edu/ups/sistemabiblioteca/pictures/ups.png"));
 
-        Image imagen = icono.getImage().getScaledInstance(
-        jLabelUps.getWidth(),
-        jLabelUps.getHeight(),
-        Image.SCALE_SMOOTH);
+            Image imagen = icono.getImage().getScaledInstance(
+                    jLabelUps.getWidth(),
+                    jLabelUps.getHeight(),
+                    Image.SCALE_SMOOTH);
 
-        jLabelUps.setIcon(new ImageIcon(imagen));
+            jLabelUps.setIcon(new ImageIcon(imagen));
         }
         //Icon2 
         {
-        ImageIcon icon = new ImageIcon(getClass().getResource("/ec/edu/ups/sistemabiblioteca/pictures/fondoB.png"));
+            ImageIcon icon = new ImageIcon(getClass().getResource("/ec/edu/ups/sistemabiblioteca/pictures/fondoB.png"));
 
-        Image imagen = icon.getImage().getScaledInstance(
-        jLabelfondo.getWidth(),
-        jLabelfondo.getHeight(),
-        Image.SCALE_SMOOTH);
+            Image imagen = icon.getImage().getScaledInstance(
+                    jLabelfondo.getWidth(),
+                    jLabelfondo.getHeight(),
+                    Image.SCALE_SMOOTH);
 
-        jLabelfondo.setIcon(new ImageIcon(imagen));
+            jLabelfondo.setIcon(new ImageIcon(imagen));
         }
-        
-        autorArchivos = new AutorDAOArchivo();
-        autorDAO = new AutorDAOMemoria();
-        usuarioDAO = new UsuarioDAOMemoria();
-        usuarioArchivo = new UsuarioDAOArchivo();
-        bibliotecarioDAO = new BibliotecarioDAOMemoria();
-        bibliotecarioDAOArhivo = new BibliotecarioDAOArchivo();
-        libroDAO = new LibroDAOMemoria();
-        libroDAOArchivo = new LibroDAOArchivo();
-        devolucionDAO = new DevolucionDAOMemoria();
-        devolucionArchivo = new DevolucionDAOArchivo();
-        prestamoDAO = new PrestamoDAOMemoria();
-        prestamoArchivo = new PrestamoDAOArchivo(usuarioDAO, libroDAO, bibliotecarioDAO);
 
         crearAutor = new CrearAutor();
         borrarAutor = new BorrarAutor();
@@ -193,6 +179,33 @@ public class Principal extends javax.swing.JFrame {
         buscarUsuario = new BuscarUsuario();
         actualizarUsuario = new ActualizarUsuario();
         listarUsuario = new ListarUsuario();
+
+        Object[] opciones = {"Memoria", "Archivos Binarios"};
+        int opcion;
+        opcion = javax.swing.JOptionPane.showOptionDialog(this, "Selecione el mecanismo de fuardar ", "Persistencia",
+                javax.swing.JOptionPane.DEFAULT_OPTION,
+                javax.swing.JOptionPane.QUESTION_MESSAGE,
+                null, opciones, opciones[0]);
+        if (opcion == 0) {
+            autorDAO = new AutorDAOMemoria();
+            usuarioDAO = new UsuarioDAOMemoria();
+
+            bibliotecarioDAO = new BibliotecarioDAOMemoria();
+
+            libroDAO = new LibroDAOMemoria();
+
+            devolucionDAO = new DevolucionDAOMemoria();
+
+            prestamoDAO = new PrestamoDAOMemoria();
+        } else {
+
+            usuarioArchivo = new UsuarioDAOArchivo();
+            autorArchivos = new AutorDAOArchivo();
+            bibliotecarioDAOArhivo = new BibliotecarioDAOArchivo();
+            libroDAOArchivo = new LibroDAOArchivo();
+            devolucionArchivo = new DevolucionDAOArchivo();
+            prestamoArchivo = new PrestamoDAOArchivo(usuarioDAO, libroDAO, bibliotecarioDAO);
+        }
 
         autorController = new AutorController(autorDAO, crearAutor, borrarAutor, buscarAutor, actualizarAutor, listarAutor);
         usuarioController = new UsuarioController(usuarioDAO, crearUsuario, borrarUsuario, buscarUsuario, actualizarUsuario, listarUsuario);
@@ -474,7 +487,7 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BorrarAItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BorrarAItemActionPerformed
-        if(borrarAutor== null||!borrarAutor.isVisible()){
+        if (borrarAutor == null || !borrarAutor.isVisible()) {
             desktopPane.remove(borrarAutor);
             desktopPane.add(borrarAutor);
             borrarAutor.setVisible(true);
@@ -791,7 +804,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void EnItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EnItemActionPerformed
         // TODO add your handling code here:
-        Locale local = new Locale("en","US");
+        Locale local = new Locale("en", "US");
         cambiarIdioma(local);
     }//GEN-LAST:event_EnItemActionPerformed
 
@@ -830,9 +843,9 @@ public class Principal extends javax.swing.JFrame {
         });
     }
 
-    public void cambiarIdioma(Locale locale){
-        
-        ResourceBundle bundle =ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n.mensajes", locale);
+    public void cambiarIdioma(Locale locale) {
+
+        ResourceBundle bundle = ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n.mensajes", locale);
         //Nombres Menu
         AutorMenu.setText(bundle.getString("au"));
         LibroMenu.setText(bundle.getString("lib"));
@@ -910,9 +923,8 @@ public class Principal extends javax.swing.JFrame {
         prestamoController.cambiarIdioma(locale);
         devolucionController.cambiarIdioma(locale);
         bibliotecarioController.cambiarIdioma(locale);
-        */
-        
-        
+         */
+
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem ActAItem;
