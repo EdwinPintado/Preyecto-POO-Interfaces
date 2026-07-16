@@ -1,6 +1,8 @@
 package ec.edu.ups.sistemabiblioteca.DAOArchivo;
 
 import ec.edu.ups.sistemabiblioteca.DAO.BibliotecarioDAO;
+import ec.edu.ups.sistemabiblioteca.enums.Cargo;
+import ec.edu.ups.sistemabiblioteca.enums.Turno;
 import ec.edu.ups.sistemabiblioteca.models.Bibliotecario;
 
 import java.io.IOException;
@@ -65,9 +67,9 @@ public class BibliotecarioDAOArchivo implements BibliotecarioDAO {
 
         escribirTexto(archivo, b.getCodigo(), TAM_CODIGO);
 
-        escribirTexto(archivo, b.getTurno(), TAM_TURNO);
+        escribirTexto(archivo, b.getTurno().name(), TAM_TURNO);
 
-        escribirTexto(archivo, b.getCargo(), TAM_CARGO);
+        escribirTexto(archivo, b.getCargo().name(), TAM_CARGO);
 
         escribirTexto(archivo, b.getCedula(), TAM_CEDULA);
 
@@ -122,11 +124,11 @@ public class BibliotecarioDAOArchivo implements BibliotecarioDAO {
                 String codigo
                         = leerTexto(archivo, TAM_CODIGO);
 
-                String turno
-                        = leerTexto(archivo, TAM_TURNO);
+                Turno turno 
+                        = Turno.valueOf(leerTexto(archivo, TAM_TURNO));
 
-                String cargo
-                        = leerTexto(archivo, TAM_CARGO);
+                Cargo cargo 
+                        = Cargo.valueOf(leerTexto(archivo, TAM_CARGO));
 
                 String cedulaLeida
                         = leerTexto(archivo, TAM_CEDULA);
@@ -307,11 +309,11 @@ public class BibliotecarioDAOArchivo implements BibliotecarioDAO {
                 String codigo
                         = leerTexto(archivo, TAM_CODIGO);
 
-                String turno
-                        = leerTexto(archivo, TAM_TURNO);
+                Turno turno 
+                        = Turno.valueOf(leerTexto(archivo, TAM_TURNO));
 
-                String cargo
-                        = leerTexto(archivo, TAM_CARGO);
+                Cargo cargo 
+                        = Cargo.valueOf(leerTexto(archivo, TAM_CARGO));
 
                 String cedula
                         = leerTexto(archivo, TAM_CEDULA);

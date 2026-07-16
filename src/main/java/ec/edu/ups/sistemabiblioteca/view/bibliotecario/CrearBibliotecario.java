@@ -4,9 +4,12 @@
  */
 package ec.edu.ups.sistemabiblioteca.view.bibliotecario;
 
+import ec.edu.ups.sistemabiblioteca.enums.Cargo;
+import ec.edu.ups.sistemabiblioteca.enums.Turno;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -21,6 +24,17 @@ public class CrearBibliotecario extends javax.swing.JInternalFrame {
      */
     public CrearBibliotecario() {
         initComponents();
+        
+        jComboBoxCargo.removeAllItems();
+        jComboBoxTurno.removeAllItems();
+
+        for (Cargo cargo : Cargo.values()) {
+            jComboBoxCargo.addItem(cargo.name());
+        }
+
+        for (Turno turno : Turno.values()) {
+            jComboBoxTurno.addItem(turno.name());
+        }
     }
 
     public JButton getjButtonCBCancelar() {
@@ -45,14 +59,6 @@ public class CrearBibliotecario extends javax.swing.JInternalFrame {
 
     public void setjTextFieldCBApellido(JTextField jTextFieldCBApellido) {
         this.jTextFieldCBApellido = jTextFieldCBApellido;
-    }
-
-    public JTextField getjTextFieldCBCargo() {
-        return jTextFieldCBCargo;
-    }
-
-    public void setjTextFieldCBCargo(JTextField jTextFieldCBCargo) {
-        this.jTextFieldCBCargo = jTextFieldCBCargo;
     }
 
     public JTextField getjTextFieldCBCedula() {
@@ -95,12 +101,20 @@ public class CrearBibliotecario extends javax.swing.JInternalFrame {
         this.jTextFieldCBTelefono = jTextFieldCBTelefono;
     }
 
-    public JTextField getjTextFieldCBTurno() {
-        return jTextFieldCBTurno;
+    public JComboBox<String> getjComboBoxCargo() {
+        return jComboBoxCargo;
     }
 
-    public void setjTextFieldCBTurno(JTextField jTextFieldCBTurno) {
-        this.jTextFieldCBTurno = jTextFieldCBTurno;
+    public void setjComboBoxCargo(JComboBox<String> jComboBoxCargo) {
+        this.jComboBoxCargo = jComboBoxCargo;
+    }
+
+    public JComboBox<String> getjComboBoxTurno() {
+        return jComboBoxTurno;
+    }
+
+    public void setjComboBoxTurno(JComboBox<String> jComboBoxTurno) {
+        this.jComboBoxTurno = jComboBoxTurno;
     }
 
     public void mostrarInformacion(String mensaje) {
@@ -133,7 +147,6 @@ public class CrearBibliotecario extends javax.swing.JInternalFrame {
         jLabelCBApellido = new javax.swing.JLabel();
         jTextFieldCBApellido = new javax.swing.JTextField();
         jLabelCBCargo = new javax.swing.JLabel();
-        jTextFieldCBCargo = new javax.swing.JTextField();
         jLabelCBTelefono = new javax.swing.JLabel();
         jTextFieldCBTelefono = new javax.swing.JTextField();
         jLabelCBCodBibliotecario = new javax.swing.JLabel();
@@ -141,10 +154,11 @@ public class CrearBibliotecario extends javax.swing.JInternalFrame {
         jLabelCBFNacimiento = new javax.swing.JLabel();
         jTextFieldCBFecha = new javax.swing.JTextField();
         jLabelCBTurno = new javax.swing.JLabel();
-        jTextFieldCBTurno = new javax.swing.JTextField();
         jButtonCBCrear = new javax.swing.JButton();
         jButtonCBCancelar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jComboBoxCargo = new javax.swing.JComboBox<>();
+        jComboBoxTurno = new javax.swing.JComboBox<>();
 
         setClosable(true);
         setIconifiable(true);
@@ -162,9 +176,9 @@ public class CrearBibliotecario extends javax.swing.JInternalFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(33, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabelCrearBibliotecario)
-                .addGap(24, 24, 24))
+                .addGap(35, 35, 35))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -203,6 +217,11 @@ public class CrearBibliotecario extends javax.swing.JInternalFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         jLabel1.setText("AAAA-MM-DD");
 
+        jComboBoxCargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxCargo.addActionListener(this::jComboBoxCargoActionPerformed);
+
+        jComboBoxTurno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -229,11 +248,11 @@ public class CrearBibliotecario extends javax.swing.JInternalFrame {
                         .addComponent(jButtonCBCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jTextFieldCBNombre)
                     .addComponent(jTextFieldCBApellido)
-                    .addComponent(jTextFieldCBCargo)
                     .addComponent(jTextFieldCBTelefono)
                     .addComponent(jTextFieldCBCodigo)
                     .addComponent(jTextFieldCBFecha)
-                    .addComponent(jTextFieldCBTurno))
+                    .addComponent(jComboBoxCargo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jComboBoxTurno, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(263, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -254,7 +273,7 @@ public class CrearBibliotecario extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelCBCargo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextFieldCBCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jComboBoxCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelCBTelefono)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -272,7 +291,7 @@ public class CrearBibliotecario extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelCBTurno)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextFieldCBTurno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jComboBoxTurno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonCBCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -287,11 +306,11 @@ public class CrearBibliotecario extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addGap(122, 122, 122)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 303, Short.MAX_VALUE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(128, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -299,8 +318,8 @@ public class CrearBibliotecario extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21))
         );
 
         pack();
@@ -318,6 +337,10 @@ public class CrearBibliotecario extends javax.swing.JInternalFrame {
     private void jTextFieldCBFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCBFechaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldCBFechaActionPerformed
+
+    private void jComboBoxCargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxCargoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxCargoActionPerformed
 
     public void cambiarIdioma(Locale locale){
         ResourceBundle bundle =ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n", locale);
@@ -337,6 +360,8 @@ public class CrearBibliotecario extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCBCancelar;
     private javax.swing.JButton jButtonCBCrear;
+    private javax.swing.JComboBox<String> jComboBoxCargo;
+    private javax.swing.JComboBox<String> jComboBoxTurno;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelCBApellido;
     private javax.swing.JLabel jLabelCBCargo;
@@ -351,12 +376,10 @@ public class CrearBibliotecario extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextFieldCBApellido;
-    private javax.swing.JTextField jTextFieldCBCargo;
     private javax.swing.JTextField jTextFieldCBCedula;
     private javax.swing.JTextField jTextFieldCBCodigo;
     private javax.swing.JTextField jTextFieldCBFecha;
     private javax.swing.JTextField jTextFieldCBNombre;
     private javax.swing.JTextField jTextFieldCBTelefono;
-    private javax.swing.JTextField jTextFieldCBTurno;
     // End of variables declaration//GEN-END:variables
 }

@@ -15,6 +15,8 @@ import java.sql.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
+import ec.edu.ups.sistemabiblioteca.enums.Cargo;
+import ec.edu.ups.sistemabiblioteca.enums.Turno;
 import javax.swing.JOptionPane;
 
 public class AutorController {

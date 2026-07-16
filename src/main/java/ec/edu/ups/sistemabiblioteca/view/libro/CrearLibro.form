@@ -27,55 +27,53 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="140" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jLabelLbAnio" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="jTextFieldLbAnio" alignment="0" pref="265" max="32767" attributes="0"/>
-                                  <Component id="jTextFieldLbEditorial" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jTextFieldLbTitulo" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jLabelLbTitulo" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabelLbEditorial" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldLbISBN" alignment="0" max="32767" attributes="0"/>
-                              </Group>
-                              <Component id="jSeparator1" min="-2" pref="270" max="-2" attributes="0"/>
-                              <Component id="jLabelLbACedula" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabelLbUNombre" min="-2" max="-2" attributes="0"/>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jTextFieldLbACedula" min="-2" pref="181" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jButtonLbBAutor" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Component id="jTextFieldLbANombre" alignment="0" min="-2" pref="259" max="-2" attributes="0"/>
+                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                      <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jLabelLbAnio" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="jTextFieldLbAnio" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jTextFieldLbEditorial" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jTextFieldLbTitulo" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jLabelLbTitulo" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelLbEditorial" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextFieldLbISBN" alignment="0" min="-2" pref="265" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="jSeparator1" min="-2" pref="270" max="-2" attributes="0"/>
+                          <Component id="jLabelLbACedula" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabelLbUNombre" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jTextFieldLbACedula" min="-2" pref="181" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="jButtonLbBAutor" min="-2" max="-2" attributes="0"/>
                                   </Group>
+                                  <Component id="jTextFieldLbANombre" alignment="0" min="-2" pref="259" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <Component id="jPanel4" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="43" max="32767" attributes="0"/>
+                      <Component id="jPanel4" alignment="1" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <Component id="jLabelLbISBN" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="285" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="242" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                      <Component id="jButtonLbCLibro" min="-2" pref="103" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jButtonLbCancelar" min="-2" pref="101" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                   </Group>
               </Group>
-          </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
-              <Component id="jButtonLbCLibro" min="-2" pref="103" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="jButtonLbCancelar" min="-2" pref="101" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <EmptySpace pref="143" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -121,7 +119,7 @@
                   <Component id="jButtonLbCancelar" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
                   <Component id="jButtonLbCLibro" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

@@ -53,8 +53,10 @@ import ec.edu.ups.sistemabiblioteca.view.usuario.BorrarUsuario;
 import ec.edu.ups.sistemabiblioteca.view.usuario.BuscarUsuario;
 import ec.edu.ups.sistemabiblioteca.view.usuario.CrearUsuario;
 import ec.edu.ups.sistemabiblioteca.view.usuario.ListarUsuario;
+import java.awt.Image;
 import java.util.Locale;
 import java.util.ResourceBundle;
+import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
 
@@ -123,6 +125,31 @@ public class Principal extends javax.swing.JFrame {
         this.setContentPane(desktopPane);
         initComponents();
 
+        
+        //Icon 1
+        {
+        ImageIcon icono = new ImageIcon(
+        getClass().getResource("/ec/edu/ups/sistemabiblioteca/pictures/ups.png"));
+
+        Image imagen = icono.getImage().getScaledInstance(
+        jLabelUps.getWidth(),
+        jLabelUps.getHeight(),
+        Image.SCALE_SMOOTH);
+
+        jLabelUps.setIcon(new ImageIcon(imagen));
+        }
+        //Icon2 
+        {
+        ImageIcon icon = new ImageIcon(getClass().getResource("/ec/edu/ups/sistemabiblioteca/pictures/fondoB.png"));
+
+        Image imagen = icon.getImage().getScaledInstance(
+        jLabelfondo.getWidth(),
+        jLabelfondo.getHeight(),
+        Image.SCALE_SMOOTH);
+
+        jLabelfondo.setIcon(new ImageIcon(imagen));
+        }
+        
         autorArchivos = new AutorDAOArchivo();
         autorDAO = new AutorDAOMemoria();
         usuarioDAO = new UsuarioDAOMemoria();
@@ -185,6 +212,8 @@ public class Principal extends javax.swing.JFrame {
     private void initComponents() {
 
         desktopPane = new javax.swing.JDesktopPane();
+        jLabelUps = new javax.swing.JLabel();
+        jLabelfondo = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
         AutorMenu = new javax.swing.JMenu();
         CrearAItem = new javax.swing.JMenuItem();
@@ -229,6 +258,11 @@ public class Principal extends javax.swing.JFrame {
         jMenuItem13 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        desktopPane.add(jLabelUps);
+        jLabelUps.setBounds(0, 0, 80, 80);
+        desktopPane.add(jLabelfondo);
+        jLabelfondo.setBounds(0, 0, 570, 530);
 
         AutorMenu.setMnemonic('f');
         AutorMenu.setText("Autor");
@@ -430,7 +464,7 @@ public class Principal extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(desktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, 501, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(desktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -890,6 +924,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem UListarItem;
     private javax.swing.JMenu UsuarioMenu;
     private javax.swing.JDesktopPane desktopPane;
+    private javax.swing.JLabel jLabelUps;
+    private javax.swing.JLabel jLabelfondo;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem11;

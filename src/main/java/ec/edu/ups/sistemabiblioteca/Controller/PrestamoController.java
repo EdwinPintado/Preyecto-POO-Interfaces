@@ -106,67 +106,42 @@ public class PrestamoController {
     public void agregarPrestamo() {
 
         try {
-
             String codigo = agregarPrestamoView.getjTextFieldCPCodigo().getText().trim();
-
             if (codigo.isEmpty()) {
                 throw new IllegalArgumentException(agPmsjE);
             }
-
-            boolean existePrestamo;
-            try {
-                existePrestamo = prestamoDao.buscar(codigo) != null;
-            } catch (PrestamoNoEncontrado ex) {
-                existePrestamo = false;
-            }
-            if (existePrestamo) {
-                throw new IllegalArgumentException(nfPmsj);
-            }
-
             String cedula = agregarPrestamoView.getjTextFieldCPUCedula().getText().trim();
-
             if (cedula.isEmpty()) {
                 throw new IllegalArgumentException(pUmsj);
             }
-
             if (!cedula.matches("\\d{10}")) {
                 throw new IllegalArgumentException(IDmsj);
             }
-
             Usuario usuario = usuarioDAO.buscar(cedula);
-
             if (usuario == null) {
                 throw new IllegalArgumentException(nUPmsj + cedula + nUpmn);
             }
-
             String isbn = agregarPrestamoView.getjTextFieldCPISBNLibro().getText().trim();
-
             if (isbn.isEmpty()) {
                 throw new IllegalArgumentException(IsbnPmsj);
             }
-
             Libro libro = libroDAO.buscar(isbn);
 
             if (libro == null) {
                 throw new IllegalArgumentException(nLPmsj + isbn + nUpmn);
             }
-
             if (!libro.isDisponible()) {
                 throw new IllegalArgumentException(prelmsj);
             }
-
             String codigoBibliotecario = agregarPrestamoView.getjTextFieldCPBCodigo().getText().trim();
-
             if (codigoBibliotecario.isEmpty()) {
                 throw new IllegalArgumentException(bliPmsj);
             }
-
             Bibliotecario bibliotecario = bibliotecarioDAO.buscar(codigoBibliotecario);
-
             if (bibliotecario == null) {
                 throw new IllegalArgumentException(nBPmsj + codigoBibliotecario + nUpmn);
             }
-
+            
             Date fechaPrestamo;
             Date fechaLimite;
 
