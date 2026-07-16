@@ -175,10 +175,9 @@ public class AutorDAOArchivo implements AutorDAO {
                 String telefono
                         = leerTexto(archivo, TAM_TELEFONO);
 
-                Date fecha
-                        = new Date(
-                                archivo.readLong()
-                        );
+                java.sql.Date fecha = new java.sql.Date(
+                archivo.readLong()
+                );
 
                 boolean activo
                         = archivo.readBoolean();
@@ -193,7 +192,7 @@ public class AutorDAOArchivo implements AutorDAO {
                             cedulaLeida,
                             nombre,
                             apellido,
-                            telefono, (java.sql.Date) fecha);
+                            telefono,  fecha);
 
                 }
 
@@ -377,10 +376,9 @@ public class AutorDAOArchivo implements AutorDAO {
                 String telefono
                         = leerTexto(archivo, TAM_TELEFONO);
 
-                Date fecha
-                        = new Date(
-                                archivo.readLong()
-                        );
+                java.sql.Date fecha = new java.sql.Date(
+                archivo.readLong()
+                );
 
                 boolean activo
                         = archivo.readBoolean();
@@ -395,7 +393,7 @@ public class AutorDAOArchivo implements AutorDAO {
                                     cedula,
                                     nombre,
                                     apellido,
-                                    telefono, (java.sql.Date) fecha)
+                                    telefono, fecha)
                     );
 
                 }
