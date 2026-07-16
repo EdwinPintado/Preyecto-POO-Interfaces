@@ -1,4 +1,4 @@
 ec\edu\ups\sistemabiblioteca\enums\Nacionalidades.class
 ec\edu\ups\sistemabiblioteca\enums\Cargo.class
-ec\edu\ups\sistemabiblioteca\principalview\Fondo.class
 ec\edu\ups\sistemabiblioteca\enums\Turno.class
+ec\edu\ups\sistemabiblioteca\Controller\DevolucionController$3.class

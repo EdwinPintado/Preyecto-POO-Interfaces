@@ -55,60 +55,43 @@ public class PrestamoController {
     public void agregarPrestamo() {
 
         try {
-
             String codigo = agregarPrestamoView.getjTextFieldCPCodigo().getText().trim();
-
             if (codigo.isEmpty()) {
                 throw new IllegalArgumentException("El código del préstamo no puede estar vacío.");
             }
-
-
-
             String cedula = agregarPrestamoView.getjTextFieldCPUCedula().getText().trim();
-
             if (cedula.isEmpty()) {
                 throw new IllegalArgumentException("La cédula del usuario no puede estar vacía.");
             }
-
             if (!cedula.matches("\\d{10}")) {
                 throw new IllegalArgumentException("La cédula debe contener exactamente 10 dígitos.");
             }
-
             Usuario usuario = usuarioDAO.buscar(cedula);
-
             if (usuario == null) {
                 throw new IllegalArgumentException("El usuario con cédula " + cedula + " no existe.");
             }
-
             String isbn = agregarPrestamoView.getjTextFieldCPISBNLibro().getText().trim();
-
             if (isbn.isEmpty()) {
                 throw new IllegalArgumentException("El ISBN del libro no puede estar vacío.");
             }
-
             Libro libro = libroDAO.buscar(isbn);
 
             if (libro == null) {
                 throw new IllegalArgumentException("El libro con ISBN " + isbn + " no existe.");
             }
-
             if (!libro.isDisponible()) {
                 throw new IllegalArgumentException("El libro ya está prestado.");
             }
-
             String codigoBibliotecario = agregarPrestamoView.getjTextFieldCPBCodigo().getText().trim();
-
             if (codigoBibliotecario.isEmpty()) {
                 throw new IllegalArgumentException("El código del bibliotecario no puede estar vacío.");
             }
-
             Bibliotecario bibliotecario = bibliotecarioDAO.buscar(codigoBibliotecario);
-
             if (bibliotecario == null) {
                 throw new IllegalArgumentException(
                         "El bibliotecario con código " + codigoBibliotecario + " no existe.");
             }
-
+            
             Date fechaPrestamo;
             Date fechaLimite;
 

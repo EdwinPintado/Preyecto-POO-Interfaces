@@ -84,6 +84,67 @@ public class DevolucionController {
                 );
             }
 
+        } catch (PrestamoNoEncontrado e) {
+
+            agregarDevolucionView.mostrarInformacion(e.getMessage());
+
+            agregarDevolucionView.getjTextFieldDUCedula().setText("");
+            agregarDevolucionView.getjTextFieldDUNombre().setText("");
+            agregarDevolucionView.getjTextFieldDISBNLibro().setText("");
+            agregarDevolucionView.getjTextFieldDTLibro().setText("");
+            agregarDevolucionView.getjTextFieldDBCodigo().setText("");
+            agregarDevolucionView.getjTextFieldDFPrestamo().setText("");
+            agregarDevolucionView.getjTextFieldDFLimite().setText("");
+
+        } catch (IllegalArgumentException e) {
+
+            agregarDevolucionView.mostrarInformacion(e.getMessage());
+        }
+    }
+    public void devulucion(){
+        try {
+
+            String codigo = agregarDevolucionView.getjTextFieldDCodigo().getText().trim();
+
+            if (codigo.isEmpty()) {
+                throw new IllegalArgumentException("Debe ingresar un código de préstamo.");
+            }
+
+            Prestamo prestamo = prestamoDAO.buscar(codigo);
+
+            agregarDevolucionView.getjTextFieldDUCedula()
+                    .setText(prestamo.getUsuario().getCedula());
+
+            agregarDevolucionView.getjTextFieldDUNombre()
+                    .setText(prestamo.getUsuario().getNombre());
+
+            agregarDevolucionView.getjTextFieldDISBNLibro()
+                    .setText(prestamo.getLibro().getIsbn());
+
+            agregarDevolucionView.getjTextFieldDTLibro()
+                    .setText(prestamo.getLibro().getTitulo());
+
+            agregarDevolucionView.getjTextFieldDBCodigo()
+                    .setText(prestamo.getBibliotecario().getCodigo());
+
+            agregarDevolucionView.getjTextFieldDFPrestamo()
+                    .setText(String.valueOf(prestamo.getFechaPrestamo()));
+
+            Date fechaDevolucion;
+
+            try {
+
+                fechaDevolucion = Date.valueOf(
+                        agregarDevolucionView.getjTextFieldDFLimite().getText().trim()
+                );
+
+            } catch (IllegalArgumentException e) {
+
+                throw new IllegalArgumentException(
+                        "El formato de fecha debe ser AAAA-MM-DD."
+                );
+            }
+
             Devolucion devolucion = new Devolucion(prestamo, fechaDevolucion);
 
             devolucionDAO.agregar(devolucion);
@@ -145,6 +206,13 @@ public class DevolucionController {
             public void actionPerformed(ActionEvent e) {
                 buscarDevolucion();
             }
+        });
+        agregarDevolucionView.getjButtonDevolver().addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                devulucion();
+            }
+            
         });
 
     }

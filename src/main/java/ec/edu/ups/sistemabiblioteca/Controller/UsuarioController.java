@@ -186,6 +186,9 @@ public class UsuarioController {
 
             buscarUsuario.getjTextFieldBUTelefono()
                     .setText(usuario.getTelefono());
+            
+            buscarUsuario.getjTextFieldBUDireccion()
+                    .setText(usuario.getDireccion());
 
             buscarUsuario.getjTextFieldBUCElectronico()
                     .setText(usuario.getCorreoElectronico());
@@ -201,6 +204,7 @@ public class UsuarioController {
             buscarUsuario.getjTextFieldBUTelefono().setText("");
             buscarUsuario.getjTextFieldBUCElectronico().setText("");
             buscarUsuario.getjTextFieldBUFNacimiento().setText("");
+            buscarUsuario.getjTextFieldBUDireccion().setText("");
 
             buscarUsuario.mostrarInformacion(
                     e.getMessage()
@@ -440,6 +444,9 @@ public class UsuarioController {
 
             eliminarUsuario.getjTextFieldEUCElectronico()
                     .setText(usuario.getCorreoElectronico());
+            
+            eliminarUsuario.getjTextFieldEUDireccion()
+                    .setText(String.valueOf(usuario.getDireccion()));
 
             eliminarUsuario.getjTextFieldEUFNacimiento()
                     .setText(String.valueOf(usuario.getFechaNacimiento()));
@@ -451,6 +458,7 @@ public class UsuarioController {
             eliminarUsuario.getjTextFieldEUTelefono().setText("");
             eliminarUsuario.getjTextFieldEUCElectronico().setText("");
             eliminarUsuario.getjTextFieldEUFNacimiento().setText("");
+            eliminarUsuario.getjTextFieldEUDireccion().setText("");
 
             eliminarUsuario.mostrarInformacion(
                     e.getMessage()
@@ -625,7 +633,7 @@ public class UsuarioController {
         }
     }
 
-    public void mostrarContadorAutores() {
+    public void mostrarContadorUsuarios() {
 
         int total = usuarioDao.contar();
 
@@ -634,12 +642,13 @@ public class UsuarioController {
 
     public void configurarEventosListarUsuarios() {
 
-        listaUsuarios.addInternalFrameListener(new InternalFrameAdapter() {
+        listaUsuarios.getBtnMostrarListaUsuarios().addActionListener(new ActionListener(){
             @Override
-            public void internalFrameActivated(InternalFrameEvent e) {
+            public void actionPerformed(ActionEvent e) {
                 listarUsuarios();
-                mostrarContadorAutores();
+                mostrarContadorUsuarios();
             }
+            
         });
     }
 }
