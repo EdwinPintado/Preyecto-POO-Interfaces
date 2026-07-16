@@ -17,6 +17,8 @@ import java.awt.event.ActionListener;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import javax.swing.JOptionPane;
 import javax.swing.event.AncestorListener;
@@ -34,6 +36,28 @@ public class BibliotecarioController {
     private BorrarBibliotecario eliminarBibliotecario;
     private ActualizarBibliotecario actualizarBibliotecario;
     private ListarBibliotecario listarBibliotecario;
+    private String cBmsj;
+    private String exCBmsj;
+    private String sCBmsj;
+    private String canCBmsj;
+    private String dBmsj;
+    private String sBmsj;
+    private String bDBmsj;
+    private String bABmsj;
+    private String acBmsj;
+    private String sABmsj;
+    private String cfmLmsj;
+    private String fchmsj;
+    private String bCBBmsj;
+    private String IDmsj;
+    private String  TFmsj;
+    private String  Nmsj; 
+    private String  Amsj;
+    private String  NAmsj; 
+    private String  CLmsj; 
+    private String  dfsAmsj; 
+    private String  mAmsj;
+    private String lBmsj;
 
     public BibliotecarioController(BibliotecarioDAOMemoria bibliotecarioDAOMemoria, CrearBibliotecario crearBibliotecario, BuscarBibliotecario buscarBibliotecario, BorrarBibliotecario eliminarBibliotecario, ActualizarBibliotecario actualizarBibliotecario, ListarBibliotecario listarBibliotecario) {
         this.bibliotecarioDAOMemoria = bibliotecarioDAOMemoria;
@@ -48,11 +72,34 @@ public class BibliotecarioController {
         configurarEventosEliminarBibliotecario();
         configurarEventosActualizarBibliotecario();
         configurarEventosListarBibliotecario();
+        //mensajes
+        cBmsj = "¿Quieres crear un nuevo bibliotecario?";
+        exCBmsj = "Todos los campos deben estar llenos para guardar el bibliotecario.";
+        sCBmsj = "Bibliotecario creado exitosamente";
+        canCBmsj = "Acccion Cancelada";
+        dBmsj = "¿Quieres eliminar este bibliotecario: ";
+        sBmsj = "Bibliotecario eliminado exitosamente";
+        bDBmsj = "No se encontro el bibliotecario";
+        bABmsj = "No se encontro el bibliotecario(no existe)";
+        acBmsj = "¿Quieres actualizar este bibliotecario: ";
+        sABmsj = "Bibliotecario actualizado correctamente";
+        cfmLmsj = "Confirmar";
+        fchmsj = "Error: El formato de fecha debe ser DD-MM-YYYY";
+        bCBBmsj = "No se encontro el bilbiotecario (cedula no existe)";
+        IDmsj="La cédula debe contener exactamente 10 dígitos.";
+        TFmsj ="El teléfono debe contener exactamente 10 dígitos.";
+        Nmsj ="El nombre solo puede contener letras.";
+        Amsj="El apellido solo puede contener letras.";
+        NAmsj = "La nacionalidad solo puede contener letras.";
+        CLmsj ="El cargo solo puede contener letras.";
+        dfsAmsj = "Debe ingresar una cédula.";
+        mAmsj = "Todos los campos deben estar llenos.";
+        lBmsj = "No existen bibliotecarios registrados.";
     }
 
     public void crearBibliotecario() {
-        int respuesta = JOptionPane.showConfirmDialog(crearBibliotecario, "¿Quieres crear un nuevo bibliotecario?",
-                "Confirmar",
+        int respuesta = JOptionPane.showConfirmDialog(crearBibliotecario, cBmsj,
+                cfmLmsj,
                 JOptionPane.YES_NO_OPTION);
 
         if (respuesta == JOptionPane.YES_OPTION) {
@@ -71,27 +118,27 @@ public class BibliotecarioController {
                         || codigo.isEmpty() || fechaTexto.isEmpty()
                         || turno.isEmpty()) {
 
-                    throw new IllegalArgumentException("Todos los campos deben estar llenos para guardar el bibliotecario.");
+                    throw new IllegalArgumentException(exCBmsj);
                 }
 
                 if (!cedula.matches("\\d{10}")) {
-                    throw new IllegalArgumentException("La cédula debe contener exactamente 10 dígitos.");
+                    throw new IllegalArgumentException(IDmsj);
                 }
 
                 if (!telefono.matches("\\d{10}")) {
-                    throw new IllegalArgumentException("El teléfono debe contener exactamente 10 dígitos.");
+                    throw new IllegalArgumentException(TFmsj);
                 }
 
                 if (!nombre.matches("[a-zA-ZÁÉÍÓÚáéíóúÑñ ]+")) {
-                    throw new IllegalArgumentException("El nombre solo puede contener letras.");
+                    throw new IllegalArgumentException(Nmsj);
                 }
 
                 if (!apellido.matches("[a-zA-ZÁÉÍÓÚáéíóúÑñ ]+")) {
-                    throw new IllegalArgumentException("El apellido solo puede contener letras.");
+                    throw new IllegalArgumentException(Amsj);
                 }
 
                 if (!cargo.matches("[a-zA-ZÁÉÍÓÚáéíóúÑñ ]+")) {
-                    throw new IllegalArgumentException("El cargo solo puede contener letras.");
+                    throw new IllegalArgumentException(CLmsj);
                 }
 
                 Date fechaNacimiento;
@@ -103,7 +150,7 @@ public class BibliotecarioController {
                 } catch (IllegalArgumentException e) {
 
                     crearBibliotecario.mostrarInformacion(
-                            "Error: El formato de fecha debe ser AAAA-MM-DD.");
+                            fchmsj);
                     return;
                 }
 
@@ -119,7 +166,7 @@ public class BibliotecarioController {
 
                 bibliotecarioDAOMemoria.agregar(bibliotecario);
 
-                crearBibliotecario.mostrarInformacion1("Bibliotecario creado exitosamente");
+                crearBibliotecario.mostrarInformacion1(sCBmsj);
 
                 buscarBibliotecario.getjTextFieldBBCedula().setText("");
                 buscarBibliotecario.getjTextFieldBBNombre().setText("");
@@ -135,7 +182,7 @@ public class BibliotecarioController {
             }
 
         } else {
-            crearBibliotecario.mostrarInformacion("Acccion Cancelada");
+            crearBibliotecario.mostrarInformacion(canCBmsj);
         }
     }
 
@@ -146,11 +193,11 @@ public class BibliotecarioController {
             String cedula = buscarBibliotecario.getjTextFieldBBCedula().getText().trim();
 
             if (cedula.isEmpty()) {
-                throw new IllegalArgumentException("Debe ingresar una cédula.");
+                throw new IllegalArgumentException(dfsAmsj);
             }
 
             if (!cedula.matches("\\d{10}")) {
-                throw new IllegalArgumentException("La cédula debe contener exactamente 10 dígitos.");
+                throw new IllegalArgumentException(IDmsj);
             }
 
             Bibliotecario bibliotecario = bibliotecarioDAOMemoria.buscar(cedula);
@@ -173,7 +220,7 @@ public class BibliotecarioController {
             buscarBibliotecario.getjTextFieldBBFecha().setText("");
             buscarBibliotecario.getjTextFieldBBTurno().setText("");
 
-            buscarBibliotecario.mostrarInformacion(e.getMessage());
+            buscarBibliotecario.mostrarInformacion(bABmsj);
 
         } catch (IllegalArgumentException e) {
 
@@ -189,12 +236,12 @@ public class BibliotecarioController {
                     .getText().trim();
 
             if (cedula.isEmpty()) {
-                throw new IllegalArgumentException("Debe ingresar una cédula.");
+                throw new IllegalArgumentException(dfsAmsj);
             }
 
             if (!cedula.matches("\\d{10}")) {
                 throw new IllegalArgumentException(
-                        "La cédula debe contener exactamente 10 dígitos.");
+                        IDmsj);
             }
 
             Bibliotecario bibliotecario
@@ -202,18 +249,15 @@ public class BibliotecarioController {
 
             int respuesta = JOptionPane.showConfirmDialog(
                     eliminarBibliotecario,
-                    "¿Quieres eliminar este bibliotecario: "
-                    + bibliotecario.getNombre() + " ?",
-                    "Confirmar",
+                    dBmsj + bibliotecario.getNombre() + " ?",
+                    cfmLmsj,
                     JOptionPane.YES_NO_OPTION);
 
             if (respuesta == JOptionPane.YES_OPTION) {
 
                 bibliotecarioDAOMemoria.eliminar(cedula);
 
-                eliminarBibliotecario.mostrarInformacion1(
-                        "Bibliotecario eliminado exitosamente");
-
+                eliminarBibliotecario.mostrarInformacion1(sBmsj);
                 eliminarBibliotecario.getjButtonEBBCedula().setText("");
                 eliminarBibliotecario.getjTextFieldEBNombre().setText("");
                 eliminarBibliotecario.getjTextFieldEBApellido().setText("");
@@ -225,14 +269,12 @@ public class BibliotecarioController {
 
             } else {
 
-                eliminarBibliotecario.mostrarInformacion(
-                        "Acción cancelada");
-
+                eliminarBibliotecario.mostrarInformacion(canCBmsj);
             }
 
         } catch (BibliotecarioNoExiste e) {
 
-            eliminarBibliotecario.mostrarInformacion(e.getMessage());
+            eliminarBibliotecario.mostrarInformacion(bCBBmsj);
 
         } catch (IllegalArgumentException e) {
 
@@ -248,12 +290,12 @@ public class BibliotecarioController {
                     .getText().trim();
 
             if (cedula.isEmpty()) {
-                throw new IllegalArgumentException("Debe ingresar una cédula.");
+                throw new IllegalArgumentException(dfsAmsj);
             }
 
             if (!cedula.matches("\\d{10}")) {
                 throw new IllegalArgumentException(
-                        "La cédula debe contener exactamente 10 dígitos.");
+                        IDmsj);
             }
 
             Bibliotecario bibliotecario
@@ -290,12 +332,11 @@ public class BibliotecarioController {
             eliminarBibliotecario.getjTextFieldEBFecha().setText("");
             eliminarBibliotecario.getjTextFieldEBTurno().setText("");
 
-            eliminarBibliotecario.mostrarInformacion(e.getMessage());
+            eliminarBibliotecario.mostrarInformacion(bDBmsj);
 
         } catch (IllegalArgumentException e) {
 
             eliminarBibliotecario.mostrarInformacion(e.getMessage());
-
         }
     }
 
@@ -309,12 +350,12 @@ public class BibliotecarioController {
                     .trim();
 
             if (cedula.isEmpty()) {
-                throw new IllegalArgumentException("Debe ingresar una cédula.");
+                throw new IllegalArgumentException(dfsAmsj);
             }
 
             if (!cedula.matches("\\d{10}")) {
                 throw new IllegalArgumentException(
-                        "La cédula debe contener exactamente 10 dígitos.");
+                       IDmsj);
             }
 
             Bibliotecario bibliotecario
@@ -351,12 +392,11 @@ public class BibliotecarioController {
             actualizarBibliotecario.getjTextFieldActBFecha().setText("");
             actualizarBibliotecario.getjTextFieldActBTurno().setText("");
 
-            actualizarBibliotecario.mostrarInformacion(e.getMessage());
+            actualizarBibliotecario.mostrarInformacion(bABmsj);
 
         } catch (IllegalArgumentException e) {
 
             actualizarBibliotecario.mostrarInformacion(e.getMessage());
-
         }
     }
 
@@ -370,12 +410,12 @@ public class BibliotecarioController {
                     .trim();
 
             if (cedula.isEmpty()) {
-                throw new IllegalArgumentException("Debe ingresar una cédula.");
+                throw new IllegalArgumentException(dfsAmsj);
             }
 
             if (!cedula.matches("\\d{10}")) {
                 throw new IllegalArgumentException(
-                        "La cédula debe contener exactamente 10 dígitos.");
+                        IDmsj);
             }
 
             Bibliotecario bibliotecario
@@ -383,9 +423,8 @@ public class BibliotecarioController {
 
             int respuesta = JOptionPane.showConfirmDialog(
                     actualizarBibliotecario,
-                    "¿Quieres actualizar este bibliotecario: "
-                    + bibliotecario.getNombre() + " ?",
-                    "Confirmar",
+                    acBmsj + bibliotecario.getNombre() + " ?",
+                    cfmLmsj,
                     JOptionPane.YES_NO_OPTION);
 
             if (respuesta == JOptionPane.YES_OPTION) {
@@ -416,27 +455,27 @@ public class BibliotecarioController {
                         || fechaTexto.isEmpty() || turno.isEmpty()) {
 
                     throw new IllegalArgumentException(
-                            "Todos los campos deben estar llenos.");
+                            mAmsj);
                 }
 
                 if (!nombre.matches("[a-zA-ZÁÉÍÓÚáéíóúÑñ ]+")) {
                     throw new IllegalArgumentException(
-                            "El nombre solo puede contener letras.");
+                            Nmsj);
                 }
 
                 if (!apellido.matches("[a-zA-ZÁÉÍÓÚáéíóúÑñ ]+")) {
                     throw new IllegalArgumentException(
-                            "El apellido solo puede contener letras.");
+                            Amsj);
                 }
 
                 if (!cargo.matches("[a-zA-ZÁÉÍÓÚáéíóúÑñ ]+")) {
                     throw new IllegalArgumentException(
-                            "El cargo solo puede contener letras.");
+                            CLmsj);
                 }
 
                 if (!telefono.matches("\\d{10}")) {
                     throw new IllegalArgumentException(
-                            "El teléfono debe contener exactamente 10 dígitos.");
+                            TFmsj);
                 }
 
                 Date fechaNa;
@@ -448,7 +487,7 @@ public class BibliotecarioController {
                 } catch (IllegalArgumentException e) {
 
                     throw new IllegalArgumentException(
-                            "La fecha debe tener el formato AAAA-MM-DD.");
+                            fchmsj);
                 }
 
                 Bibliotecario bibliotecarioActualizado
@@ -466,8 +505,7 @@ public class BibliotecarioController {
                 bibliotecarioDAOMemoria.actualizar(
                         bibliotecarioActualizado);
 
-                actualizarBibliotecario.mostrarInformacion1(
-                        "Bibliotecario actualizado correctamente");
+                actualizarBibliotecario.mostrarInformacion1(sABmsj);
 
                 actualizarBibliotecario.getjTextFieldActBNombre().setText("");
                 actualizarBibliotecario.getjTextFieldActBApellido().setText("");
@@ -479,20 +517,16 @@ public class BibliotecarioController {
 
             } else {
 
-                actualizarBibliotecario.mostrarInformacion(
-                        "Acción cancelada");
-
+                actualizarBibliotecario.mostrarInformacion(canCBmsj);
             }
 
         } catch (BibliotecarioNoExiste e) {
 
-            actualizarBibliotecario.mostrarInformacion(
-                    e.getMessage());
+            actualizarBibliotecario.mostrarInformacion(bCBBmsj);
 
         } catch (IllegalArgumentException e) {
 
-            actualizarBibliotecario.mostrarInformacion(
-                    e.getMessage());
+            actualizarBibliotecario.mostrarInformacion(e.getMessage());
         }
     }
 
@@ -503,7 +537,7 @@ public class BibliotecarioController {
             List<Bibliotecario> lista = bibliotecarioDAOMemoria.listar();
 
             if (lista == null || lista.isEmpty()) {
-                throw new IllegalArgumentException("No existen bibliotecarios registrados.");
+                throw new IllegalArgumentException(lBmsj);
             }
 
             listarBibliotecario.cargarDatos(lista);
@@ -584,4 +618,32 @@ public class BibliotecarioController {
 
         });
     }
+
+    public void cambiarIdioma(Locale locale) {
+        ResourceBundle bundle = ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n", locale);
+        cBmsj = (bundle.getString("cBmsj"));
+        exCBmsj = (bundle.getString("exCBmsj"));
+        sCBmsj = (bundle.getString("sCBmsj"));
+        canCBmsj = (bundle.getString("canCBmsj"));
+        dBmsj = (bundle.getString("dBmsj"));
+        sBmsj = (bundle.getString("sBmsj"));
+        bDBmsj = (bundle.getString("bDBmsj"));
+        bABmsj = (bundle.getString("bABmsj"));
+        acBmsj = (bundle.getString("acBmsj"));
+        sABmsj = (bundle.getString("sABmsj"));
+        cfmLmsj = (bundle.getString("cfmLmsj"));
+        fchmsj = (bundle.getString("fchmsj"));
+        bCBBmsj = (bundle.getString("bCBBmsj"));
+        IDmsj= (bundle.getString("IDmsj"));
+        TFmsj = (bundle.getString("TFmsj"));
+        Nmsj = (bundle.getString("Nmsj"));
+        Amsj= (bundle.getString("Amsj"));
+        NAmsj = (bundle.getString("NAmsj"));
+        CLmsj = (bundle.getString("CLmsj"));
+        dfsAmsj = (bundle.getString("dfsAmsj"));
+        mAmsj = (bundle.getString("mAmsj"));
+        lBmsj = (bundle.getString("lBmsj"));
+
+    }
+
 }

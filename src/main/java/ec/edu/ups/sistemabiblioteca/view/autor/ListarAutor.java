@@ -205,7 +205,11 @@ public class ListarAutor extends javax.swing.JInternalFrame {
         modelo = new DefaultTableModel();
         modelo.addColumn(bundle.getString("listarACedula"));
         modelo.addColumn(bundle.getString("listarAnombre"));
+        modelo.addColumn(bundle.getString("listarAapellido"));
         modelo.addColumn(bundle.getString("listarATL"));
+        modelo.addColumn(bundle.getString("listarAn"));
+        modelo.addColumn(bundle.getString("listarAg"));
+        modelo.addColumn(bundle.getString("listarAb"));
         modelo.addColumn(bundle.getString("listarAFN "));
         tblListadoAutores.setModel(modelo);
         jLabelURListaAutores.setText(bundle.getString("labelMA"));

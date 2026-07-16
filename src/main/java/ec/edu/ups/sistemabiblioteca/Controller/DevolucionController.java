@@ -15,6 +15,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Date;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 /**
  *
@@ -27,6 +29,11 @@ public class DevolucionController {
 
     private RealizarDevolucion agregarDevolucionView;
     private ListarDevolucion listarDevolucionView;
+    private String agregarDmsj;
+    private String noagDmsj;
+    private String lDmsj;
+    private String dDsmjs;
+    private String fchmsj;
 
     public DevolucionController(DevolucionDAOMemoria devolucionDAO, PrestamoDAOMemoria prestamoDAO, RealizarDevolucion agregarDevolucionView, ListarDevolucion listarDevolucionView) {
         this.devolucionDAO = devolucionDAO;
@@ -36,6 +43,13 @@ public class DevolucionController {
 
         configurarEventosBuscarDevolucion();
         configurarEventosListarDevoluciones();
+        //mensajes
+        agregarDmsj = "Devolucion exitosa ,tenga buen dia";
+        noagDmsj = "No existe ese prestamo";
+        lDmsj = "No existen devoluciones registradas.";
+        dDsmjs = "Debe ingresar un código de préstamo.";
+        fchmsj = "Error: El formato de fecha debe ser DD-MM-YYYY.";
+        
 
     }
 
@@ -46,7 +60,7 @@ public class DevolucionController {
             String codigo = agregarDevolucionView.getjTextFieldDCodigo().getText().trim();
 
             if (codigo.isEmpty()) {
-                throw new IllegalArgumentException("Debe ingresar un código de préstamo.");
+                throw new IllegalArgumentException(dDsmjs);
             }
 
             Prestamo prestamo = prestamoDAO.buscar(codigo);
@@ -80,7 +94,7 @@ public class DevolucionController {
             } catch (IllegalArgumentException e) {
 
                 throw new IllegalArgumentException(
-                        "El formato de fecha debe ser AAAA-MM-DD."
+                        fchmsj
                 );
             }
 
@@ -92,13 +106,11 @@ public class DevolucionController {
                 prestamo.getLibro().setDisponible(true);
             }
 
-            agregarDevolucionView.mostrarInformacion1(
-                    "Devolución exitosa, tenga buen día"
-            );
+            agregarDevolucionView.mostrarInformacion1(agregarDmsj);
 
         } catch (PrestamoNoEncontrado e) {
 
-            agregarDevolucionView.mostrarInformacion(e.getMessage());
+            agregarDevolucionView.mostrarInformacion(noagDmsj);
 
             agregarDevolucionView.getjTextFieldDUCedula().setText("");
             agregarDevolucionView.getjTextFieldDUNombre().setText("");
@@ -121,7 +133,7 @@ public class DevolucionController {
             List<Devolucion> lista = devolucionDAO.listar();
 
             if (lista == null || lista.isEmpty()) {
-                throw new IllegalArgumentException("No existen devoluciones registradas.");
+                throw new IllegalArgumentException(lDmsj);
             }
 
             listarDevolucionView.cargarDatos(lista);
@@ -161,5 +173,16 @@ public class DevolucionController {
         });
 
     }
+
+    public void cambiarIdioma(Locale locale) {
+        ResourceBundle bundle = ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n", locale);
+        agregarDmsj = (bundle.getString("agregarDmsj"));
+        noagDmsj = (bundle.getString("noagDmsj"));
+        lDmsj = (bundle.getString("lDmsj"));
+        dDsmjs = (bundle.getString("dDmsj"));
+        fchmsj = (bundle.getString("fchmsj"));
+
+    }
+
 
 }
