@@ -12,6 +12,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Date;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.swing.JOptionPane;
 import javax.swing.event.InternalFrameAdapter;
 import javax.swing.event.InternalFrameEvent;
@@ -26,6 +28,28 @@ public class UsuarioController {
     private BuscarUsuario buscarUsuario;
     private ActualizarUsuario actualizarUsuario;
     private ListarUsuario listaUsuarios;
+    private String agUmsj;
+    private String sCUmsj;
+    private String canCUmsj;
+    private String actUmsj;
+    private String sAUmsj;
+    private String dlUmsj;
+    private String sDUmsj;
+    private String tCUmsj;
+    private String cfmLmsj;
+    private String fchmsj;
+    private String nUmsj;
+    private String IDmsj;
+    private String Nmsj;
+    private String Amsj;
+    private String TFmsj;
+    private String Cmsj;
+    private String IDUmsj;
+    private String exlUmsj;
+    private String mAmsj;
+    
+    
+    
 
     public UsuarioController(
             UsuarioDAOMemoria usuarioDao,
@@ -47,6 +71,26 @@ public class UsuarioController {
         configurarEventosEliminarUsuario();
         configurarEventosActualizarUsuario();
         configurarEventosListarUsuarios();
+        //mensajes
+        agUmsj = "¿Quieres crear un nuevo usuario?";
+        sCUmsj = "Usuario creado exitosamente :)";
+        canCUmsj = "Acción cancelada :(";
+        actUmsj = "¿Quieres actualizar este usuario?";
+        sAUmsj = "Usuario actualizado correctamente :)";
+        dlUmsj = "¿Desea eliminar este usuario?";
+        sDUmsj = "Usuario eliminado correctamente :)";
+        tCUmsj = "Todos los campos deben estar llenos para guardar el usuario.";
+        cfmLmsj = "Confirmar";
+        fchmsj = "Error: El formato de fecha debe ser DD-MM-YYYY.";
+        nUmsj = "No se encontró el usuario";
+        IDmsj="La cédula debe contener exactamente 10 dígitos.";
+        TFmsj ="El teléfono debe contener exactamente 10 dígitos.";
+        Nmsj ="El nombre solo puede contener letras.";
+        Amsj="El apellido solo puede contener letras.";
+        Cmsj = "El correo electrónico no tiene un formato válido."; 
+        IDUmsj = "Debe ingresar la cédula del usuario.";
+        exlUmsj = "Error al cargar la lista de usuarios: ";
+        mAmsj = "Todos los campos deben estar llenos.";
     }
 
     public void mostrarMensaje(java.awt.Component ventana, String mensaje, String titulo, int tipoMensaje) {
@@ -57,8 +101,8 @@ public class UsuarioController {
 
         int respuesta = JOptionPane.showConfirmDialog(
                 crearUsuario,
-                "¿Quieres crear un nuevo usuario?",
-                "Confirmar",
+                agUmsj,
+                cfmLmsj,
                 JOptionPane.YES_NO_OPTION);
 
         if (respuesta == JOptionPane.YES_OPTION) {
@@ -77,28 +121,27 @@ public class UsuarioController {
                         || telefono.isEmpty() || correo.isEmpty()
                         || direccion.isEmpty() || fechaTexto.isEmpty()) {
 
-                    throw new IllegalArgumentException(
-                            "Todos los campos deben estar llenos para guardar el usuario.");
+                    throw new IllegalArgumentException(tCUmsj);
                 }
 
                 if (!cedula.matches("\\d{10}")) {
-                    throw new IllegalArgumentException("La cédula debe contener exactamente 10 dígitos.");
+                    throw new IllegalArgumentException(IDmsj);
                 }
 
                 if (!nombre.matches("[a-zA-ZÁÉÍÓÚáéíóúÑñ ]+")) {
-                    throw new IllegalArgumentException("El nombre solo puede contener letras.");
+                    throw new IllegalArgumentException(Nmsj);
                 }
 
                 if (!apellido.matches("[a-zA-ZÁÉÍÓÚáéíóúÑñ ]+")) {
-                    throw new IllegalArgumentException("El apellido solo puede contener letras.");
+                    throw new IllegalArgumentException(Amsj);
                 }
 
                 if (!telefono.matches("\\d{10}")) {
-                    throw new IllegalArgumentException("El teléfono debe contener exactamente 10 dígitos.");
+                    throw new IllegalArgumentException(TFmsj);
                 }
 
                 if (!correo.matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
-                    throw new IllegalArgumentException("El correo electrónico no tiene un formato válido.");
+                    throw new IllegalArgumentException(Cmsj);
                 }
 
                 Date fecha;
@@ -109,8 +152,7 @@ public class UsuarioController {
 
                 } catch (IllegalArgumentException e) {
 
-                    throw new IllegalArgumentException(
-                            "Error: El formato de fecha debe ser AAAA-MM-DD.");
+                    throw new IllegalArgumentException(fchmsj);
                 }
 
                 Usuario usuario = new Usuario(
@@ -124,7 +166,7 @@ public class UsuarioController {
 
                 usuarioDao.agregar(usuario);
 
-                crearUsuario.mostrarInformacion1("Usuario creado exitosamente :)");
+                crearUsuario.mostrarInformacion1(sCUmsj);
 
                 crearUsuario.getjTextFieldCUCedula().setText("");
                 crearUsuario.getjTextFieldCUNombre().setText("");
@@ -141,7 +183,7 @@ public class UsuarioController {
 
         } else {
 
-            crearUsuario.mostrarInformacion("Acción cancelada :(");
+            crearUsuario.mostrarInformacion(canCUmsj);
         }
     }
 
@@ -163,13 +205,13 @@ public class UsuarioController {
 
             if (cedula.isEmpty()) {
                 throw new IllegalArgumentException(
-                        "Debe ingresar la cédula del usuario."
+                        IDUmsj
                 );
             }
 
             if (!cedula.matches("\\d{10}")) {
                 throw new IllegalArgumentException(
-                        "La cédula debe contener exactamente 10 dígitos."
+                        IDmsj
                 );
             }
 
@@ -202,15 +244,11 @@ public class UsuarioController {
             buscarUsuario.getjTextFieldBUCElectronico().setText("");
             buscarUsuario.getjTextFieldBUFNacimiento().setText("");
 
-            buscarUsuario.mostrarInformacion(
-                    e.getMessage()
-            );
+            buscarUsuario.mostrarInformacion(nUmsj);
 
         } catch (IllegalArgumentException e) {
 
-            buscarUsuario.mostrarInformacion(
-                    e.getMessage()
-            );
+            buscarUsuario.mostrarInformacion(e.getMessage());
         }
     }
 
@@ -232,13 +270,13 @@ public class UsuarioController {
 
             if (cedula.isEmpty()) {
                 throw new IllegalArgumentException(
-                        "Debe ingresar la cédula del usuario."
+                        IDUmsj
                 );
             }
 
             if (!cedula.matches("\\d{10}")) {
                 throw new IllegalArgumentException(
-                        "La cédula debe contener exactamente 10 dígitos."
+                        IDmsj
                 );
             }
 
@@ -271,15 +309,11 @@ public class UsuarioController {
             actualizarUsuario.getjTextFieldAUDireccion().setText("");
             actualizarUsuario.getjTextFieldAUFNacimiento().setText("");
 
-            actualizarUsuario.mostrarInformacion(
-                    e.getMessage()
-            );
+            actualizarUsuario.mostrarInformacion(nUmsj);
 
         } catch (IllegalArgumentException e) {
 
-            actualizarUsuario.mostrarInformacion(
-                    e.getMessage()
-            );
+            actualizarUsuario.mostrarInformacion(e.getMessage());
         }
     }
 
@@ -292,13 +326,13 @@ public class UsuarioController {
 
             if (cedula.isEmpty()) {
                 throw new IllegalArgumentException(
-                        "Debe ingresar la cédula del usuario."
+                        IDUmsj
                 );
             }
 
             if (!cedula.matches("\\d{10}")) {
                 throw new IllegalArgumentException(
-                        "La cédula debe contener exactamente 10 dígitos."
+                        IDmsj
                 );
             }
 
@@ -307,10 +341,9 @@ public class UsuarioController {
 
             int respuesta = JOptionPane.showConfirmDialog(
                     actualizarUsuario,
-                    "¿Quieres actualizar este usuario?",
-                    "Confirmar",
-                    JOptionPane.YES_NO_OPTION
-            );
+                    actUmsj,
+                    cfmLmsj,
+                    JOptionPane.YES_NO_OPTION);
 
             if (respuesta == JOptionPane.YES_OPTION) {
 
@@ -336,31 +369,31 @@ public class UsuarioController {
                         || correo.isEmpty() || direccion.isEmpty() || fechaTexto.isEmpty()) {
 
                     throw new IllegalArgumentException(
-                            "Todos los campos deben estar llenos."
+                            mAmsj
                     );
                 }
 
                 if (!nombre.matches("[a-zA-ZÁÉÍÓÚáéíóúÑñ ]+")) {
                     throw new IllegalArgumentException(
-                            "El nombre solo puede contener letras."
+                            Nmsj
                     );
                 }
 
                 if (!apellido.matches("[a-zA-ZÁÉÍÓÚáéíóúÑñ ]+")) {
                     throw new IllegalArgumentException(
-                            "El apellido solo puede contener letras."
+                            Amsj
                     );
                 }
 
                 if (!telefono.matches("\\d{10}")) {
                     throw new IllegalArgumentException(
-                            "El teléfono debe contener exactamente 10 dígitos."
+                            TFmsj
                     );
                 }
 
                 if (!correo.matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
                     throw new IllegalArgumentException(
-                            "El correo electrónico no tiene un formato válido."
+                            Cmsj
                     );
                 }
 
@@ -372,9 +405,7 @@ public class UsuarioController {
 
                 } catch (IllegalArgumentException e) {
 
-                    throw new IllegalArgumentException(
-                            "El formato de fecha debe ser AAAA-MM-DD."
-                    );
+                    throw new IllegalArgumentException(fchmsj);
                 }
 
                 Usuario nuevo = new Usuario(
@@ -389,22 +420,16 @@ public class UsuarioController {
 
                 usuarioDao.actualizar(nuevo);
 
-                actualizarUsuario.mostrarInformacion1(
-                        "Usuario actualizado correctamente :)"
-                );
+                actualizarUsuario.mostrarInformacion1(sAUmsj);
             }
 
         } catch (UsuarioNoExiste e) {
 
-            actualizarUsuario.mostrarInformacion(
-                    e.getMessage()
-            );
+            actualizarUsuario.mostrarInformacion(nUmsj);
 
         } catch (IllegalArgumentException e) {
 
-            actualizarUsuario.mostrarInformacion(
-                    e.getMessage()
-            );
+            actualizarUsuario.mostrarInformacion(e.getMessage());
         }
     }
 
@@ -417,13 +442,13 @@ public class UsuarioController {
 
             if (cedula.isEmpty()) {
                 throw new IllegalArgumentException(
-                        "Debe ingresar la cédula del usuario."
+                        IDUmsj
                 );
             }
 
             if (!cedula.matches("\\d{10}")) {
                 throw new IllegalArgumentException(
-                        "La cédula debe contener exactamente 10 dígitos."
+                        IDmsj
                 );
             }
 
@@ -452,15 +477,11 @@ public class UsuarioController {
             eliminarUsuario.getjTextFieldEUCElectronico().setText("");
             eliminarUsuario.getjTextFieldEUFNacimiento().setText("");
 
-            eliminarUsuario.mostrarInformacion(
-                    e.getMessage()
-            );
+            eliminarUsuario.mostrarInformacion(nUmsj);
 
         } catch (IllegalArgumentException e) {
 
-            eliminarUsuario.mostrarInformacion(
-                    e.getMessage()
-            );
+            eliminarUsuario.mostrarInformacion(e.getMessage());
         }
     }
 
@@ -473,13 +494,13 @@ public class UsuarioController {
 
             if (cedula.isEmpty()) {
                 throw new IllegalArgumentException(
-                        "Debe ingresar la cédula del usuario."
+                        IDUmsj
                 );
             }
 
             if (!cedula.matches("\\d{10}")) {
                 throw new IllegalArgumentException(
-                        "La cédula debe contener exactamente 10 dígitos."
+                        IDmsj
                 );
             }
 
@@ -488,18 +509,15 @@ public class UsuarioController {
 
             int respuesta = JOptionPane.showConfirmDialog(
                     eliminarUsuario,
-                    "¿Desea eliminar este usuario?",
-                    "Confirmar",
-                    JOptionPane.YES_NO_OPTION
-            );
+                    dlUmsj,
+                    cfmLmsj,
+                    JOptionPane.YES_NO_OPTION);
 
             if (respuesta == JOptionPane.YES_OPTION) {
 
                 usuarioDao.eliminar(cedula);
 
-                eliminarUsuario.mostrarInformacion(
-                        "Usuario eliminado correctamente :)"
-                );
+                eliminarUsuario.mostrarInformacion(sDUmsj);
 
                 crearUsuario.getjTextFieldCUCedula().setText("");
                 crearUsuario.getjTextFieldCUNombre().setText("");
@@ -512,15 +530,11 @@ public class UsuarioController {
 
         } catch (UsuarioNoExiste e) {
 
-            eliminarUsuario.mostrarInformacion(
-                    e.getMessage()
-            );
+            eliminarUsuario.mostrarInformacion(nUmsj);
 
         } catch (IllegalArgumentException e) {
 
-            eliminarUsuario.mostrarInformacion(
-                    e.getMessage()
-            );
+            eliminarUsuario.mostrarInformacion(e.getMessage());
         }
     }
 
@@ -549,13 +563,13 @@ public class UsuarioController {
 
             if (cedula.isEmpty()) {
                 throw new IllegalArgumentException(
-                        "Debe ingresar la cédula del usuario."
+                        IDUmsj
                 );
             }
 
             if (!cedula.matches("\\d{10}")) {
                 throw new IllegalArgumentException(
-                        "La cédula debe contener exactamente 10 dígitos."
+                        IDmsj
                 );
             }
 
@@ -584,15 +598,11 @@ public class UsuarioController {
             eliminarUsuario.getjTextFieldEUCElectronico().setText("");
             eliminarUsuario.getjTextFieldEUFNacimiento().setText("");
 
-            eliminarUsuario.mostrarInformacion(
-                    e.getMessage()
-            );
+            eliminarUsuario.mostrarInformacion(nUmsj);
 
         } catch (IllegalArgumentException e) {
 
-            eliminarUsuario.mostrarInformacion(
-                    e.getMessage()
-            );
+            eliminarUsuario.mostrarInformacion(e.getMessage());
         }
     }
 
@@ -621,7 +631,7 @@ public class UsuarioController {
 
         } catch (Exception e) {
 
-            listaUsuarios.mostrarInformacion("Error al cargar la lista de usuarios: " + e.getMessage());
+            listaUsuarios.mostrarInformacion(exlUmsj + e.getMessage());
         }
     }
 
@@ -641,5 +651,30 @@ public class UsuarioController {
                 mostrarContadorAutores();
             }
         });
+    }
+
+    public void cambiarIdioma(Locale locale) {
+        ResourceBundle bundle = ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n", locale);
+        agUmsj = (bundle.getString("agUmsj"));
+        sCUmsj = (bundle.getString("sCUmsj"));
+        canCUmsj = (bundle.getString("canCUmsj"));
+        actUmsj = (bundle.getString("actUmsj"));
+        sAUmsj = (bundle.getString("sAUmsj"));
+        dlUmsj = (bundle.getString("dlUmsj"));
+        sDUmsj = (bundle.getString("sDUmsj"));
+        tCUmsj = (bundle.getString("tCUmsj"));
+        cfmLmsj = (bundle.getString("cfmLmsj"));
+        fchmsj = (bundle.getString("fchmsj"));
+        nUmsj = (bundle.getString("nUmsj"));
+        IDmsj= (bundle.getString("IDmsj"));
+        TFmsj = (bundle.getString("TFmsj"));
+        Nmsj = (bundle.getString("Nmsj"));
+        Amsj= (bundle.getString("Amsj"));
+        Cmsj= (bundle.getString("Cmsj"));
+        IDUmsj = (bundle.getString("IDUmsj"));
+        exlUmsj = (bundle.getString("exlUmsj"));
+        mAmsj = (bundle.getString("mAmsj"));
+        
+        
     }
 }
