@@ -370,7 +370,7 @@ public class ActualizarBibliotecario extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButtonActualizarBActionPerformed
 
     public void cambiarIdioma(Locale locale){
-        ResourceBundle bundle =ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n", locale);
+        ResourceBundle bundle =ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n.mensajes", locale);
         jLabelActualizarBibliotecario.setText(bundle.getString("TBliudp"));
         jButtonActualizarB.setText(bundle.getString("bttnUpd"));
         jButtonActBCancelar.setText(bundle.getString("bttnCancelar"));

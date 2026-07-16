@@ -343,7 +343,7 @@ public class CrearBibliotecario extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jComboBoxCargoActionPerformed
 
     public void cambiarIdioma(Locale locale){
-        ResourceBundle bundle =ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n", locale);
+        ResourceBundle bundle =ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n.mensajes", locale);
         jLabelCrearBibliotecario.setText(bundle.getString("TBlict"));
         jButtonCBCrear.setText(bundle.getString("bttnCrear"));
         jButtonCBCancelar.setText(bundle.getString("bttnCancelar"));
@@ -353,7 +353,7 @@ public class CrearBibliotecario extends javax.swing.JInternalFrame {
         jLabelCBCargo.setText(bundle.getString("labelCBCargo"));        
         jLabelCBTelefono.setText(bundle.getString("labelCBTelefono"));
         jLabelCBCodBibliotecario.setText(bundle.getString("labelCBCodigo"));       
-        jLabelCBFNacimiento.setText(bundle.getString("labelCBFN "));        
+        jLabelCBFNacimiento.setText(bundle.getString("labelCBFN"));        
         jLabelCBTurno.setText(bundle.getString("labelCBT"));                    
     }
 

@@ -317,7 +317,7 @@ public class CrearAutor extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButtonCACrearActionPerformed
 
     public void cambiarIdioma(Locale locale) {
-        ResourceBundle bundle = ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n", locale);
+        ResourceBundle bundle = ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n.mensajes", locale);
         jLabelCrearAutor.setText(bundle.getString("TAcrear"));
         jButtonCACrear.setText(bundle.getString("bttnCrear"));
         jButtonCACancelar.setText(bundle.getString("bttnCancelar"));

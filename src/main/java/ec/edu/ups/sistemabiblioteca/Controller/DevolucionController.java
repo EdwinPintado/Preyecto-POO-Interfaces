@@ -243,7 +243,7 @@ public class DevolucionController {
     }
 
     public void cambiarIdioma(Locale locale) {
-        ResourceBundle bundle = ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n", locale);
+        ResourceBundle bundle = ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n.mensajes", locale);
         agregarDmsj = (bundle.getString("agregarDmsj"));
         noagDmsj = (bundle.getString("noagDmsj"));
         lDmsj = (bundle.getString("lDmsj"));

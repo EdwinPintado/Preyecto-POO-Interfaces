@@ -608,7 +608,7 @@ public class BibliotecarioController {
     }
 
     public void cambiarIdioma(Locale locale) {
-        ResourceBundle bundle = ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n", locale);
+        ResourceBundle bundle = ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n.mensajes", locale);
         cBmsj = (bundle.getString("cBmsj"));
         exCBmsj = (bundle.getString("exCBmsj"));
         sCBmsj = (bundle.getString("sCBmsj"));

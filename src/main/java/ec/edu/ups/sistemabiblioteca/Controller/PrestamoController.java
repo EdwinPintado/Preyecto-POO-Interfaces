@@ -414,7 +414,7 @@ public class PrestamoController {
     }
 
     public void cambiarIdioma(Locale locale) {
-        ResourceBundle bundle = ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n", locale);
+        ResourceBundle bundle = ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n.mensajes", locale);
         agPmsjE = (bundle.getString("agPmsjE"));
         nfPmsj = (bundle.getString("nfPmsj"));
         nUPmsj = (bundle.getString("nUPmsj"));

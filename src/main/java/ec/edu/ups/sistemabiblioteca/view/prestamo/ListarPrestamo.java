@@ -208,7 +208,7 @@ public class ListarPrestamo extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtContadordePrestamoActionPerformed
 
     public void cambiarIdioma(Locale locale){
-        ResourceBundle bundle =ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n", locale);
+        ResourceBundle bundle =ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n.mensajes", locale);
         jLabelListaPrestamo.setText(bundle.getString("TPlp"));
         jLabelURListaPrestamo.setText(bundle.getString("labelCPm"));
         btnMostrarListaPrestamo.setText(bundle.getString("bttnMostrar"));

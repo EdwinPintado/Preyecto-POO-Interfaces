@@ -197,7 +197,7 @@ public class ListarLibro extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtContadordeLibroActionPerformed
 
     public void cambiarIdioma(Locale locale){
-        ResourceBundle bundle =ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n", locale);
+        ResourceBundle bundle =ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n.mensajes", locale);
         jLabelListaLibro.setText(bundle.getString("TLlis"));
         btnMostrarListaLibro.setText(bundle.getString("bttnMostrar"));
         jLabelURListaLibro.setText(bundle.getString("labelBR"));

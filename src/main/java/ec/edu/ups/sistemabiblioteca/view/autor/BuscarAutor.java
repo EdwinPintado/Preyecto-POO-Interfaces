@@ -300,7 +300,7 @@ public class BuscarAutor extends javax.swing.JInternalFrame {
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
     public void cambiarIdioma(Locale locale) {
-        ResourceBundle bundle = ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n", locale);
+        ResourceBundle bundle = ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n.mensajes", locale);
         jLabelBuscarAutor.setText(bundle.getString("TAsc"));
         jButtonBACedula.setText(bundle.getString("bttnBuscar"));
         jLabelBACedula.setText(bundle.getString("labelBuACedula"));

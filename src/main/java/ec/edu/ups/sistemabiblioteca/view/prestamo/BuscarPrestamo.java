@@ -367,7 +367,7 @@ public class BuscarPrestamo extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     public void cambiarIdioma(Locale locale){
-        ResourceBundle bundle =ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n", locale);
+        ResourceBundle bundle =ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n.mensajes", locale);
         jLabelBuscarPrestamo.setText(bundle.getString("TPbs"));
         jButtonBuscarPresamo.setText(bundle.getString("bttnBuscar"));
         jLabelBPCodigo.setText(bundle.getString("labelPCodigo"));

@@ -289,7 +289,7 @@ public class BorrarLibro extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButtonBrALibroActionPerformed
 
     public void cambiarIdioma(Locale locale){
-        ResourceBundle bundle =ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n", locale);
+        ResourceBundle bundle =ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n.mensajes", locale);
         jLabelBorrarLibro.setText(bundle.getString("TLdele"));
         jButtonBrBISBN.setText(bundle.getString("bttnBuscar"));
         jButtonBrALibro.setText(bundle.getString("bttnEliminar"));

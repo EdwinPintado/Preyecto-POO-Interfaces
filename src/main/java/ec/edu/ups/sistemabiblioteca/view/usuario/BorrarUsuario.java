@@ -343,7 +343,7 @@ public class BorrarUsuario extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButtonEUCancelarActionPerformed
 
     public void cambiarIdioma(Locale locale){
-        ResourceBundle bundle =ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n", locale);
+        ResourceBundle bundle =ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n.mensajes", locale);
         jLabelBorrarUsuario.setText(bundle.getString("TUbrr"));
         jButtonEUBuscar.setText(bundle.getString("bttnBuscar"));
         jLabelEUCedula.setText(bundle.getString("labelUBCedula"));

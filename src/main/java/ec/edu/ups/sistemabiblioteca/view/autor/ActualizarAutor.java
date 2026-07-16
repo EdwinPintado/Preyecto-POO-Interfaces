@@ -321,14 +321,14 @@ public class ActualizarAutor extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonActAActualizarActionPerformed
     public void cambiarIdioma(Locale locale) {
-        ResourceBundle bundle = ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n", locale);
+        ResourceBundle bundle = ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n.mensajes", locale);
         jButtonActABCedula.setText(bundle.getString("bttnBuscar"));
         jButtonActAActualizar.setText(bundle.getString("bttnUpd"));
         jButtonActACancelar.setText(bundle.getString("bttnCancelar"));
         jLabelActACedula.setText(bundle.getString("labelCedula"));
-        jLabelActANombre.setText(bundle.getString("labelNombre "));
-        jLabelActAApellido.setText(bundle.getString("labelApellido "));
-        jLabelActANacionalidad.setText(bundle.getString("labelNacionalidad "));
+        jLabelActANombre.setText(bundle.getString("labelNombre"));
+        jLabelActAApellido.setText(bundle.getString("labelApellido"));
+        jLabelActANacionalidad.setText(bundle.getString("labelNacionalidad"));
         jLabelActATelefono.setText(bundle.getString("labelTelefono"));
         jLabelActAGenero.setText(bundle.getString("labelGT"));
         jLabelActAFecha.setText(bundle.getString("labelFN"));

@@ -281,7 +281,7 @@ public class BuscarUsuario extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     public void cambiarIdioma(Locale locale){
-        ResourceBundle bundle =ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n", locale);
+        ResourceBundle bundle =ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n.mensajes", locale);
         jLabelBuscarUsuario.setText(bundle.getString("TUbus"));
         jButtonBUBuscar.setText(bundle.getString("bttnBuscar"));
         jLabelBUCedula.setText(bundle.getString("labelUBCedula"));

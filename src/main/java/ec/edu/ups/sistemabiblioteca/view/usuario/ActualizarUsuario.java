@@ -335,7 +335,7 @@ public class ActualizarUsuario extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButtonAUActualizarActionPerformed
 
     public void cambiarIdioma(Locale locale){
-        ResourceBundle bundle =ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n", locale);
+        ResourceBundle bundle =ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n.mensajes", locale);
         jLabelActualizarUsuario.setText(bundle.getString("TUact"));
         jButtonAUBuscar.setText(bundle.getString("bttnBuscar"));
         jLabelAUCedula.setText(bundle.getString("labelUCedula"));

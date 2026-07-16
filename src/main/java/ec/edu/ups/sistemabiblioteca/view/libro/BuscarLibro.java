@@ -243,7 +243,7 @@ public class BuscarLibro extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTextFieldBsACedulaActionPerformed
 
     public void cambiarIdioma(Locale locale){
-        ResourceBundle bundle =ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n", locale);
+        ResourceBundle bundle =ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n.mensajes", locale);
         jLabelBuscarLibro.setText(bundle.getString("TLbus"));
         jButtonBsBISBN.setText(bundle.getString("bttnBuscar"));
         jLabelBsISBN.setText(bundle.getString("labelBISBN"));

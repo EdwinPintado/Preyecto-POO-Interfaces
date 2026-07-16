@@ -439,7 +439,7 @@ public class CrearPrestamo extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTextFieldCPCodigoActionPerformed
 
     public void cambiarIdioma(Locale locale){
-        ResourceBundle bundle =ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n", locale);
+        ResourceBundle bundle =ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n.mensajes", locale);
         jLabelCrearPrestamo.setText(bundle.getString("TPcp"));
         jButtonCPUBuscar.setText(bundle.getString("TPbs"));
         jButtonCPLBuscar.setText(bundle.getString("TPbs"));

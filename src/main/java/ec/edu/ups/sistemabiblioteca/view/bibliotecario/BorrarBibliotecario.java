@@ -344,7 +344,7 @@ public class BorrarBibliotecario extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButtonEBBCedulaActionPerformed
 
     public void cambiarIdioma(Locale locale){
-        ResourceBundle bundle =ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n", locale);
+        ResourceBundle bundle =ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n.mensajes", locale);
         jLabelEliminarBibliotecario.setText(bundle.getString("TBlidele"));
         jButtonEBEliminar.setText(bundle.getString("bttnEliminar"));
         jButtonEBCancelar.setText(bundle.getString("bttnCancelar"));

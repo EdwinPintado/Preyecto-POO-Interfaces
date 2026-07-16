@@ -144,7 +144,7 @@ public class ListarDevolucion extends javax.swing.JInternalFrame {
         btnMostrarListaDevoluciones.setText("Mostrar");
 
         jLabelURListaDevoluciones.setFont(new java.awt.Font("Segoe UI Variable", 1, 12)); // NOI18N
-        jLabelURListaDevoluciones.setText("Usuarios Registrados");
+        jLabelURListaDevoluciones.setText("Prestamos  Registrados");
 
         txtContadordeDevoluciones.addActionListener(this::txtContadordeDevolucionesActionPerformed);
 
@@ -204,13 +204,12 @@ public class ListarDevolucion extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtContadordeDevolucionesActionPerformed
 
     public void cambiarIdioma(Locale locale){
-        ResourceBundle bundle =ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n", locale);
+        ResourceBundle bundle =ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n.mensajes", locale);
         jLabelListaDevoluciones.setText(bundle.getString("Tlistp"));
         btnMostrarListaDevoluciones.setText(bundle.getString("bttnMostrar"));
         tblListadoDevoluciones.setModel(modelo);
-        modelo.addColumn(bundle.getString("listarPNombre"));
-        modelo.addColumn(bundle.getString("listarPLibro"));
-        modelo.addColumn(bundle.getString("listarPCodigo"));
+        modelo.addColumn(bundle.getString("listarPrestamo"));
+        modelo.addColumn(bundle.getString("listarPisbn"));
         modelo.addColumn(bundle.getString("listarPFD"));
         tblListadoDevoluciones.setModel(modelo);
         jLabelURListaDevoluciones.setText(bundle.getString("labelMP"));

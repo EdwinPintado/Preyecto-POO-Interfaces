@@ -493,15 +493,6 @@ public class LibroController {
 
             actualizarLibro.mostrarInformacion(busACLnmsj);
 
-        } catch (AutorNoEncontradoException e) {
-
-            actualizarLibro.getjTextFieldActLTitulo().setText("");
-            actualizarLibro.getjTextFieldActLEditorial().setText("");
-            actualizarLibro.getjTextFieldActLAnio().setText("");
-            actualizarLibro.getjTextFieldActLACedula().setText("");
-
-            actualizarLibro.mostrarInformacion(busACLnmsj);
-
         } catch (IllegalArgumentException e) {
 
             actualizarLibro.mostrarInformacion(e.getMessage());
@@ -664,7 +655,7 @@ public class LibroController {
     }
 
     public void cambiarIdioma(Locale locale) {
-        ResourceBundle bundle = ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n", locale);
+        ResourceBundle bundle = ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n.mensajes", locale);
         agregarLmsj = (bundle.getString("agregarLmsj"));
         noALmsj = (bundle.getString("noALmsj"));
         LpreMsj = (bundle.getString("LpreMsj"));

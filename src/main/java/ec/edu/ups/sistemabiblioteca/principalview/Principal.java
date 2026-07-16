@@ -247,8 +247,8 @@ public class Principal extends javax.swing.JFrame {
         DCrearItem = new javax.swing.JMenuItem();
         DListarItem = new javax.swing.JMenuItem();
         IdiomaMenu = new javax.swing.JMenu();
-        openMenuItem7 = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
+        EspItem = new javax.swing.JMenuItem();
+        EnItem = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
@@ -416,12 +416,14 @@ public class Principal extends javax.swing.JFrame {
         IdiomaMenu.setMnemonic('f');
         IdiomaMenu.setText("Idioma");
 
-        openMenuItem7.setMnemonic('o');
-        openMenuItem7.setText("Español");
-        IdiomaMenu.add(openMenuItem7);
+        EspItem.setMnemonic('o');
+        EspItem.setText("Español");
+        EspItem.addActionListener(this::EspItemActionPerformed);
+        IdiomaMenu.add(EspItem);
 
-        jMenuItem7.setText("Ingles");
-        IdiomaMenu.add(jMenuItem7);
+        EnItem.setText("Ingles");
+        EnItem.addActionListener(this::EnItemActionPerformed);
+        IdiomaMenu.add(EnItem);
 
         menuBar.add(IdiomaMenu);
 
@@ -781,6 +783,18 @@ public class Principal extends javax.swing.JFrame {
         );
     }//GEN-LAST:event_jMenuItem13ActionPerformed
 
+    private void EspItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EspItemActionPerformed
+        // TODO add your handling code here:
+        Locale local = new Locale("es", "EC");
+        cambiarIdioma(local);
+    }//GEN-LAST:event_EspItemActionPerformed
+
+    private void EnItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EnItemActionPerformed
+        // TODO add your handling code here:
+        Locale local = new Locale("en","US");
+        cambiarIdioma(local);
+    }//GEN-LAST:event_EnItemActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -817,7 +831,8 @@ public class Principal extends javax.swing.JFrame {
     }
 
     public void cambiarIdioma(Locale locale){
-        ResourceBundle bundle =ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n", locale);
+        
+        ResourceBundle bundle =ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n.mensajes", locale);
         //Nombres Menu
         AutorMenu.setText(bundle.getString("au"));
         LibroMenu.setText(bundle.getString("lib"));
@@ -887,6 +902,15 @@ public class Principal extends javax.swing.JFrame {
         buscarUsuario.cambiarIdioma(locale);
         crearUsuario.cambiarIdioma(locale);
         listarUsuario.cambiarIdioma(locale);
+        //Controller
+        /*
+        autorController.cambiarIdioma(locale);
+        libroController.cambiarIdioma(locale);
+        usuarioController.cambiarIdioma(locale);
+        prestamoController.cambiarIdioma(locale);
+        devolucionController.cambiarIdioma(locale);
+        bibliotecarioController.cambiarIdioma(locale);
+        */
         
         
     }
@@ -909,6 +933,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem DCrearItem;
     private javax.swing.JMenuItem DListarItem;
     private javax.swing.JMenu DevolucionMenu;
+    private javax.swing.JMenuItem EnItem;
+    private javax.swing.JMenuItem EspItem;
     private javax.swing.JMenu IdiomaMenu;
     private javax.swing.JMenu LibroMenu;
     private javax.swing.JMenuItem LisLItem;
@@ -931,11 +957,9 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem11;
     private javax.swing.JMenuItem jMenuItem12;
     private javax.swing.JMenuItem jMenuItem13;
-    private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JMenuBar menuBar;
-    private javax.swing.JMenuItem openMenuItem7;
     // End of variables declaration//GEN-END:variables
 
 }

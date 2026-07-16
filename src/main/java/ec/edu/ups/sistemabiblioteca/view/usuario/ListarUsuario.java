@@ -200,7 +200,7 @@ public class ListarUsuario extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtContadordeUsuariosActionPerformed
 
     public void cambiarIdioma(Locale locale){
-        ResourceBundle bundle =ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n", locale);
+        ResourceBundle bundle =ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n.mensajes", locale);
         jLabelListaUsuarios.setText(bundle.getString("TUlis"));
         btnMostrarListaUsuarios.setText(bundle.getString("bttnMostrar"));
         jLabelURListaUsuarios.setText(bundle.getString("labelLm"));

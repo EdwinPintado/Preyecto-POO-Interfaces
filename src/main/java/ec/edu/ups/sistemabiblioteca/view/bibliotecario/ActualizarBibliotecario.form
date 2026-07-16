@@ -100,51 +100,40 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="jLabelActBTelefono" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="263" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="jLabelActBCodBibliotecario" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="271" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="jLabelActBFNacimiento" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
+                          <Component id="jLabelActBTelefono" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelActBCodBibliotecario" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="jComboBoxCargoAc" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jLabelActBTurno" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabelActBApellido" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabelActBCedula" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabelActBCargo" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabelActBNombre" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldActBNombre" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jTextFieldActBApellido" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jTextFieldActBTelefono" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jTextFieldActBCodigo" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jTextFieldActBFecha" alignment="0" max="32767" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jTextFieldActBCedula" min="-2" pref="192" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="jButtonActBBCedula" min="-2" pref="83" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                                      <Component id="jButtonActualizarB" min="-2" pref="103" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="jButtonActBCancelar" min="-2" pref="101" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="jComboBoxTurnoAc" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jLabelActBFNacimiento" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="jComboBoxCargoAc" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jLabelActBTurno" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelActBApellido" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelActBCedula" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelActBCargo" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelActBNombre" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextFieldActBNombre" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jTextFieldActBApellido" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jTextFieldActBTelefono" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jTextFieldActBCodigo" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jTextFieldActBFecha" alignment="0" max="32767" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jTextFieldActBCedula" min="-2" pref="192" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="jButtonActBBCedula" min="-2" pref="83" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="26" max="32767" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                                  <Component id="jButtonActualizarB" min="-2" pref="103" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="jButtonActBCancelar" min="-2" pref="101" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="jComboBoxTurnoAc" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
+                      <EmptySpace pref="26" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

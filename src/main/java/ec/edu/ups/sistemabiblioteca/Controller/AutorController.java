@@ -539,7 +539,7 @@ public class AutorController {
     }
 
     public void cambiarIdioma(Locale locale) {
-        ResourceBundle bundle = ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n", locale);
+        ResourceBundle bundle = ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n.mensajes", locale);
         cAmsj = (bundle.getString("cAmsj"));
         sCAmsj = (bundle.getString("sCAmsj"));
         busEAmsj = (bundle.getString("busEAmsj"));

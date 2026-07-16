@@ -327,7 +327,7 @@ public class BorrarAutor extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButtonEABCedulaActionPerformed
 
     public void cambiarIdioma(Locale locale) {
-        ResourceBundle bundle = ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n", locale);
+        ResourceBundle bundle = ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n.mensajes", locale);
         jLabelEliminarAutor.setText(bundle.getString("TAbo"));
         jButtonEABCedula.setText(bundle.getString("bttnBuscar"));
         jButtonEAEliminar.setText(bundle.getString("bttnEliminar"));

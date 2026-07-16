@@ -199,7 +199,7 @@ public class ListarAutor extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtContadordeAutoresActionPerformed
     public void cambiarIdioma(Locale locale) {
-        ResourceBundle bundle = ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n", locale);
+        ResourceBundle bundle = ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n.mensajes", locale);
         jLabelListaAutores.setText(bundle.getString("TAlist"));
         btnMostrarListaAutores.setText(bundle.getString("bttnMostrar"));
         modelo = new DefaultTableModel();
@@ -210,7 +210,7 @@ public class ListarAutor extends javax.swing.JInternalFrame {
         modelo.addColumn(bundle.getString("listarAn"));
         modelo.addColumn(bundle.getString("listarAg"));
         modelo.addColumn(bundle.getString("listarAb"));
-        modelo.addColumn(bundle.getString("listarAFN "));
+        modelo.addColumn(bundle.getString("listarAFN"));
         tblListadoAutores.setModel(modelo);
         jLabelURListaAutores.setText(bundle.getString("labelMA"));
 

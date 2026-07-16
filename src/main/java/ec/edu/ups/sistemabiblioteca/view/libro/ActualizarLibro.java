@@ -282,7 +282,7 @@ public class ActualizarLibro extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTextFieldActLANombreActionPerformed
 
     public void cambiarIdioma(Locale locale){
-        ResourceBundle bundle =ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n", locale);
+        ResourceBundle bundle =ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n.mensajes", locale);
         jLabelActualizarLibro.setText(bundle.getString("TLudp"));
         jButtonBsLISBN.setText(bundle.getString("bttnBuscar"));
         jButtonActLibro.setText(bundle.getString("bttnUpd"));

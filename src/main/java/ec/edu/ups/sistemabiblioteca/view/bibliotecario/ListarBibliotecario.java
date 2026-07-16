@@ -206,7 +206,7 @@ public class ListarBibliotecario extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtContadordeBibliotecariosActionPerformed
 
     public void cambiarIdioma(Locale locale) {
-        ResourceBundle bundle = ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n", locale);
+        ResourceBundle bundle = ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n.mensajes", locale);
         jLabelListaBibliotecarios.setText(bundle.getString("TBliLis"));
         btnMostrarListaBibliotecarios.setText(bundle.getString("bttnMostrar"));
         jLabelURListaBibliotecarios.setText(bundle.getString("labelBR"));

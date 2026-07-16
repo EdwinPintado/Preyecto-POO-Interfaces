@@ -271,7 +271,7 @@ public class CrearUsuario extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     public void cambiarIdioma(Locale locale){
-        ResourceBundle bundle =ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n", locale);
+        ResourceBundle bundle =ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n.mensajes", locale);
         jLabelCrearUsuario.setText(bundle.getString("TUcr"));
         jButtonCUCrear.setText(bundle.getString("bttnCrear"));
         jButtonCUCancelar.setText(bundle.getString("bttnCancelar"));

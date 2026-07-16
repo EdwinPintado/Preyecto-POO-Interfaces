@@ -289,7 +289,7 @@ public class CrearLibro extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTextFieldLbANombreActionPerformed
 
     public void cambiarIdioma(Locale locale){
-        ResourceBundle bundle =ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n", locale);
+        ResourceBundle bundle =ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n.mensajes", locale);
         jLabelCrearLibro.setText(bundle.getString("TLct"));
         jButtonLbBAutor.setText(bundle.getString("bttnBuscar"));
         jButtonLbCLibro.setText(bundle.getString("bttnCrear"));

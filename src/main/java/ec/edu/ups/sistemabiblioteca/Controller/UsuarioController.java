@@ -663,7 +663,7 @@ public class UsuarioController {
     }
 
     public void cambiarIdioma(Locale locale) {
-        ResourceBundle bundle = ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n", locale);
+        ResourceBundle bundle = ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n.mensajes", locale);
         agUmsj = (bundle.getString("agUmsj"));
         sCUmsj = (bundle.getString("sCUmsj"));
         canCUmsj = (bundle.getString("canCUmsj"));
