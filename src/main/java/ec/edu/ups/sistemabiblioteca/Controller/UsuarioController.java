@@ -11,6 +11,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Date;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.swing.JOptionPane;
 import javax.swing.event.InternalFrameAdapter;
 import javax.swing.event.InternalFrameEvent;
@@ -25,6 +27,17 @@ public class UsuarioController {
     private BuscarUsuario buscarUsuario;
     private ActualizarUsuario actualizarUsuario;
     private ListarUsuario listaUsuarios;
+    private String agUmsj; 
+    private String sCUmsj;  
+    private String canCUmsj;  
+    private String actUmsj;  
+    private String sAUmsj;  
+    private String dlUmsj;  
+    private String sDUmsj; 
+    private String tCUmsj;
+    private String cfmLmsj;
+    private String fchmsj;
+    private String nUmsj;
 
     public UsuarioController(
             UsuarioDAOMemoria usuarioDao,
@@ -46,6 +59,18 @@ public class UsuarioController {
         configurarEventosEliminarUsuario();
         configurarEventosActualizarUsuario();
         configurarEventosListarUsuarios();
+        //mensajes
+        agUmsj = "¿Quieres crear un nuevo usuario?";
+        sCUmsj = "Usuario creado exitosamente :)"; 
+        canCUmsj = "Acción cancelada :(";
+        actUmsj = "¿Quieres actualizar este usuario?";
+        sAUmsj = "Usuario actualizado correctamente :)";
+        dlUmsj = "¿Desea eliminar este usuario?";
+        sDUmsj = "Usuario eliminado correctamente :)";
+        tCUmsj = "Todos los campos deben estar llenos para guardar el usuario.";
+        cfmLmsj = "Confirmar";
+        fchmsj  = "Error: El formato de fecha debe ser AAAA-MM-DD.";
+        nUmsj = "No se encontró el usuario";
     }
 
     public void mostrarMensaje(java.awt.Component ventana, String mensaje, String titulo, int tipoMensaje) {
@@ -56,8 +81,8 @@ public class UsuarioController {
 
         int respuesta = JOptionPane.showConfirmDialog(
                 crearUsuario,
-                "¿Quieres crear un nuevo usuario?",
-                "Confirmar",
+                agUmsj,
+                cfmLmsj,
                 JOptionPane.YES_NO_OPTION);
 
         if (respuesta == JOptionPane.YES_OPTION) {
@@ -76,7 +101,7 @@ public class UsuarioController {
                         || direccion.isEmpty() || fechaTexto.isEmpty()) {
 
                     crearUsuario.mostrarInformacion(
-                            "Todos los campos deben estar llenos para guardar el usuario.");
+                            tCUmsj);
                     return;
                 }
                 Date fecha;
@@ -88,14 +113,14 @@ public class UsuarioController {
                 } catch (IllegalArgumentException e) {
 
                     crearUsuario.mostrarInformacion(
-                            "Error: El formato de fecha debe ser AAAA-MM-DD.");
+                            fchmsj);
                     return;
                 }
                 Usuario usuario = new Usuario(correo, direccion, cedula, nombre, apellido, telefono, fecha);
 
                 usuarioDao.agregar(usuario);
 
-                crearUsuario.mostrarInformacion1("Usuario creado exitosamente :)");
+                crearUsuario.mostrarInformacion1(sCUmsj);
                 crearUsuario.getjTextFieldCUCedula().setText("");
                 crearUsuario.getjTextFieldCUNombre().setText("");
                 crearUsuario.getjTextFieldCUApellido().setText("");
@@ -105,11 +130,11 @@ public class UsuarioController {
                 crearUsuario.getjTextFieldCUFNacimiento().setText("");
 
             } catch (IllegalArgumentException e) {
-                mostrarMensaje(crearUsuario, "Error: El formato de fecha debe ser AAAA-MM-DD.", "Error", JOptionPane.ERROR_MESSAGE);
+                mostrarMensaje(crearUsuario, fchmsj, "Error", JOptionPane.ERROR_MESSAGE);
             }
 
         } else {
-            crearUsuario.mostrarInformacion("Acción cancelada :(");
+            crearUsuario.mostrarInformacion(canCUmsj);
         }
     }
 
@@ -145,7 +170,7 @@ public class UsuarioController {
             buscarUsuario.getjTextFieldBUCElectronico().setText("");
             buscarUsuario.getjTextFieldBUFNacimiento().setText("");
 
-            buscarUsuario.mostrarInformacion("No se encontró el usuario");
+            buscarUsuario.mostrarInformacion(nUmsj);
         }
     }
 
@@ -181,7 +206,7 @@ public class UsuarioController {
             actualizarUsuario.getjTextFieldAUDireccion().setText("");
             actualizarUsuario.getjTextFieldAUFNacimiento().setText("");
 
-            actualizarUsuario.mostrarInformacion("No se encontró el usuario");
+            actualizarUsuario.mostrarInformacion(nUmsj);
         }
     }
 
@@ -194,8 +219,8 @@ public class UsuarioController {
 
             int respuesta = JOptionPane.showConfirmDialog(
                     actualizarUsuario,
-                    "¿Quieres actualizar este usuario?",
-                    "Confirmar",
+                    actUmsj,
+                    cfmLmsj,
                     JOptionPane.YES_NO_OPTION);
 
             if (respuesta == 0) {
@@ -211,10 +236,10 @@ public class UsuarioController {
 
                 usuarioDao.actualizar(nuevo);
 
-                actualizarUsuario.mostrarInformacion1("Usuario actualizado correctamente :)");
+                actualizarUsuario.mostrarInformacion1(sAUmsj);
             }
         } else {
-            actualizarUsuario.mostrarInformacion("No se encontró el usuario");
+            actualizarUsuario.mostrarInformacion(nUmsj);
         }
     }
 
@@ -232,7 +257,7 @@ public class UsuarioController {
             eliminarUsuario.getjTextFieldEUFNacimiento().setText(String.valueOf(usuario.getFechaNacimiento()));
 
         } else {
-            eliminarUsuario.mostrarInformacion("No se encontró el usuario");
+            eliminarUsuario.mostrarInformacion(nUmsj);
         }
     }
 
@@ -245,15 +270,15 @@ public class UsuarioController {
 
             int respuesta = JOptionPane.showConfirmDialog(
                     eliminarUsuario,
-                    "¿Desea eliminar este usuario?",
-                    "Confirmar",
+                    dlUmsj,
+                    cfmLmsj,
                     JOptionPane.YES_NO_OPTION);
 
             if (respuesta == 0) {
 
                 usuarioDao.eliminar(cedula);
 
-                eliminarUsuario.mostrarInformacion("Usuario eliminado correctamente :)");
+                eliminarUsuario.mostrarInformacion(sDUmsj);
                 crearUsuario.getjTextFieldCUCedula().setText("");
                 crearUsuario.getjTextFieldCUNombre().setText("");
                 crearUsuario.getjTextFieldCUApellido().setText("");
@@ -264,7 +289,7 @@ public class UsuarioController {
             }
 
         } else {
-            eliminarUsuario.mostrarInformacion("No se encontró el usuario");
+            eliminarUsuario.mostrarInformacion(nUmsj);
         }
     }
 
@@ -298,7 +323,7 @@ public class UsuarioController {
             eliminarUsuario.getjTextFieldEUFNacimiento().setText(String.valueOf(usuario.getFechaNacimiento()));
 
         } else {
-            eliminarUsuario.mostrarInformacion("No se encontró el usuario");
+            eliminarUsuario.mostrarInformacion(nUmsj);
         }
     }
 
@@ -339,5 +364,21 @@ public class UsuarioController {
                 mostrarContadorAutores();
             }
         });
+    }
+    public void cambiarIdioma(Locale locale){
+        ResourceBundle bundle =  ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n", locale);
+        agUmsj = (bundle.getString("agUmsj"));
+        sCUmsj = (bundle.getString("sCUmsj"));
+        canCUmsj = (bundle.getString("canCUmsj"));
+        actUmsj = (bundle.getString("actUmsj"));
+        sAUmsj = (bundle.getString("sAUmsj"));
+        dlUmsj = (bundle.getString("dlUmsj"));
+        sDUmsj = (bundle.getString("sDUmsj"));
+        tCUmsj = (bundle.getString("tCUmsj"));
+        cfmLmsj = (bundle.getString("cfmLmsj"));
+        fchmsj = (bundle.getString("fchmsj"));
+        nUmsj = (bundle.getString("nUmsj"));
+        
+        
     }
 }

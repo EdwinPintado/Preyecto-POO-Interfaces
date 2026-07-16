@@ -14,6 +14,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Date;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 /**
  *
@@ -26,6 +28,8 @@ public class DevolucionController {
 
     private RealizarDevolucion agregarDevolucionView;
     private ListarDevolucion listarDevolucionView;
+    private String agregarDmsj;
+    private String noagDmsj;
 
     public DevolucionController(DevolucionDAOMemoria devolucionDAO, PrestamoDAOMemoria prestamoDAO, RealizarDevolucion agregarDevolucionView, ListarDevolucion listarDevolucionView) {
         this.devolucionDAO = devolucionDAO;
@@ -35,6 +39,9 @@ public class DevolucionController {
 
         configurarEventosBuscarDevolucion();
         configurarEventosListarDevoluciones();
+        //mensajes
+        agregarDmsj ="Devolucion exitosa ,tenga buen dia";
+        noagDmsj ="No existe ese prestamo";
 
     }
 
@@ -55,9 +62,9 @@ public class DevolucionController {
             if (prestamo.getLibro() != null) {
                 prestamo.getLibro().setDisponible(true);
             }
-            agregarDevolucionView.mostrarInformacion1("Devolcuion exitosa ,tenga buen dia");
+            agregarDevolucionView.mostrarInformacion1(agregarDmsj);
         } else {
-            agregarDevolucionView.mostrarInformacion("No existe ese prestamo");
+            agregarDevolucionView.mostrarInformacion(noagDmsj);
             agregarDevolucionView.getjTextFieldDUCedula().setText("");
             agregarDevolucionView.getjTextFieldDUNombre().setText("");
             agregarDevolucionView.getjTextFieldDISBNLibro().setText("");
@@ -106,5 +113,12 @@ public class DevolucionController {
         });
 
     }
+    public void cambiarIdioma(Locale locale){
+        ResourceBundle bundle =  ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n", locale);
+        agregarDmsj = (bundle.getString("agregarDmsj"));
+        noagDmsj = (bundle.getString("noagDmsj"));
+        
+    }
+    
 
 }

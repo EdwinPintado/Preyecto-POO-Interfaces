@@ -669,6 +669,18 @@ public class Principal extends javax.swing.JFrame {
         BBorrarItem.setText(bundle.getString("iBo"));
         BlisItem.setText(bundle.getString("iLis"));
         //Item Usuario
+        UCrearItem.setText(bundle.getString("iC"));
+        UBuscarItem.setText(bundle.getString("iBus"));
+        UActItem.setText(bundle.getString("iAc"));
+        UBorrarItem.setText(bundle.getString("iBo"));
+        UListarItem.setText(bundle.getString("iLis"));
+        //Item Prestamo
+        PCrearItem.setText(bundle.getString("iC"));
+        PBuscarItem.setText(bundle.getString("iBus"));
+        PListarItem.setText(bundle.getString("iLis"));
+        //Item Devoluciones
+        DCrearItem.setText(bundle.getString("iC"));
+        DListarItem.setText(bundle.getString("iLis"));
         //Autor
         actualizarAutor.cambiarIdioma(locale);
         borrarAutor.cambiarIdioma(locale);

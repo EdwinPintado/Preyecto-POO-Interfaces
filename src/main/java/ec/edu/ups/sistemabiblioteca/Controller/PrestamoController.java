@@ -19,6 +19,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Date;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 /**
  *
@@ -34,6 +36,20 @@ public class PrestamoController {
     private BuscarPrestamo buscarPrestamoView;
     private CrearPrestamo agregarPrestamoView;
     private ListarPrestamo listarPrestamoView;
+    private String agPmsjE;  
+    private String nfPmsj;
+    private String nUPmsj;  
+    private String nUpmn;  
+    private String nLPmsj;   
+    private String prelmsj;   
+    private String nBPmsj;   
+    private String datemsj;  
+    private String dateLmsj;   
+    private String Plmsj;  
+    private String ePmsj;   
+    private String uPmsj;  
+    private String lPmsj;  
+    private String busPmsj; 
 
     public PrestamoController(PrestamoDAOMemoria prestamoDao, UsuarioDAOMemoria usuarioDAO, LibroDAOMemoria libroDAO, BibliotecarioDAOMemoria bibliotecarioDAO, BuscarPrestamo buscarPrestamoView, CrearPrestamo agregarPrestamoView, ListarPrestamo listarPrestamoView) {
         this.prestamoDao = prestamoDao;
@@ -47,42 +63,58 @@ public class PrestamoController {
         configurarEventosAgregarPrestamo();
         configurarEventosBuscarPrestamo();
         configurarEventosListarPrestamo();
+        //mensajes
+        agPmsjE = "Error: El código del préstamo no puede estar vacío.";
+        nfPmsj = "Ya existe un préstamo con ese código.";
+        nUPmsj = "Error: El usuario con cédula ";
+        nUpmn = " no existe.";
+        nLPmsj = "Error: El libro con ISBN ";
+        prelmsj =  "El libro ya está prestado.";
+        nBPmsj = "Error: El bibliotecario con código ";
+        datemsj = "Error: El formato de fecha debe ser YYYY-MM-DD.";
+        dateLmsj =  "La fecha límite debe ser posterior a la fecha del préstamo.";
+        Plmsj = "Préstamo creado correctamente";
+        ePmsj = "Ocurrió un error inesperado: ";
+        uPmsj = "Error: El usuario con cédula ";
+        lPmsj = "Error: El libro con ISBN ";
+        busPmsj = "No se encontró el préstamo";
+        
     }
 
     public void agregarPrestamo() {
         try {
             String codigo = agregarPrestamoView.getjTextFieldCPCodigo().getText().trim();
             if (codigo.isEmpty()) {
-                agregarPrestamoView.mostrarInformacion("Error: El código del préstamo no puede estar vacío.");
+                agregarPrestamoView.mostrarInformacion(agPmsjE);
                 return;
             }
             if (prestamoDao.buscar(codigo) != null) {
-                agregarPrestamoView.mostrarInformacion("Ya existe un préstamo con ese código.");
+                agregarPrestamoView.mostrarInformacion(nfPmsj);
                 return;
             }
             String cedula = agregarPrestamoView.getjTextFieldCPUCedula().getText().trim();
 
             Usuario usuario = usuarioDAO.buscar(cedula);
             if (usuario == null) {
-                agregarPrestamoView.mostrarInformacion("Error: El usuario con cédula " + cedula + " no existe.");
+                agregarPrestamoView.mostrarInformacion(nUPmsj + cedula + nUpmn);
                 return;
             }
             String isbn = agregarPrestamoView.getjTextFieldCPISBNLibro().getText().trim();
             Libro libro = libroDAO.buscar(isbn);
             if (libro == null) {
-                agregarPrestamoView.mostrarInformacion("Error: El libro con ISBN " + isbn + " no existe.");
+                agregarPrestamoView.mostrarInformacion(nLPmsj + isbn + nUpmn);
                 return;
 
             }
             if (!libro.isDisponible()) {
                 agregarPrestamoView.mostrarInformacion(
-                        "El libro ya está prestado.");
+                        prelmsj);
                 return;
             }
             String codigoBibliotecario = agregarPrestamoView.getjTextFieldCPBCodigo().getText().trim();
             Bibliotecario bibliotecario = bibliotecarioDAO.buscar(codigoBibliotecario);
             if (bibliotecario == null) {
-                agregarPrestamoView.mostrarInformacion("Error: El bibliotecario con código " + codigoBibliotecario + " no existe.");
+                agregarPrestamoView.mostrarInformacion(nBPmsj + codigoBibliotecario + nUpmn);
                 return;
             }
 
@@ -92,12 +124,12 @@ public class PrestamoController {
                 fechaPrestamo = Date.valueOf(agregarPrestamoView.getjTextFieldCPFPrestamo().getText().trim());
                 fechaLimite = Date.valueOf(agregarPrestamoView.getjTextFieldCPFLimite().getText().trim());
             } catch (IllegalArgumentException e) {
-                agregarPrestamoView.mostrarInformacion("Error: El formato de fecha debe ser YYYY-MM-DD.");
+                agregarPrestamoView.mostrarInformacion(datemsj);
                 return;
             }
             if (fechaLimite.before(fechaPrestamo)) {
                 agregarPrestamoView.mostrarInformacion(
-                        "La fecha límite debe ser posterior a la fecha del préstamo.");
+                        dateLmsj);
                 return;
             }
 
@@ -113,7 +145,7 @@ public class PrestamoController {
 
             prestamoDao.agregar(prestamo);
 
-            agregarPrestamoView.mostrarInformacion1("Préstamo creado correctamente");
+            agregarPrestamoView.mostrarInformacion1(Plmsj);
             agregarPrestamoView.getjTextFieldCPCodigo().setText("");
             agregarPrestamoView.getjTextFieldCPUCedula().setText("");
             agregarPrestamoView.getjTextFieldCPISBNLibro().setText("");
@@ -122,7 +154,7 @@ public class PrestamoController {
             agregarPrestamoView.getjTextFieldCPFLimite().setText("");
 
         } catch (Exception e) {
-            agregarPrestamoView.mostrarInformacion("Ocurrió un error inesperado: " + e.getMessage());
+            agregarPrestamoView.mostrarInformacion(ePmsj + e.getMessage());
         }
     }
 
@@ -130,7 +162,7 @@ public class PrestamoController {
         String cedula = agregarPrestamoView.getjTextFieldCPUCedula().getText().trim();
         Usuario usuario = usuarioDAO.buscar(cedula);
         if (usuario == null) {
-            agregarPrestamoView.mostrarInformacion("Error: El usuario con cédula " + cedula + " no existe.");
+            agregarPrestamoView.mostrarInformacion(uPmsj + cedula + nUpmn);
         } else {
             agregarPrestamoView.getjTextFieldCPUNombre().setText(usuario.getNombre());
         }
@@ -140,7 +172,7 @@ public class PrestamoController {
         String isbn = agregarPrestamoView.getjTextFieldCPISBNLibro().getText().trim();
         Libro libro = libroDAO.buscar(isbn);
         if (libro == null) {
-            agregarPrestamoView.mostrarInformacion("Error: El libro con ISBN " + isbn + " no existe.");
+            agregarPrestamoView.mostrarInformacion(lPmsj + isbn + nUpmn);
 
         } else {
             agregarPrestamoView.getjTextFieldCPTLibro().setText(libro.getTitulo());
@@ -189,7 +221,7 @@ public class PrestamoController {
             buscarPrestamoView.getjTextFieldBPFPrestamo().setText("");
             buscarPrestamoView.getjTextFieldBPFLimite().setText("");
 
-            buscarPrestamoView.mostrarInformacion("No se encontró el préstamo");
+            buscarPrestamoView.mostrarInformacion(busPmsj);
         }
     }
 
@@ -253,5 +285,22 @@ public class PrestamoController {
             }
 
         });
+    }
+    public void cambiarIdioma(Locale locale){
+        ResourceBundle bundle =  ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n", locale);
+        agPmsjE = (bundle.getString("agPmsjE"));
+        nfPmsj = (bundle.getString("nfPmsj"));
+        nUPmsj = (bundle.getString("nUPmsj"));
+        nUpmn = (bundle.getString("nUpmn"));
+        nLPmsj = (bundle.getString("nLPmsj"));
+        prelmsj = (bundle.getString("prelmsj"));
+        nBPmsj = (bundle.getString("nBPmsj")); 
+        datemsj = (bundle.getString("datemsj")); 
+        dateLmsj = (bundle.getString("dateLmsj"));
+        Plmsj = (bundle.getString("Plmsj"));
+        ePmsj = (bundle.getString("ePmsj")); 
+        uPmsj = (bundle.getString("uPmsj"));
+        lPmsj = (bundle.getString("lPmsj"));
+        busPmsj = (bundle.getString("busPmsj"));
     }
 }

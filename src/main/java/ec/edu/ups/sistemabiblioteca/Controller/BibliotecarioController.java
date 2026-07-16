@@ -16,6 +16,8 @@ import java.awt.event.ActionListener;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import javax.swing.JOptionPane;
 import javax.swing.event.AncestorListener;
@@ -33,6 +35,19 @@ public class BibliotecarioController {
     private BorrarBibliotecario eliminarBibliotecario;
     private ActualizarBibliotecario actualizarBibliotecario;
     private ListarBibliotecario listarBibliotecario;
+    private String cBmsj ;
+    private String exCBmsj; 
+    private String sCBmsj;
+    private String canCBmsj; 
+    private String dBmsj;  
+    private String sBmsj; 
+    private String bDBmsj; 
+    private String bABmsj; 
+    private String acBmsj;  
+    private String sABmsj; 
+    private String cfmLmsj;
+    private String fchmsj;
+    private String bCBBmsj;
 
     public BibliotecarioController(BibliotecarioDAOMemoria bibliotecarioDAOMemoria, CrearBibliotecario crearBibliotecario, BuscarBibliotecario buscarBibliotecario, BorrarBibliotecario eliminarBibliotecario, ActualizarBibliotecario actualizarBibliotecario, ListarBibliotecario listarBibliotecario) {
         this.bibliotecarioDAOMemoria = bibliotecarioDAOMemoria;
@@ -47,11 +62,25 @@ public class BibliotecarioController {
         configurarEventosEliminarBibliotecario();
         configurarEventosActualizarBibliotecario();
         configurarEventosListarBibliotecario();
+        //mensajes
+        cBmsj = "¿Quieres crear un nuevo bibliotecario?";
+        exCBmsj = "Todos los campos deben estar llenos para guardar el bibliotecario.";
+        sCBmsj = "Bibliotecario creado exitosamente";
+        canCBmsj = "Acccion Cancelada";
+        dBmsj = "¿Quieres eliminar este bibliotecario: ";
+        sBmsj = "Bibliotecario eliminado exitosamente";
+        bDBmsj = "No se encontro el bibliotecario";
+        bABmsj = "No se encontro el bibliotecario(no existe)";
+        acBmsj = "¿Quieres actualizar este bibliotecario: ";
+        sABmsj = "Bibliotecario actualizado correctamente";
+        cfmLmsj = "Confirmar";
+        fchmsj  = "Error: El formato de fecha debe ser AAAA-MM-DD."; 
+        bCBBmsj = "No se encontro el bilbiotecario (cedula no existe)";
     }
 
     public void crearBibliotecario() {
-        int respuesta = JOptionPane.showConfirmDialog(crearBibliotecario, "¿Quieres crear un nuevo bibliotecario?",
-                "Confirmar",
+        int respuesta = JOptionPane.showConfirmDialog(crearBibliotecario, cBmsj,
+                cfmLmsj,
                 JOptionPane.YES_NO_OPTION);
 
         if (respuesta == JOptionPane.YES_OPTION) {
@@ -68,7 +97,7 @@ public class BibliotecarioController {
                 if (cedula.isEmpty() || nombre.isEmpty() || apellido.isEmpty()|| cargo.isEmpty() || telefono.isEmpty()|| codigo.isEmpty() || fechaTexto.isEmpty()|| turno.isEmpty()) {
                     
                     crearBibliotecario.mostrarInformacion(
-                            "Todos los campos deben estar llenos para guardar el bibliotecario.");
+                            exCBmsj);
                     return;
                 }
                 Date fechaNacimiento;
@@ -80,14 +109,14 @@ public class BibliotecarioController {
                 } catch (IllegalArgumentException e) {
 
                     crearBibliotecario.mostrarInformacion(
-                            "Error: El formato de fecha debe ser AAAA-MM-DD.");
+                            fchmsj);
                     return;
                 }
                 Bibliotecario bibliotecario = new Bibliotecario(codigo, turno, cargo, cedula, nombre, apellido, telefono, fechaNacimiento);
 
                 bibliotecarioDAOMemoria.agregar(bibliotecario);
 
-                crearBibliotecario.mostrarInformacion1("Bibliotecario creado exitosamente");
+                crearBibliotecario.mostrarInformacion1(sCBmsj);
                 buscarBibliotecario.getjTextFieldBBCedula().setText("");
                 buscarBibliotecario.getjTextFieldBBNombre().setText("");
                 buscarBibliotecario.getjTextFieldBBApellido().setText("");
@@ -98,11 +127,11 @@ public class BibliotecarioController {
                 buscarBibliotecario.getjTextFieldBBTurno().setText("");
 
             } catch (IllegalArgumentException e) {
-                crearBibliotecario.mostrarInformacion("Error : El formato de la fech deber ser AAA-MM-DD");
+                crearBibliotecario.mostrarInformacion(fchmsj);
 
             }
         } else {
-            crearBibliotecario.mostrarInformacion("Acccion Cancelada");
+            crearBibliotecario.mostrarInformacion(canCBmsj);
 
         }
     }
@@ -128,7 +157,7 @@ public class BibliotecarioController {
             buscarBibliotecario.getjTextFieldBBFecha().setText(" ");
             buscarBibliotecario.getjTextFieldBBTurno().setText(" ");
 
-            buscarBibliotecario.mostrarInformacion("No se encontro bibliotecario(Bibliotecario no existe)");
+            buscarBibliotecario.mostrarInformacion(bABmsj);
         }
     }
 
@@ -139,13 +168,13 @@ public class BibliotecarioController {
         if (bibliotecario != null) {
             int respuesta = JOptionPane.showConfirmDialog(
                     eliminarBibliotecario,
-                    "¿Quieres eliminar este bibliotecario: " + bibliotecario.getNombre() + " ?",
-                    "Confirmar",
+                    dBmsj + bibliotecario.getNombre() + " ?",
+                    cfmLmsj,
                     JOptionPane.YES_NO_OPTION);
             if (respuesta == JOptionPane.YES_OPTION) {
                 bibliotecarioDAOMemoria.eliminar(cedula);
 
-                eliminarBibliotecario.mostrarInformacion1("Bibliotecario eliminado exitosamente");
+                eliminarBibliotecario.mostrarInformacion1(sBmsj);
                 eliminarBibliotecario.getjButtonEBBCedula().setText(" ");
                 eliminarBibliotecario.getjTextFieldEBNombre().setText(" ");
                 eliminarBibliotecario.getjTextFieldEBApellido().setText(" ");
@@ -156,11 +185,11 @@ public class BibliotecarioController {
                 eliminarBibliotecario.getjTextFieldEBTurno().setText(" ");
 
             } else {
-                eliminarBibliotecario.mostrarInformacion("Accion cancelada");
+                eliminarBibliotecario.mostrarInformacion(canCBmsj);
 
             }
         } else {
-            eliminarBibliotecario.mostrarInformacion("No se encontro el bilbiotecario (cedula no existe)");
+            eliminarBibliotecario.mostrarInformacion(bCBBmsj);
 
         }
     }
@@ -187,7 +216,7 @@ public class BibliotecarioController {
             eliminarBibliotecario.getjTextFieldEBFecha().setText(" ");
             eliminarBibliotecario.getjTextFieldEBTurno().setText(" ");
 
-            eliminarBibliotecario.mostrarInformacion("No se encontro el bibliotecario");
+            eliminarBibliotecario.mostrarInformacion(bDBmsj);
 
         }
     }
@@ -212,7 +241,7 @@ public class BibliotecarioController {
             actualizarBibliotecario.getjTextFieldActBCodigo().setText(" ");
             actualizarBibliotecario.getjTextFieldActBFecha().setText(" ");
             actualizarBibliotecario.getjTextFieldActBTurno().setText(" ");
-            actualizarBibliotecario.mostrarInformacion("No se encontro el bibliotecario(no existe)");
+            actualizarBibliotecario.mostrarInformacion(bABmsj);
 
         }
     }
@@ -224,8 +253,8 @@ public class BibliotecarioController {
 
             int respuesta = JOptionPane.showConfirmDialog(
                     actualizarBibliotecario,
-                    "¿Quieres actualizar este bibliotecario: " + bibliotecario.getNombre() + " ?",
-                    "Confirmar",
+                    acBmsj + bibliotecario.getNombre() + " ?",
+                    cfmLmsj,
                     JOptionPane.YES_NO_OPTION);
             if (respuesta == JOptionPane.YES_OPTION) {
                 String nombre = actualizarBibliotecario.getjTextFieldActBNombre().getText();
@@ -238,7 +267,7 @@ public class BibliotecarioController {
 
                 Bibliotecario bibliotecarioActualizado = new Bibliotecario(codigo, turno, cargo, cedula, nombre, apellido, telefono, fechaNa);
                 bibliotecarioDAOMemoria.actualizar(bibliotecarioActualizado);
-                actualizarBibliotecario.mostrarInformacion1("Bibliotecarip actualizado correctamente");
+                actualizarBibliotecario.mostrarInformacion1(sABmsj);
 
                 actualizarBibliotecario.getjTextFieldActBNombre().setText(" ");
                 actualizarBibliotecario.getjTextFieldActBApellido().setText(" ");
@@ -248,7 +277,7 @@ public class BibliotecarioController {
                 actualizarBibliotecario.getjTextFieldActBFecha().setText(" ");
                 actualizarBibliotecario.getjTextFieldActBTurno().setText(" ");
             } else {
-                actualizarBibliotecario.mostrarInformacion("Accion cancelada");
+                actualizarBibliotecario.mostrarInformacion(canCBmsj);
                 buscarBibliotecario.getjTextFieldBBNombre().setText(" ");
                 buscarBibliotecario.getjTextFieldBBApellido().setText(" ");
                 buscarBibliotecario.getjTextFieldBBCargo().setText(" ");
@@ -257,7 +286,7 @@ public class BibliotecarioController {
                 buscarBibliotecario.getjTextFieldBBTurno().setText(" ");
             }
         } else {
-            actualizarBibliotecario.mostrarInformacion("No se encontro el bibliotecario(cedula no existe)");
+            actualizarBibliotecario.mostrarInformacion(bCBBmsj);
         }
     }
 
@@ -336,5 +365,22 @@ public class BibliotecarioController {
             }
 
         });
+    }
+    public void cambiarIdioma(Locale locale){
+        ResourceBundle bundle =  ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n", locale);
+        cBmsj = (bundle.getString("cBmsj"));
+        exCBmsj =(bundle.getString("exCBmsj")); 
+        sCBmsj= (bundle.getString("sCBmsj"));
+        canCBmsj= (bundle.getString("canCBmsj")); 
+        dBmsj = (bundle.getString("dBmsj"));  
+        sBmsj = (bundle.getString("sBmsj")); 
+        bDBmsj = (bundle.getString("bDBmsj")); 
+        bABmsj = (bundle.getString("bABmsj")); 
+        acBmsj = (bundle.getString("acBmsj"));  
+        sABmsj = (bundle.getString("sABmsj"));
+        cfmLmsj = (bundle.getString("cfmLmsj"));
+        fchmsj = (bundle.getString("fchmsj"));
+        bCBBmsj = (bundle.getString("bCBBmsj"));
+        
     }
 }
