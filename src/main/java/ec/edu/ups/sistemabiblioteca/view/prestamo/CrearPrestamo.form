@@ -327,7 +327,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabelCPBCodigo">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Bibliotecario(Codigo):"/>
+                <Property name="text" type="java.lang.String" value="Bibliotecario(Cedula):"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="jButtonCPCrear">

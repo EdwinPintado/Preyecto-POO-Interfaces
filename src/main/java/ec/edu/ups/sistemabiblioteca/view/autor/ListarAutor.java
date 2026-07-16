@@ -106,6 +106,7 @@ public class ListarAutor extends javax.swing.JInternalFrame {
                 "Cedula", "Nombre", "Telefono", "Fecha de Nacimiento"
             }
         ));
+        tblListadoAutores.setEnabled(false);
         jScrollPane1.setViewportView(tblListadoAutores);
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));

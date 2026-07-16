@@ -25,10 +25,8 @@ public class ListarUsuario extends javax.swing.JInternalFrame {
 
         modelo.addColumn("Cédula");
         modelo.addColumn("Nombre");
-        modelo.addColumn("Apellido");
         modelo.addColumn("Teléfono");
-        modelo.addColumn("Correo");
-        modelo.addColumn("Fecha");
+        modelo.addColumn("Fecha de Nacimiento");
 
         tblListadoUsuarios.setModel(modelo);
     }
@@ -42,9 +40,7 @@ public class ListarUsuario extends javax.swing.JInternalFrame {
             Object[] fila = {
                 b.getCedula(),
                 b.getNombre(),
-                b.getApellido(),
                 b.getTelefono(),
-                b.getCorreoElectronico(),
                 b.getFechaNacimiento()
             };
             modelo.addRow(fila);

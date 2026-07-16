@@ -227,7 +227,7 @@ public class CrearPrestamo extends javax.swing.JInternalFrame {
         jTextFieldCPTLibro.setEditable(false);
         jTextFieldCPTLibro.addActionListener(this::jTextFieldCPTLibroActionPerformed);
 
-        jLabelCPBCodigo.setText("Bibliotecario(Codigo):");
+        jLabelCPBCodigo.setText("Bibliotecario(Cedula):");
 
         jButtonCPCrear.setBackground(new java.awt.Color(0, 102, 153));
         jButtonCPCrear.setForeground(new java.awt.Color(255, 255, 255));
