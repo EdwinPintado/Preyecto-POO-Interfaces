@@ -106,6 +106,7 @@ public class ListarAutor extends javax.swing.JInternalFrame {
                 "Cedula", "Nombre", "Telefono", "Fecha de Nacimiento"
             }
         ));
+        tblListadoAutores.setEnabled(false);
         jScrollPane1.setViewportView(tblListadoAutores);
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
@@ -177,7 +178,7 @@ public class ListarAutor extends javax.swing.JInternalFrame {
                     .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 496, Short.MAX_VALUE)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

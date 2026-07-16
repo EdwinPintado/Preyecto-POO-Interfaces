@@ -123,6 +123,7 @@ public class ActualizarLibro extends javax.swing.JInternalFrame {
         setResizable(true);
         setTitle("Actualizar Libro");
 
+        jTextFieldActLACedula.setEditable(false);
         jTextFieldActLACedula.addActionListener(this::jTextFieldActLACedulaActionPerformed);
 
         jLabelActLACedula.setText("Autor(cedula):");
@@ -171,6 +172,7 @@ public class ActualizarLibro extends javax.swing.JInternalFrame {
 
         jTextFieldActISBN.addActionListener(this::jTextFieldActISBNActionPerformed);
 
+        jTextFieldActLANombre.setEditable(false);
         jTextFieldActLANombre.addActionListener(this::jTextFieldActLANombreActionPerformed);
 
         jLabelActLEditorial.setText("Editorial:");

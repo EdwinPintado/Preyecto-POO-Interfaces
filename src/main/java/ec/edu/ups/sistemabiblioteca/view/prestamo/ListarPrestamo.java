@@ -48,13 +48,9 @@ public class ListarPrestamo extends javax.swing.JInternalFrame {
     public void configurarTabla() {
         modelo = new DefaultTableModel();
         modelo.addColumn("Codigo");
-        modelo.addColumn("Usuario");
         modelo.addColumn("Nombre");
-        modelo.addColumn("Isbn");
         modelo.addColumn("Titulo");
-        modelo.addColumn("Bibliotecario");
         modelo.addColumn("Fecha Prestamo");
-        modelo.addColumn("Fecha Limite");
         tblListadoPrestamo.setModel(modelo);
     }
 
@@ -66,11 +62,9 @@ public class ListarPrestamo extends javax.swing.JInternalFrame {
 
             Object[] fila = {
                 b.getCodigoPrestamo(),
-                b.getUsuario(),
-                b.getLibro(),
-                b.getBibliotecario(),
+                b.getUsuario().getNombre(),
+                b.getLibro().getTitulo(),
                 b.getFechaPrestamo(),
-                b.getFechaPrestamo()
             };
             modelo.addRow(fila);
 
@@ -105,6 +99,7 @@ public class ListarPrestamo extends javax.swing.JInternalFrame {
         setMaximizable(true);
         setResizable(true);
         setTitle("Lista Prestamo");
+        setEnabled(false);
 
         jPanel4.setBackground(new java.awt.Color(153, 153, 153));
 
@@ -124,11 +119,11 @@ public class ListarPrestamo extends javax.swing.JInternalFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnMostrarListaPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(59, 59, 59)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabelURListaPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtContadordePrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(17, 17, 17))
+                .addGap(21, 21, 21))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -186,10 +181,10 @@ public class ListarPrestamo extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(33, 33, 33))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 507, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

@@ -111,6 +111,8 @@ public class BuscarLibro extends javax.swing.JInternalFrame {
 
         jLabelBsISBN.setText("ISBN:");
 
+        jTextFieldBsAnio.setEditable(false);
+
         jTextFieldBsISBN.addActionListener(this::jTextFieldBsISBNActionPerformed);
 
         jLabelBsEditorial.setText("Editorial:");
@@ -122,6 +124,8 @@ public class BuscarLibro extends javax.swing.JInternalFrame {
         jButtonBsBISBN.setBackground(new java.awt.Color(0, 102, 153));
         jButtonBsBISBN.setForeground(new java.awt.Color(255, 255, 255));
         jButtonBsBISBN.setText("Buscar");
+
+        jTextFieldBsEditorial.setEditable(false);
 
         jPanel4.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -145,8 +149,12 @@ public class BuscarLibro extends javax.swing.JInternalFrame {
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
+        jTextFieldBsTitulo.setEditable(false);
+
+        jTextFieldBsANombre.setEditable(false);
         jTextFieldBsANombre.addActionListener(this::jTextFieldBsANombreActionPerformed);
 
+        jTextFieldBsACedula.setEditable(false);
         jTextFieldBsACedula.addActionListener(this::jTextFieldBsACedulaActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

@@ -398,7 +398,9 @@ public class LibroController {
                 eliminarLibro.getjTextFieldBrTitulo().setText("");
                 eliminarLibro.getjTextFieldBrEditorial().setText("");
                 eliminarLibro.getjTextFieldBrAnio().setText("");
-
+                eliminarLibro.getjTextFieldActACedula().setText("");
+                eliminarLibro.getjTextFieldBrANombre().setText("");
+                
             } else {
 
                 eliminarLibro.mostrarInformacion(canDLmsj);
@@ -450,21 +452,22 @@ public class LibroController {
                         Isbnmsj
                 );
             }
-
+/*
             if (cedula.isEmpty()) {
                 throw new IllegalArgumentException(
                         IDalmsj
                 );
             }
 
+
             if (!cedula.matches("\\d{10}")) {
                 throw new IllegalArgumentException(
                         IDmsj
                 );
             }
-
+*/
             Libro libro = libroDAO.buscar(isbn);
-            Autor autor = autorDao.buscar(cedula);
+            //Autor autor = autorDao.buscar(cedula);
 
             actualizarLibro.getjTextFieldActLTitulo()
                     .setText(libro.getTitulo());
@@ -474,6 +477,11 @@ public class LibroController {
 
             actualizarLibro.getjTextFieldActLAnio()
                     .setText(String.valueOf(libro.getAnioPublicacion()));
+            actualizarLibro.getjTextFieldActLACedula()
+                    .setText(libro.getAutor().getCedula());
+
+            actualizarLibro.getjTextFieldActLANombre()
+                    .setText(libro.getAutor().getNombre());
 
         } catch (LibroNoEncontrado e) {
 
@@ -481,6 +489,7 @@ public class LibroController {
             actualizarLibro.getjTextFieldActLEditorial().setText("");
             actualizarLibro.getjTextFieldActLAnio().setText("");
             actualizarLibro.getjTextFieldActLACedula().setText("");
+            actualizarLibro.getjTextFieldActLANombre().setText("");
 
             actualizarLibro.mostrarInformacion(busACLnmsj);
 
@@ -588,6 +597,8 @@ public class LibroController {
                 actualizarLibro.getjTextFieldActLTitulo().setText("");
                 actualizarLibro.getjTextFieldActLEditorial().setText("");
                 actualizarLibro.getjTextFieldActLAnio().setText("");
+                actualizarLibro.getjTextFieldActLACedula().setText("");
+                actualizarLibro.getjTextFieldActLANombre().setText("");
 
             } else {
 
@@ -605,13 +616,13 @@ public class LibroController {
     }
 
     public void configurarEventosActualizarLibro() {
-        actualizarLibro.getjButtonActLibro().addActionListener(new ActionListener() {
+        actualizarLibro.getjButtonBsLISBN().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 buscarActualizarLibro();
             }
         });
-        actualizarLibro.getjButtonBsLISBN().addActionListener(new ActionListener() {
+        actualizarLibro.getjButtonActLibro().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 actualizarLibro();
@@ -637,23 +648,19 @@ public class LibroController {
         }
     }
 
-    public void mostrarContadorAutores() {
-
+    public void mostrarContadorLibros() {
         int total = libroDAO.contar();
-
         listarLibro.getTxtContadordeLibro().setText(String.valueOf(total));
     }
 
     public void configurarEventosListarLibro() {
-
-        listarLibro.addInternalFrameListener(new InternalFrameAdapter() {
+        listarLibro.getBtnMostrarListaLibro().addActionListener(new ActionListener() {
             @Override
-            public void internalFrameActivated(InternalFrameEvent e) {
+            public void actionPerformed(ActionEvent e) {
                 listarLibro();
-                mostrarContadorAutores();
+                mostrarContadorLibros();
             }
         });
-
     }
 
     public void cambiarIdioma(Locale locale) {
