@@ -281,38 +281,38 @@ public class LibroController {
 
             Libro libro = libroDAO.buscar(isbn);
 
-            buscarLibro.getjTextFieldBsISBN()
+            eliminarLibro.getjTextFieldBrISBN()
                     .setText(libro.getIsbn());
 
-            buscarLibro.getjTextFieldBsTitulo()
+            eliminarLibro.getjTextFieldBrTitulo()
                     .setText(libro.getTitulo());
 
-            buscarLibro.getjTextFieldBsEditorial()
+            eliminarLibro.getjTextFieldBrEditorial()
                     .setText(libro.getEditorial());
 
-            buscarLibro.getjTextFieldBsAnio()
+            eliminarLibro.getjTextFieldBrAnio()
                     .setText(String.valueOf(libro.getAnioPublicacion()));
 
-            buscarLibro.getjTextFieldBsACedula()
+            eliminarLibro.getjTextFieldActACedula()
                     .setText(libro.getAutor().getCedula());
 
-            buscarLibro.getjTextFieldBsANombre()
+            eliminarLibro.getjTextFieldBrANombre()
                     .setText(libro.getAutor().getNombre());
 
         } catch (LibroNoEncontrado e) {
 
             buscarLibro.mostrarInformacion(e.getMessage());
 
-            buscarLibro.getjTextFieldBsISBN().setText("");
-            buscarLibro.getjTextFieldBsTitulo().setText("");
-            buscarLibro.getjTextFieldBsEditorial().setText("");
-            buscarLibro.getjTextFieldBsAnio().setText("");
-            buscarLibro.getjTextFieldBsACedula().setText("");
-            buscarLibro.getjTextFieldBsANombre().setText("");
+            eliminarLibro.getjTextFieldBrISBN().setText("");
+            eliminarLibro.getjTextFieldBrTitulo().setText("");
+            eliminarLibro.getjTextFieldBrEditorial().setText("");
+            eliminarLibro.getjTextFieldBrAnio().setText("");
+            eliminarLibro.getjTextFieldActACedula().setText("");
+            eliminarLibro.getjTextFieldBrANombre().setText("");
 
         } catch (IllegalArgumentException e) {
 
-            buscarLibro.mostrarInformacion(e.getMessage());
+            eliminarLibro.mostrarInformacion(e.getMessage());
         }
     }
 
@@ -350,7 +350,9 @@ public class LibroController {
                 eliminarLibro.getjTextFieldBrTitulo().setText("");
                 eliminarLibro.getjTextFieldBrEditorial().setText("");
                 eliminarLibro.getjTextFieldBrAnio().setText("");
-
+                eliminarLibro.getjTextFieldActACedula().setText("");
+                eliminarLibro.getjTextFieldBrANombre().setText("");
+                
             } else {
 
                 eliminarLibro.mostrarInformacion(
@@ -404,21 +406,22 @@ public class LibroController {
                         "El ISBN solo debe contener números."
                 );
             }
-
+/*
             if (cedula.isEmpty()) {
                 throw new IllegalArgumentException(
                         "Debe ingresar la cédula del autor."
                 );
             }
 
+
             if (!cedula.matches("\\d{10}")) {
                 throw new IllegalArgumentException(
                         "La cédula debe contener exactamente 10 dígitos."
                 );
             }
-
+*/
             Libro libro = libroDAO.buscar(isbn);
-            Autor autor = autorDao.buscar(cedula);
+            //Autor autor = autorDao.buscar(cedula);
 
             actualizarLibro.getjTextFieldActLTitulo()
                     .setText(libro.getTitulo());
@@ -428,6 +431,11 @@ public class LibroController {
 
             actualizarLibro.getjTextFieldActLAnio()
                     .setText(String.valueOf(libro.getAnioPublicacion()));
+            actualizarLibro.getjTextFieldActLACedula()
+                    .setText(libro.getAutor().getCedula());
+
+            actualizarLibro.getjTextFieldActLANombre()
+                    .setText(libro.getAutor().getNombre());
 
         } catch (LibroNoEncontrado e) {
 
@@ -435,13 +443,14 @@ public class LibroController {
             actualizarLibro.getjTextFieldActLEditorial().setText("");
             actualizarLibro.getjTextFieldActLAnio().setText("");
             actualizarLibro.getjTextFieldActLACedula().setText("");
+            actualizarLibro.getjTextFieldActLANombre().setText("");
 
             actualizarLibro.mostrarInformacion(e.getMessage());
-
+/*
         } catch (AutorNoEncontradoException e) {
 
             actualizarLibro.mostrarInformacion(e.getMessage());
-
+*/
         } catch (IllegalArgumentException e) {
 
             actualizarLibro.mostrarInformacion(e.getMessage());
@@ -540,6 +549,8 @@ public class LibroController {
                 actualizarLibro.getjTextFieldActLTitulo().setText("");
                 actualizarLibro.getjTextFieldActLEditorial().setText("");
                 actualizarLibro.getjTextFieldActLAnio().setText("");
+                actualizarLibro.getjTextFieldActLACedula().setText("");
+                actualizarLibro.getjTextFieldActLANombre().setText("");
 
             } else {
 
@@ -559,13 +570,13 @@ public class LibroController {
     }
 
     public void configurarEventosActualizarLibro() {
-        actualizarLibro.getjButtonActLibro().addActionListener(new ActionListener() {
+        actualizarLibro.getjButtonBsLISBN().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 buscarActualizarLibro();
             }
         });
-        actualizarLibro.getjButtonBsLISBN().addActionListener(new ActionListener() {
+        actualizarLibro.getjButtonActLibro().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 actualizarLibro();
@@ -591,22 +602,18 @@ public class LibroController {
         }
     }
 
-    public void mostrarContadorAutores() {
-
+    public void mostrarContadorLibros() {
         int total = libroDAO.contar();
-
         listarLibro.getTxtContadordeLibro().setText(String.valueOf(total));
     }
 
     public void configurarEventosListarLibro() {
-
-        listarLibro.addInternalFrameListener(new InternalFrameAdapter() {
+        listarLibro.getBtnMostrarListaLibro().addActionListener(new ActionListener() {
             @Override
-            public void internalFrameActivated(InternalFrameEvent e) {
+            public void actionPerformed(ActionEvent e) {
                 listarLibro();
-                mostrarContadorAutores();
+                mostrarContadorLibros();
             }
         });
-
     }
 }
