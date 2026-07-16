@@ -99,6 +99,7 @@ public class ListarPrestamo extends javax.swing.JInternalFrame {
         setMaximizable(true);
         setResizable(true);
         setTitle("Lista Prestamo");
+        setEnabled(false);
 
         jPanel4.setBackground(new java.awt.Color(153, 153, 153));
 

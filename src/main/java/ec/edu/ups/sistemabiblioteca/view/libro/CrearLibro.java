@@ -116,6 +116,7 @@ public class CrearLibro extends javax.swing.JInternalFrame {
         jTextFieldLbTitulo = new javax.swing.JTextField();
         jButtonLbCLibro = new javax.swing.JButton();
         jButtonLbBAutor = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
@@ -175,6 +176,9 @@ public class CrearLibro extends javax.swing.JInternalFrame {
         jButtonLbBAutor.setForeground(new java.awt.Color(255, 255, 255));
         jButtonLbBAutor.setText("Buscar");
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        jLabel1.setText("AAAA-MM-DD");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -185,7 +189,10 @@ public class CrearLibro extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabelLbAnio)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabelLbAnio)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jLabel1))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(jTextFieldLbAnio, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
                                     .addComponent(jTextFieldLbEditorial, javax.swing.GroupLayout.Alignment.LEADING)
@@ -202,10 +209,8 @@ public class CrearLibro extends javax.swing.JInternalFrame {
                                         .addGroup(layout.createSequentialGroup()
                                             .addComponent(jTextFieldLbACedula, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(jButtonLbBAutor))))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(1, 1, 1)
-                                    .addComponent(jTextFieldLbANombre, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addComponent(jButtonLbBAutor))
+                                        .addComponent(jTextFieldLbANombre, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(43, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
@@ -236,7 +241,9 @@ public class CrearLibro extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextFieldLbEditorial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelLbAnio)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelLbAnio)
+                    .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextFieldLbAnio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -301,6 +308,7 @@ public class CrearLibro extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButtonLbBAutor;
     private javax.swing.JButton jButtonLbCLibro;
     private javax.swing.JButton jButtonLbCancelar;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelCrearLibro;
     private javax.swing.JLabel jLabelLbACedula;
     private javax.swing.JLabel jLabelLbAnio;

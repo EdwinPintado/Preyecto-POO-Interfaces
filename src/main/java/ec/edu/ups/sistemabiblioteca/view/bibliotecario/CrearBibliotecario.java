@@ -144,6 +144,7 @@ public class CrearBibliotecario extends javax.swing.JInternalFrame {
         jTextFieldCBTurno = new javax.swing.JTextField();
         jButtonCBCrear = new javax.swing.JButton();
         jButtonCBCancelar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
@@ -199,6 +200,9 @@ public class CrearBibliotecario extends javax.swing.JInternalFrame {
         jButtonCBCancelar.setText("CANCELAR");
         jButtonCBCancelar.addActionListener(this::jButtonCBCancelarActionPerformed);
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        jLabel1.setText("AAAA-MM-DD");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -208,7 +212,10 @@ public class CrearBibliotecario extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabelCBTelefono)
                     .addComponent(jLabelCBCodBibliotecario)
-                    .addComponent(jLabelCBFNacimiento)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabelCBFNacimiento)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel1))
                     .addComponent(jLabelCBTurno)
                     .addComponent(jLabelCBApellido)
                     .addComponent(jLabelCBCedula)
@@ -257,7 +264,9 @@ public class CrearBibliotecario extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextFieldCBCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelCBFNacimiento)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelCBFNacimiento)
+                    .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextFieldCBFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -290,8 +299,8 @@ public class CrearBibliotecario extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -328,6 +337,7 @@ public class CrearBibliotecario extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCBCancelar;
     private javax.swing.JButton jButtonCBCrear;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelCBApellido;
     private javax.swing.JLabel jLabelCBCargo;
     private javax.swing.JLabel jLabelCBCedula;

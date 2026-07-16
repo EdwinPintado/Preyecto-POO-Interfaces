@@ -110,6 +110,7 @@ public class ListarDevolucion extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblListadoDevoluciones.setEnabled(false);
         jScrollPane1.setViewportView(tblListadoDevoluciones);
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
