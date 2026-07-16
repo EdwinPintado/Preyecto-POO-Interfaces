@@ -59,6 +59,7 @@ import java.util.ResourceBundle;
 import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
+import java.awt.Toolkit;
 
 /**
  *
@@ -124,6 +125,13 @@ public class Principal extends javax.swing.JFrame {
         desktopPane = new JDesktopPane();
         this.setContentPane(desktopPane);
         initComponents();
+        int ancho = Toolkit.getDefaultToolkit().getScreenSize().width;
+        int alto = Toolkit.getDefaultToolkit().getScreenSize().height;
+        System.out.println(ancho);
+        System.out.println(alto);
+        this.setSize(ancho, alto);
+        jLabelfondo.setBounds(0, 0, ancho, alto);
+        desktopPane.setSize(ancho, alto);
 
         //Icon 1
         {
@@ -275,7 +283,9 @@ public class Principal extends javax.swing.JFrame {
         desktopPane.add(jLabelUps);
         jLabelUps.setBounds(0, 0, 80, 80);
         desktopPane.add(jLabelfondo);
-        jLabelfondo.setBounds(0, 0, 570, 530);
+        jLabelfondo.setBounds(0, 0, 570, 660);
+
+        menuBar.setMaximumSize(new java.awt.Dimension(484, 23));
 
         AutorMenu.setMnemonic('f');
         AutorMenu.setText("Autor");
@@ -479,7 +489,7 @@ public class Principal extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(desktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(desktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, 660, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
