@@ -1,13 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package ec.edu.ups.sistemabiblioteca.enums;
 
-/**
- *
- * @author Usuario
- */
-public class Turno {
+public enum Turno {
+    DIURNO, 
+    NOCTURNO, 
+    MIXTO;
     
+    @Override
+    public String toString() {
+        return name()
+                .replace("_", " ");
+    }
 }

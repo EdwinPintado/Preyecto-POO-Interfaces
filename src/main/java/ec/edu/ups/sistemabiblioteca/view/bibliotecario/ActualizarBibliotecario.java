@@ -4,9 +4,12 @@
  */
 package ec.edu.ups.sistemabiblioteca.view.bibliotecario;
 
+import ec.edu.ups.sistemabiblioteca.enums.Cargo;
+import ec.edu.ups.sistemabiblioteca.enums.Turno;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -21,6 +24,17 @@ public class ActualizarBibliotecario extends javax.swing.JInternalFrame {
      */
     public ActualizarBibliotecario() {
         initComponents();
+        
+        jComboBoxCargoAc.removeAllItems();
+        jComboBoxTurnoAc.removeAllItems();
+
+        for (Cargo cargo : Cargo.values()) {
+            jComboBoxCargoAc.addItem(cargo.name());
+        }
+
+        for (Turno turno : Turno.values()) {
+            jComboBoxTurnoAc.addItem(turno.name());
+        }
     }
 
     public JButton getjButtonActBBCedula() {
@@ -53,14 +67,6 @@ public class ActualizarBibliotecario extends javax.swing.JInternalFrame {
 
     public void setjTextFieldActBApellido(JTextField jTextFieldActBApellido) {
         this.jTextFieldActBApellido = jTextFieldActBApellido;
-    }
-
-    public JTextField getjTextFieldActBCargo() {
-        return jTextFieldActBCargo;
-    }
-
-    public void setjTextFieldActBCargo(JTextField jTextFieldActBCargo) {
-        this.jTextFieldActBCargo = jTextFieldActBCargo;
     }
 
     public JTextField getjTextFieldActBCedula() {
@@ -103,17 +109,25 @@ public class ActualizarBibliotecario extends javax.swing.JInternalFrame {
         this.jTextFieldActBTelefono = jTextFieldActBTelefono;
     }
 
-    public JTextField getjTextFieldActBTurno() {
-        return jTextFieldActBTurno;
-    }
-
-    public void setjTextFieldActBTurno(JTextField jTextFieldActBTurno) {
-        this.jTextFieldActBTurno = jTextFieldActBTurno;
-    }
-
     public void mostrarInformacion(String mensaje) {
         JOptionPane.showMessageDialog(this, mensaje);
 
+    }
+
+    public JComboBox<String> getjComboBoxCargoAc() {
+        return jComboBoxCargoAc;
+    }
+
+    public void setjComboBoxCargoAc(JComboBox<String> jComboBoxCargoAc) {
+        this.jComboBoxCargoAc = jComboBoxCargoAc;
+    }
+
+    public JComboBox<String> getjComboBoxTurnoAc() {
+        return jComboBoxTurnoAc;
+    }
+
+    public void setjComboBoxTurnoAc(JComboBox<String> jComboBoxTurnoAc) {
+        this.jComboBoxTurnoAc = jComboBoxTurnoAc;
     }
 
     public void mostrarInformacion1(String mensaje) {
@@ -142,7 +156,6 @@ public class ActualizarBibliotecario extends javax.swing.JInternalFrame {
         jLabelActBApellido = new javax.swing.JLabel();
         jTextFieldActBApellido = new javax.swing.JTextField();
         jLabelActBCargo = new javax.swing.JLabel();
-        jTextFieldActBCargo = new javax.swing.JTextField();
         jLabelActBTelefono = new javax.swing.JLabel();
         jTextFieldActBTelefono = new javax.swing.JTextField();
         jLabelActBCodBibliotecario = new javax.swing.JLabel();
@@ -150,9 +163,11 @@ public class ActualizarBibliotecario extends javax.swing.JInternalFrame {
         jLabelActBFNacimiento = new javax.swing.JLabel();
         jTextFieldActBFecha = new javax.swing.JTextField();
         jLabelActBTurno = new javax.swing.JLabel();
-        jTextFieldActBTurno = new javax.swing.JTextField();
         jButtonActualizarB = new javax.swing.JButton();
         jButtonActBCancelar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jComboBoxTurnoAc = new javax.swing.JComboBox<>();
+        jComboBoxCargoAc = new javax.swing.JComboBox<>();
 
         setClosable(true);
         setIconifiable(true);
@@ -172,7 +187,7 @@ public class ActualizarBibliotecario extends javax.swing.JInternalFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabelActualizarBibliotecario, javax.swing.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)
+                .addComponent(jLabelActualizarBibliotecario, javax.swing.GroupLayout.DEFAULT_SIZE, 309, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -214,6 +229,13 @@ public class ActualizarBibliotecario extends javax.swing.JInternalFrame {
         jButtonActBCancelar.setText("CANCELAR");
         jButtonActBCancelar.addActionListener(this::jButtonActBCancelarActionPerformed);
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        jLabel1.setText("AAAA-MM-DD");
+
+        jComboBoxTurnoAc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jComboBoxCargoAc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -224,37 +246,39 @@ public class ActualizarBibliotecario extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                             .addComponent(jLabelActBTelefono)
-                            .addGap(238, 238, 238))
+                            .addContainerGap(263, Short.MAX_VALUE))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                             .addComponent(jLabelActBCodBibliotecario)
-                            .addGap(246, 246, 246))
+                            .addContainerGap(271, Short.MAX_VALUE))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                             .addComponent(jLabelActBFNacimiento)
-                            .addGap(173, 173, 173)))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabelActBTurno)
-                        .addComponent(jLabelActBApellido)
-                        .addComponent(jLabelActBCedula)
-                        .addComponent(jLabelActBCargo)
-                        .addComponent(jLabelActBNombre)
-                        .addComponent(jTextFieldActBNombre)
-                        .addComponent(jTextFieldActBApellido)
-                        .addComponent(jTextFieldActBCargo)
-                        .addComponent(jTextFieldActBTelefono)
-                        .addComponent(jTextFieldActBCodigo)
-                        .addComponent(jTextFieldActBFecha)
-                        .addComponent(jTextFieldActBTurno)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jTextFieldActBCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jButtonActBBCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel1)
+                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(jButtonActualizarB, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButtonActBCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(34, 34, 34)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jComboBoxCargoAc, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabelActBTurno, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelActBApellido, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelActBCedula, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelActBCargo, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelActBNombre, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldActBNombre, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldActBApellido, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldActBTelefono, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldActBCodigo, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldActBFecha, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jTextFieldActBCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButtonActBBCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addGap(32, 32, 32)
+                                .addComponent(jButtonActualizarB, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButtonActBCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jComboBoxTurnoAc, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(26, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -276,7 +300,7 @@ public class ActualizarBibliotecario extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelActBCargo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextFieldActBCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jComboBoxCargoAc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelActBTelefono)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -286,18 +310,20 @@ public class ActualizarBibliotecario extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextFieldActBCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelActBFNacimiento)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelActBFNacimiento)
+                    .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextFieldActBFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelActBTurno)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextFieldActBTurno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jComboBoxTurnoAc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonActualizarB, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonActBCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(21, 21, 21))
         );
 
         jScrollPane1.setViewportView(jPanel1);
@@ -307,11 +333,11 @@ public class ActualizarBibliotecario extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addGap(106, 106, 106)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(126, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -319,8 +345,8 @@ public class ActualizarBibliotecario extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19))
         );
 
         pack();
@@ -362,6 +388,9 @@ public class ActualizarBibliotecario extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButtonActBBCedula;
     private javax.swing.JButton jButtonActBCancelar;
     private javax.swing.JButton jButtonActualizarB;
+    private javax.swing.JComboBox<String> jComboBoxCargoAc;
+    private javax.swing.JComboBox<String> jComboBoxTurnoAc;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelActBApellido;
     private javax.swing.JLabel jLabelActBCargo;
     private javax.swing.JLabel jLabelActBCedula;
@@ -375,12 +404,10 @@ public class ActualizarBibliotecario extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextFieldActBApellido;
-    private javax.swing.JTextField jTextFieldActBCargo;
     private javax.swing.JTextField jTextFieldActBCedula;
     private javax.swing.JTextField jTextFieldActBCodigo;
     private javax.swing.JTextField jTextFieldActBFecha;
     private javax.swing.JTextField jTextFieldActBNombre;
     private javax.swing.JTextField jTextFieldActBTelefono;
-    private javax.swing.JTextField jTextFieldActBTurno;
     // End of variables declaration//GEN-END:variables
 }

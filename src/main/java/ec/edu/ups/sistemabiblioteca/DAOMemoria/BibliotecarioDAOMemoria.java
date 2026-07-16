@@ -2,6 +2,8 @@ package ec.edu.ups.sistemabiblioteca.DAOMemoria;
 
 import ec.edu.ups.sistemabiblioteca.DAO.BibliotecarioDAO;
 import ec.edu.ups.sistemabiblioteca.Exceptions.BibliotecarioNoExiste;
+import ec.edu.ups.sistemabiblioteca.enums.Cargo;
+import ec.edu.ups.sistemabiblioteca.enums.Turno;
 import ec.edu.ups.sistemabiblioteca.models.Bibliotecario;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,8 +16,8 @@ public class BibliotecarioDAOMemoria implements BibliotecarioDAO {
         bibliotecarios = new ArrayList<>();
         bibliotecarios.add(new Bibliotecario(
                 "BIB001",
-                "Mañana",
-                "Encargado de préstamos",
+                Turno.DIURNO,
+                Cargo.BIBLIOTECARIO,
                 "0102030405",
                 "Juan",
                 "Pérez",
@@ -25,8 +27,8 @@ public class BibliotecarioDAOMemoria implements BibliotecarioDAO {
 
         bibliotecarios.add(new Bibliotecario(
                 "BIB002",
-                "Tarde",
-                "Asistente de biblioteca",
+                Turno.DIURNO,
+                Cargo.BIBLIOTECARIO,
                 "0203040506",
                 "María",
                 "Gómez",
@@ -36,8 +38,8 @@ public class BibliotecarioDAOMemoria implements BibliotecarioDAO {
 
         bibliotecarios.add(new Bibliotecario(
                 "BIB003",
-                "Noche",
-                "Supervisor",
+                Turno.DIURNO,
+                Cargo.BIBLIOTECARIO,
                 "0304050607",
                 "Carlos",
                 "López",

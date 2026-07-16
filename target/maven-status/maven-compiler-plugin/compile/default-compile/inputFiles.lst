@@ -22,6 +22,9 @@ C:\Users\Usuario\OneDrive - Universidad Politecnica Salesiana\Documentos\Nueva C
 C:\Users\Usuario\OneDrive - Universidad Politecnica Salesiana\Documentos\Nueva Carpeta\Preyecto-POO-Interfaces\src\main\java\ec\edu\ups\sistemabiblioteca\DAOMemoria\LibroDAOMemoria.java
 C:\Users\Usuario\OneDrive - Universidad Politecnica Salesiana\Documentos\Nueva Carpeta\Preyecto-POO-Interfaces\src\main\java\ec\edu\ups\sistemabiblioteca\DAOMemoria\PrestamoDAOMemoria.java
 C:\Users\Usuario\OneDrive - Universidad Politecnica Salesiana\Documentos\Nueva Carpeta\Preyecto-POO-Interfaces\src\main\java\ec\edu\ups\sistemabiblioteca\DAOMemoria\UsuarioDAOMemoria.java
+C:\Users\Usuario\OneDrive - Universidad Politecnica Salesiana\Documentos\Nueva Carpeta\Preyecto-POO-Interfaces\src\main\java\ec\edu\ups\sistemabiblioteca\enums\Cargo.java
+C:\Users\Usuario\OneDrive - Universidad Politecnica Salesiana\Documentos\Nueva Carpeta\Preyecto-POO-Interfaces\src\main\java\ec\edu\ups\sistemabiblioteca\enums\Nacionalidades.java
+C:\Users\Usuario\OneDrive - Universidad Politecnica Salesiana\Documentos\Nueva Carpeta\Preyecto-POO-Interfaces\src\main\java\ec\edu\ups\sistemabiblioteca\enums\Turno.java
 C:\Users\Usuario\OneDrive - Universidad Politecnica Salesiana\Documentos\Nueva Carpeta\Preyecto-POO-Interfaces\src\main\java\ec\edu\ups\sistemabiblioteca\Exceptions\AutorNoEncontradoException.java
 C:\Users\Usuario\OneDrive - Universidad Politecnica Salesiana\Documentos\Nueva Carpeta\Preyecto-POO-Interfaces\src\main\java\ec\edu\ups\sistemabiblioteca\Exceptions\BibliotecarioNoExiste.java
 C:\Users\Usuario\OneDrive - Universidad Politecnica Salesiana\Documentos\Nueva Carpeta\Preyecto-POO-Interfaces\src\main\java\ec\edu\ups\sistemabiblioteca\Exceptions\DevolucionNoEncontradaException.java
@@ -35,6 +38,7 @@ C:\Users\Usuario\OneDrive - Universidad Politecnica Salesiana\Documentos\Nueva C
 C:\Users\Usuario\OneDrive - Universidad Politecnica Salesiana\Documentos\Nueva Carpeta\Preyecto-POO-Interfaces\src\main\java\ec\edu\ups\sistemabiblioteca\models\Persona.java
 C:\Users\Usuario\OneDrive - Universidad Politecnica Salesiana\Documentos\Nueva Carpeta\Preyecto-POO-Interfaces\src\main\java\ec\edu\ups\sistemabiblioteca\models\Prestamo.java
 C:\Users\Usuario\OneDrive - Universidad Politecnica Salesiana\Documentos\Nueva Carpeta\Preyecto-POO-Interfaces\src\main\java\ec\edu\ups\sistemabiblioteca\models\Usuario.java
+C:\Users\Usuario\OneDrive - Universidad Politecnica Salesiana\Documentos\Nueva Carpeta\Preyecto-POO-Interfaces\src\main\java\ec\edu\ups\sistemabiblioteca\principalview\Fondo.java
 C:\Users\Usuario\OneDrive - Universidad Politecnica Salesiana\Documentos\Nueva Carpeta\Preyecto-POO-Interfaces\src\main\java\ec\edu\ups\sistemabiblioteca\principalview\Principal.java
 C:\Users\Usuario\OneDrive - Universidad Politecnica Salesiana\Documentos\Nueva Carpeta\Preyecto-POO-Interfaces\src\main\java\ec\edu\ups\sistemabiblioteca\view\autor\ActualizarAutor.java
 C:\Users\Usuario\OneDrive - Universidad Politecnica Salesiana\Documentos\Nueva Carpeta\Preyecto-POO-Interfaces\src\main\java\ec\edu\ups\sistemabiblioteca\view\autor\BorrarAutor.java
