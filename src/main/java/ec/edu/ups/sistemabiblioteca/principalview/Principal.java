@@ -139,7 +139,7 @@ public class Principal extends javax.swing.JFrame {
         }
         //Icon2 
         {
-            ImageIcon icon = new ImageIcon(getClass().getResource("/ec/edu/ups/sistemabiblioteca/pictures/fondoB.png"));
+            ImageIcon icon = new ImageIcon(getClass().getResource("/ec/edu/ups/sistemabiblioteca/pictures/fondoBiblioteca.png"));
 
             Image imagen = icon.getImage().getScaledInstance(
                     jLabelfondo.getWidth(),
