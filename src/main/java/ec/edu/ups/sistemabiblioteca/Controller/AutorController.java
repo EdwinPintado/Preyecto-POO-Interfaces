@@ -43,13 +43,13 @@ public class AutorController {
     private String exCamsj;
     private String canCUmsj;
     private String IDmsj;
-    private String  TFmsj;
-    private String  Nmsj; 
-    private String  Amsj;
-    private String  NAmsj; 
-    private String  GLmsj; 
-    private String  dfsAmsj; 
-    private String  mAmsj;
+    private String TFmsj;
+    private String Nmsj;
+    private String Amsj;
+    private String NAmsj;
+    private String GLmsj;
+    private String dfsAmsj;
+    private String mAmsj;
     private String lAmsj;
 
     public AutorController(AutorDAO autorDAO, CrearAutor crearAutor, BorrarAutor borrarAutor, BuscarAutor buscarAutor, ActualizarAutor actualizarAutor, ListarAutor listarAutor) {
@@ -75,13 +75,13 @@ public class AutorController {
         sAcAmsj = "Autor actualizado correctamente :)";
         canAcAmsj = "Actualizacion candelada";
         cfmLmsj = "Confirmar";
-        fchmsj = "Error: El formato de fecha debe ser DD-MM-YYYY.";
+        fchmsj = "Error: El formato de fecha debe ser AAAA-MM-DD.";
         exCamsj = "Todos los campos deben estar llenos para guardar el autor.";
         canCUmsj = "Acción cancelada :(";
-        IDmsj="La cédula debe contener exactamente 10 dígitos.";
-        TFmsj ="El teléfono debe contener exactamente 10 dígitos.";
-        Nmsj ="El nombre solo puede contener letras.";
-        Amsj="El apellido solo puede contener letras.";
+        IDmsj = "La cédula debe contener exactamente 10 dígitos enteros.";
+        TFmsj = "El teléfono debe contener exactamente 10 dígitos enteros.";
+        Nmsj = "El nombre solo puede contener letras.";
+        Amsj = "El apellido solo puede contener letras.";
         NAmsj = "La nacionalidad solo puede contener letras.";
         GLmsj = "El género literario solo puede contener letras.";
         dfsAmsj = "Debe ingresar una cédula.";
@@ -108,16 +108,18 @@ public class AutorController {
                 String generoLiterario = crearAutor.getjTextFieldCAGenero().getText().trim();
                 String bibliografia = crearAutor.getjTextFieldCABibliografia().getText().trim();
 
-                if (cedula.isEmpty() || nombre.isEmpty() || apellido.isEmpty()
-                        || telefono.isEmpty() || fechaTexto.isEmpty()
-                        || nacionalidad.isEmpty() || generoLiterario.isEmpty()
-                        || bibliografia.isEmpty()) {
-
+                if (cedula.isEmpty() || nombre.isEmpty() || apellido.isEmpty() || telefono.isEmpty() || fechaTexto.isEmpty() || nacionalidad.isEmpty() || generoLiterario.isEmpty() || bibliografia.isEmpty()) {
                     throw new IllegalArgumentException(exCamsj);
                 }
 
                 if (!cedula.matches("\\d{10}")) {
                     throw new IllegalArgumentException(IDmsj);
+                }
+                
+                try {
+                    autorDAO.buscar(cedula);
+                    throw new IllegalArgumentException("La cédula ya está registrada.");
+                } catch (AutorNoEncontradoException e) {
                 }
 
                 if (!telefono.matches("\\d{10}")) {
@@ -239,31 +241,21 @@ public class AutorController {
 
             Autor autor = autorDAO.buscar(cedulaEliminar);
 
-            int respuesta = JOptionPane.showConfirmDialog(
-                    borrarAutor,
-                    dAmsj + autor.getNombre() + " ?",
-                    cfmLmsj,
-                    JOptionPane.YES_NO_OPTION);
+            int respuesta = JOptionPane.showConfirmDialog(borrarAutor,dAmsj + autor.getNombre() + " ?",cfmLmsj,JOptionPane.YES_NO_OPTION);
 
             if (respuesta == JOptionPane.YES_OPTION) {
 
                 autorDAO.eliminar(cedulaEliminar);
-
                 borrarAutor.mostrarInformacion1(sDAmsj);
-
                 borrarAutor.getjTextFieldEACedula().setText("");
 
             } else {
-
                 borrarAutor.mostrarInformacion1(canCUmsj);
             }
 
         } catch (AutorNoEncontradoException e) {
-
             borrarAutor.mostrarInformacion(exAmsj);
-
         } catch (IllegalArgumentException e) {
-
             borrarAutor.mostrarInformacion(e.getMessage());
         }
     }
@@ -271,9 +263,7 @@ public class AutorController {
     public void buscarAutor() {
 
         try {
-
             String cedulaBuscar = buscarAutor.getjTextFieldBACedula().getText().trim();
-
             if (cedulaBuscar.isEmpty()) {
                 throw new IllegalArgumentException(dfsAmsj);
             }
@@ -368,11 +358,7 @@ public class AutorController {
 
             Autor autorExt = autorDAO.buscar(cedulaBuscar);
 
-            int respuesta = JOptionPane.showConfirmDialog(
-                    actualizarAutor,
-                    acAmsj + autorExt.getNombre() + " ?",
-                    cfmLmsj,
-                    JOptionPane.YES_NO_OPTION);
+            int respuesta = JOptionPane.showConfirmDialog(actualizarAutor,acAmsj + autorExt.getNombre() + " ?",cfmLmsj,JOptionPane.YES_NO_OPTION);
 
             if (respuesta == JOptionPane.YES_OPTION) {
 
@@ -384,11 +370,7 @@ public class AutorController {
                 String fechaTexto = actualizarAutor.getjTextFieldActAFecha().getText().trim();
                 String nuevoBlibliografia = actualizarAutor.getjTextFieldActABibliografia().getText().trim();
 
-                if (nuevoNombre.isEmpty() || nuevoApellido.isEmpty()
-                        || nuevoNacionalidad.isEmpty() || nuevoTelefono.isEmpty()
-                        || nuevoGenero.isEmpty() || fechaTexto.isEmpty()
-                        || nuevoBlibliografia.isEmpty()) {
-
+                if (nuevoNombre.isEmpty() || nuevoApellido.isEmpty() || nuevoNacionalidad.isEmpty() || nuevoTelefono.isEmpty() || nuevoGenero.isEmpty() || fechaTexto.isEmpty() || nuevoBlibliografia.isEmpty()) {
                     throw new IllegalArgumentException(mAmsj);
                 }
 
@@ -418,9 +400,7 @@ public class AutorController {
                     nuevoFechaN = Date.valueOf(fechaTexto);
 
                 } catch (IllegalArgumentException e) {
-
-                    throw new IllegalArgumentException(
-                            fchmsj);
+                    throw new IllegalArgumentException(fchmsj);
                 }
 
                 Autor autorAct = new Autor(
@@ -435,20 +415,14 @@ public class AutorController {
                 );
 
                 autorDAO.actualizar(autorAct);
-
                 actualizarAutor.mostrarInformacion1(sAcAmsj);
-
             } else {
-
                 actualizarAutor.mostrarInformacion1(canAcAmsj);
             }
 
         } catch (AutorNoEncontradoException e) {
-
             actualizarAutor.mostrarInformacion(exAmsj);
-
         } catch (IllegalArgumentException e) {
-
             actualizarAutor.mostrarInformacion(e.getMessage());
         }
     }
@@ -456,25 +430,18 @@ public class AutorController {
     public void listarAutores() {
 
         try {
-
             List<Autor> lista = autorDAO.listar();
-
             if (lista == null || lista.isEmpty()) {
                 throw new IllegalArgumentException("No existen autores registrados.");
             }
-
             listarAutor.cargarDatos(lista);
-
         } catch (IllegalArgumentException e) {
-
             listarAutor.mostrarInformacion(e.getMessage());
         }
     }
 
     public void mostrarContadorAutores() {
-
         int total = autorDAO.contar();
-
         listarAutor.getTxtContadordeAutores().setText(String.valueOf(total));
     }
 
@@ -552,18 +519,14 @@ public class AutorController {
         fchmsj = (bundle.getString("fchmsj"));
         exCamsj = (bundle.getString("exCamsj"));
         canCUmsj = (bundle.getString("canCUmsj"));
-        IDmsj= (bundle.getString("IDmsj"));
+        IDmsj = (bundle.getString("IDmsj"));
         TFmsj = (bundle.getString("TFmsj"));
         Nmsj = (bundle.getString("Nmsj"));
-        Amsj= (bundle.getString("Amsj"));
+        Amsj = (bundle.getString("Amsj"));
         NAmsj = (bundle.getString("NAmsj"));
         GLmsj = (bundle.getString("GLmsj"));
         dfsAmsj = (bundle.getString("dfsAmsj"));
         mAmsj = (bundle.getString("mAmsj"));
         lAmsj = (bundle.getString("lAmsj"));
-
-
-
     }
-
 }

@@ -160,6 +160,8 @@ public class CrearUsuario extends javax.swing.JInternalFrame {
 
         jLabelCUTelefono.setText("Teléfono:");
 
+        jTextFieldCUTelefono.addActionListener(this::jTextFieldCUTelefonoActionPerformed);
+
         jLabelCUCElectronico.setText("Correo Electrónico: ");
 
         jLabelCUApellido.setText("Apellido:");
@@ -167,6 +169,7 @@ public class CrearUsuario extends javax.swing.JInternalFrame {
         jLabelCUNombre.setText("Nombre:");
 
         jButtonCUCancelar.setText("CANCELAR");
+        jButtonCUCancelar.addActionListener(this::jButtonCUCancelarActionPerformed);
 
         jLabelCUFNacimiento.setText("Fecha de nacimiento:");
 
@@ -263,12 +266,20 @@ public class CrearUsuario extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTextFieldCUTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCUTelefonoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldCUTelefonoActionPerformed
+
+    private void jButtonCUCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCUCancelarActionPerformed
+        dispose();
+    }//GEN-LAST:event_jButtonCUCancelarActionPerformed
 
     public void cambiarIdioma(Locale locale){
         ResourceBundle bundle =ResourceBundle.getBundle("ec.edu.ups.sistemabiblioteca.i18n.mensajes", locale);

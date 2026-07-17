@@ -4,6 +4,8 @@
  */
 package ec.edu.ups.sistemabiblioteca.Controller;
 
+import ec.edu.ups.sistemabiblioteca.DAO.DevolucionDAO;
+import ec.edu.ups.sistemabiblioteca.DAO.PrestamoDAO;
 import ec.edu.ups.sistemabiblioteca.DAOMemoria.DevolucionDAOMemoria;
 import ec.edu.ups.sistemabiblioteca.DAOMemoria.PrestamoDAOMemoria;
 import ec.edu.ups.sistemabiblioteca.Exceptions.PrestamoNoEncontrado;
@@ -17,6 +19,7 @@ import java.sql.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
+import java.text.SimpleDateFormat;
 
 /**
  *
@@ -24,9 +27,8 @@ import java.util.ResourceBundle;
  */
 public class DevolucionController {
 
-    private DevolucionDAOMemoria devolucionDAO;
-    private PrestamoDAOMemoria prestamoDAO;
-
+    private DevolucionDAO devolucionDAO;
+    private PrestamoDAO prestamoDAO;
     private RealizarDevolucion agregarDevolucionView;
     private ListarDevolucion listarDevolucionView;
     private String agregarDmsj;
@@ -35,7 +37,7 @@ public class DevolucionController {
     private String dDsmjs;
     private String fchmsj;
 
-    public DevolucionController(DevolucionDAOMemoria devolucionDAO, PrestamoDAOMemoria prestamoDAO, RealizarDevolucion agregarDevolucionView, ListarDevolucion listarDevolucionView) {
+    public DevolucionController(DevolucionDAO devolucionDAO, PrestamoDAO prestamoDAO, RealizarDevolucion agregarDevolucionView, ListarDevolucion listarDevolucionView) {
         this.devolucionDAO = devolucionDAO;
         this.prestamoDAO = prestamoDAO;
         this.agregarDevolucionView = agregarDevolucionView;
@@ -48,60 +50,40 @@ public class DevolucionController {
         noagDmsj = "No existe ese prestamo";
         lDmsj = "No existen devoluciones registradas.";
         dDsmjs = "Debe ingresar un código de préstamo.";
-        fchmsj = "Error: El formato de fecha debe ser DD-MM-YYYY.";
-        
-
+        fchmsj = "Error: El formato de fecha debe ser AAAA-MM-DD.";
     }
 
     public void buscarDevolucion() {
-
         try {
-
             String codigo = agregarDevolucionView.getjTextFieldDCodigo().getText().trim();
-
             if (codigo.isEmpty()) {
                 throw new IllegalArgumentException(dDsmjs);
             }
 
             Prestamo prestamo = prestamoDAO.buscar(codigo);
 
-            agregarDevolucionView.getjTextFieldDUCedula()
-                    .setText(prestamo.getUsuario().getCedula());
+            agregarDevolucionView.getjTextFieldDUCedula().setText(prestamo.getUsuario().getCedula());
+            agregarDevolucionView.getjTextFieldDUNombre().setText(prestamo.getUsuario().getNombre());
+            agregarDevolucionView.getjTextFieldDISBNLibro().setText(prestamo.getLibro().getIsbn());
+            agregarDevolucionView.getjTextFieldDTLibro().setText(prestamo.getLibro().getTitulo());
+            agregarDevolucionView.getjTextFieldDBCodigo().setText(prestamo.getBibliotecario().getCodigo());
 
-            agregarDevolucionView.getjTextFieldDUNombre()
-                    .setText(prestamo.getUsuario().getNombre());
-
-            agregarDevolucionView.getjTextFieldDISBNLibro()
-                    .setText(prestamo.getLibro().getIsbn());
-
-            agregarDevolucionView.getjTextFieldDTLibro()
-                    .setText(prestamo.getLibro().getTitulo());
-
-            agregarDevolucionView.getjTextFieldDBCodigo()
-                    .setText(prestamo.getBibliotecario().getCodigo());
-
-            agregarDevolucionView.getjTextFieldDFPrestamo()
-                    .setText(String.valueOf(prestamo.getFechaPrestamo()));
+            SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+            agregarDevolucionView.getjTextFieldDFPrestamo().setText(formato.format(prestamo.getFechaPrestamo()));
 
             Date fechaDevolucion;
 
             try {
-
                 fechaDevolucion = Date.valueOf(
                         agregarDevolucionView.getjTextFieldDFPrestamo().getText().trim()
                 );
-
             } catch (IllegalArgumentException e) {
-
-                throw new IllegalArgumentException(
-                        fchmsj
-                );
+                throw new IllegalArgumentException(fchmsj);
             }
 
         } catch (PrestamoNoEncontrado e) {
 
             agregarDevolucionView.mostrarInformacion(e.getMessage());
-
             agregarDevolucionView.getjTextFieldDUCedula().setText("");
             agregarDevolucionView.getjTextFieldDUNombre().setText("");
             agregarDevolucionView.getjTextFieldDISBNLibro().setText("");
@@ -111,56 +93,40 @@ public class DevolucionController {
             agregarDevolucionView.getjTextFieldDFLimite().setText("");
 
         } catch (IllegalArgumentException e) {
-
             agregarDevolucionView.mostrarInformacion(e.getMessage());
         }
     }
-    public void devulucion(){
+
+    public void devulucion() {
         try {
 
             String codigo = agregarDevolucionView.getjTextFieldDCodigo().getText().trim();
-
             if (codigo.isEmpty()) {
                 throw new IllegalArgumentException("Debe ingresar un código de préstamo.");
             }
-
             Prestamo prestamo = prestamoDAO.buscar(codigo);
-
-            agregarDevolucionView.getjTextFieldDUCedula()
-                    .setText(prestamo.getUsuario().getCedula());
-
-            agregarDevolucionView.getjTextFieldDUNombre()
-                    .setText(prestamo.getUsuario().getNombre());
-
-            agregarDevolucionView.getjTextFieldDISBNLibro()
-                    .setText(prestamo.getLibro().getIsbn());
-
-            agregarDevolucionView.getjTextFieldDTLibro()
-                    .setText(prestamo.getLibro().getTitulo());
-
-            agregarDevolucionView.getjTextFieldDBCodigo()
-                    .setText(prestamo.getBibliotecario().getCodigo());
-
-            agregarDevolucionView.getjTextFieldDFPrestamo()
-                    .setText(String.valueOf(prestamo.getFechaPrestamo()));
+            agregarDevolucionView.getjTextFieldDUCedula().setText(prestamo.getUsuario().getCedula());
+            agregarDevolucionView.getjTextFieldDUNombre().setText(prestamo.getUsuario().getNombre());
+            agregarDevolucionView.getjTextFieldDISBNLibro().setText(prestamo.getLibro().getIsbn());
+            agregarDevolucionView.getjTextFieldDTLibro().setText(prestamo.getLibro().getTitulo());
+            agregarDevolucionView.getjTextFieldDBCodigo().setText(prestamo.getBibliotecario().getCodigo());
+            agregarDevolucionView.getjTextFieldDFPrestamo().setText(String.valueOf(prestamo.getFechaPrestamo()));
 
             Date fechaDevolucion;
 
             try {
+                fechaDevolucion = Date.valueOf(agregarDevolucionView.getjTextFieldDFLimite().getText().trim());
 
-                fechaDevolucion = Date.valueOf(
-                        agregarDevolucionView.getjTextFieldDFLimite().getText().trim()
-                );
-
-            } catch (IllegalArgumentException e) {
-
-                throw new IllegalArgumentException(
-                        "El formato de fecha debe ser AAAA-MM-DD."
-                );
+                if (!fechaDevolucion.after(prestamo.getFechaPrestamo())) {
+                    throw new IllegalArgumentException("La fecha de devolución debe ser posterior a la fecha del préstamo.");
+                }
+            } catch (IllegalArgumentException e) {throw e;
+            } catch (Exception e) {
+                throw new IllegalArgumentException("El formato de fecha debe ser AAAA-MM-DD.");
             }
-
             Devolucion devolucion = new Devolucion(prestamo, fechaDevolucion);
-
+            devolucion.getPrestamo().getLibro().setDisponible(true);
+            
             devolucionDAO.agregar(devolucion);
 
             if (prestamo.getLibro() != null) {
@@ -172,7 +138,6 @@ public class DevolucionController {
         } catch (PrestamoNoEncontrado e) {
 
             agregarDevolucionView.mostrarInformacion(noagDmsj);
-
             agregarDevolucionView.getjTextFieldDUCedula().setText("");
             agregarDevolucionView.getjTextFieldDUNombre().setText("");
             agregarDevolucionView.getjTextFieldDISBNLibro().setText("");
@@ -182,17 +147,13 @@ public class DevolucionController {
             agregarDevolucionView.getjTextFieldDFLimite().setText("");
 
         } catch (IllegalArgumentException e) {
-
             agregarDevolucionView.mostrarInformacion(e.getMessage());
         }
     }
 
     public void listarDevoluciones() {
-
         try {
-
             List<Devolucion> lista = devolucionDAO.listar();
-
             if (lista == null || lista.isEmpty()) {
                 throw new IllegalArgumentException(lDmsj);
             }
@@ -200,7 +161,6 @@ public class DevolucionController {
             listarDevolucionView.cargarDatos(lista);
 
         } catch (IllegalArgumentException e) {
-
             listarDevolucionView.mostrarInformacion(e.getMessage());
         }
     }
@@ -219,18 +179,17 @@ public class DevolucionController {
                 buscarDevolucion();
             }
         });
-        agregarDevolucionView.getjButtonDevolver().addActionListener(new ActionListener(){
+        agregarDevolucionView.getjButtonDevolver().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 devulucion();
             }
-            
+
         });
 
     }
 
     public void configurarEventosListarDevoluciones() {
-
         listarDevolucionView.getBtnMostrarListaDevoluciones().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -249,8 +208,5 @@ public class DevolucionController {
         lDmsj = (bundle.getString("lDmsj"));
         dDsmjs = (bundle.getString("dDmsj"));
         fchmsj = (bundle.getString("fchmsj"));
-
     }
-
-
 }

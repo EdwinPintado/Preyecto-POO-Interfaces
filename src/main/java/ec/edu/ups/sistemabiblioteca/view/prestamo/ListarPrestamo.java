@@ -12,7 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
-
+import java.text.SimpleDateFormat;
 /**
  *
  * @author Usuario
@@ -56,20 +56,21 @@ public class ListarPrestamo extends javax.swing.JInternalFrame {
 
     public void cargarDatos(List<Prestamo> lista) {
 
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
         modelo.setRowCount(0);
 
         for (Prestamo b : lista) {
 
-            Object[] fila = {
-                b.getCodigoPrestamo(),
-                b.getUsuario().getNombre(),
-                b.getLibro().getTitulo(),
-                b.getFechaPrestamo(),
-            };
-            modelo.addRow(fila);
+        Object[] fila = {
+            b.getCodigoPrestamo(),
+            b.getUsuario().getNombre(),
+            b.getLibro().getTitulo(),
+            formato.format(b.getFechaPrestamo())
+        };
 
-        }
+        modelo.addRow(fila);
     }
+}
 
     public void mostrarInformacion(String mensaje) {
         JOptionPane.showMessageDialog(this, mensaje);

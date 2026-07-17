@@ -339,7 +339,7 @@ public class BorrarUsuario extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButtonEUABorrarActionPerformed
 
     private void jButtonEUCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEUCancelarActionPerformed
-        // TODO add your handling code here:
+        dispose();
     }//GEN-LAST:event_jButtonEUCancelarActionPerformed
 
     public void cambiarIdioma(Locale locale){

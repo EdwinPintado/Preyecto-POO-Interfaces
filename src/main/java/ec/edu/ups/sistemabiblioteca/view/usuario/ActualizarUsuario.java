@@ -327,7 +327,7 @@ public class ActualizarUsuario extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButtonAUBuscarActionPerformed
 
     private void jButtonAUCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAUCancelarActionPerformed
-        // TODO add your handling code here:
+        dispose();
     }//GEN-LAST:event_jButtonAUCancelarActionPerformed
 
     private void jButtonAUActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAUActualizarActionPerformed

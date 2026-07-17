@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import java.text.SimpleDateFormat;
 
 public class ListarLibro extends javax.swing.JInternalFrame {
 
@@ -31,14 +32,14 @@ public class ListarLibro extends javax.swing.JInternalFrame {
 
     public void cargarDatos(List<Libro> lista) {
         modelo.setRowCount(0);
-
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
         for (Libro libro : lista) {
 
             Object[] fila = {
                 libro.getIsbn(),
                 libro.getTitulo(),
                 libro.getEditorial(),
-                libro.getAnioPublicacion(),};
+                formato.format(libro.getAnioPublicacion())};
             modelo.addRow(fila);
         }
     }

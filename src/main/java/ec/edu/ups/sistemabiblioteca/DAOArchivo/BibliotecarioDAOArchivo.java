@@ -1,6 +1,7 @@
 package ec.edu.ups.sistemabiblioteca.DAOArchivo;
 
 import ec.edu.ups.sistemabiblioteca.DAO.BibliotecarioDAO;
+import ec.edu.ups.sistemabiblioteca.Exceptions.BibliotecarioNoExiste;
 import ec.edu.ups.sistemabiblioteca.enums.Cargo;
 import ec.edu.ups.sistemabiblioteca.enums.Turno;
 import ec.edu.ups.sistemabiblioteca.models.Bibliotecario;
@@ -36,34 +37,24 @@ public class BibliotecarioDAOArchivo implements BibliotecarioDAO {
     private void escribirTexto(RandomAccessFile archivo, String texto, int longitud)
             throws IOException {
 
-        StringBuilder sb = new StringBuilder(
-                texto == null ? "" : texto
-        );
+        StringBuilder sb = new StringBuilder(texto == null ? "" : texto);
 
         sb.setLength(longitud);
 
         archivo.writeChars(sb.toString());
-
     }
 
-    private String leerTexto(RandomAccessFile archivo, int longitud)
-            throws IOException {
+    private String leerTexto(RandomAccessFile archivo, int longitud)throws IOException {
 
         char[] caracteres = new char[longitud];
 
         for (int i = 0; i < longitud; i++) {
-
             caracteres[i] = archivo.readChar();
-
         }
-
         return new String(caracteres).trim();
-
     }
 
-    private void escribirBibliotecario(RandomAccessFile archivo,
-            Bibliotecario b)
-            throws IOException {
+    private void escribirBibliotecario(RandomAccessFile archivo,Bibliotecario b)throws IOException {
 
         escribirTexto(archivo, b.getCodigo(), TAM_CODIGO);
 
@@ -79,19 +70,14 @@ public class BibliotecarioDAOArchivo implements BibliotecarioDAO {
 
         escribirTexto(archivo, b.getTelefono(), TAM_TELEFONO);
 
-        archivo.writeLong(
-                b.getFechaNacimiento().getTime()
-        );
+        archivo.writeLong(b.getFechaNacimiento().getTime());
 
         archivo.writeBoolean(true);
-
     }
 
     @Override
     public void agregar(Bibliotecario bibliotecario) {
-
-        try (RandomAccessFile archivo
-                = new RandomAccessFile(ruta, "rw")) {
+        try (RandomAccessFile archivo= new RandomAccessFile(ruta, "rw")) {
 
             archivo.seek(archivo.length());
 
@@ -99,56 +85,33 @@ public class BibliotecarioDAOArchivo implements BibliotecarioDAO {
                     archivo,
                     bibliotecario
             );
-
         } catch (IOException e) {
-
             System.out.println("Error al guardar bibliotecario");
-
         }
-
     }
 
     @Override
-    public Bibliotecario buscar(String cedula) throws Exception {
+    public Bibliotecario buscar(String cedula) throws BibliotecarioNoExiste {
 
-        try (RandomAccessFile archivo
-                = new RandomAccessFile(ruta, "r")) {
+        try (RandomAccessFile archivo = new RandomAccessFile(ruta, "r")) {
 
-            long cantidad
-                    = archivo.length() / TAM_REGISTRO;
+            long cantidad = archivo.length() / TAM_REGISTRO;
 
             for (long i = 0; i < cantidad; i++) {
 
                 archivo.seek(i * TAM_REGISTRO);
 
-                String codigo
-                        = leerTexto(archivo, TAM_CODIGO);
+                String codigo = leerTexto(archivo, TAM_CODIGO);
+                Turno turno = Turno.valueOf(leerTexto(archivo, TAM_TURNO));
+                Cargo cargo = Cargo.valueOf(leerTexto(archivo, TAM_CARGO));
+                String cedulaLeida = leerTexto(archivo, TAM_CEDULA);
+                String nombre = leerTexto(archivo, TAM_NOMBRE);
+                String apellido = leerTexto(archivo, TAM_APELLIDO);
+                String telefono = leerTexto(archivo, TAM_TELEFONO);
 
-                Turno turno 
-                        = Turno.valueOf(leerTexto(archivo, TAM_TURNO));
+                Date fecha = new Date(archivo.readLong());
 
-                Cargo cargo 
-                        = Cargo.valueOf(leerTexto(archivo, TAM_CARGO));
-
-                String cedulaLeida
-                        = leerTexto(archivo, TAM_CEDULA);
-
-                String nombre
-                        = leerTexto(archivo, TAM_NOMBRE);
-
-                String apellido
-                        = leerTexto(archivo, TAM_APELLIDO);
-
-                String telefono
-                        = leerTexto(archivo, TAM_TELEFONO);
-
-                Date fecha
-                        = new Date(
-                                archivo.readLong()
-                        );
-
-                boolean activo
-                        = archivo.readBoolean();
+                boolean activo = archivo.readBoolean();
 
                 if (activo && cedulaLeida.equals(cedula)) {
 
@@ -162,25 +125,21 @@ public class BibliotecarioDAOArchivo implements BibliotecarioDAO {
                             telefono,
                             fecha
                     );
-
                 }
-
             }
 
+        } catch (IOException e) {
+            throw new BibliotecarioNoExiste("Error al leer el archivo de bibliotecarios.");
         }
-
-        return null;
-
+        throw new BibliotecarioNoExiste("No existe un bibliotecario con la cédula: " + cedula);
     }
 
     @Override
     public void actualizar(Bibliotecario bibliotecario) {
 
-        try (RandomAccessFile archivo
-                = new RandomAccessFile(ruta, "rw")) {
+        try (RandomAccessFile archivo = new RandomAccessFile(ruta, "rw")) {
 
-            long cantidad
-                    = archivo.length() / TAM_REGISTRO;
+            long cantidad = archivo.length() / TAM_REGISTRO;
 
             for (long i = 0; i < cantidad; i++) {
 
@@ -194,48 +153,33 @@ public class BibliotecarioDAOArchivo implements BibliotecarioDAO {
                         + TAM_CARGO * 2
                 );
 
-                String cedulaLeida
-                        = leerTexto(archivo, TAM_CEDULA);
+                String cedulaLeida = leerTexto(archivo, TAM_CEDULA);
 
-                if (cedulaLeida.equals(
-                        bibliotecario.getCedula())) {
-
+                if (cedulaLeida.equals(bibliotecario.getCedula())) {
                     archivo.seek(posicion);
-
                     escribirBibliotecario(
                             archivo,
                             bibliotecario
                     );
-
                     break;
-
                 }
-
             }
-
         } catch (IOException e) {
 
-            System.out.println(
-                    "Error al actualizar bibliotecario"
-            );
-
+            System.out.println("Error al actualizar bibliotecario");
         }
-
     }
 
     @Override
     public void eliminar(String cedula) {
 
-        try (RandomAccessFile archivo
-                = new RandomAccessFile(ruta, "rw")) {
+        try (RandomAccessFile archivo = new RandomAccessFile(ruta, "rw")) {
 
-            long cantidad
-                    = archivo.length() / TAM_REGISTRO;
+            long cantidad = archivo.length() / TAM_REGISTRO;
 
             for (long i = 0; i < cantidad; i++) {
 
-                long posicion
-                        = i * TAM_REGISTRO;
+                long posicion = i * TAM_REGISTRO;
 
                 archivo.seek(posicion);
 
@@ -245,18 +189,15 @@ public class BibliotecarioDAOArchivo implements BibliotecarioDAO {
                         + TAM_CARGO * 2
                 );
 
-                String cedulaLeida
-                        = leerTexto(archivo, TAM_CEDULA);
+                String cedulaLeida = leerTexto(archivo, TAM_CEDULA);
 
                 archivo.skipBytes(
                         TAM_NOMBRE * 2
                         + TAM_APELLIDO * 2
                         + TAM_TELEFONO * 2
-                        + 8
-                );
+                        + 8);
 
-                boolean activo
-                        = archivo.readBoolean();
+                boolean activo = archivo.readBoolean();
 
                 if (activo && cedulaLeida.equals(cedula)) {
 
@@ -271,74 +212,49 @@ public class BibliotecarioDAOArchivo implements BibliotecarioDAO {
                             + (TAM_TELEFONO * 2)
                             + 8
                     );
-
                     archivo.writeBoolean(false);
-
                     break;
-
                 }
-
             }
-
         } catch (IOException e) {
 
-            System.out.println(
-                    "Error al eliminar bibliotecario"
-            );
-
+            System.out.println("Error al eliminar bibliotecario");
         }
-
     }
 
     @Override
     public List<Bibliotecario> listar() {
 
-        List<Bibliotecario> lista
-                = new ArrayList<>();
+        List<Bibliotecario> lista = new ArrayList<>();
 
-        try (RandomAccessFile archivo
-                = new RandomAccessFile(ruta, "r")) {
+        try (RandomAccessFile archivo = new RandomAccessFile(ruta, "r")) {
 
-            long cantidad
-                    = archivo.length() / TAM_REGISTRO;
+            long cantidad = archivo.length() / TAM_REGISTRO;
 
             for (long i = 0; i < cantidad; i++) {
 
                 archivo.seek(i * TAM_REGISTRO);
 
-                String codigo
-                        = leerTexto(archivo, TAM_CODIGO);
+                String codigo = leerTexto(archivo, TAM_CODIGO);
 
-                Turno turno 
-                        = Turno.valueOf(leerTexto(archivo, TAM_TURNO));
+                Turno turno = Turno.valueOf(leerTexto(archivo, TAM_TURNO));
 
-                Cargo cargo 
-                        = Cargo.valueOf(leerTexto(archivo, TAM_CARGO));
+                Cargo cargo = Cargo.valueOf(leerTexto(archivo, TAM_CARGO));
 
-                String cedula
-                        = leerTexto(archivo, TAM_CEDULA);
+                String cedula = leerTexto(archivo, TAM_CEDULA);
 
-                String nombre
-                        = leerTexto(archivo, TAM_NOMBRE);
+                String nombre = leerTexto(archivo, TAM_NOMBRE);
 
-                String apellido
-                        = leerTexto(archivo, TAM_APELLIDO);
+                String apellido = leerTexto(archivo, TAM_APELLIDO);
 
-                String telefono
-                        = leerTexto(archivo, TAM_TELEFONO);
+                String telefono = leerTexto(archivo, TAM_TELEFONO);
 
-                Date fecha
-                        = new Date(
-                                archivo.readLong()
-                        );
+                Date fecha = new Date(archivo.readLong());
 
-                boolean activo
-                        = archivo.readBoolean();
+                boolean activo = archivo.readBoolean();
 
                 if (activo) {
-
-                    lista.add(
-                            new Bibliotecario(
+                    lista.add(new Bibliotecario(
                                     codigo,
                                     turno,
                                     cargo,
@@ -346,31 +262,19 @@ public class BibliotecarioDAOArchivo implements BibliotecarioDAO {
                                     nombre,
                                     apellido,
                                     telefono,
-                                    fecha
-                            )
+                                    fecha)
                     );
-
                 }
-
             }
-
         } catch (IOException e) {
 
-            System.out.println(
-                    "Error al listar bibliotecarios"
-            );
-
+            System.out.println("Error al listar bibliotecarios");
         }
-
         return lista;
-
     }
 
     @Override
     public int contar() {
-
         return listar().size();
-
     }
-
 }

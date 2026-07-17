@@ -4,6 +4,7 @@
  */
 package ec.edu.ups.sistemabiblioteca.DAO;
 
+import ec.edu.ups.sistemabiblioteca.Exceptions.LibroNoEncontrado;
 import ec.edu.ups.sistemabiblioteca.models.Libro;
 import java.util.List;
 
@@ -15,11 +16,11 @@ public interface LibroDAO {
 
     void agregar(Libro libro);
 
-    Libro buscar(String isbn) throws Exception;
+    Libro buscar(String isbn) throws LibroNoEncontrado;
 
-    void actualizar(Libro libro);
+    void actualizar(Libro libro) throws LibroNoEncontrado;
 
-    void eliminar(String isbn);
+    void eliminar(String isbn) throws LibroNoEncontrado;
 
     List<Libro> listar();
 

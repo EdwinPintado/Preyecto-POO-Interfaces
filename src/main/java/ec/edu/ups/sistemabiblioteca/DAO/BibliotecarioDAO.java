@@ -4,6 +4,7 @@
  */
 package ec.edu.ups.sistemabiblioteca.DAO;
 
+import ec.edu.ups.sistemabiblioteca.Exceptions.BibliotecarioNoExiste;
 import ec.edu.ups.sistemabiblioteca.models.Bibliotecario;
 import java.util.List;
 
@@ -15,7 +16,7 @@ public interface BibliotecarioDAO {
 
     void agregar(Bibliotecario bibliotecario);
 
-    Bibliotecario buscar(String cedula) throws Exception;
+    Bibliotecario buscar(String cedula) throws BibliotecarioNoExiste;
 
     void actualizar(Bibliotecario bibliotecario);
 

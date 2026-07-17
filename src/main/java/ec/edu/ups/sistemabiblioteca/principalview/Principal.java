@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/MDIApplication.java to edit this template
- */
 package ec.edu.ups.sistemabiblioteca.principalview;
 
 import ec.edu.ups.sistemabiblioteca.Controller.AutorController;
@@ -10,6 +6,12 @@ import ec.edu.ups.sistemabiblioteca.Controller.DevolucionController;
 import ec.edu.ups.sistemabiblioteca.Controller.LibroController;
 import ec.edu.ups.sistemabiblioteca.Controller.PrestamoController;
 import ec.edu.ups.sistemabiblioteca.Controller.UsuarioController;
+import ec.edu.ups.sistemabiblioteca.DAO.AutorDAO;
+import ec.edu.ups.sistemabiblioteca.DAO.BibliotecarioDAO;
+import ec.edu.ups.sistemabiblioteca.DAO.DevolucionDAO;
+import ec.edu.ups.sistemabiblioteca.DAO.LibroDAO;
+import ec.edu.ups.sistemabiblioteca.DAO.PrestamoDAO;
+import ec.edu.ups.sistemabiblioteca.DAO.UsuarioDAO;
 import ec.edu.ups.sistemabiblioteca.DAOArchivo.AutorDAOArchivo;
 import ec.edu.ups.sistemabiblioteca.DAOArchivo.BibliotecarioDAOArchivo;
 import ec.edu.ups.sistemabiblioteca.DAOArchivo.DevolucionDAOArchivo;
@@ -61,10 +63,6 @@ import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
 import java.awt.Toolkit;
 
-/**
- *
- * @author Usuario
- */
 public class Principal extends javax.swing.JFrame {
 
     private AutorController autorController;
@@ -74,18 +72,12 @@ public class Principal extends javax.swing.JFrame {
     private DevolucionController devolucionController;
     private BibliotecarioController bibliotecarioController;
 
-    private AutorDAOMemoria autorDAO;
-    private AutorDAOArchivo autorArchivos;
-    private UsuarioDAOMemoria usuarioDAO;
-    private UsuarioDAOArchivo usuarioArchivo;
-    private BibliotecarioDAOMemoria bibliotecarioDAO;
-    private BibliotecarioDAOArchivo bibliotecarioDAOArhivo;
-    private LibroDAOMemoria libroDAO;
-    private LibroDAOArchivo libroDAOArchivo;
-    private DevolucionDAOMemoria devolucionDAO;
-    private DevolucionDAOArchivo devolucionArchivo;
-    private PrestamoDAOMemoria prestamoDAO;
-    private PrestamoDAOArchivo prestamoArchivo;
+    private AutorDAO autorDAO;
+    private UsuarioDAO usuarioDAO;
+    private BibliotecarioDAO bibliotecarioDAO;
+    private LibroDAO libroDAO;
+    private DevolucionDAO devolucionDAO;
+    private PrestamoDAO prestamoDAO;
 
     private ActualizarAutor actualizarAutor;
     private BorrarAutor borrarAutor;
@@ -118,9 +110,6 @@ public class Principal extends javax.swing.JFrame {
     private CrearUsuario crearUsuario;
     private ListarUsuario listarUsuario;
 
-    /**
-     * Creates new form Principal
-     */
     public Principal() {
         desktopPane = new JDesktopPane();
         this.setContentPane(desktopPane);
@@ -145,7 +134,7 @@ public class Principal extends javax.swing.JFrame {
 
             jLabelUps.setIcon(new ImageIcon(imagen));
         }
-        //Icon2 
+        //fondo 
         {
             ImageIcon icon = new ImageIcon(getClass().getResource("/ec/edu/ups/sistemabiblioteca/pictures/fondoBiblioteca.png"));
 
@@ -190,7 +179,7 @@ public class Principal extends javax.swing.JFrame {
 
         Object[] opciones = {"Memoria", "Archivos Binarios"};
         int opcion;
-        opcion = javax.swing.JOptionPane.showOptionDialog(this, "Selecione el mecanismo de fuardar ", "Persistencia",
+        opcion = javax.swing.JOptionPane.showOptionDialog(this, "Selecione el mecanismo de guardar ", "Persistencia",
                 javax.swing.JOptionPane.DEFAULT_OPTION,
                 javax.swing.JOptionPane.QUESTION_MESSAGE,
                 null, opciones, opciones[0]);
@@ -207,12 +196,15 @@ public class Principal extends javax.swing.JFrame {
             prestamoDAO = new PrestamoDAOMemoria();
         } else {
 
-            usuarioArchivo = new UsuarioDAOArchivo();
-            autorArchivos = new AutorDAOArchivo();
-            bibliotecarioDAOArhivo = new BibliotecarioDAOArchivo();
-            libroDAOArchivo = new LibroDAOArchivo();
-            devolucionArchivo = new DevolucionDAOArchivo();
-            prestamoArchivo = new PrestamoDAOArchivo(usuarioDAO, libroDAO, bibliotecarioDAO);
+            usuarioDAO = new UsuarioDAOArchivo();
+            autorDAO = new AutorDAOArchivo();
+            bibliotecarioDAO = new BibliotecarioDAOArchivo();
+
+            libroDAO = new LibroDAOArchivo(autorDAO);
+
+            prestamoDAO = new PrestamoDAOArchivo(usuarioDAO,libroDAO,bibliotecarioDAO);
+            
+            devolucionDAO = new DevolucionDAOArchivo(prestamoDAO);
         }
 
         autorController = new AutorController(autorDAO, crearAutor, borrarAutor, buscarAutor, actualizarAutor, listarAutor);
@@ -726,8 +718,7 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         for (Autor autor : autorDAO.listar()) {
 
-            autorArchivos.agregar(autor);
-
+            autorDAO.agregar(autor);
         }
 
         JOptionPane.showMessageDialog(
@@ -740,7 +731,7 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         for (Bibliotecario b : bibliotecarioDAO.listar()) {
 
-            bibliotecarioDAOArhivo.agregar(b);
+            bibliotecarioDAO.agregar(b);
 
         }
 
@@ -751,13 +742,9 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem10ActionPerformed
 
     private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
-        // TODO add your handling code here:
         for (Usuario u : usuarioDAO.listar()) {
-
-            usuarioArchivo.agregar(u);
-
+            usuarioDAO.agregar(u);
         }
-
         JOptionPane.showMessageDialog(
                 this,
                 "Usuarios guardados en archivo"
@@ -768,7 +755,7 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         for (Libro libro : libroDAO.listar()) {
 
-            libroDAOArchivo.agregar(libro);
+            libroDAO.agregar(libro);
 
         }
 
@@ -782,7 +769,7 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         for (Prestamo p : prestamoDAO.listar()) {
 
-            prestamoArchivo.agregar(p);
+            prestamoDAO.agregar(p);
 
         }
 
@@ -796,7 +783,7 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         for (Devolucion autor : devolucionDAO.listar()) {
 
-            devolucionArchivo.agregar(autor);
+            devolucionDAO.agregar(autor);
 
         }
 

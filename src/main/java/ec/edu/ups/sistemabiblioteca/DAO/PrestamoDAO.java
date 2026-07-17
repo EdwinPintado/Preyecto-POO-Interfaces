@@ -4,6 +4,7 @@
  */
 package ec.edu.ups.sistemabiblioteca.DAO;
 
+import ec.edu.ups.sistemabiblioteca.Exceptions.PrestamoNoEncontrado;
 import ec.edu.ups.sistemabiblioteca.models.Prestamo;
 import java.util.List;
 
@@ -15,7 +16,7 @@ public interface PrestamoDAO {
 
     void agregar(Prestamo prestamo);
 
-    Prestamo buscar(String codigo) throws Exception;
+    Prestamo buscar(String codigo) throws PrestamoNoEncontrado;
 
     void actualizar(Prestamo prestamo);
 

@@ -16,7 +16,7 @@ public interface UsuarioDAO {
 
     void agregar(Usuario usuario);
 
-    Usuario buscar(String cedula) throws Exception;
+    Usuario buscar(String cedula) throws UsuarioNoExiste;
 
     void actualizar(Usuario usuario);
 

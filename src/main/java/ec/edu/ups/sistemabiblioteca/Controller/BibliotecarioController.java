@@ -4,6 +4,7 @@
  */
 package ec.edu.ups.sistemabiblioteca.Controller;
 
+import ec.edu.ups.sistemabiblioteca.DAO.BibliotecarioDAO;
 import ec.edu.ups.sistemabiblioteca.DAOMemoria.BibliotecarioDAOMemoria;
 import ec.edu.ups.sistemabiblioteca.Exceptions.BibliotecarioNoExiste;
 import ec.edu.ups.sistemabiblioteca.enums.Cargo;
@@ -17,11 +18,11 @@ import ec.edu.ups.sistemabiblioteca.view.bibliotecario.ListarBibliotecario;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
-
 import javax.swing.JOptionPane;
 import javax.swing.event.AncestorListener;
 
@@ -31,8 +32,7 @@ import javax.swing.event.AncestorListener;
  */
 public class BibliotecarioController {
 
-    private BibliotecarioDAOMemoria bibliotecarioDAOMemoria;
-
+    private BibliotecarioDAO bibliotecarioDAO;
     private CrearBibliotecario crearBibliotecario;
     private BuscarBibliotecario buscarBibliotecario;
     private BorrarBibliotecario eliminarBibliotecario;
@@ -61,8 +61,8 @@ public class BibliotecarioController {
     private String  mAmsj;
     private String lBmsj;
 
-    public BibliotecarioController(BibliotecarioDAOMemoria bibliotecarioDAOMemoria, CrearBibliotecario crearBibliotecario, BuscarBibliotecario buscarBibliotecario, BorrarBibliotecario eliminarBibliotecario, ActualizarBibliotecario actualizarBibliotecario, ListarBibliotecario listarBibliotecario) {
-        this.bibliotecarioDAOMemoria = bibliotecarioDAOMemoria;
+    public BibliotecarioController(BibliotecarioDAO bibliotecarioDAOMemoria, CrearBibliotecario crearBibliotecario, BuscarBibliotecario buscarBibliotecario, BorrarBibliotecario eliminarBibliotecario, ActualizarBibliotecario actualizarBibliotecario, ListarBibliotecario listarBibliotecario) {
+        this.bibliotecarioDAO = bibliotecarioDAOMemoria;
         this.crearBibliotecario = crearBibliotecario;
         this.buscarBibliotecario = buscarBibliotecario;
         this.eliminarBibliotecario = eliminarBibliotecario;
@@ -98,12 +98,11 @@ public class BibliotecarioController {
         mAmsj = "Todos los campos deben estar llenos.";
         lBmsj = "No existen bibliotecarios registrados.";
     }
+    
+    private SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
 
     public void crearBibliotecario() {
-        int respuesta = JOptionPane.showConfirmDialog(crearBibliotecario, cBmsj,
-                cfmLmsj,
-                JOptionPane.YES_NO_OPTION);
-
+        int respuesta = JOptionPane.showConfirmDialog(crearBibliotecario, cBmsj,cfmLmsj,JOptionPane.YES_NO_OPTION);
         if (respuesta == JOptionPane.YES_OPTION) {
             try {
                 String cedula = crearBibliotecario.getjTextFieldCBCedula().getText().trim();
@@ -115,56 +114,36 @@ public class BibliotecarioController {
                 String fechaTexto = crearBibliotecario.getjTextFieldCBFecha().getText().trim();
                 Turno turno = Turno.valueOf(crearBibliotecario.getjComboBoxTurno().getSelectedItem().toString());
 
-                if (cedula.isEmpty() || nombre.isEmpty() || apellido.isEmpty()
-                    || telefono.isEmpty()
-                    || codigo.isEmpty() || fechaTexto.isEmpty()
-                    || cargo== null || turno == null) {
-
+                if (cedula.isEmpty() || nombre.isEmpty() || apellido.isEmpty() || telefono.isEmpty() || codigo.isEmpty() || fechaTexto.isEmpty() || cargo== null || turno == null) {
                     throw new IllegalArgumentException("Todos los campos deben estar llenos para guardar el bibliotecario.");}
 
-                if (!cedula.matches("\\d{10}")) {
-                    throw new IllegalArgumentException(IDmsj);
-                }
-
-                if (!telefono.matches("\\d{10}")) {
-                    throw new IllegalArgumentException(TFmsj);
-                }
-
-                if (!nombre.matches("[a-zA-ZÁÉÍÓÚáéíóúÑñ ]+")) {
-                    throw new IllegalArgumentException(Nmsj);
-                }
-
-                if (!apellido.matches("[a-zA-ZÁÉÍÓÚáéíóúÑñ ]+")) {
-                    throw new IllegalArgumentException(Amsj);
-                }
-
-                Date fechaNacimiento;
-
-                try {
-
+                    if (!cedula.matches("\\d{10}")) {
+                        throw new IllegalArgumentException(IDmsj);
+                    }
+                    if (!telefono.matches("\\d{10}")) {
+                        throw new IllegalArgumentException(TFmsj);
+                    }
+                    if (!nombre.matches("[a-zA-ZÁÉÍÓÚáéíóúÑñ ]+")) {
+                        throw new IllegalArgumentException(Nmsj);
+                    }
+                    if (!apellido.matches("[a-zA-ZÁÉÍÓÚáéíóúÑñ ]+")) {
+                        throw new IllegalArgumentException(Amsj);
+                    }
+                    
+                    Date fechaNacimiento;
+                    
+                    try {     
                     fechaNacimiento = Date.valueOf(fechaTexto);
-
-                } catch (IllegalArgumentException e) {
-
-                    crearBibliotecario.mostrarInformacion(
-                            fchmsj);
+                    
+                    } catch (IllegalArgumentException e) {
+                    crearBibliotecario.mostrarInformacion(fchmsj);
                     return;
                 }
 
-                Bibliotecario bibliotecario = new Bibliotecario(
-                        codigo,
-                        turno,
-                        cargo,
-                        cedula,
-                        nombre,
-                        apellido,
-                        telefono,
-                        fechaNacimiento);
+                Bibliotecario bibliotecario = new Bibliotecario(codigo,turno, cargo, cedula, nombre, apellido, telefono, fechaNacimiento);
 
-                bibliotecarioDAOMemoria.agregar(bibliotecario);
-
+                bibliotecarioDAO.agregar(bibliotecario);
                 crearBibliotecario.mostrarInformacion1(sCBmsj);
-
                 buscarBibliotecario.getjTextFieldBBCedula().setText("");
                 buscarBibliotecario.getjTextFieldBBNombre().setText("");
                 buscarBibliotecario.getjTextFieldBBApellido().setText("");
@@ -177,34 +156,29 @@ public class BibliotecarioController {
             } catch (IllegalArgumentException e) {
                 crearBibliotecario.mostrarInformacion(e.getMessage());
             }
-
         } else {
             crearBibliotecario.mostrarInformacion(canCBmsj);
         }
     }
 
     public void buscarBibliotecario() {
-
         try {
-
             String cedula = buscarBibliotecario.getjTextFieldBBCedula().getText().trim();
-
             if (cedula.isEmpty()) {
                 throw new IllegalArgumentException(dfsAmsj);
             }
-
             if (!cedula.matches("\\d{10}")) {
                 throw new IllegalArgumentException(IDmsj);
             }
 
-            Bibliotecario bibliotecario = bibliotecarioDAOMemoria.buscar(cedula);
+            Bibliotecario bibliotecario = bibliotecarioDAO.buscar(cedula);
 
             buscarBibliotecario.getjTextFieldBBNombre().setText(bibliotecario.getNombre());
             buscarBibliotecario.getjTextFieldBBApellido().setText(bibliotecario.getApellido());
             buscarBibliotecario.getjTextFieldBBCodigo().setText(bibliotecario.getCodigo());
             buscarBibliotecario.getjTextFieldBBCargo().setText(bibliotecario.getCargo().toString());
             buscarBibliotecario.getjTextFieldBBTelefono().setText(bibliotecario.getTelefono());
-            buscarBibliotecario.getjTextFieldBBFecha().setText(String.valueOf(bibliotecario.getFechaNacimiento()));
+            buscarBibliotecario.getjTextFieldBBFecha().setText(formato.format(bibliotecario.getFechaNacimiento()));
             buscarBibliotecario.getjTextFieldBBTurno().setText(bibliotecario.getTurno().toString());
 
         } catch (BibliotecarioNoExiste e) {
@@ -220,7 +194,6 @@ public class BibliotecarioController {
             buscarBibliotecario.mostrarInformacion(bABmsj);
 
         } catch (IllegalArgumentException e) {
-
             buscarBibliotecario.mostrarInformacion(e.getMessage());
         }
     }
@@ -228,32 +201,20 @@ public class BibliotecarioController {
     public void eliminarBibliotecario() {
 
         try {
-
-            String cedula = eliminarBibliotecario.getjTextFieldEBCedula()
-                    .getText().trim();
-
+            String cedula = eliminarBibliotecario.getjTextFieldEBCedula().getText().trim();
             if (cedula.isEmpty()) {
                 throw new IllegalArgumentException(dfsAmsj);
             }
-
             if (!cedula.matches("\\d{10}")) {
-                throw new IllegalArgumentException(
-                        IDmsj);
+                throw new IllegalArgumentException(IDmsj);
             }
-
-            Bibliotecario bibliotecario
-                    = bibliotecarioDAOMemoria.buscar(cedula);
-
-            int respuesta = JOptionPane.showConfirmDialog(
-                    eliminarBibliotecario,
-                    dBmsj + bibliotecario.getNombre() + " ?",
-                    cfmLmsj,
-                    JOptionPane.YES_NO_OPTION);
+            Bibliotecario bibliotecario = bibliotecarioDAO.buscar(cedula);
+            
+            int respuesta = JOptionPane.showConfirmDialog(eliminarBibliotecario,dBmsj + bibliotecario.getNombre() + " ?",cfmLmsj,JOptionPane.YES_NO_OPTION);
 
             if (respuesta == JOptionPane.YES_OPTION) {
 
-                bibliotecarioDAOMemoria.eliminar(cedula);
-
+                bibliotecarioDAO.eliminar(cedula);
                 eliminarBibliotecario.mostrarInformacion1(sBmsj);
                 eliminarBibliotecario.getjButtonEBBCedula().setText("");
                 eliminarBibliotecario.getjTextFieldEBNombre().setText("");
@@ -265,16 +226,11 @@ public class BibliotecarioController {
                 eliminarBibliotecario.getjTextFieldEBTurno().setText("");
 
             } else {
-
                 eliminarBibliotecario.mostrarInformacion(canCBmsj);
             }
-
         } catch (BibliotecarioNoExiste e) {
-
             eliminarBibliotecario.mostrarInformacion(bCBBmsj);
-
         } catch (IllegalArgumentException e) {
-
             eliminarBibliotecario.mostrarInformacion(e.getMessage());
         }
     }
@@ -282,42 +238,23 @@ public class BibliotecarioController {
     public void buscarEliminado() {
 
         try {
-
-            String cedula = eliminarBibliotecario.getjTextFieldEBCedula()
-                    .getText().trim();
-
+            String cedula = eliminarBibliotecario.getjTextFieldEBCedula().getText().trim();
             if (cedula.isEmpty()) {
                 throw new IllegalArgumentException(dfsAmsj);
             }
-
             if (!cedula.matches("\\d{10}")) {
-                throw new IllegalArgumentException(
-                        IDmsj);
+                throw new IllegalArgumentException(IDmsj);
             }
 
-            Bibliotecario bibliotecario
-                    = bibliotecarioDAOMemoria.buscar(cedula);
+            Bibliotecario bibliotecario = bibliotecarioDAO.buscar(cedula);
 
-            eliminarBibliotecario.getjTextFieldEBNombre()
-                    .setText(bibliotecario.getNombre());
-
-            eliminarBibliotecario.getjTextFieldEBApellido()
-                    .setText(bibliotecario.getApellido());
-
-            eliminarBibliotecario.getjTextFieldEBCargo()
-                    .setText(bibliotecario.getCargo().toString());
-
-            eliminarBibliotecario.getjTextFieldEBTelefono()
-                    .setText(bibliotecario.getTelefono());
-
-            eliminarBibliotecario.getjTextFieldEBCodigo()
-                    .setText(bibliotecario.getCodigo());
-
-            eliminarBibliotecario.getjTextFieldEBFecha()
-                    .setText(String.valueOf(bibliotecario.getFechaNacimiento()));
-
-            eliminarBibliotecario.getjTextFieldEBTurno()
-                    .setText(bibliotecario.getTurno().toString());
+            eliminarBibliotecario.getjTextFieldEBNombre().setText(bibliotecario.getNombre());
+            eliminarBibliotecario.getjTextFieldEBApellido().setText(bibliotecario.getApellido());
+            eliminarBibliotecario.getjTextFieldEBCargo().setText(bibliotecario.getCargo().toString());
+            eliminarBibliotecario.getjTextFieldEBTelefono().setText(bibliotecario.getTelefono());
+            eliminarBibliotecario.getjTextFieldEBCodigo().setText(bibliotecario.getCodigo());
+            eliminarBibliotecario.getjTextFieldEBFecha().setText(formato.format(bibliotecario.getFechaNacimiento()));
+            eliminarBibliotecario.getjTextFieldEBTurno().setText(bibliotecario.getTurno().toString());
 
         } catch (BibliotecarioNoExiste e) {
 
@@ -332,52 +269,30 @@ public class BibliotecarioController {
             eliminarBibliotecario.mostrarInformacion(bDBmsj);
 
         } catch (IllegalArgumentException e) {
-
             eliminarBibliotecario.mostrarInformacion(e.getMessage());
         }
     }
 
     public void buscarActualizarBibliotecario() {
-
         try {
-
-            String cedula = actualizarBibliotecario
-                    .getjTextFieldActBCedula()
-                    .getText()
-                    .trim();
+            String cedula = actualizarBibliotecario.getjTextFieldActBCedula().getText().trim();
 
             if (cedula.isEmpty()) {
                 throw new IllegalArgumentException(dfsAmsj);
             }
-
             if (!cedula.matches("\\d{10}")) {
-                throw new IllegalArgumentException(
-                       IDmsj);
+                throw new IllegalArgumentException(IDmsj);
             }
 
-            Bibliotecario bibliotecario
-                    = bibliotecarioDAOMemoria.buscar(cedula);
+            Bibliotecario bibliotecario = bibliotecarioDAO.buscar(cedula);
 
-            actualizarBibliotecario.getjTextFieldActBNombre()
-                    .setText(bibliotecario.getNombre());
-
-            actualizarBibliotecario.getjTextFieldActBApellido()
-                    .setText(bibliotecario.getApellido());
-
-            actualizarBibliotecario.getjComboBoxCargoAc()
-                    .setSelectedItem(bibliotecario.getCargo().name());
-
-            actualizarBibliotecario.getjTextFieldActBTelefono()
-                    .setText(bibliotecario.getTelefono());
-
-            actualizarBibliotecario.getjTextFieldActBCodigo()
-                    .setText(bibliotecario.getCodigo());
-
-            actualizarBibliotecario.getjTextFieldActBFecha()
-                    .setText(String.valueOf(bibliotecario.getFechaNacimiento()));
-
-            actualizarBibliotecario.getjComboBoxTurnoAc()
-                    .setSelectedItem(bibliotecario.getTurno().name());
+            actualizarBibliotecario.getjTextFieldActBNombre().setText(bibliotecario.getNombre());
+            actualizarBibliotecario.getjTextFieldActBApellido().setText(bibliotecario.getApellido());
+            actualizarBibliotecario.getjComboBoxCargoAc().setSelectedItem(bibliotecario.getCargo().name());
+            actualizarBibliotecario.getjTextFieldActBTelefono().setText(bibliotecario.getTelefono());
+            actualizarBibliotecario.getjTextFieldActBCodigo().setText(bibliotecario.getCodigo());
+            actualizarBibliotecario.getjTextFieldActBFecha().setText(formato.format(bibliotecario.getFechaNacimiento()));
+            actualizarBibliotecario.getjComboBoxTurnoAc().setSelectedItem(bibliotecario.getTurno().name());
 
         } catch (BibliotecarioNoExiste e) {
 
@@ -390,113 +305,61 @@ public class BibliotecarioController {
             actualizarBibliotecario.mostrarInformacion(bABmsj);
 
         } catch (IllegalArgumentException e) {
-
             actualizarBibliotecario.mostrarInformacion(e.getMessage());
         }
     }
 
     public void actualizarBibliotecario() {
-
         try {
-
-            String cedula = actualizarBibliotecario
-                    .getjTextFieldActBCedula()
-                    .getText()
-                    .trim();
+            String cedula = actualizarBibliotecario.getjTextFieldActBCedula().getText().trim();
 
             if (cedula.isEmpty()) {
                 throw new IllegalArgumentException(dfsAmsj);
             }
-
             if (!cedula.matches("\\d{10}")) {
-                throw new IllegalArgumentException(
-                        IDmsj);
+                throw new IllegalArgumentException(IDmsj);
             }
 
-            Bibliotecario bibliotecario
-                    = bibliotecarioDAOMemoria.buscar(cedula);
+            Bibliotecario bibliotecario = bibliotecarioDAO.buscar(cedula);
 
-            int respuesta = JOptionPane.showConfirmDialog(
-                    actualizarBibliotecario,
-                    acBmsj + bibliotecario.getNombre() + " ?",
-                    cfmLmsj,
-                    JOptionPane.YES_NO_OPTION);
+            int respuesta = JOptionPane.showConfirmDialog(actualizarBibliotecario,acBmsj + bibliotecario.getNombre() + " ?",cfmLmsj,JOptionPane.YES_NO_OPTION);
 
             if (respuesta == JOptionPane.YES_OPTION) {
 
-                String nombre = actualizarBibliotecario
-                        .getjTextFieldActBNombre().getText().trim();
+                String nombre = actualizarBibliotecario.getjTextFieldActBNombre().getText().trim();
+                String apellido = actualizarBibliotecario.getjTextFieldActBApellido().getText().trim();
+                Cargo cargo = Cargo.valueOf(actualizarBibliotecario.getjComboBoxCargoAc().getSelectedItem().toString());
+                String telefono = actualizarBibliotecario.getjTextFieldActBTelefono().getText().trim();
+                String codigo = actualizarBibliotecario.getjTextFieldActBCodigo().getText().trim();
+                String fechaTexto = actualizarBibliotecario.getjTextFieldActBFecha().getText().trim();
+                Turno turno = Turno.valueOf(actualizarBibliotecario.getjComboBoxTurnoAc().getSelectedItem().toString());
 
-                String apellido = actualizarBibliotecario
-                        .getjTextFieldActBApellido().getText().trim();
-
-                Cargo cargo = Cargo.valueOf(actualizarBibliotecario.getjComboBoxCargoAc()
-                        .getSelectedItem().toString());
-
-                String telefono = actualizarBibliotecario
-                        .getjTextFieldActBTelefono().getText().trim();
-
-                String codigo = actualizarBibliotecario
-                        .getjTextFieldActBCodigo().getText().trim();
-
-                String fechaTexto = actualizarBibliotecario
-                        .getjTextFieldActBFecha().getText().trim();
-
-                Turno turno = Turno.valueOf(actualizarBibliotecario.getjComboBoxTurnoAc()
-                        .getSelectedItem().toString());
-
-                if (nombre.isEmpty() || apellido.isEmpty() || cargo== null
-                        || telefono.isEmpty() || codigo.isEmpty()
-                        || fechaTexto.isEmpty() || turno == null) {
-
-                    throw new IllegalArgumentException(
-                            mAmsj);
+                if (nombre.isEmpty() || apellido.isEmpty() || cargo== null || telefono.isEmpty() || codigo.isEmpty() || fechaTexto.isEmpty() || turno == null) {
+                    throw new IllegalArgumentException(mAmsj);
                 }
 
                 if (!nombre.matches("[a-zA-ZÁÉÍÓÚáéíóúÑñ ]+")) {
-                    throw new IllegalArgumentException(
-                            Nmsj);
+                    throw new IllegalArgumentException(Nmsj);
                 }
-
                 if (!apellido.matches("[a-zA-ZÁÉÍÓÚáéíóúÑñ ]+")) {
-                    throw new IllegalArgumentException(
-                            Amsj);
+                    throw new IllegalArgumentException(Amsj);
                 }
-
                 if (!telefono.matches("\\d{10}")) {
-                    throw new IllegalArgumentException(
-                            TFmsj);
+                    throw new IllegalArgumentException(TFmsj);
                 }
 
                 Date fechaNa;
 
                 try {
-
                     fechaNa = Date.valueOf(fechaTexto);
-
                 } catch (IllegalArgumentException e) {
-
-                    throw new IllegalArgumentException(
-                            fchmsj);
+                    throw new IllegalArgumentException(fchmsj);
                 }
 
-                Bibliotecario bibliotecarioActualizado
-                        = new Bibliotecario(
-                                codigo,
-                                turno,
-                                cargo,
-                                cedula,
-                                nombre,
-                                apellido,
-                                telefono,
-                                fechaNa
-                        );
+                Bibliotecario bibliotecarioActualizado = new Bibliotecario(codigo,turno,cargo,cedula,nombre,apellido,telefono,fechaNa);
 
-                bibliotecarioDAOMemoria.actualizar(
-                        bibliotecarioActualizado);
-
+                bibliotecarioDAO.actualizar(bibliotecarioActualizado);
                 actualizarBibliotecario.mostrarInformacion1(sABmsj);
-
                 actualizarBibliotecario.getjTextFieldActBNombre().setText("");
                 actualizarBibliotecario.getjTextFieldActBApellido().setText("");
                 actualizarBibliotecario.getjTextFieldActBTelefono().setText("");
@@ -522,7 +385,7 @@ public class BibliotecarioController {
 
         try {
 
-            List<Bibliotecario> lista = bibliotecarioDAOMemoria.listar();
+            List<Bibliotecario> lista = bibliotecarioDAO.listar();
 
             if (lista == null || lista.isEmpty()) {
                 throw new IllegalArgumentException(lBmsj);
@@ -537,7 +400,7 @@ public class BibliotecarioController {
 
     public void mostrarContadorBibliotecarios() {
 
-        int total = bibliotecarioDAOMemoria.contar();
+        int total = bibliotecarioDAO.contar();
 
         listarBibliotecario.getTxtContadordeBibliotecarios().setText(String.valueOf(total));
     }
@@ -633,5 +496,4 @@ public class BibliotecarioController {
         lBmsj = (bundle.getString("lBmsj"));
 
     }
-
 }

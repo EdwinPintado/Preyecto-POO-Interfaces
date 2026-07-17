@@ -4,6 +4,7 @@
  */
 package ec.edu.ups.sistemabiblioteca.DAO;
 
+import ec.edu.ups.sistemabiblioteca.Exceptions.DevolucionNoEncontradaException;
 import ec.edu.ups.sistemabiblioteca.models.Devolucion;
 import java.util.List;
 
@@ -15,7 +16,7 @@ public interface DevolucionDAO {
 
     void agregar(Devolucion devolucion);
 
-    Devolucion buscar(String codigo) throws Exception;
+    Devolucion buscar(String codigo) throws DevolucionNoEncontradaException;
 
     void actualizar(Devolucion devolucion);
 

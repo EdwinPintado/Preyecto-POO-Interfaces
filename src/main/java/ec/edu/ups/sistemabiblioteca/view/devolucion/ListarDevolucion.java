@@ -5,6 +5,7 @@
 package ec.edu.ups.sistemabiblioteca.view.devolucion;
 
 import ec.edu.ups.sistemabiblioteca.models.Devolucion;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -47,22 +48,23 @@ public class ListarDevolucion extends javax.swing.JInternalFrame {
 
     public void construirTabla() {
         modelo = new DefaultTableModel();
-        modelo.addColumn("Prestamo");
-        modelo.addColumn("Isbn");
+        modelo.addColumn("Codigo del Prestamo");
+        modelo.addColumn("Libro");
         modelo.addColumn("Fecha de Devolucion");
         tblListadoDevoluciones.setModel(modelo);
     }
 
     public void cargarDatos(List<Devolucion> lista) {
 
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
         modelo.setRowCount(0);
-
+        
         for (Devolucion b : lista) {
 
             Object[] fila = {
-                b.getPrestamo(),
-                b.getPrestamo().getLibro().getIsbn(),
-                b.getFechaDevolucion(),};
+                b.getPrestamo().getCodigoPrestamo(),
+                b.getPrestamo().getLibro().getTitulo(),
+                formato.format(b.getFechaDevolucion())};
             modelo.addRow(fila);
 
         }

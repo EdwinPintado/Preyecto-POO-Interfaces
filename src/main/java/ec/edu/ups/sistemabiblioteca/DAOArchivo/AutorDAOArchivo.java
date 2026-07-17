@@ -41,75 +41,43 @@ public class AutorDAOArchivo implements AutorDAO {
     }
     
     
-    private void escribirTexto(RandomAccessFile archivo,
-            String texto,
-            int longitud)
-            throws IOException {
+    private void escribirTexto(RandomAccessFile archivo,String texto,int longitud)throws IOException {
 
-        StringBuilder sb
-                = new StringBuilder(
-                        texto == null ? "" : texto
-                );
+        StringBuilder sb= new StringBuilder(texto == null ? "" : texto);
 
         sb.setLength(longitud);
 
         archivo.writeChars(sb.toString());
-
     }
 
-    private String leerTexto(RandomAccessFile archivo,
-            int longitud)
-            throws IOException {
+    private String leerTexto(RandomAccessFile archivo,int longitud)throws IOException {
 
-        char[] caracteres
-                = new char[longitud];
-
+        char[] caracteres= new char[longitud];
+        
         for (int i = 0; i < longitud; i++) {
-
-            caracteres[i]
-                    = archivo.readChar();
-
+            caracteres[i]= archivo.readChar();
         }
-
+        
         return new String(caracteres).trim();
-
     }
 
-    private void escribirAutor(RandomAccessFile archivo,
-            Autor autor)
-            throws IOException {
+    private void escribirAutor(RandomAccessFile archivo,Autor autor)throws IOException {
 
-        escribirTexto(archivo,
-                autor.getNacionalidad(),
-                TAM_NACIONALIDAD);
+        escribirTexto(archivo,autor.getNacionalidad(),TAM_NACIONALIDAD);
 
-        escribirTexto(archivo,
-                autor.getGeneroLiterario(),
-                TAM_GENERO);
+        escribirTexto(archivo,autor.getGeneroLiterario(),TAM_GENERO);
 
-        escribirTexto(archivo,
-                autor.getBibliografia(),
-                TAM_BIBLIOGRAFIA);
+        escribirTexto(archivo,autor.getBibliografia(),TAM_BIBLIOGRAFIA);
 
-        escribirTexto(archivo,
-                autor.getCedula(),
-                TAM_CEDULA);
+        escribirTexto(archivo,autor.getCedula(),TAM_CEDULA);
 
-        escribirTexto(archivo,
-                autor.getNombre(),
-                TAM_NOMBRE);
+        escribirTexto(archivo,autor.getNombre(),TAM_NOMBRE);
 
-        escribirTexto(archivo,
-                autor.getApellido(),
-                TAM_APELLIDO);
+        escribirTexto(archivo,autor.getApellido(),TAM_APELLIDO);
 
-        escribirTexto(archivo,
-                autor.getTelefono(),
-                TAM_TELEFONO);
+        escribirTexto(archivo,autor.getTelefono(),TAM_TELEFONO);
 
-        archivo.writeLong(
-                autor.getFechaNacimiento().getTime()
-        );
+        archivo.writeLong(autor.getFechaNacimiento().getTime());
 
         archivo.writeBoolean(true);
 
@@ -118,72 +86,51 @@ public class AutorDAOArchivo implements AutorDAO {
     @Override
     public void agregar(Autor autor) {
 
-        try (RandomAccessFile archivo
-                = new RandomAccessFile(ruta, "rw")) {
+        try (RandomAccessFile archivo= new RandomAccessFile(ruta, "rw")) {
 
             archivo.seek(archivo.length());
 
             escribirAutor(
                     archivo,
-                    autor
-            );
+                    autor);
 
         } catch (IOException e) {
 
-            System.out.println(
-                    "Error al guardar autor"
-            );
-
+            System.out.println("Error al guardar autor");
         }
-
     }
 
     @Override
     public Autor buscar(String cedula)
             throws AutorNoEncontradoException {
 
-        try (RandomAccessFile archivo
-                = new RandomAccessFile(ruta, "r")) {
+        try (RandomAccessFile archivo= new RandomAccessFile(ruta, "r")) {
 
-            long cantidad
-                    = archivo.length() / TAM_REGISTRO;
+            long cantidad = archivo.length() / TAM_REGISTRO;
 
             for (long i = 0; i < cantidad; i++) {
 
-                archivo.seek(
-                        i * TAM_REGISTRO
-                );
+                archivo.seek(i * TAM_REGISTRO);
 
-                String nacionalidad
-                        = leerTexto(archivo, TAM_NACIONALIDAD);
+                String nacionalidad= leerTexto(archivo, TAM_NACIONALIDAD);
 
-                String genero
-                        = leerTexto(archivo, TAM_GENERO);
+                String genero= leerTexto(archivo, TAM_GENERO);
 
-                String bibliografia
-                        = leerTexto(archivo, TAM_BIBLIOGRAFIA);
+                String bibliografia= leerTexto(archivo, TAM_BIBLIOGRAFIA);
 
-                String cedulaLeida
-                        = leerTexto(archivo, TAM_CEDULA);
+                String cedulaLeida= leerTexto(archivo, TAM_CEDULA);
 
-                String nombre
-                        = leerTexto(archivo, TAM_NOMBRE);
+                String nombre= leerTexto(archivo, TAM_NOMBRE);
 
-                String apellido
-                        = leerTexto(archivo, TAM_APELLIDO);
+                String apellido= leerTexto(archivo, TAM_APELLIDO);
 
-                String telefono
-                        = leerTexto(archivo, TAM_TELEFONO);
+                String telefono= leerTexto(archivo, TAM_TELEFONO);
 
-                java.sql.Date fecha = new java.sql.Date(
-                archivo.readLong()
-                );
+                java.sql.Date fecha = new java.sql.Date(archivo.readLong());
 
-                boolean activo
-                        = archivo.readBoolean();
+                boolean activo = archivo.readBoolean();
 
-                if (activo
-                        && cedulaLeida.equals(cedula)) {
+                if (activo && cedulaLeida.equals(cedula)) {
 
                     return new Autor(
                             nacionalidad,
@@ -193,38 +140,26 @@ public class AutorDAOArchivo implements AutorDAO {
                             nombre,
                             apellido,
                             telefono,  fecha);
-
                 }
-
             }
-
         } catch (IOException e) {
-
-            System.out.println(
-                    "Error al buscar autor"
-            );
-
+            
+            System.out.println("Error al buscar autor");
+            
         }
-
-        throw new AutorNoEncontradoException(
-                "Autor no encontrado"
-        );
-
+        throw new AutorNoEncontradoException("Autor no encontrado");
     }
 
     @Override
     public void actualizar(Autor autor) {
 
-        try (RandomAccessFile archivo
-                = new RandomAccessFile(ruta, "rw")) {
+        try (RandomAccessFile archivo= new RandomAccessFile(ruta, "rw")) {
 
-            long cantidad
-                    = archivo.length() / TAM_REGISTRO;
+            long cantidad= archivo.length() / TAM_REGISTRO;
 
             for (long i = 0; i < cantidad; i++) {
 
-                long posicion
-                        = i * TAM_REGISTRO;
+                long posicion= i * TAM_REGISTRO;
 
                 archivo.seek(posicion);
 
@@ -234,65 +169,42 @@ public class AutorDAOArchivo implements AutorDAO {
                         + (TAM_BIBLIOGRAFIA * 2)
                 );
 
-                String cedula
-                        = leerTexto(
-                                archivo,
-                                TAM_CEDULA
-                        );
+                String cedula = leerTexto(archivo,TAM_CEDULA);
 
-                if (cedula.equals(
-                        autor.getCedula())) {
+                if (cedula.equals(autor.getCedula())) {
 
                     archivo.seek(posicion);
 
-                    escribirAutor(
-                            archivo,
-                            autor
-                    );
+                    escribirAutor(archivo,autor);
 
                     break;
-
                 }
-
             }
-
         } catch (IOException e) {
 
-            System.out.println(
-                    "Error al actualizar autor"
-            );
-
+            System.out.println("Error al actualizar autor");
         }
-
     }
 
     @Override
     public void eliminar(String cedula) {
 
-        try (RandomAccessFile archivo
-                = new RandomAccessFile(ruta, "rw")) {
+        try (RandomAccessFile archivo = new RandomAccessFile(ruta, "rw")) {
 
-            long cantidad
-                    = archivo.length() / TAM_REGISTRO;
+            long cantidad= archivo.length() / TAM_REGISTRO;
 
             for (long i = 0; i < cantidad; i++) {
 
-                long posicion
-                        = i * TAM_REGISTRO;
+                long posicion = i * TAM_REGISTRO;
 
                 archivo.seek(posicion);
 
                 archivo.skipBytes(
                         (TAM_NACIONALIDAD * 2)
                         + (TAM_GENERO * 2)
-                        + (TAM_BIBLIOGRAFIA * 2)
-                );
+                        + (TAM_BIBLIOGRAFIA * 2));
 
-                String cedulaLeida
-                        = leerTexto(
-                                archivo,
-                                TAM_CEDULA
-                        );
+                String cedulaLeida = leerTexto(archivo,TAM_CEDULA);
 
                 archivo.skipBytes(
                         (TAM_NOMBRE * 2)
@@ -301,11 +213,9 @@ public class AutorDAOArchivo implements AutorDAO {
                         + 8
                 );
 
-                boolean activo
-                        = archivo.readBoolean();
+                boolean activo = archivo.readBoolean();
 
-                if (activo
-                        && cedulaLeida.equals(cedula)) {
+                if (activo && cedulaLeida.equals(cedula)) {
 
                     archivo.seek(
                             posicion
@@ -318,105 +228,67 @@ public class AutorDAOArchivo implements AutorDAO {
                             + (TAM_TELEFONO * 2)
                             + 8
                     );
-
                     archivo.writeBoolean(false);
-
                     break;
-
                 }
-
             }
-
         } catch (IOException e) {
 
-            System.out.println(
-                    "Error al eliminar autor"
-            );
-
+            System.out.println("Error al eliminar autor");
         }
-
     }
 
     @Override
     public List<Autor> listar() {
 
-        List<Autor> lista
-                = new ArrayList<>();
+        List<Autor> lista= new ArrayList<>();
 
-        try (RandomAccessFile archivo
-                = new RandomAccessFile(ruta, "r")) {
+        try (RandomAccessFile archivo = new RandomAccessFile(ruta, "r")) {
 
-            long cantidad
-                    = archivo.length() / TAM_REGISTRO;
+            long cantidad = archivo.length() / TAM_REGISTRO;
 
             for (long i = 0; i < cantidad; i++) {
 
-                archivo.seek(
-                        i * TAM_REGISTRO
-                );
+                archivo.seek(i * TAM_REGISTRO);
 
-                String nacionalidad
-                        = leerTexto(archivo, TAM_NACIONALIDAD);
+                String nacionalidad = leerTexto(archivo, TAM_NACIONALIDAD);
 
-                String genero
-                        = leerTexto(archivo, TAM_GENERO);
+                String genero = leerTexto(archivo, TAM_GENERO);
 
-                String bibliografia
-                        = leerTexto(archivo, TAM_BIBLIOGRAFIA);
+                String bibliografia = leerTexto(archivo, TAM_BIBLIOGRAFIA);
 
-                String cedula
-                        = leerTexto(archivo, TAM_CEDULA);
+                String cedula = leerTexto(archivo, TAM_CEDULA);
 
-                String nombre
-                        = leerTexto(archivo, TAM_NOMBRE);
+                String nombre = leerTexto(archivo, TAM_NOMBRE);
 
-                String apellido
-                        = leerTexto(archivo, TAM_APELLIDO);
+                String apellido = leerTexto(archivo, TAM_APELLIDO);
 
-                String telefono
-                        = leerTexto(archivo, TAM_TELEFONO);
+                String telefono = leerTexto(archivo, TAM_TELEFONO);
 
-                java.sql.Date fecha = new java.sql.Date(
-                archivo.readLong()
-                );
+                java.sql.Date fecha = new java.sql.Date(archivo.readLong());
 
-                boolean activo
-                        = archivo.readBoolean();
+                boolean activo= archivo.readBoolean();
 
                 if (activo) {
 
-                    lista.add(
-                            new Autor(
+                    lista.add(new Autor(
                                     nacionalidad,
                                     genero,
                                     bibliografia,
                                     cedula,
                                     nombre,
                                     apellido,
-                                    telefono, fecha)
-                    );
-
+                                    telefono, fecha));
                 }
-
             }
-
         } catch (IOException e) {
-
-            System.out.println(
-                    "Error al listar autores"
-            );
-
+            System.out.println("Error al listar autores");
         }
-
         return lista;
-
     }
 
     @Override
     public int contar() {
-
         return listar().size();
-
     }
-
 }
